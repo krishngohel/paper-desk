@@ -1,0 +1,6 @@
+Vibe-Trading/
+alpaca-mcp-server/
+.venv*/
+__pycache__/
+*.pyc
+.superpowers/
