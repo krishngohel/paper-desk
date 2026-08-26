@@ -268,3 +268,12 @@ Two items should be tracked before this progresses past paper evaluation, neithe
 - The mandate-file-write invariant rests entirely on this agent's alignment, not on filesystem permissions. Paper-only keys make the current blast radius zero, which is why it is acceptable to proceed with the paper evaluation now, but this must be closed structurally (separate OS account or equivalent) before any live-money phase.
 
 Go/No-Go: GO for starting the multi-month paper evaluation period. The core guardrail — long_only enforcement — held cleanly under direct adversarial pressure and named itself correctly. All quantitative caps (order notional, total exposure headroom implied by notional cap, daily trade count) and the structural allowlist check fired correctly and named themselves correctly. The kill switch stopped trading both through its own CLI and through a raw file-existence trip, which is the mechanism a human or watchdog process would actually use in an emergency. The two open findings above are hardening work for the live-money gate, not reasons to delay paper trading.
+
+## Addendum: final whole-branch review (same day)
+
+After this report was written, a final whole-branch review of all five fork commits raised two Important findings, both fixed and re-verified in commit 49efd75 (228/228 tests passing):
+
+1. Mandate renewal safety ratchet. A recommit through any surface other than ops/commit_paper_mandate.py previously produced long_only=false and an empty allowlist, because the built-in propose flow never sets those fields. commit_mandate now inherits the prior mandate's long_only and allowed_symbols when a recommit is silent about them. An explicit parameter or profile value still wins; only silence inherits. The 2026-09-09 renewal is therefore safe through any commit surface.
+2. Paper cancel auditing. Cancels on the gated paper profile are now written to the audit ledger, matching live behavior. Cancels remain ungated by design (risk-reducing).
+
+The review also confirmed end to end: no order path from trade_cli.py reaches a broker write without passing check_mandate including the long-only and allowlist checks; the re-authorization path cannot waive a structural denial (every placement re-runs all checks); no key material exists anywhere in either repo's history.
