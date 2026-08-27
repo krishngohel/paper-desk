@@ -53,16 +53,25 @@ ul { margin:6px 0; padding-left:22px; } li { margin:3px 0; }
 <main>
 <header><h1>Paper Desk</h1><span class="pill ok">&#10003; mandate active - 13d left</span><span class="sub">long-only paper portfolio, autonomous hourly sessions</span></header>
 <div class="hero">
-  <div><span>Equity</span><b>$100,000.00</b></div>
+  <div><span>Equity</span><b>$100,003.43</b></div>
   <div><span>Return</span><b class="up">+0.00%</b></div>
   <div><span>vs VOO</span><b class="up">+0.00% pp</b></div>
 </div>
 <div class="empty">No sessions recorded yet. The curve starts with the first trading session.</div>
 <h2>Open positions</h2>
-<div class="empty">No open positions.</div>
+<table><thead><tr><th>Symbol</th><th class='num'>Qty</th><th class='num'>Entry</th><th>Exit condition</th><th>Trade</th></tr></thead><tbody><tr><td>AAPL</td><td class='num'>0.9</td><td class='num'>$310.50</td><td>close below 295 (about -5% from avg cost) or by 2026-09-04 session review, whichever comes</td><td class='mut'>t-2026-08-26-001</td></tr></tbody></table>
 
 <h2>Recent decisions</h2>
-<details><summary>2026-08-27 (genesis)</summary><pre>Autonomous loop armed. Harness: fork long-only@49efd75, mandate mandate_b2741a5c548b4327bc0dca8ba1953aab
+<details><summary>2026-08-27 15:15 CT - operator-snapshot</summary><pre>- equity: $100,003.43 | cash: $99,720.55 | positions_value: $282.88
+- positions: AAPL 0.9 @ avg 310.50 (reconciled into ledger as t-2026-08-26-001)
+- action: RECONCILIATION - yesterday&#x27;s hardening-test orders (0.5 + 4x0.1 AAPL, all gate-verified) filled at today&#x27;s open; recorded as one open ledger record with an operator-set exit condition. No new orders (market closed).
+- note: scheduler armed today at ~15:00 CT, after market hours; first autonomous session runs 2026-08-28 08:45 CT.</pre></details><details><summary>2026-08-27 15:03 CT - intraday</summary><pre>- equity: unknown | cash: unknown | positions_value: unknown (CLI unreachable this session)
+- positions: none recorded (trades.jsonl has no open records; no reconciliation needed)
+- exits checked: none (no open trades to evaluate)
+- action: HOLD - environment broken, no trading action taken (rule 8, fail closed)
+- gate envelopes: none (no order attempted)
+- thesis (new trades): n/a
+- exit condition (new trades): n/a</pre></details><details><summary>2026-08-27 (genesis)</summary><pre>Autonomous loop armed. Harness: fork long-only@49efd75, mandate mandate_b2741a5c548b4327bc0dca8ba1953aab
 (long-only, allowlist AAPL/MSFT/GOOGL/AMZN/VOO/QQQ, $200/order, $1000 exposure, 5/day, expires 2026-09-09).
 Paper account PA3Y68AGEWYB, starting equity $100,000; benchmark: $1,000 buy-and-hold VOO from first session.
 No positions, no trades yet.</pre></details>
@@ -70,7 +79,7 @@ No positions, no trades yet.</pre></details>
 <ul><li>L1 — Size fractionally.</li><li>L2 — The gate is right.</li><li>L3 — No thesis, no trade.</li></ul>
 <h2>Session activity - last 10 market days</h2>
 <div class="strip"><div class="day"><span>08-14</span><i class="off" title="2026-08-14 8:45 missed"></i><i class="off" title="2026-08-14 9:45 missed"></i><i class="off" title="2026-08-14 10:45 missed"></i><i class="off" title="2026-08-14 11:45 missed"></i><i class="off" title="2026-08-14 12:45 missed"></i><i class="off" title="2026-08-14 13:45 missed"></i><i class="off" title="2026-08-14 14:30 missed"></i></div><div class="day"><span>08-17</span><i class="off" title="2026-08-17 8:45 missed"></i><i class="off" title="2026-08-17 9:45 missed"></i><i class="off" title="2026-08-17 10:45 missed"></i><i class="off" title="2026-08-17 11:45 missed"></i><i class="off" title="2026-08-17 12:45 missed"></i><i class="off" title="2026-08-17 13:45 missed"></i><i class="off" title="2026-08-17 14:30 missed"></i></div><div class="day"><span>08-18</span><i class="off" title="2026-08-18 8:45 missed"></i><i class="off" title="2026-08-18 9:45 missed"></i><i class="off" title="2026-08-18 10:45 missed"></i><i class="off" title="2026-08-18 11:45 missed"></i><i class="off" title="2026-08-18 12:45 missed"></i><i class="off" title="2026-08-18 13:45 missed"></i><i class="off" title="2026-08-18 14:30 missed"></i></div><div class="day"><span>08-19</span><i class="off" title="2026-08-19 8:45 missed"></i><i class="off" title="2026-08-19 9:45 missed"></i><i class="off" title="2026-08-19 10:45 missed"></i><i class="off" title="2026-08-19 11:45 missed"></i><i class="off" title="2026-08-19 12:45 missed"></i><i class="off" title="2026-08-19 13:45 missed"></i><i class="off" title="2026-08-19 14:30 missed"></i></div><div class="day"><span>08-20</span><i class="off" title="2026-08-20 8:45 missed"></i><i class="off" title="2026-08-20 9:45 missed"></i><i class="off" title="2026-08-20 10:45 missed"></i><i class="off" title="2026-08-20 11:45 missed"></i><i class="off" title="2026-08-20 12:45 missed"></i><i class="off" title="2026-08-20 13:45 missed"></i><i class="off" title="2026-08-20 14:30 missed"></i></div><div class="day"><span>08-21</span><i class="off" title="2026-08-21 8:45 missed"></i><i class="off" title="2026-08-21 9:45 missed"></i><i class="off" title="2026-08-21 10:45 missed"></i><i class="off" title="2026-08-21 11:45 missed"></i><i class="off" title="2026-08-21 12:45 missed"></i><i class="off" title="2026-08-21 13:45 missed"></i><i class="off" title="2026-08-21 14:30 missed"></i></div><div class="day"><span>08-24</span><i class="off" title="2026-08-24 8:45 missed"></i><i class="off" title="2026-08-24 9:45 missed"></i><i class="off" title="2026-08-24 10:45 missed"></i><i class="off" title="2026-08-24 11:45 missed"></i><i class="off" title="2026-08-24 12:45 missed"></i><i class="off" title="2026-08-24 13:45 missed"></i><i class="off" title="2026-08-24 14:30 missed"></i></div><div class="day"><span>08-25</span><i class="off" title="2026-08-25 8:45 missed"></i><i class="off" title="2026-08-25 9:45 missed"></i><i class="off" title="2026-08-25 10:45 missed"></i><i class="off" title="2026-08-25 11:45 missed"></i><i class="off" title="2026-08-25 12:45 missed"></i><i class="off" title="2026-08-25 13:45 missed"></i><i class="off" title="2026-08-25 14:30 missed"></i></div><div class="day"><span>08-26</span><i class="off" title="2026-08-26 8:45 missed"></i><i class="off" title="2026-08-26 9:45 missed"></i><i class="off" title="2026-08-26 10:45 missed"></i><i class="off" title="2026-08-26 11:45 missed"></i><i class="off" title="2026-08-26 12:45 missed"></i><i class="off" title="2026-08-26 13:45 missed"></i><i class="off" title="2026-08-26 14:30 missed"></i></div><div class="day"><span>08-27</span><i class="off" title="2026-08-27 8:45 missed"></i><i class="off" title="2026-08-27 9:45 missed"></i><i class="off" title="2026-08-27 10:45 missed"></i><i class="off" title="2026-08-27 11:45 missed"></i><i class="off" title="2026-08-27 12:45 missed"></i><i class="off" title="2026-08-27 13:45 missed"></i><i class="off" title="2026-08-27 14:30 missed"></i></div></div>
-<p class="sub">Generated 2026-08-27 19:57 UTC by ops/build_dashboard.py. Every order shown passed the mandate gate (long-only, allowlist, caps). Journal and full audit ledger live in the repo.</p>
+<p class="sub">Generated 2026-08-27 20:09 UTC by ops/build_dashboard.py. Every order shown passed the mandate gate (long-only, allowlist, caps). Journal and full audit ledger live in the repo.</p>
 </main>
 <script>
 (function () {
