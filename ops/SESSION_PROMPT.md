@@ -82,8 +82,8 @@ Then append one line to `journal/performance.jsonl`:
 (`voo_price` from `quote VOO`; if unavailable use `null`, never a guess.)
 
 Then update the live dashboard — EVERY session, not just preclose (the user watches it for equity/return):
-1. Rebuild: `C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe C:\Users\awsom\Documents\Projects\trading-agent\ops\build_dashboard.py`.
-2. Republish: read the URL from `journal/DASHBOARD_URL.txt` and publish `ops/dashboard.html` to that SAME artifact URL (pass the url parameter, keep favicon 📈, keep the title). If publishing fails, journal it and continue; data is safe in git.
+1. Rebuild AND deploy to Netlify in one step: `C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe C:\Users\awsom\Documents\Projects\trading-agent\ops\build_dashboard.py --deploy` (the Netlify copy at paper-desk-training.netlify.app is the user's primary live view; the script tolerates deploy failure).
+2. Also republish the claude.ai copy: read the URL from `journal/DASHBOARD_URL.txt` and publish `ops/dashboard.html` to that SAME artifact URL (pass the url parameter, keep favicon 📈, keep the title). If publishing fails, journal it and continue; data is safe in git.
 
 Commit everything: `git -C C:\Users\awsom\Documents\Projects\trading-agent add journal ops/dashboard.html && git commit -m "journal: <date> <type> session"`.
 

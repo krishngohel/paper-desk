@@ -213,6 +213,8 @@ def build() -> str:
 
     equity = perf[-1]["equity"] if perf else START_EQUITY
     as_of = str(perf[-1].get("ts", ""))[:16].replace("T", " ") + " CT" if perf else "no data yet"
+    voo0 = next((r["voo_price"] for r in perf if r.get("voo_price")), None)
+    voo0_js = voo0 if voo0 is not None else "null"
     a_ret = agent[-1][1] if agent else 0.0
     v_ret = voo[-1][1] if voo else 0.0
     delta = a_ret - v_ret
@@ -297,11 +299,12 @@ ul {{ margin:6px 0; padding-left:22px; }} li {{ margin:3px 0; }}
 <main>
 <header><h1>Paper Desk</h1>{pill}<span class="sub">long-only paper portfolio, autonomous 30-minute sessions</span></header>
 <div class="hero">
-  <div><span>Equity</span><b>{_fmt_money(equity)}</b></div>
-  <div><span>Return</span><b class="{'up' if a_ret >= 0 else 'down'}">{_pct(a_ret)}</b></div>
-  <div><span>vs VOO</span><b class="{'up' if delta >= 0 else 'down'}">{_pct(delta)} pp</b></div>
-  <div><span>Data as of</span><b class="sub" style="font-size:16px; font-weight:500; line-height:2.2;">{as_of}</b></div>
+  <div><span>Equity</span><b id="eqv">{_fmt_money(equity)}</b></div>
+  <div><span>Return</span><b id="retv" class="{'up' if a_ret >= 0 else 'down'}">{_pct(a_ret)}</b></div>
+  <div><span>vs VOO</span><b id="vsv" class="{'up' if delta >= 0 else 'down'}">{_pct(delta)} pp</b></div>
+  <div><span id="asof-label">Data as of</span><b id="asof" class="sub" style="font-size:16px; font-weight:500; line-height:2.2;">{as_of}</b></div>
 </div>
+<script id="livecfg" type="application/json">{{"start": {START_EQUITY}, "voo0": {voo0_js}}}</script>
 {_chart(perf)}
 <h2>Open positions</h2>
 {_positions_rows(trades)}
@@ -333,10 +336,90 @@ ul {{ margin:6px 0; padding-left:22px; }} li {{ margin:3px 0; }}
   }});
   svg.addEventListener('mouseleave', function () {{ tip.hidden = true; xh.setAttribute('visibility', 'hidden'); }});
 }})();
+
+// Live layer: feature-detects the /api/alpaca proxy (present on the Netlify
+// host only). On claude.ai the fetch 404s and the page stays snapshot-static.
+(function () {{
+  var cfg;
+  try {{ cfg = JSON.parse(document.getElementById('livecfg').textContent); }} catch (e) {{ return; }}
+  var eqv = document.getElementById('eqv'), retv = document.getElementById('retv'),
+      vsv = document.getElementById('vsv'), asof = document.getElementById('asof'),
+      label = document.getElementById('asof-label');
+  var fails = 0, live = false;
+
+  function fmtMoney(v) {{ return '$' + v.toLocaleString('en-US', {{minimumFractionDigits: 2, maximumFractionDigits: 2}}); }}
+  function fmtPct(v) {{ return (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }}
+  function paint(el, v, suffix) {{
+    el.textContent = fmtPct(v) + (suffix || '');
+    el.classList.toggle('up', v >= 0); el.classList.toggle('down', v < 0);
+  }}
+
+  async function poll() {{
+    if (document.hidden) return;
+    try {{
+      var a = await fetch('/api/alpaca?what=account').then(function (r) {{ if (!r.ok) throw 0; return r.json(); }});
+      var eq = parseFloat(a.equity);
+      if (!isFinite(eq)) throw 0;
+      var ret = (eq / cfg.start - 1) * 100;
+      eqv.textContent = fmtMoney(eq);
+      paint(retv, ret);
+      if (cfg.voo0) {{
+        try {{
+          var q = await fetch('/api/alpaca?what=quote&symbols=VOO').then(function (r) {{ if (!r.ok) throw 0; return r.json(); }});
+          var vq = q.quotes && q.quotes.VOO;
+          var bp = vq && vq.bp, ap = vq && vq.ap;
+          if (bp > 0 && ap > 0 && Math.abs(ap - bp) / ap < 0.02) {{
+            var vooRet = (((bp + ap) / 2) / cfg.voo0 - 1) * 100;
+            paint(vsv, ret - vooRet, ' pp');
+          }}
+        }} catch (e) {{ /* keep last vs-VOO */ }}
+      }}
+      var now = new Date();
+      asof.textContent = now.toLocaleTimeString();
+      if (!live) {{ live = true; label.innerHTML = '<span style="color:var(--good)">&#9679; LIVE</span>'; }}
+      fails = 0;
+    }} catch (e) {{
+      fails++;
+      if (fails >= 3 && !live) clearInterval(timer); // no proxy on this host - stay static
+    }}
+  }}
+  var timer = setInterval(poll, 20000);
+  poll();
+}})();
 </script>
 """
 
 
+def _deploy() -> None:
+    """Push site/ to Netlify production. Best-effort - a failed deploy never blocks a session."""
+    import shutil
+    import subprocess
+
+    netlify = shutil.which("netlify") or r"C:\Users\awsom\AppData\Roaming\npm\netlify.cmd"
+    try:
+        subprocess.run(
+            [netlify, "deploy", "--prod", "--no-build"],
+            cwd=ROOT, check=True, capture_output=True, timeout=180,
+        )
+        print("deployed to netlify")
+    except Exception as exc:  # noqa: BLE001 - freshness plumbing, never fatal
+        print(f"netlify deploy skipped/failed: {exc}")
+
+
 if __name__ == "__main__":
-    OUT.write_text(build(), encoding="utf-8")
-    print(f"wrote {OUT}")
+    import sys as _sys
+
+    page = build()
+    OUT.write_text(page, encoding="utf-8")
+    site = ROOT / "site" / "index.html"
+    site.parent.mkdir(exist_ok=True)
+    # The Netlify copy is a full document (no artifact wrapper supplies the skeleton there).
+    body = page.replace("<title>Paper Desk</title>\n", "", 1)
+    site.write_text("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\">"
+                    "<title>Paper Desk</title>"
+                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+                    "<meta name=\"robots\" content=\"noindex\">"
+                    "</head><body>" + body + "</body></html>", encoding="utf-8")
+    print(f"wrote {OUT} and {site}")
+    if "--deploy" in _sys.argv:
+        _deploy()

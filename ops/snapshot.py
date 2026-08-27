@@ -67,7 +67,7 @@ def main() -> int:
     with perf.open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(line) + "\n")
 
-    subprocess.run([sys.executable, str(ROOT / "ops" / "build_dashboard.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "ops" / "build_dashboard.py"), "--deploy"], check=True)
     subprocess.run(["git", "-C", str(ROOT), "add", "journal", "ops/dashboard.html"], check=True)
     subprocess.run(
         ["git", "-C", str(ROOT), "commit", "-m", "journal: snapshot " + line["ts"][:16]],

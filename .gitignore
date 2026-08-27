@@ -5,3 +5,7 @@ __pycache__/
 *.pyc
 .superpowers/
 ops/logs/
+
+# Local Netlify folder
+.netlify
+site/index.html
