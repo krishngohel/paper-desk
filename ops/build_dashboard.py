@@ -294,7 +294,7 @@ ul {{ margin:6px 0; padding-left:22px; }} li {{ margin:3px 0; }}
 @media (prefers-reduced-motion: no-preference) {{ details {{ transition: background .15s; }} }}
 </style>
 <main>
-<header><h1>Paper Desk</h1>{pill}<span class="sub">long-only paper portfolio, autonomous hourly sessions</span></header>
+<header><h1>Paper Desk</h1>{pill}<span class="sub">long-only paper portfolio, autonomous 30-minute sessions</span></header>
 <div class="hero">
   <div><span>Equity</span><b>{_fmt_money(equity)}</b></div>
   <div><span>Return</span><b class="{'up' if a_ret >= 0 else 'down'}">{_pct(a_ret)}</b></div>
