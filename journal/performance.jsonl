@@ -1,2 +1,3 @@
 {"ts": "2026-08-27T15:15:00", "session": "operator-snapshot", "equity": 100003.43, "cash": 99720.55, "positions_value": 282.88, "voo_price": 708.78}
 {"ts": "2026-08-27T15:20:00", "session": "intraday", "equity": 100003.33, "cash": 99720.55, "positions_value": 282.77, "voo_price": 708.78}
+{"ts": "2026-08-27T15:33:06", "session": "snapshot", "equity": 100003.03, "cash": 99720.55, "positions_value": 282.48, "voo_price": 708.78}
