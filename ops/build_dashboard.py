@@ -24,7 +24,10 @@ ROOT = Path(__file__).resolve().parent.parent
 JOURNAL = ROOT / "journal"
 OUT = ROOT / "ops" / "dashboard.html"
 
-SESSION_SLOTS = ["8:45", "9:45", "10:45", "11:45", "12:45", "13:45", "14:30"]
+SESSION_SLOTS = [
+    "8:45", "9:15", "9:45", "10:15", "10:45", "11:15", "11:45",
+    "12:15", "12:45", "13:15", "13:45", "14:15", "14:30",
+]
 START_EQUITY = 100_000.0
 BENCH_STAKE = 1_000.0
 

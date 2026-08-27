@@ -12,18 +12,21 @@ from src.live.mandate.commit import commit_mandate, save_proposal
 from src.live.mandate.store import load_mandate
 
 BROKER = "alpaca"
-ALLOWED = ["AAPL", "MSFT", "GOOGL", "AMZN", "VOO", "QQQ"]
+# v2 (user-authorized 2026-08-27): no symbol allowlist (paper training run - any US
+# equity/ETF the gate's structural checks admit), daily cap 12 for the 30-minute
+# session cadence. Long-only, per-order and exposure caps, and no-leverage unchanged.
+ALLOWED = []
 LIMITS = {
     "account_funding_usd": 1000.0,
     "max_order_usd": 200.0,
     "max_total_exposure_usd": 1000.0,
-    "daily_trade_cap": 5,
+    "daily_trade_cap": 12,
     "leverage": "none",
     "instruments": ["equity", "etf"],
 }
 PROFILE = {
     "ordinal": 1,
-    "label": "long-only-paper-v1",
+    "label": "long-only-paper-v2-training",
     **LIMITS,
     "asset_classes": ["us_equity", "us_etf"],
     "min_market_cap_usd": None,
@@ -65,6 +68,6 @@ assert m.universe.allowed_symbols == tuple(ALLOWED)
 assert m.hard_caps.max_order_notional_usd == 200.0
 assert m.hard_caps.max_total_exposure_usd == 1000.0
 assert m.hard_caps.max_leverage == 1.0
-assert m.hard_caps.max_trades_per_day == 5
+assert m.hard_caps.max_trades_per_day == 12
 assert m.flatten_on_halt is True
 print("MANDATE ACTIVE:", json.dumps(result, indent=2, default=str))

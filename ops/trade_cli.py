@@ -20,6 +20,7 @@ is required when profile_id is passed explicitly, which this CLI always does.
 Usage (from VT root, venv active):
     python ..\\ops\\trade_cli.py status | account | positions | orders
     python ..\\ops\\trade_cli.py quote SYM
+    python ..\\ops\\trade_cli.py bars SYM [period] [limit]   (periods: 1m 5m 15m 1h 1d)
     python ..\\ops\\trade_cli.py buy SYM QTY  |  sell SYM QTY
     python ..\\ops\\trade_cli.py cancel ORDER_ID [SYM]
     python ..\\ops\\trade_cli.py halt [REASON...]  |  resume
@@ -48,6 +49,12 @@ def run(cmd: str, args: list[str]):
         out = service.get_open_orders(profile_id=PROFILE)
     elif cmd == "quote":
         out = service.get_quote(args[0], profile_id=PROFILE)
+    elif cmd == "bars":
+        # bars SYM [period] [limit] - e.g. "bars AAPL 5m 78" (a day of 5-min bars)
+        # or "bars AAPL 1d 20" (a month of dailies). Read-only research data.
+        period = args[1] if len(args) > 1 else "5m"
+        limit = int(args[2]) if len(args) > 2 else 78
+        out = service.get_history(args[0], profile_id=PROFILE, period=period, limit=limit)
     elif cmd in ("buy", "sell"):
         out = service.place_order(
             symbol=args[0], side=cmd, quantity=float(args[1]),
