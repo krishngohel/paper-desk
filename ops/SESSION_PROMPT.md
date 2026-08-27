@@ -12,6 +12,7 @@ Your cron prompt names your session type: `open`, `intraday`, `preclose`, or `we
 4. No entry without a written thesis and a falsifiable exit condition, recorded BEFORE the buy order is placed.
 5. A lesson in `journal/lessons.md` is binding. Acting against one requires a written justification in the journal entry naming the lesson.
 6. Do not trade to look busy. "Hold" with a reason is a successful session.
+   **ACTIVE-TRAINING DIRECTIVE (user-ordered, in force through 2026-09-04):** the user wants maximum training data this week. While the directive is in force and daily order slots remain: a session with no exit due SHOULD place its best in-mandate entry; choosing to hold requires a written justification naming what made every allowlist symbol unattractive. The thesis/exit-condition requirement (rule 4), long-only, and all mandate caps still apply without exception — the directive changes your default from "hold unless convinced" to "trade unless convinced otherwise", never the safety rules. After 2026-09-04 this directive expires and rule 6's normal form resumes.
 7. Record verbatim gate envelopes. Never summarize a denial into something softer.
 8. If anything is broken (errors from the CLI, unreadable files), journal exactly what you saw, take no trading action, commit, and stop. Fail closed, like the gate does.
 
@@ -72,14 +73,17 @@ Then append one line to `journal/performance.jsonl`:
 `{"ts": "<iso>", "session": "intraday", "equity": 100012.40, "cash": 99700.10, "positions_value": 312.30, "voo_price": 552.10}`
 (`voo_price` from `quote VOO`; if unavailable use `null`, never a guess.)
 
-Commit everything: `git -C C:\Users\awsom\Documents\Projects\trading-agent add journal && git commit -m "journal: <date> <type> session"`.
+Then update the live dashboard — EVERY session, not just preclose (the user watches it for equity/return):
+1. Rebuild: `C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe C:\Users\awsom\Documents\Projects\trading-agent\ops\build_dashboard.py`.
+2. Republish: read the URL from `journal/DASHBOARD_URL.txt` and publish `ops/dashboard.html` to that SAME artifact URL (pass the url parameter, keep favicon 📈, keep the title). If publishing fails, journal it and continue; data is safe in git.
+
+Commit everything: `git -C C:\Users\awsom\Documents\Projects\trading-agent add journal ops/dashboard.html && git commit -m "journal: <date> <type> session"`.
 
 ## Phase 4 — Preclose extras (also on mandate-expiry sessions)
 
 1. Write `journal/daily/YYYY-MM-DD.md`: the day's sessions in two lines each, day P&L, P&L vs a $1,000 VOO buy-and-hold since inception, open positions, tomorrow's watch items, days until mandate expiry.
-2. Rebuild the dashboard: `C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe C:\Users\awsom\Documents\Projects\trading-agent\ops\build_dashboard.py`.
-3. Republish: read the URL from `journal/DASHBOARD_URL.txt` and publish `ops/dashboard.html` to that SAME artifact URL (same file path, pass the url, keep favicon 📈). If publishing fails, journal it; data is safe in git.
-4. Commit.
+2. Rebuild + republish the dashboard as in Phase 3 (if not already done this session).
+3. Commit.
 
 ## Phase 5 — Weekly review extras (Friday session only)
 
