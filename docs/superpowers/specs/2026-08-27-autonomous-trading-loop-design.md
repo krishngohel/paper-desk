@@ -7,6 +7,8 @@
 
 The paper-trading agent runs fully hands-off on the user's machine and Claude subscription: hourly trading sessions during market hours decide and trade through the existing mandate gate, journal every decision with a falsifiable thesis, distill lessons weekly, and publish a live dashboard so the user can watch performance and learning without ever being asked for input. The only manual act that remains is 14-day mandate renewal (deliberate dead-man switch).
 
+**Purpose framing (user, 2026-08-27):** this whole setup is a training ground — the point is to build evidence of trading competence BEFORE any real money is considered. Therefore every trade's complete lifecycle (why it was selected, when and why it was sold, what happened) must be captured as organized, machine-ready data, not only prose. The structured trade ledger below is the canonical dataset for that evaluation.
+
 ## Decisions (user-confirmed 2026-08-27)
 
 - **Cadence:** hourly — Mon–Fri sessions at 8:45, 9:45, 10:45, 11:45, 12:45, 13:45, and 14:30 (America/Chicago; market is 8:30–15:00 CT), plus a Friday 15:15 weekly review session. User has subscription headroom and chose maximum useful frequency; beyond hourly adds nothing because the mandate caps execution at 5 orders/day.
@@ -33,7 +35,7 @@ One file, four phases; `preclose` and `weekly-review` add extra duties.
 1. **Orient.** Run `trade_cli.py status`. If halted, or the market is closed (holiday/weekend — check the clock via a quote timestamp or calendar), append a one-line journal note and stop. If the mandate is expired (deny envelope names it), append a read-only snapshot entry, update the dashboard nag, and stop.
 2. **Recall.** Read `journal/lessons.md` (binding rules — a session may not act against a lesson without writing an explicit justification) and the last 10 entries of the current `journal/YYYY-MM.md`, including open theses and their exit conditions.
 3. **Decide & act.** Check account, positions, and quotes for the six allowlist symbols. First enforce existing exit conditions (a triggered exit is executed before any new idea). Then at most ONE new idea per session, sized fractionally (a whole AAPL share breaches the $200 cap). Explicit hold is a first-class outcome and must be journaled with a reason. All orders through `trade_cli.py buy|sell` — the mandate gate is the authority; the session records the gate's verdict verbatim and never retries a structural DENY.
-4. **Record.** Append a journal entry (fixed template: timestamp, session type, account equity, positions, thesis or hold-reason, actions + gate verdicts, falsifiable exit condition for any new position, watch notes for the next session). Append one line to `journal/performance.jsonl`: `{ts, equity, cash, positions_value, voo_price}`.
+4. **Record.** Append a journal entry (fixed template: timestamp, session type, account equity, positions, thesis or hold-reason, actions + gate verdicts, falsifiable exit condition for any new position, watch notes for the next session). Maintain `journal/trades.jsonl`: a buy creates the entry-half record (thesis, lesson_refs, exit_condition are MANDATORY at entry — an order without them may not be placed); a sell completes the matching record (exit_reason, realized P&L, VOO comparison). Append one line to `journal/performance.jsonl`: `{ts, equity, cash, positions_value, voo_price}`.
 
 **preclose additionally:** writes `journal/daily/YYYY-MM-DD.md` (one-page day summary incl. P&L vs VOO) and republishes the dashboard.
 **weekly-review additionally:** scores every thesis closed that week (right/wrong and why), updates `journal/lessons.md` (adds, amends, or retires rules — retired rules move to an archive section with the evidence), evaluates whether earlier lessons improved outcomes, and republishes the dashboard.
@@ -48,16 +50,36 @@ Stable URL, redeployed (same file path) by preclose and weekly-review sessions f
 
 ```
 journal/
-  YYYY-MM.md            # append-only session log, fixed entry template
+  YYYY-MM.md            # append-only session log (narrative), fixed entry template
   daily/YYYY-MM-DD.md   # preclose one-pagers
   lessons.md            # numbered binding rules + archive section (the "learning")
+  trades.jsonl          # CANONICAL trade ledger - one JSON object per position lifecycle
   performance.jsonl     # one line per session: ts, equity, cash, positions_value, voo_price
   DASHBOARD_URL.txt     # stable artifact URL
 ops/
   SESSION_PROMPT.md     # standing operating procedure (the agent's whole behavior)
-  build_dashboard.py    # journal+audit -> dashboard.html
+  build_dashboard.py    # journal+trades+audit -> dashboard.html
   dashboard.html        # generated, published as the artifact
 ```
+
+### The trade ledger (`journal/trades.jsonl`) — the evaluation dataset
+
+One JSON object per trade lifecycle. The session that BUYS writes the entry half; the session that SELLS completes it; the weekly review adds the verdict. Fields:
+
+```json
+{"trade_id": "t-2026-08-27-001", "symbol": "AAPL",
+ "opened_ts": "...", "entry_order_id": "...", "entry_qty": 0.5, "entry_price": 294.10, "entry_notional": 147.05,
+ "thesis": "one-paragraph why, written at entry",
+ "lesson_refs": ["L3", "L7"],
+ "exit_condition": "falsifiable trigger written at entry, e.g. close below 285 or +6% or 10 trading days",
+ "closed_ts": null, "exit_order_id": null, "exit_price": null,
+ "exit_reason": null,
+ "realized_pnl": null, "realized_pnl_pct": null, "holding_days": null,
+ "voo_pnl_pct_same_window": null,
+ "review_verdict": null, "review_notes": null}
+```
+
+`exit_reason` is one of: `exit-condition-hit`, `thesis-invalidated`, `review-decision`, `halt-flatten`, `mandate-expiry-manual`. `review_verdict` is one of: `right`, `wrong`, `lucky` (won for the wrong reason), `unlucky` (sound thesis, adverse outcome) — scored by the Friday review, never by the session that traded. An open record with nulls in the exit half is a live position; the dashboard and weekly review reconcile open records against `trade_cli.py positions` and flag any mismatch. Updates rewrite the record's line in place (read-modify-write of the file is acceptable at this scale; the file is committed on every change so history preserves every intermediate state).
 
 Sessions commit their journal writes (`git add journal; git commit`) so history is auditable; plain commit messages, no AI trailers.
 
