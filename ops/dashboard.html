@@ -53,11 +53,22 @@ ul { margin:6px 0; padding-left:22px; } li { margin:3px 0; }
 <main>
 <header><h1>Paper Desk</h1><span class="pill ok">&#10003; mandate active - 13d left</span><span class="sub">long-only paper portfolio, autonomous hourly sessions</span></header>
 <div class="hero">
-  <div><span>Equity</span><b>$100,003.43</b></div>
+  <div><span>Equity</span><b>$100,003.33</b></div>
   <div><span>Return</span><b class="up">+0.00%</b></div>
   <div><span>vs VOO</span><b class="up">+0.00% pp</b></div>
 </div>
-<div class="empty">No sessions recorded yet. The curve starts with the first trading session.</div>
+
+<figure class="chart" aria-label="Return since inception, agent vs VOO buy-and-hold">
+<svg viewBox="0 0 840 260" id="curve" data-series='{&quot;agent&quot;: [[&quot;2026-08-27T15:15&quot;, 0.003], [&quot;2026-08-27T15:20&quot;, 0.003]], &quot;voo&quot;: [[&quot;2026-08-27T15:15&quot;, 0.0], [&quot;2026-08-27T15:20&quot;, 0.0]], &quot;lo&quot;: -0.00034299999999820585, &quot;hi&quot;: 0.0037729999999802644, &quot;w&quot;: 840, &quot;h&quot;: 260}'>
+  <line class="grid" x1="8" y1="231.7" x2="832" y2="231.7"/>
+  <polyline class="line v" points="8.0,231.7 832.0,231.7"/>
+  <polyline class="line a" points="8.0,28.3 832.0,34.3"/>
+  <text class="dlabel a" x="830" y="20">Agent +0.00%</text><text class="dlabel v" x="830" y="38">VOO +0.00%</text>
+  <line id="xhair" class="xhair" y1="8" y2="252" visibility="hidden"/>
+</svg>
+<div id="tip" class="tip" hidden></div>
+<figcaption><span class="key a"></span>Agent equity&nbsp;&nbsp;<span class="key v"></span>$1,000 VOO buy-and-hold — % return since inception, one point per session</figcaption>
+</figure>
 <h2>Open positions</h2>
 <table><thead><tr><th>Symbol</th><th class='num'>Qty</th><th class='num'>Entry</th><th>Exit condition</th><th>Trade</th></tr></thead><tbody><tr><td>AAPL</td><td class='num'>0.9</td><td class='num'>$310.50</td><td>close below 295 (about -5% from avg cost) or by 2026-09-04 session review, whichever comes</td><td class='mut'>t-2026-08-26-001</td></tr></tbody></table>
 
