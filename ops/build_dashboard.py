@@ -212,6 +212,7 @@ def build() -> str:
     agent, voo = _series(perf)
 
     equity = perf[-1]["equity"] if perf else START_EQUITY
+    as_of = str(perf[-1].get("ts", ""))[:16].replace("T", " ") + " CT" if perf else "no data yet"
     a_ret = agent[-1][1] if agent else 0.0
     v_ret = voo[-1][1] if voo else 0.0
     delta = a_ret - v_ret
@@ -299,6 +300,7 @@ ul {{ margin:6px 0; padding-left:22px; }} li {{ margin:3px 0; }}
   <div><span>Equity</span><b>{_fmt_money(equity)}</b></div>
   <div><span>Return</span><b class="{'up' if a_ret >= 0 else 'down'}">{_pct(a_ret)}</b></div>
   <div><span>vs VOO</span><b class="{'up' if delta >= 0 else 'down'}">{_pct(delta)} pp</b></div>
+  <div><span>Data as of</span><b class="sub" style="font-size:16px; font-weight:500; line-height:2.2;">{as_of}</b></div>
 </div>
 {_chart(perf)}
 <h2>Open positions</h2>
