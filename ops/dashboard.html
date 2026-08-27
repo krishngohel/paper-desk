@@ -1,0 +1,94 @@
+<title>Paper Desk</title>
+<style>
+:root { color-scheme: light;
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --mut:#898781;
+  --grid:#e1e0d9; --border:rgba(11,11,11,.10);
+  --a:#2a78d6; --v:#eb6834; --good:#006300; --crit:#d03b3b; --warnbg:#fab219; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark;
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --mut:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.10); --a:#3987e5; --v:#d95926; --good:#0ca30c; } }
+:root[data-theme="dark"] { color-scheme: dark;
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --mut:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.10); --a:#3987e5; --v:#d95926; --good:#0ca30c; }
+body { background:var(--page); color:var(--ink); margin:0;
+  font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+main { max-width:880px; margin:0 auto; padding:24px 16px 64px; }
+header { display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px; }
+h1 { font-size:20px; margin:0; } h2 { font-size:15px; margin:28px 0 8px; }
+.sub { color:var(--mut); font-size:13px; }
+.pill { font-size:12.5px; padding:2px 10px; border-radius:999px; border:1px solid var(--border); }
+.pill.ok { color:var(--good); } .pill.warn { color:var(--ink); background:color-mix(in srgb,var(--warnbg) 25%,transparent); }
+.pill.crit { color:#fff; background:var(--crit); }
+.hero { display:flex; gap:32px; flex-wrap:wrap; margin:16px 0; }
+.hero b { display:block; font-size:30px; font-weight:650; font-variant-numeric:tabular-nums; }
+.hero span { font-size:12.5px; color:var(--mut); text-transform:uppercase; letter-spacing:.04em; }
+.up { color:var(--good); } .down { color:var(--crit); }
+.chart, table, .strip, .empty, details { background:var(--surface); border:1px solid var(--border); border-radius:6px; }
+.chart { padding:10px; margin:0; } svg { width:100%; height:auto; display:block; }
+.line { fill:none; stroke-width:2; stroke-linejoin:round; } .line.a { stroke:var(--a); } .line.v { stroke:var(--v); }
+.grid { stroke:var(--grid); stroke-width:1; } .xhair { stroke:var(--mut); stroke-width:1; stroke-dasharray:3 3; }
+.dlabel { font:12px system-ui,sans-serif; fill:var(--ink2); text-anchor:end; }
+figcaption { color:var(--mut); font-size:12.5px; padding:8px 4px 2px; }
+.key { display:inline-block; width:14px; height:3px; border-radius:2px; vertical-align:middle; margin-right:5px; }
+.key.a { background:var(--a); } .key.v { background:var(--v); }
+.tip { position:fixed; pointer-events:none; background:var(--surface); border:1px solid var(--border);
+  border-radius:4px; padding:4px 8px; font-size:12.5px; color:var(--ink2); font-variant-numeric:tabular-nums; }
+table { border-collapse:separate; border-spacing:0; width:100%; font-size:14px; }
+th, td { text-align:left; padding:7px 12px; border-bottom:1px solid var(--grid); }
+tr:last-child td { border-bottom:none; }
+th { color:var(--mut); font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:600; }
+.num { text-align:right; font-variant-numeric:tabular-nums; } .mut { color:var(--mut); }
+.empty { padding:18px; color:var(--mut); font-size:14px; }
+details { margin-bottom:6px; padding:8px 12px; } summary { cursor:pointer; font-size:14px; }
+details pre { white-space:pre-wrap; color:var(--ink2); font:12.5px/1.5 ui-monospace,Consolas,monospace;
+  overflow-x:auto; margin:8px 0 2px; }
+ul { margin:6px 0; padding-left:22px; } li { margin:3px 0; }
+.strip { padding:10px 12px; display:flex; gap:10px; flex-wrap:wrap; }
+.day { display:flex; align-items:center; gap:3px; font-size:11.5px; color:var(--mut); }
+.day span { margin-right:3px; font-variant-numeric:tabular-nums; }
+.day i { width:9px; height:9px; border-radius:2px; background:var(--grid); }
+.day i.on { background:var(--a); }
+@media (prefers-reduced-motion: no-preference) { details { transition: background .15s; } }
+</style>
+<main>
+<header><h1>Paper Desk</h1><span class="pill ok">&#10003; mandate active - 13d left</span><span class="sub">long-only paper portfolio, autonomous hourly sessions</span></header>
+<div class="hero">
+  <div><span>Equity</span><b>$100,000.00</b></div>
+  <div><span>Return</span><b class="up">+0.00%</b></div>
+  <div><span>vs VOO</span><b class="up">+0.00% pp</b></div>
+</div>
+<div class="empty">No sessions recorded yet. The curve starts with the first trading session.</div>
+<h2>Open positions</h2>
+<div class="empty">No open positions.</div>
+
+<h2>Recent decisions</h2>
+<details><summary>2026-08-27 (genesis)</summary><pre>Autonomous loop armed. Harness: fork long-only@49efd75, mandate mandate_b2741a5c548b4327bc0dca8ba1953aab
+(long-only, allowlist AAPL/MSFT/GOOGL/AMZN/VOO/QQQ, $200/order, $1000 exposure, 5/day, expires 2026-09-09).
+Paper account PA3Y68AGEWYB, starting equity $100,000; benchmark: $1,000 buy-and-hold VOO from first session.
+No positions, no trades yet.</pre></details>
+<h2>Lessons (binding rules)</h2>
+<ul><li>L1 — Size fractionally.</li><li>L2 — The gate is right.</li><li>L3 — No thesis, no trade.</li></ul>
+<h2>Session activity - last 10 market days</h2>
+<div class="strip"><div class="day"><span>08-14</span><i class="off" title="2026-08-14 8:45 missed"></i><i class="off" title="2026-08-14 9:45 missed"></i><i class="off" title="2026-08-14 10:45 missed"></i><i class="off" title="2026-08-14 11:45 missed"></i><i class="off" title="2026-08-14 12:45 missed"></i><i class="off" title="2026-08-14 13:45 missed"></i><i class="off" title="2026-08-14 14:30 missed"></i></div><div class="day"><span>08-17</span><i class="off" title="2026-08-17 8:45 missed"></i><i class="off" title="2026-08-17 9:45 missed"></i><i class="off" title="2026-08-17 10:45 missed"></i><i class="off" title="2026-08-17 11:45 missed"></i><i class="off" title="2026-08-17 12:45 missed"></i><i class="off" title="2026-08-17 13:45 missed"></i><i class="off" title="2026-08-17 14:30 missed"></i></div><div class="day"><span>08-18</span><i class="off" title="2026-08-18 8:45 missed"></i><i class="off" title="2026-08-18 9:45 missed"></i><i class="off" title="2026-08-18 10:45 missed"></i><i class="off" title="2026-08-18 11:45 missed"></i><i class="off" title="2026-08-18 12:45 missed"></i><i class="off" title="2026-08-18 13:45 missed"></i><i class="off" title="2026-08-18 14:30 missed"></i></div><div class="day"><span>08-19</span><i class="off" title="2026-08-19 8:45 missed"></i><i class="off" title="2026-08-19 9:45 missed"></i><i class="off" title="2026-08-19 10:45 missed"></i><i class="off" title="2026-08-19 11:45 missed"></i><i class="off" title="2026-08-19 12:45 missed"></i><i class="off" title="2026-08-19 13:45 missed"></i><i class="off" title="2026-08-19 14:30 missed"></i></div><div class="day"><span>08-20</span><i class="off" title="2026-08-20 8:45 missed"></i><i class="off" title="2026-08-20 9:45 missed"></i><i class="off" title="2026-08-20 10:45 missed"></i><i class="off" title="2026-08-20 11:45 missed"></i><i class="off" title="2026-08-20 12:45 missed"></i><i class="off" title="2026-08-20 13:45 missed"></i><i class="off" title="2026-08-20 14:30 missed"></i></div><div class="day"><span>08-21</span><i class="off" title="2026-08-21 8:45 missed"></i><i class="off" title="2026-08-21 9:45 missed"></i><i class="off" title="2026-08-21 10:45 missed"></i><i class="off" title="2026-08-21 11:45 missed"></i><i class="off" title="2026-08-21 12:45 missed"></i><i class="off" title="2026-08-21 13:45 missed"></i><i class="off" title="2026-08-21 14:30 missed"></i></div><div class="day"><span>08-24</span><i class="off" title="2026-08-24 8:45 missed"></i><i class="off" title="2026-08-24 9:45 missed"></i><i class="off" title="2026-08-24 10:45 missed"></i><i class="off" title="2026-08-24 11:45 missed"></i><i class="off" title="2026-08-24 12:45 missed"></i><i class="off" title="2026-08-24 13:45 missed"></i><i class="off" title="2026-08-24 14:30 missed"></i></div><div class="day"><span>08-25</span><i class="off" title="2026-08-25 8:45 missed"></i><i class="off" title="2026-08-25 9:45 missed"></i><i class="off" title="2026-08-25 10:45 missed"></i><i class="off" title="2026-08-25 11:45 missed"></i><i class="off" title="2026-08-25 12:45 missed"></i><i class="off" title="2026-08-25 13:45 missed"></i><i class="off" title="2026-08-25 14:30 missed"></i></div><div class="day"><span>08-26</span><i class="off" title="2026-08-26 8:45 missed"></i><i class="off" title="2026-08-26 9:45 missed"></i><i class="off" title="2026-08-26 10:45 missed"></i><i class="off" title="2026-08-26 11:45 missed"></i><i class="off" title="2026-08-26 12:45 missed"></i><i class="off" title="2026-08-26 13:45 missed"></i><i class="off" title="2026-08-26 14:30 missed"></i></div><div class="day"><span>08-27</span><i class="off" title="2026-08-27 8:45 missed"></i><i class="off" title="2026-08-27 9:45 missed"></i><i class="off" title="2026-08-27 10:45 missed"></i><i class="off" title="2026-08-27 11:45 missed"></i><i class="off" title="2026-08-27 12:45 missed"></i><i class="off" title="2026-08-27 13:45 missed"></i><i class="off" title="2026-08-27 14:30 missed"></i></div></div>
+<p class="sub">Generated 2026-08-27 19:57 UTC by ops/build_dashboard.py. Every order shown passed the mandate gate (long-only, allowlist, caps). Journal and full audit ledger live in the repo.</p>
+</main>
+<script>
+(function () {
+  var svg = document.getElementById('curve');
+  if (!svg) return;
+  var data = JSON.parse(svg.dataset.series), tip = document.getElementById('tip'),
+      xh = document.getElementById('xhair'), a = data.agent, v = data.voo;
+  svg.addEventListener('mousemove', function (e) {
+    if (a.length < 2) return;
+    var r = svg.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width * data.w;
+    var i = Math.round((fx - 8) / ((data.w - 16) / (a.length - 1)));
+    i = Math.max(0, Math.min(a.length - 1, i));
+    var x = 8 + i * (data.w - 16) / (a.length - 1);
+    xh.setAttribute('x1', x); xh.setAttribute('x2', x); xh.setAttribute('visibility', 'visible');
+    tip.hidden = false;
+    tip.textContent = a[i][0] + '  agent ' + a[i][1].toFixed(2) + '%' + (v[i] ? '  voo ' + v[i][1].toFixed(2) + '%' : '');
+    tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 10) + 'px';
+  });
+  svg.addEventListener('mouseleave', function () { tip.hidden = true; xh.setAttribute('visibility', 'hidden'); });
+})();
+</script>
