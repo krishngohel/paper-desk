@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(git *)",
+      "PowerShell(git *)",
+      "Bash(C:\\Users\\awsom\\Documents\\Projects\\trading-agent\\.venv\\Scripts\\python.exe *)",
+      "Bash(..\\.venv\\Scripts\\python.exe *)",
+      "Bash(cd *)",
+      "PowerShell(C:\\Users\\awsom\\Documents\\Projects\\trading-agent\\.venv\\Scripts\\python.exe *)",
+      "PowerShell(..\\.venv\\Scripts\\python.exe *)",
+      "Artifact"
+    ],
+    "deny": [
+      "Bash(*commit_paper_mandate*)",
+      "PowerShell(*commit_paper_mandate*)",
+      "Edit(C:\\Users\\awsom\\.vibe-trading\\**)",
+      "Write(C:\\Users\\awsom\\.vibe-trading\\**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\awsom\\.vibe-trading"
+    ]
+  }
+}

@@ -4,3 +4,4 @@ alpaca-mcp-server/
 __pycache__/
 *.pyc
 .superpowers/
+ops/logs/
