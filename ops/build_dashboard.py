@@ -197,7 +197,9 @@ def _activity(perf: list[dict]) -> str:
         for slot in SESSION_SLOTS:
             sh, sm = slot.split(":")
             target = int(sh) * 60 + int(sm)
-            hit = any(abs(int(t[:2]) * 60 + int(t[3:5]) - target) <= 35 for t in got if t[:2].isdigit())
+            # Window must stay under half the 30-min slot spacing or one session
+            # would light two adjacent cells.
+            hit = any(abs(int(t[:2]) * 60 + int(t[3:5]) - target) <= 14 for t in got if t[:2].isdigit())
             cells.append(f'<i class="{"on" if hit else "off"}" title="{day} {slot} {"ran" if hit else "missed"}"></i>')
         cells_html.append(f'<div class="day"><span>{day[5:]}</span>{"".join(cells)}</div>')
     return '<div class="strip">' + "".join(cells_html) + "</div>"
