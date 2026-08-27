@@ -144,7 +144,7 @@ def _chart(perf: list[dict]) -> str:
   <line id="xhair" class="xhair" y1="8" y2="{h-8}" visibility="hidden"/>
 </svg>
 <div id="tip" class="tip" hidden></div>
-<figcaption><span class="key a"></span>Agent equity&nbsp;&nbsp;<span class="key v"></span>$1,000 VOO buy-and-hold — % return since inception, one point per session</figcaption>
+<figcaption><span class="key a"></span>Agent equity&nbsp;&nbsp;<span class="key v"></span>VOO buy-and-hold — % return since inception, one point per session</figcaption>
 </figure>"""
 
 

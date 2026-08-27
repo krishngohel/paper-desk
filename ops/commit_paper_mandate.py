@@ -12,23 +12,23 @@ from src.live.mandate.commit import commit_mandate, save_proposal
 from src.live.mandate.store import load_mandate
 
 BROKER = "alpaca"
-# v3 (user-authorized 2026-08-27): no symbol allowlist and NO practical daily order
-# cap - trade frequency is fully the model's decision (paper training run). The
-# schema requires an integer, so 100000 is the unreachable sentinel. Risk stays
-# bounded by what actually bounds it: long-only, $200/order, $1000 total exposure,
-# no leverage.
+# v4 (user-authorized 2026-08-27): full training freedom on the paper account.
+# No allowlist, no practical daily-order cap, and order/exposure limits opened to
+# the full $100k paper account - position sizing is entirely the model's decision.
+# What remains, by the project's definition rather than as tuning: LONG-ONLY
+# (never bet against a stock) and no leverage (deploy the account, not margin).
 ALLOWED = []
 LIMITS = {
-    "account_funding_usd": 1000.0,
-    "max_order_usd": 200.0,
-    "max_total_exposure_usd": 1000.0,
+    "account_funding_usd": 100000.0,
+    "max_order_usd": 100000.0,
+    "max_total_exposure_usd": 100000.0,
     "daily_trade_cap": 100000,
     "leverage": "none",
     "instruments": ["equity", "etf"],
 }
 PROFILE = {
     "ordinal": 1,
-    "label": "long-only-paper-v3-training",
+    "label": "long-only-paper-v4-training",
     **LIMITS,
     "asset_classes": ["us_equity", "us_etf"],
     "min_market_cap_usd": None,
@@ -67,8 +67,8 @@ m = load_mandate(BROKER)
 assert m is not None, "mandate did not load back"
 assert m.long_only is True
 assert m.universe.allowed_symbols == tuple(ALLOWED)
-assert m.hard_caps.max_order_notional_usd == 200.0
-assert m.hard_caps.max_total_exposure_usd == 1000.0
+assert m.hard_caps.max_order_notional_usd == 100000.0
+assert m.hard_caps.max_total_exposure_usd == 100000.0
 assert m.hard_caps.max_leverage == 1.0
 assert m.hard_caps.max_trades_per_day == 100000
 assert m.flatten_on_halt is True
