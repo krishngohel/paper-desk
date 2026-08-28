@@ -14,7 +14,7 @@ if %NOW% GEQ 1456 goto done
 rem Refresh the lock so it never goes stale while the loop lives.
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py acquire continuous >> ops\logs\sessions.log 2>&1
 echo ---- %DATE% %TIME% continuous cycle ---- >> ops\logs\sessions.log
-call claude -p "Read C:\Users\awsom\Documents\Projects\trading-agent\ops\SESSION_PROMPT.md and follow it exactly. Session type: continuous." --max-turns 200 >> ops\logs\sessions.log 2>&1
+call claude -p "Read C:\Users\awsom\Documents\Projects\trading-agent\ops\SESSION_PROMPT.md and follow it exactly. Session type: continuous." --model sonnet --max-turns 200 >> ops\logs\sessions.log 2>&1
 timeout /t 5 /nobreak > nul
 goto loop
 :done
