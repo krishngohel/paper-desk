@@ -20,6 +20,14 @@ as evidence. Seed rules L1-L3 are discipline rules, present from day one.
   cannot be written in two honest sentences, the trade does not exist. Hold is
   a position. (Seed rule.)
 
+- **L4 — Activity is data (training window).** Through 2026-09-04: an entry-less
+  market-hours session is a failed session absent a hard blocker (halt/expiry/
+  closed market/broken data). Selectivity is expressed through setup GRADES and
+  probe sizing, never through abstaining - a C-grade probe that loses teaches
+  more than a hold that proves nothing. The weekly review scores grade-vs-outcome
+  to determine empirically where the bar belongs. (Operator seed rule,
+  2026-08-28, at the user's direction.)
+
 ## Archive
 
 (Retired rules move here with the retirement reason and evidence.)
