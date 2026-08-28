@@ -129,6 +129,94 @@ def local_indicators(symbol: str) -> dict:
     return out
 
 
+def _pivots(daily: list[dict], wing: int = 2) -> tuple[list[float], list[float]]:
+    """Swing highs (resistance) and swing lows (support) from daily bars."""
+    highs, lows = [], []
+    for i in range(wing, len(daily) - wing):
+        h = float(daily[i]["high"])
+        l = float(daily[i]["low"])
+        if all(h >= float(daily[j]["high"]) for j in range(i - wing, i + wing + 1)):
+            highs.append(round(h, 2))
+        if all(l <= float(daily[j]["low"]) for j in range(i - wing, i + wing + 1)):
+            lows.append(round(l, 2))
+    return highs, lows
+
+
+def key_levels(daily: list[dict]) -> dict:
+    """Support/resistance and structure the model should trade around."""
+    out: dict = {}
+    if len(daily) < 6:
+        return out
+    last = float(daily[-1]["close"])
+    highs, lows = _pivots(daily)
+    out["resistance_above"] = sorted([h for h in highs if h > last])[:3]
+    out["support_below"] = sorted([l for l in lows if l < last], reverse=True)[:3]
+    prev = daily[-2]
+    out["prior_day"] = {"high": round(float(prev["high"]), 2),
+                        "low": round(float(prev["low"]), 2),
+                        "close": round(float(prev["close"]), 2)}
+    # Trend structure over the last 10 bars: sequence of highs and lows.
+    recent = daily[-10:]
+    hh = sum(1 for a, b in zip(recent[:-1], recent[1:]) if float(b["high"]) > float(a["high"]))
+    hl = sum(1 for a, b in zip(recent[:-1], recent[1:]) if float(b["low"]) > float(a["low"]))
+    if hh >= 6 and hl >= 6:
+        out["structure"] = "uptrend (higher highs + higher lows)"
+    elif hh <= 3 and hl <= 3:
+        out["structure"] = "downtrend (lower highs + lower lows)"
+    else:
+        out["structure"] = "range/mixed"
+    vols = [float(b.get("volume") or 0) for b in daily[-21:-1]]
+    if vols and float(daily[-1].get("volume") or 0):
+        out["volume_vs_20d_avg"] = round(float(daily[-1]["volume"]) / (sum(vols) / len(vols)), 2)
+    return out
+
+
+def next_earnings(symbol: str) -> str | None:
+    """Next earnings date via yfinance - EVENT RISK; fail-soft to null."""
+    try:
+        import yfinance as yf
+
+        t = yf.Ticker(symbol)
+        try:
+            dates = t.earnings_dates
+            if dates is not None and len(dates):
+                import pandas as pd
+
+                future = dates.index[dates.index > pd.Timestamp.now(tz=dates.index.tz)]
+                if len(future):
+                    return str(future.min().date())
+        except Exception:  # noqa: BLE001
+            pass
+        cal = t.calendar
+        if isinstance(cal, dict):
+            ed = cal.get("Earnings Date")
+            if ed:
+                return str(ed[0] if isinstance(ed, (list, tuple)) else ed)
+    except Exception:  # noqa: BLE001
+        return None
+    return None
+
+
+def market_context() -> dict:
+    """SPY + QQQ regime snapshot - trade WITH the tape, not against it."""
+    out = {}
+    for sym in ("SPY", "QQQ"):
+        try:
+            daily = _fetch_bars(sym, "1Day", days_back=120, limit=60)
+            closes = _closes(daily)
+            last = closes[-1]
+            e21 = _ema(closes, 21)
+            rsi = _rsi(closes)
+            lv = key_levels(daily)
+            out[sym] = {"last": round(last, 2),
+                        "vs_ema21_pct": round((last / e21 - 1) * 100, 2) if e21 else None,
+                        "rsi14": round(rsi, 1) if rsi else None,
+                        "structure": lv.get("structure")}
+        except Exception as exc:  # noqa: BLE001
+            out[sym] = {"error": str(exc)[:120]}
+    return out
+
+
 def tradingview_rating(symbol: str) -> dict | None:
     """TradingView scanner consensus - advisory, unofficial, fail-soft."""
     try:
@@ -161,10 +249,17 @@ def tradingview_rating(symbol: str) -> dict | None:
 
 def main() -> int:
     if len(sys.argv) < 2:
-        print("usage: ta.py SYMBOL")
+        print("usage: ta.py SYMBOL | ta.py --market")
         return 2
+    if sys.argv[1] == "--market":
+        print(json.dumps({"market": market_context()}, indent=2))
+        return 0
     symbol = sys.argv[1].upper()
-    out = {"symbol": symbol, "indicators": local_indicators(symbol),
+    daily = _fetch_bars(symbol, "1Day", days_back=120, limit=60)
+    out = {"symbol": symbol,
+           "indicators": local_indicators(symbol),
+           "key_levels": key_levels(daily),
+           "next_earnings": next_earnings(symbol),
            "tradingview": tradingview_rating(symbol)}
     print(json.dumps(out, indent=2))
     return 0
