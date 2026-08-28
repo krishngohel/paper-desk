@@ -162,6 +162,34 @@ def market_sell(symbol: str, qty: float, why: str) -> dict:
     return out
 
 
+def sell_succeeded(out: dict) -> bool:
+    """Only a broker-accepted order counts. A gate deny/error/timeout does NOT
+    close a ledger record - closing on failure was the day-one false-close bug."""
+    return isinstance(out, dict) and out.get("status") == "ok"
+
+
+def exit_blocked(rec: dict, state: dict, out: dict) -> None:
+    """A triggered exit could not execute. Back off this trade and summon judgment
+    instead of hammering the gate every 45s and spamming the journal."""
+    trade_id = rec.get("trade_id", "?")
+    fails = state.setdefault("exit_fails", {})
+    fails[trade_id] = fails.get(trade_id, 0) + 1
+    state.setdefault("exit_backoff", {})[trade_id] = time.time() + 900  # 15 min
+    save_state(state)
+    reason = str((out or {}).get("reason", "unknown"))[:200]
+    log(f"exit BLOCKED for {trade_id} (attempt {fails[trade_id]}): {reason} - backing off 15 min")
+    if fails[trade_id] <= 2 or fails[trade_id] % 4 == 0:
+        journal_note(f"EXIT BLOCKED on {rec.get('symbol')} ({trade_id}): gate/broker refused the "
+                     f"triggered exit - {reason}. Backing off 15 min. Ledger record kept OPEN.")
+    spawn_session(f"triggered exit for {trade_id} ({rec.get('symbol')}) is BLOCKED: {reason} - "
+                  f"investigate and resolve (position still held)", state)
+
+
+def _backed_off(rec: dict, state: dict) -> bool:
+    until = state.get("exit_backoff", {}).get(rec.get("trade_id", ""), 0)
+    return time.time() < until
+
+
 def spawn_session(reason: str, state: dict) -> None:
     now = time.time()
     if now - state.get("last_spawn", 0) < SPAWN_COOLDOWN:
@@ -221,13 +249,17 @@ def tick(state: dict) -> None:
 
         if stop is None:
             spawn_session(f"open trade {rec.get('trade_id')} ({symbol}) has no numeric stop in the ledger - set one", state)
-        elif bid <= stop:
+        elif bid <= stop and not _backed_off(rec, state):
             cancel_symbol_orders(symbol)
             out = market_sell(symbol, qty, f"stop {stop} breached at bid {bid}")
-            oid = (out.get("order") or {}).get("order_id") if isinstance(out.get("order"), dict) else out.get("order_id")
-            close_record(rec["trade_id"], bid, str(oid) if oid else None, "exit-condition-hit")
-            journal_note(f"STOP enforced on {symbol}: bid {bid} <= stop {stop}. Sold {qty} (order {oid}). "
-                         f"Ledger {rec['trade_id']} closed. Verbatim envelope in watcher.log.")
+            if sell_succeeded(out):
+                oid = (out.get("order") or {}).get("order_id") if isinstance(out.get("order"), dict) else out.get("order_id")
+                close_record(rec["trade_id"], bid, str(oid) if oid else None, "exit-condition-hit")
+                state.get("exit_fails", {}).pop(rec["trade_id"], None)
+                journal_note(f"STOP enforced on {symbol}: bid {bid} <= stop {stop}. Sold {qty} (order {oid}). "
+                             f"Ledger {rec['trade_id']} closed. Verbatim envelope in watcher.log.")
+            else:
+                exit_blocked(rec, state, out)
             continue
 
         if target is not None and bid >= target:
@@ -238,12 +270,16 @@ def tick(state: dict) -> None:
                 orders = []
             has_resting_sell = any(str(o.get("symbol", "")).upper() == symbol
                                    and str(o.get("side", "")).lower() == "sell" for o in orders)
-            if not has_resting_sell:
+            if not has_resting_sell and not _backed_off(rec, state):
                 out = market_sell(symbol, qty, f"target {target} reached at bid {bid}, no resting limit")
-                oid = (out.get("order") or {}).get("order_id") if isinstance(out.get("order"), dict) else out.get("order_id")
-                close_record(rec["trade_id"], bid, str(oid) if oid else None, "exit-condition-hit")
-                journal_note(f"TARGET fallback on {symbol}: bid {bid} >= target {target} with no resting sell. "
-                             f"Sold {qty} (order {oid}). Ledger {rec['trade_id']} closed.")
+                if sell_succeeded(out):
+                    oid = (out.get("order") or {}).get("order_id") if isinstance(out.get("order"), dict) else out.get("order_id")
+                    close_record(rec["trade_id"], bid, str(oid) if oid else None, "exit-condition-hit")
+                    state.get("exit_fails", {}).pop(rec["trade_id"], None)
+                    journal_note(f"TARGET fallback on {symbol}: bid {bid} >= target {target} with no resting sell. "
+                                 f"Sold {qty} (order {oid}). Ledger {rec['trade_id']} closed.")
+                else:
+                    exit_blocked(rec, state, out)
                 continue
 
         prev = _num(last_marks.get(symbol))

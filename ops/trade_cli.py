@@ -61,11 +61,19 @@ def run(cmd: str, args: list[str]):
         # touches the level - the zero-latency way to sell highs / buy dips.
         kwargs = {}
         rest = args[2:]
+        qty = float(args[1])
         if "--limit" in rest:
             kwargs["order_type"] = "limit"
             kwargs["limit_price"] = float(rest[rest.index("--limit") + 1])
         if "--gtc" in rest:
-            kwargs["time_in_force"] = "gtc"
+            # Alpaca rejects GTC on fractional quantities (fractional = day only).
+            # A rejected submission also wedges the gate's pending-action recovery,
+            # so downgrade loudly instead of letting it fail at the broker.
+            if qty != int(qty):
+                print(json.dumps({"warning": "fractional qty cannot rest GTC at Alpaca - "
+                                             "placed as DAY limit; re-rest it each day or use whole shares"}))
+            else:
+                kwargs["time_in_force"] = "gtc"
         out = service.place_order(
             symbol=args[0], side=cmd, quantity=float(args[1]),
             profile_id=PROFILE, session_id="claude-code", **kwargs,
