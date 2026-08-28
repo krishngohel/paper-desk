@@ -35,6 +35,10 @@ PROFILE = "alpaca-paper-trade"
 
 
 def run(cmd: str, args: list[str]):
+    if cmd in ("--help", "-h", "help") or "--help" in args or "-h" in args:
+        print(__doc__)
+        return 0
+
     from src.live.audit import audit_ledger_path
     from src.live.halt import clear_halt, halt_flag_set, trip_halt
     from src.trading import service
