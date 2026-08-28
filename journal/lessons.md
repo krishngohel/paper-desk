@@ -28,6 +28,29 @@ as evidence. Seed rules L1-L3 are discipline rules, present from day one.
   to determine empirically where the bar belongs. (Operator seed rule,
   2026-08-28, at the user's direction.)
 
+- **L5 — A ladder rung that fills is the thesis that actually happened, not the
+  one written.** When a laddered entry fills only its highest/most-extended
+  rung while the lower pullback-confirmation rungs go unfilled, the base-hold
+  the thesis leaned on never actually confirmed - manage the position as the
+  weaker, chase-adjacent version of the setup (tighter stop toward the fill
+  price or nearest support, smaller add tolerance), not as if full
+  confirmation occurred. Check which rung filled before trusting the original
+  thesis narrative. (Added 2026-08-28 weekly review, evidence: t-2026-08-28-001
+  ESTC - only the 100.30 breakout-confirm rung filled; the 99.30/99.80
+  pullback rungs that would have confirmed the base never did. Single-trade
+  evidence - revisit as more ladder trades close.)
+- **L6 — Same-day time_stops need enough clock left to work.** A "flat by
+  preclose today" time_stop written on an entry after ~14:00 CT gives a
+  multi-hour archetype (base-and-reclaim, pullback-in-uptrend) under ~2.5
+  hours to develop before it's force-closed regardless of whether the thesis
+  is still valid. For afternoon entries on setups that need time, either
+  extend the time_stop to the next session's open or size/grade the trade
+  knowing the clock, not the thesis, may end it. (Added 2026-08-28 weekly
+  review, evidence: t-2026-08-28-001 ESTC entered 14:20 CT, closed by its own
+  time-stop at 14:32 CT with neither the stop nor target ever touched - the
+  loss was pure noise, not thesis failure. Single-trade evidence - revisit as
+  more afternoon entries close.)
+
 ## Archive
 
 (Retired rules move here with the retirement reason and evidence.)
