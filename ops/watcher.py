@@ -43,7 +43,7 @@ from src.live.halt import halt_flag_set  # noqa: E402
 from src.trading import service  # noqa: E402
 
 PROFILE = "alpaca-paper-trade"
-POLL_SECONDS = 45
+POLL_SECONDS = 15
 CLOSE_HHMM = 1505          # stop looping at 15:05 CT
 SPAWN_COOLDOWN = 600       # one triggered session per 10 min
 FRESHNESS_EVERY = 900      # performance point + deploy every 15 min
