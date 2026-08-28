@@ -1,7 +1,13 @@
-"""Session mutex: at 15-min cadence, sessions must never overlap (journal/git
-collisions). acquire exits 1 when a fresh lock exists - the slot is skipped by
-design; effective cadence adapts to session duration. Stale locks (>20 min,
-a crashed session) are broken automatically."""
+"""Session mutex. Slot sessions must never overlap each other or the continuous
+loop (journal/git collisions). Rules:
+  - `acquire` (slot caller): exit 1 if a fresh lock exists, else take it.
+  - `acquire continuous` (the day loop): take/refresh the lock unconditionally -
+    the loop owns the day and refreshes before every cycle.
+  - `release`: drop it.
+Stale locks (>20 min - a crashed process) are broken automatically, which is
+also the fallback path: if the continuous loop dies, the 15-min slot grid
+starts winning the lock again within 20 minutes.
+"""
 import json
 import os
 import sys
@@ -14,8 +20,9 @@ STALE = 1200  # 20 min
 
 def main() -> int:
     cmd = sys.argv[1] if len(sys.argv) > 1 else "acquire"
+    caller = sys.argv[2] if len(sys.argv) > 2 else "slot"
     if cmd == "acquire":
-        if LOCK.exists():
+        if caller != "continuous" and LOCK.exists():
             try:
                 age = time.time() - json.loads(LOCK.read_text())["ts"]
             except Exception:  # noqa: BLE001
@@ -24,7 +31,7 @@ def main() -> int:
                 print(f"locked ({int(age)}s old) - slot skipped")
                 return 1
             print("stale lock broken")
-        LOCK.write_text(json.dumps({"ts": time.time(), "pid": os.getpid()}))
+        LOCK.write_text(json.dumps({"ts": time.time(), "pid": os.getpid(), "owner": caller}))
         return 0
     if cmd == "release":
         LOCK.unlink(missing_ok=True)
