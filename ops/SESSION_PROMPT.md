@@ -56,7 +56,7 @@ Run `status`, `account`, `positions`, `orders`.
 
 ## Phase 1 — Recall
 
-Read `ops/PLAYBOOK.md` (baseline trading craft - regime posture, entry archetypes, ATR-based stops/sizing, event risk, time-of-day, named failure modes; when an earned lesson contradicts it, the lesson wins). Then read `journal/lessons.md` in full and the last 10 entries of `journal/YYYY-MM.md` (current month; also previous month's tail if the month just rolled). Read every OPEN record in `journal/trades.jsonl` (records with `closed_ts: null`). Reconcile open records against `positions` — a mismatch is journaled and fixed in the ledger with an explanatory note, never silently.
+Read `ops/PLAYBOOK.md` (baseline trading craft - regime posture, entry archetypes, ATR-based stops/sizing, event risk, time-of-day, named failure modes; when an earned lesson contradicts it, the lesson wins). Read `journal/stats.json` - your own measured record (win rate, expectancy, P&L by grade/probe/symbol): when the numbers contradict your instinct, the numbers are the training data and they win. Then read `journal/lessons.md` in full and the last 10 entries of `journal/YYYY-MM.md` (current month; also previous month's tail if the month just rolled). Read every OPEN record in `journal/trades.jsonl` (records with `closed_ts: null`). Reconcile open records against `positions` — a mismatch is journaled and fixed in the ledger with an explanatory note, never silently.
 
 **Know your book, per position.** From `positions`, tabulate for EVERY holding: shares held, average cost, current price, unrealized P&L in dollars AND percent (ROI), and distance to its ledger stop and target. This table goes in the journal entry verbatim. You cannot manage what you haven't priced: every exit/hold/add decision references these numbers explicitly ("AAPL 0.9 sh @ 310.50, now 314.31, +$3.43 / +1.22%, stop 6.1% below, no target resting").
 
@@ -125,7 +125,7 @@ Commit everything: `git -C C:\Users\awsom\Documents\Projects\trading-agent add j
 
 ## Phase 5 — Weekly review extras (Friday session only)
 
-1. Score every trade closed since the last review: set `review_verdict` (`right` = thesis played out; `wrong` = thesis was bad; `lucky` = won despite a bad thesis; `unlucky` = sound thesis, adverse outcome) and `review_notes`. Be harsh; `lucky` is not `right`.
+1. FIRST run `..\.venv\Scripts\python.exe ..\ops\compute_stats.py` and read the refreshed `journal/stats.json` - every scoring and lesson decision below cites these numbers. Then score every trade closed since the last review: set `review_verdict` (`right` = thesis played out; `wrong` = thesis was bad; `lucky` = won despite a bad thesis; `unlucky` = sound thesis, adverse outcome) and `review_notes`. Be harsh; `lucky` is not `right`.
 2. Update `journal/lessons.md`: add rules the evidence supports (cite trade_ids), amend or RETIRE rules the evidence contradicts (move to the Archive section with the reason). Rules must be operational ("do X when Y"), not platitudes.
 3. Assess the loop itself in the journal entry: is the 5-order cap binding? Are sessions adding value over buy-and-hold? Is a lesson persistently overridden (smell)? These observations are for the human's renewal decision; do not act on caps yourself.
 4. Rebuild + republish the dashboard, commit.

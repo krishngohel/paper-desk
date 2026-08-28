@@ -1,0 +1,103 @@
+{
+ "computed_at": "2026-08-28T15:43:14",
+ "overall": {
+  "n": 2,
+  "closed": 2,
+  "win_rate_pct": 50.0,
+  "total_pnl": 0.16,
+  "avg_win": 7.96,
+  "avg_loss": -7.8,
+  "expectancy_per_trade": 0.08,
+  "largest_win": 7.96,
+  "largest_loss": -7.8
+ },
+ "open_positions": 0,
+ "by_grade": {
+  "C": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 0.0,
+   "total_pnl": -7.8,
+   "avg_win": null,
+   "avg_loss": -7.8,
+   "expectancy_per_trade": -7.8,
+   "largest_win": -7.8,
+   "largest_loss": -7.8
+  },
+  "ungraded": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 100.0,
+   "total_pnl": 7.96,
+   "avg_win": 7.96,
+   "avg_loss": null,
+   "expectancy_per_trade": 7.96,
+   "largest_win": 7.96,
+   "largest_loss": 7.96
+  }
+ },
+ "by_probe": {
+  "probe": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 0.0,
+   "total_pnl": -7.8,
+   "avg_win": null,
+   "avg_loss": -7.8,
+   "expectancy_per_trade": -7.8,
+   "largest_win": -7.8,
+   "largest_loss": -7.8
+  },
+  "full_size": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 100.0,
+   "total_pnl": 7.96,
+   "avg_win": 7.96,
+   "avg_loss": null,
+   "expectancy_per_trade": 7.96,
+   "largest_win": 7.96,
+   "largest_loss": 7.96
+  }
+ },
+ "by_symbol": {
+  "AAPL": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 100.0,
+   "total_pnl": 7.96,
+   "avg_win": 7.96,
+   "avg_loss": null,
+   "expectancy_per_trade": 7.96,
+   "largest_win": 7.96,
+   "largest_loss": 7.96
+  },
+  "ESTC": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 0.0,
+   "total_pnl": -7.8,
+   "avg_win": null,
+   "avg_loss": -7.8,
+   "expectancy_per_trade": -7.8,
+   "largest_win": -7.8,
+   "largest_loss": -7.8
+  }
+ },
+ "review_verdicts": {
+  "unscored": 2
+ },
+ "by_exit_reason": {
+  "exit-condition-hit": {
+   "n": 2,
+   "closed": 2,
+   "win_rate_pct": 50.0,
+   "total_pnl": 0.16,
+   "avg_win": 7.96,
+   "avg_loss": -7.8,
+   "expectancy_per_trade": 0.08,
+   "largest_win": 7.96,
+   "largest_loss": -7.8
+  }
+ }
+}
