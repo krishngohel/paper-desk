@@ -67,7 +67,7 @@ def test_empty_data_renders_without_error(tmp_path, monkeypatch):
 def test_open_and_closed_trades_render(tmp_path, monkeypatch):
     trades = [
         {"trade_id": "t-1", "symbol": "AAPL", "closed_ts": None, "entry_qty": 0.5,
-         "entry_price": 294.1, "exit_condition": "close < 285"},
+         "entry_price": 294.1, "exit_condition": "close < 285", "stop": 285.0, "target": 305.0},
         {"trade_id": "t-0", "symbol": "MSFT", "closed_ts": "2026-08-26T14:30:00",
          "entry_qty": 0.3, "entry_price": 500.0, "realized_pnl": 12.5,
          "exit_reason": "exit-condition-hit", "review_verdict": "right"},
@@ -75,7 +75,7 @@ def test_open_and_closed_trades_render(tmp_path, monkeypatch):
     ]
     _setup(tmp_path, monkeypatch, perf=_perf(), trades=trades, mandate=_mandate(5))
     page = bd.build()
-    assert "close &lt; 285" in page                    # open position row
+    assert "285.0 / 305.0" in page                     # open position row: stop / target column
     assert "exit-condition-hit" in page and "right" in page
     assert "t-x" not in page                           # aborted records never render
 

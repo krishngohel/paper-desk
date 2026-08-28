@@ -43,9 +43,16 @@ def main() -> int:
         return 1
 
     positions = service.get_positions(profile_id=PROFILE)
+    pos_rows = positions.get("positions") or []
     pos_value = 0.0
-    for row in positions.get("positions") or []:
+    for row in pos_rows:
         pos_value += _num(row.get("market_value")) or 0.0
+    # Per-position live detail (shares, avg cost, current, unrealized P&L) for
+    # the dashboard and for sessions - refreshed every snapshot/watcher cycle.
+    (ROOT / "journal" / "positions_live.json").write_text(
+        json.dumps({"ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "positions": pos_rows}, default=str),
+        encoding="utf-8",
+    )
 
     quote = service.get_quote("VOO", profile_id=PROFILE)
     q = quote.get("quote") or {}

@@ -41,12 +41,15 @@ Run `status`, `account`, `positions`, `orders`.
 
 Read `journal/lessons.md` in full and the last 10 entries of `journal/YYYY-MM.md` (current month; also previous month's tail if the month just rolled). Read every OPEN record in `journal/trades.jsonl` (records with `closed_ts: null`). Reconcile open records against `positions` — a mismatch is journaled and fixed in the ledger with an explanatory note, never silently.
 
+**Know your book, per position.** From `positions`, tabulate for EVERY holding: shares held, average cost, current price, unrealized P&L in dollars AND percent (ROI), and distance to its ledger stop and target. This table goes in the journal entry verbatim. You cannot manage what you haven't priced: every exit/hold/add decision references these numbers explicitly ("AAPL 0.9 sh @ 310.50, now 314.31, +$3.43 / +1.22%, stop 6.1% below, no target resting").
+
 ## Phase 2 — Research, then decide & act
 
 **Style: intraday/day-trading.** Sessions run every 30 minutes. Prefer positions opened and closed within the same day or by the next session that hits the exit; exit conditions are TIGHT (roughly -1% to -2% stop, +1% to +3% target, or an explicit time stop like "by preclose today") and stated as numbers, never vibes.
 
 1. **Exits first.** For each open trade, evaluate its `exit_condition` against current quotes/bars. A triggered exit MUST be executed this session (`sell` the recorded quantity) unless the gate refuses — record the refusal verbatim. Exits are not optional and not deferrable because you like the position.
 2. **Research (mandatory before any new entry).** Build a candidate list: current holdings + `get_most_active_stocks` / `get_market_movers` from the MCP tools (US equities/ETFs only; skip anything the mandate's instrument rules would reject). For each serious candidate (2-4 of them, keep it fast):
+   - `..\.venv\Scripts\python.exe ..\ops\ta.py SYM` — computed indicators from real bar history (RSI14, EMA9/21/50, MACD, ATR14, today's VWAP, position in 20-day range) PLUS TradingView's 26-indicator consensus rating (advisory; may be null). Cite these numbers in the thesis; the ATR is your sizing/stop ruler.
    - `bars SYM 5m 78` — today's intraday shape: trend direction, range, where price sits in the range, volume pattern;
    - `bars SYM 1d 20` — the recent daily context: gap vs yesterday's close, support/resistance levels;
    - `quote SYM` — current bid/ask;
@@ -62,7 +65,8 @@ Append to `journal/YYYY-MM.md` using exactly this template:
 ```
 ## 2026-08-27 10:45 CT - intraday
 - equity: $100,012.40 | cash: $99,700.10 | positions_value: $312.30
-- positions: AAPL 0.6 @ avg 293.10 (open trade t-2026-08-26-001)
+- book: AAPL 0.6 sh @ avg 293.10 | now 296.20 | +$1.86 / +1.06% ROI | stop 288 (-2.8%) | target 302 resting (t-...-001)
+  (one line per position, ALL positions, real numbers from `positions`)
 - exits checked: t-...-001 condition "close < 285" not triggered (last 294.2)
 - action: BUY AAPL 0.2 (order id ..., gate: allowed) | or: HOLD - <reason>
 - gate envelopes: <verbatim JSON for every order attempt>

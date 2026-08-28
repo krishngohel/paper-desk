@@ -149,18 +149,45 @@ def _chart(perf: list[dict]) -> str:
 
 
 def _positions_rows(trades: list[dict]) -> str:
-    open_tr = [t for t in trades if t.get("closed_ts") is None and not t.get("aborted")]
+    open_tr = [t for t in trades if t.get("closed_ts") is None and not t.get("aborted") and not t.get("pending_entry")]
     if not open_tr:
         return '<div class="empty">No open positions.</div>'
-    rows = "".join(
-        f"<tr><td>{html.escape(str(t.get('symbol','')))}</td><td class='num'>{t.get('entry_qty','')}</td>"
-        f"<td class='num'>{_fmt_money(float(t.get('entry_price') or 0))}</td>"
-        f"<td>{html.escape(str(t.get('exit_condition',''))[:90])}</td>"
-        f"<td class='mut'>{html.escape(str(t.get('trade_id','')))}</td></tr>"
-        for t in open_tr
-    )
-    return ("<table><thead><tr><th>Symbol</th><th class='num'>Qty</th><th class='num'>Entry</th>"
-            "<th>Exit condition</th><th>Trade</th></tr></thead><tbody>" + rows + "</tbody></table>")
+    live: dict[str, dict] = {}
+    try:
+        payload = json.loads((JOURNAL / "positions_live.json").read_text(encoding="utf-8"))
+        for row in payload.get("positions") or []:
+            live[str(row.get("symbol", "")).upper()] = row
+    except (OSError, ValueError):
+        pass
+
+    def _f(v):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
+    rows = []
+    for t in open_tr:
+        sym = str(t.get("symbol", "")).upper()
+        lv = live.get(sym, {})
+        qty = lv.get("exact_quantity") or lv.get("quantity") or t.get("entry_qty", "")
+        cur = _f(lv.get("current_price"))
+        pnl = _f(lv.get("unrealized_pnl"))
+        avg = _f(lv.get("average_cost")) or _f(t.get("entry_price"))
+        roi = (pnl / (avg * _f(qty)) * 100) if (pnl is not None and avg and _f(qty)) else None
+        pnl_cls = "up" if (pnl or 0) >= 0 else "down"
+        rows.append(
+            f"<tr><td>{html.escape(sym)}</td><td class='num'>{qty}</td>"
+            f"<td class='num'>{_fmt_money(avg) if avg else ''}</td>"
+            f"<td class='num'>{_fmt_money(cur) if cur else '-'}</td>"
+            f"<td class='num {pnl_cls}'>{_fmt_money(pnl) if pnl is not None else '-'}</td>"
+            f"<td class='num {pnl_cls}'>{_pct(roi) if roi is not None else '-'}</td>"
+            f"<td class='num'>{t.get('stop','-')} / {t.get('target') or '-'}</td>"
+            f"<td class='mut'>{html.escape(str(t.get('trade_id','')))}</td></tr>"
+        )
+    return ("<table><thead><tr><th>Symbol</th><th class='num'>Shares</th><th class='num'>Avg cost</th>"
+            "<th class='num'>Now</th><th class='num'>P&amp;L</th><th class='num'>ROI</th>"
+            "<th class='num'>Stop / Target</th><th>Trade</th></tr></thead><tbody>" + "".join(rows) + "</tbody></table>")
 
 
 def _closed_rows(trades: list[dict]) -> str:
