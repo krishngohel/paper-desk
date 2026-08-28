@@ -74,6 +74,8 @@ def main() -> int:
     with perf.open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(line) + "\n")
 
+    # Refresh the whole-market candidate scan alongside every freshness cycle.
+    subprocess.run([sys.executable, str(ROOT / "ops" / "screen.py")], capture_output=True, timeout=60, check=False)
     subprocess.run([sys.executable, str(ROOT / "ops" / "build_dashboard.py"), "--deploy"], check=True)
     subprocess.run(["git", "-C", str(ROOT), "add", "journal", "ops/dashboard.html"], check=True)
     subprocess.run(
