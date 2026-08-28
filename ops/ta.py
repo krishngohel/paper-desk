@@ -129,6 +129,66 @@ def local_indicators(symbol: str) -> dict:
     return out
 
 
+def _candle_anatomy(b: dict) -> dict:
+    o, h, l, c = float(b["open"]), float(b["high"]), float(b["low"]), float(b["close"])
+    rng = h - l or 1e-9
+    body = abs(c - o)
+    return {"o": o, "h": h, "l": l, "c": c, "range": rng, "body": body,
+            "body_pct": body / rng, "up": c >= o,
+            "upper_wick": (h - max(o, c)) / rng, "lower_wick": (min(o, c) - l) / rng}
+
+
+def candle_tells(bars: list[dict], levels: dict | None = None, atr: float | None = None,
+                 last_n: int = 6) -> list[str]:
+    """Detect classic candlestick tells in the most recent bars, annotated with
+    LOCATION (at support/resistance) - a pattern at a level is information, the
+    same pattern mid-air is noise. Detection is mechanical; meaning is the model's."""
+    if len(bars) < 3:
+        return []
+    out = []
+    supports = (levels or {}).get("support_below", []) or []
+    resistances = (levels or {}).get("resistance_above", []) or []
+    near = (atr or 0) * 0.5 or None
+
+    def _at_level(price: float) -> str:
+        if near:
+            for s in supports:
+                if abs(price - s) <= near:
+                    return f" AT SUPPORT {s}"
+            for r in resistances:
+                if abs(price - r) <= near:
+                    return f" AT RESISTANCE {r}"
+        return ""
+
+    recent = bars[-last_n:]
+    for i, b in enumerate(recent):
+        a = _candle_anatomy(b)
+        label = str(b.get("time", ""))[:16]
+        loc = _at_level(a["l"] if a["lower_wick"] > a["upper_wick"] else a["h"])
+        if a["body_pct"] < 0.12:
+            out.append(f"{label}: doji (indecision){loc}")
+        elif a["lower_wick"] > 0.55 and a["body_pct"] < 0.35:
+            out.append(f"{label}: hammer/long lower wick (buyers defended {round(a['l'],2)}){loc}")
+        elif a["upper_wick"] > 0.55 and a["body_pct"] < 0.35:
+            out.append(f"{label}: shooting star/long upper wick (sellers rejected {round(a['h'],2)}){loc}")
+        elif a["body_pct"] > 0.85:
+            out.append(f"{label}: marubozu ({'strong buying' if a['up'] else 'strong selling'}, full-body)")
+        if i >= 1:
+            p = _candle_anatomy(recent[i - 1])
+            if a["up"] and not p["up"] and a["c"] > p["o"] and a["o"] < p["c"] and a["body"] > p["body"]:
+                out.append(f"{label}: BULLISH ENGULFING of prior bar{_at_level(a['l'])}")
+            if not a["up"] and p["up"] and a["c"] < p["o"] and a["o"] > p["c"] and a["body"] > p["body"]:
+                out.append(f"{label}: bearish engulfing of prior bar{_at_level(a['h'])}")
+            if a["h"] < p["h"] and a["l"] > p["l"]:
+                out.append(f"{label}: inside bar (compression - watch the break)")
+        if i >= 2:
+            p1, p2 = _candle_anatomy(recent[i - 2]), _candle_anatomy(recent[i - 1])
+            if (not p1["up"] and p1["body_pct"] > 0.5 and p2["body_pct"] < 0.3
+                    and a["up"] and a["body_pct"] > 0.5 and a["c"] > (p1["o"] + p1["c"]) / 2):
+                out.append(f"{label}: MORNING STAR (3-bar bullish reversal){_at_level(p2['l'])}")
+    return out[-8:]
+
+
 def _pivots(daily: list[dict], wing: int = 2) -> tuple[list[float], list[float]]:
     """Swing highs (resistance) and swing lows (support) from daily bars."""
     highs, lows = [], []
@@ -256,9 +316,14 @@ def main() -> int:
         return 0
     symbol = sys.argv[1].upper()
     daily = _fetch_bars(symbol, "1Day", days_back=120, limit=60)
+    intra = _fetch_bars(symbol, "5Min", days_back=1, limit=78)
+    lv = key_levels(daily)
+    ind = local_indicators(symbol)
     out = {"symbol": symbol,
-           "indicators": local_indicators(symbol),
-           "key_levels": key_levels(daily),
+           "indicators": ind,
+           "key_levels": lv,
+           "candles_daily": candle_tells(daily, lv, ind.get("atr14"), last_n=5),
+           "candles_5m_last_hour": candle_tells(intra, lv, ind.get("atr14"), last_n=12),
            "next_earnings": next_earnings(symbol),
            "tradingview": tradingview_rating(symbol)}
     print(json.dumps(out, indent=2))

@@ -28,6 +28,26 @@ indicators confirm, they do not decide. Classic longs:
 Do not counter-trend "knife-catch": a downtrend stock at support is a watch item,
 not a buy, until structure turns (a higher low forms).
 
+## 2b. Candle tells - anatomy at a level is information
+
+`ta.py` detects candle patterns mechanically (`candles_daily`, `candles_5m_last_hour`):
+doji, hammer, shooting star, marubozu, engulfing, inside bar, morning star - each
+annotated when it printed AT a support/resistance level. Read them like this:
+- **Location is everything.** A hammer AT SUPPORT = buyers defended a level that
+  matters (entry evidence). The same hammer mid-range is noise. Patterns without a
+  level annotation are context, never a thesis.
+- **Confirmation beats prediction.** A reversal tell (hammer, morning star, engulfing)
+  is confirmed by the NEXT bar going its way on volume; entering on the tell alone is
+  a C-grade probe, entering on tell + confirmation + level is B or better.
+- **Wicks are the fight's record.** Repeated upper wicks at a price = sellers live
+  there (your target belongs just below it). Repeated lower wicks = defended floor
+  (stop belongs just under it, not inside it).
+- **Inside bars/dojis are compression, not direction** - they mark WHERE a move will
+  start, the break direction decides which side you take (long-only: only the upside
+  break is actionable; a downside break just means stand down or tighten stops).
+- Cite tells by their printed line ("5m hammer at 100.31 defended, next bar green")
+  in the thesis, same as levels and indicator numbers.
+
 ## 3. VWAP is the intraday truth line
 
 Above VWAP: buyers control the day; pullbacks TO VWAP that hold are entries.
