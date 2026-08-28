@@ -126,6 +126,27 @@ def local_indicators(symbol: str) -> dict:
         out["vwap_today"] = round(pv / v, 2) if v > 0 else None
         out["day_high"] = round(max(float(b["high"]) for b in intra), 2)
         out["day_low"] = round(min(float(b["low"]) for b in intra), 2)
+        # Opening range (first 30 min = first six 5m bars): the classic ORB levels
+        # that matter all day. Above ORH + above VWAP = double confirmation.
+        orb = intra[:6]
+        if len(orb) >= 3:
+            out["opening_range_high"] = round(max(float(b["high"]) for b in orb), 2)
+            out["opening_range_low"] = round(min(float(b["low"]) for b in orb), 2)
+        # Gap vs prior close and relative strength vs SPY on the day.
+        if len(daily) >= 2:
+            prior_close = float(daily[-2]["close"])
+            today_open = float(intra[0]["open"])
+            last_px = float(intra[-1]["close"])
+            out["gap_pct"] = round((today_open / prior_close - 1) * 100, 2)
+            out["day_change_pct"] = round((last_px / prior_close - 1) * 100, 2)
+            try:
+                spy_d = _fetch_bars("SPY", "1Day", days_back=7, limit=2)
+                spy_i = _fetch_bars("SPY", "5Min", days_back=1, limit=78)
+                if len(spy_d) >= 2 and spy_i:
+                    spy_chg = (float(spy_i[-1]["close"]) / float(spy_d[-2]["close"]) - 1) * 100
+                    out["rs_vs_spy_pp"] = round(out["day_change_pct"] - spy_chg, 2)
+            except Exception:  # noqa: BLE001
+                pass
     return out
 
 

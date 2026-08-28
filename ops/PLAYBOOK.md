@@ -109,7 +109,50 @@ information; the same break on 0.5x is noise.
 - **Thesis drift**: a day trade silently becoming a "long-term hold" because it's red.
   The time_stop exists precisely to kill this.
 
-## 9. The ledger is the strategy
+## 9. Setups the pros actually trade (research-backed archetypes)
+
+- **ORB + VWAP double confirmation** (the classic): `opening_range_high/low` from ta.py
+  are the day's reference levels. A break of ORH that is ALSO above VWAP, on relative
+  volume >= 1.5, with `rs_vs_spy_pp` positive, is the highest-probability long of the
+  morning. A break WITHOUT volume or below VWAP is the trap version.
+- **Gap-and-Go**: `gap_pct` >= 2 with a real catalyst (check news - WHY did it gap) and
+  rel_volume >= 2-3: trade the first pullback that holds above VWAP/ORL, stop under it.
+  Gaps without catalysts fade more often than they go.
+- **Relative strength is the tiebreaker**: between two setups, take the one whose
+  `rs_vs_spy_pp` is higher - a stock shrugging off a weak tape has real buyers.
+- **Scale out in R-multiples**: at +2R take 30-50% off and move the stop to breakeven;
+  trail the rest (EMA9 or higher-lows). All-or-nothing exits leave money on both sides;
+  ladder your target rungs to implement this mechanically.
+
+## 10. Daily loss budget - the one rule every professional shares
+
+Set YOUR OWN daily loss budget in the first cycle of each day (write it in the journal:
+e.g. "today's budget: 3R = $X"). When the day's realized+open losses hit it, or after 3
+consecutive stop-outs, switch to MANAGE-ONLY for the rest of the day: exits and brackets
+keep working, no new entries. This is not an operator cap - it is the self-discipline
+that separates traders from tilt (documented across every professional risk framework:
+typical budgets are 2-3x per-trade risk). The weekly review checks budget compliance;
+blowing through your own written budget is a named process failure regardless of P&L.
+
+## 11. Trade the screen, not the reputation (LLM-specific, benchmark-documented)
+
+Research on LLM trading agents (StockBench, memory-controlled benchmarks) documents the
+failure modes YOU are most at risk of:
+- **Ticker-prior bias**: "knowing" a company from training data and trading that opinion
+  instead of the chart in front of you. Your knowledge of a company's story is NOT a
+  signal - the bars, levels, volume, and catalyst on screen are. Every thesis must stand
+  on cited on-screen numbers alone.
+- **Bear-case debate before size**: for every A-grade full-size entry, write the honest
+  bear case against your own thesis (one paragraph: what would make this fail, who is
+  selling to you and why) and answer it. Multi-agent research shows adversarial review
+  materially improves decisions; you are both analysts.
+- **Down-tape denial**: LLM agents systematically underperform in bearish markets by
+  staying too long. When the regime turns down, capital preservation IS outperformance -
+  say it in the journal and act like it (smaller probes, faster time-stops, more cash).
+- **Repeat-mistake check**: before entering any symbol, search the ledger for your prior
+  trades in it - if you were stopped out, name what is DIFFERENT now.
+
+## 12. The ledger is the strategy
 
 Every trade's stop/target/time_stop written at entry IS the risk management system -
 the watcher and resting orders execute exactly what you wrote. Sloppy levels = sloppy
