@@ -25,8 +25,9 @@ JOURNAL = ROOT / "journal"
 OUT = ROOT / "ops" / "dashboard.html"
 
 SESSION_SLOTS = [
-    "8:45", "9:15", "9:45", "10:15", "10:45", "11:15", "11:45",
-    "12:15", "12:45", "13:15", "13:45", "14:15", "14:30",
+    "8:45", "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30",
+    "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30",
+    "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30",
 ]
 START_EQUITY = 100_000.0
 BENCH_STAKE = 1_000.0
@@ -224,9 +225,9 @@ def _activity(perf: list[dict]) -> str:
         for slot in SESSION_SLOTS:
             sh, sm = slot.split(":")
             target = int(sh) * 60 + int(sm)
-            # Window must stay under half the 30-min slot spacing or one session
+            # Window must stay under half the 15-min slot spacing or one session
             # would light two adjacent cells.
-            hit = any(abs(int(t[:2]) * 60 + int(t[3:5]) - target) <= 14 for t in got if t[:2].isdigit())
+            hit = any(abs(int(t[:2]) * 60 + int(t[3:5]) - target) <= 7 for t in got if t[:2].isdigit())
             cells.append(f'<i class="{"on" if hit else "off"}" title="{day} {slot} {"ran" if hit else "missed"}"></i>')
         cells_html.append(f'<div class="day"><span>{day[5:]}</span>{"".join(cells)}</div>')
     return '<div class="strip">' + "".join(cells_html) + "</div>"
