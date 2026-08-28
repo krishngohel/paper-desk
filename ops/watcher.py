@@ -198,8 +198,11 @@ def spawn_session(reason: str, state: dict) -> None:
     save_state(state)
     try:
         (ROOT / "ops" / "logs" / "trigger_reason.txt").write_text(reason, encoding="utf-8")
-        subprocess.Popen(["cmd.exe", "/c", str(ROOT / "ops" / "run_session.cmd"), "triggered"],
-                         cwd=ROOT, creationflags=0x08000000)  # CREATE_NO_WINDOW
+        # Fire via the registered task so the child gets a clean Task Scheduler
+        # environment (a shell-inherited env can point claude at the wrong config
+        # home and silently drop the project's permission allowlist).
+        subprocess.run(["schtasks", "/Run", "/TN", "TradingAgent-triggered"],
+                       capture_output=True, timeout=30, check=False)
         log(f"spawned triggered session: {reason}")
     except Exception as exc:  # noqa: BLE001
         log(f"spawn failed: {exc}")
