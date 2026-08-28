@@ -56,9 +56,19 @@ def run(cmd: str, args: list[str]):
         limit = int(args[2]) if len(args) > 2 else 78
         out = service.get_history(args[0], profile_id=PROFILE, period=period, limit=limit)
     elif cmd in ("buy", "sell"):
+        # buy|sell SYM QTY [--limit PRICE] [--gtc]
+        # A GTC limit order rests at the broker and fills the instant price
+        # touches the level - the zero-latency way to sell highs / buy dips.
+        kwargs = {}
+        rest = args[2:]
+        if "--limit" in rest:
+            kwargs["order_type"] = "limit"
+            kwargs["limit_price"] = float(rest[rest.index("--limit") + 1])
+        if "--gtc" in rest:
+            kwargs["time_in_force"] = "gtc"
         out = service.place_order(
             symbol=args[0], side=cmd, quantity=float(args[1]),
-            profile_id=PROFILE, session_id="claude-code",
+            profile_id=PROFILE, session_id="claude-code", **kwargs,
         )
     elif cmd == "cancel":
         out = service.cancel_order(
