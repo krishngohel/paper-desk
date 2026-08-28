@@ -233,7 +233,7 @@ def _activity(perf: list[dict]) -> str:
 
 
 def build() -> str:
-    perf = _read_jsonl(JOURNAL / "performance.jsonl")
+    perf = sorted(_read_jsonl(JOURNAL / "performance.jsonl"), key=lambda r: str(r.get("ts", "")))
     trades = _read_jsonl(JOURNAL / "trades.jsonl")
     mandate = _mandate()
     agent, voo = _series(perf)

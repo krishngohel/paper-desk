@@ -64,7 +64,7 @@ def main() -> int:
 
     line = {
         "ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
-        "session": "snapshot",
+        "session": (sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("-") else "snapshot"),
         "equity": equity,
         "cash": cash,
         "positions_value": round(pos_value, 2),

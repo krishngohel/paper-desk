@@ -10,8 +10,9 @@ a lesson contradicts the playbook, the lesson wins - it is evidence, this is pri
 Run `ta.py --market` first, every session. SPY/QQQ structure sets your posture:
 - Both in uptrend structure: longs have tailwind; buy pullbacks to support/VWAP.
 - Range/mixed: trade LEVELS (support/resistance bounces), smaller size, faster exits.
-- Both in downtrend: long entries need exceptional evidence; mostly stand aside -
-  cash is a position and this book is long-only by design.
+- Both in downtrend: long entries need stronger evidence and smaller size. (During a
+  training window with an activity floor, this means C-grade probes at token size in
+  the most resilient names - the floor is satisfied honestly, never by abstaining.)
 A stock fighting the tape needs a stronger thesis than one moving with it.
 
 ## 2. Trend structure beats indicators
@@ -37,8 +38,9 @@ to justify them. Repeated failures at VWAP from below = exit longs, don't add.
 
 - Stops live at a level, not a percent: below the support/pivot your thesis leans on,
   with breathing room ~0.5-1.0 ATR14 so normal noise cannot stop you out.
-- Reward:risk >= 2:1 to the FIRST resistance. If the next resistance is closer than
-  2x your stop distance, the trade doesn't pay - skip it.
+- Reward:risk >= 2:1 to the FIRST resistance for full-size entries. (Probes under an
+  active training directive may run at >=1:1 with reduced size - the grade records the
+  compromise so the review can price it.)
 - Size from risk, not conviction alone: decide the dollar loss you accept if the stop
   hits (for this book, roughly 0.25-1% of equity per trade is sane craft), then
   shares = risk_dollars / (entry - stop). Record this math in the sizing rationale.
@@ -81,8 +83,9 @@ information; the same break on 0.5x is noise.
   Stops move only in the trade's favor.
 - **Revenge trading**: re-entering a symbol immediately after a stop-out without a
   NEW thesis. One stop-out = that thesis is dead; write why before touching it again.
-- **Overtrading quiet tape**: forcing entries in midday chop or sub-0.7 volume days
-  to feel productive. The directive asks for your best trades, not constant ones.
+- **Ungraded overtrading**: taking size in midday chop or sub-0.7 volume tape while
+  calling it A-grade. Under an activity floor the failure mode is not trading often -
+  it is LYING ABOUT GRADES. Quiet-tape entries are C-probes at probe size, labeled so.
 - **Thesis drift**: a day trade silently becoming a "long-term hold" because it's red.
   The time_stop exists precisely to kill this.
 

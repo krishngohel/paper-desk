@@ -36,7 +36,7 @@ def tv_sweep() -> list[dict] | None:
         import requests
 
         cols = ["name", "close", "change", "volume", "relative_volume_10d_calc",
-                "market_cap_basic", "exchange"]
+                "market_cap_basic", "exchange", "Value.Traded"]
         body = {
             "filter": [
                 {"left": "exchange", "operation": "in_range", "right": ["NASDAQ", "NYSE", "AMEX"]},
@@ -46,8 +46,8 @@ def tv_sweep() -> list[dict] | None:
                 {"left": "active_symbol", "operation": "equal", "right": True},
             ],
             "columns": cols,
-            "sort": {"sortBy": "volume", "sortOrder": "desc"},
-            "range": [0, 900],
+            "sort": {"sortBy": "Value.Traded", "sortOrder": "desc"},
+            "range": [0, 1500],
         }
         r = requests.post("https://scanner.tradingview.com/america/scan", json=body, timeout=15)
         r.raise_for_status()

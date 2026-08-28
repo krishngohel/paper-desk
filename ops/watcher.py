@@ -215,9 +215,10 @@ def freshness(state: dict) -> None:
     state["last_fresh"] = now
     save_state(state)
     try:
-        subprocess.run([sys.executable, str(ROOT / "ops" / "snapshot.py")],
-                       capture_output=True, timeout=240, check=False)
-        log("freshness snapshot + deploy done")
+        # Non-blocking: a 2-min snapshot+deploy must never pause stop enforcement.
+        subprocess.Popen([sys.executable, str(ROOT / "ops" / "snapshot.py")],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        log("freshness snapshot launched (background)")
     except Exception as exc:  # noqa: BLE001
         log(f"freshness failed: {exc}")
 
