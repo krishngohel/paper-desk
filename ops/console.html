@@ -43,7 +43,25 @@ details summary { cursor:pointer; color:var(--mut); font-size:12px; margin-top:4
 details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
   color:var(--ink2); background:rgba(4,7,15,.5); border-radius:8px; padding:10px; margin:8px 0 0; max-height:240px; overflow:auto; }
 
-/* ---------- workflow pipeline (center) ---------- */
+/* ---------- RAG-style data-flow graph (center) ---------- */
+.pipe path { fill:none; stroke:rgba(56,189,248,.35); stroke-width:1.6; }
+.pipe circle { fill:var(--cyan); filter:url(#ng); }
+.pipe.hot path { stroke:rgba(56,189,248,.7); }
+.pipe.hot circle { fill:#7dd3fc; }
+.pipe.dead path { stroke:rgba(91,113,136,.22); }
+.pipe.dead circle { display:none; }
+.nd rect { fill:url(#ndg); stroke:rgba(56,189,248,.35); stroke-width:1.4; }
+.nd .nm { fill:var(--ink); font:600 13px system-ui,sans-serif; text-anchor:middle; }
+.nd .nm.big { font-size:15px; }
+.nd .ns { fill:var(--mut); font:10.5px system-ui,sans-serif; text-anchor:middle; }
+.nd.on rect { stroke:var(--good); filter:url(#ng); }
+.nd.on .ns { fill:var(--ink2); }
+.nd.off rect { stroke:rgba(255,93,93,.6); }
+.nd.brain .ring { fill:none; stroke:url(#ringy, #38bdf8); stroke:rgba(56,189,248,.5); stroke-width:1.6;
+  stroke-dasharray:10 14; transform-origin:285px 197px; animation: spin 16s linear infinite; }
+.nd.brain.on circle:first-of-type { filter:url(#ng); }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* legacy (unused) */
 .flow { display:flex; flex-direction:column; gap:0; padding:6px 4px; }
 .stage { position:relative; display:flex; align-items:center; gap:14px;
   background: linear-gradient(135deg, rgba(18,48,85,.55), rgba(10,18,36,.75));
@@ -98,36 +116,70 @@ details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-sp
 <div><!-- center: the agent, animated -->
   <section>
     <h2>The agent at work <span class="sub" id="agentstate"></span></h2>
-    <div class="flow">
-      <div class="stage" id="st-scan"><div class="ico">🔭</div>
-        <div class="t"><b>Scan the market</b><span>sweeps every US stock for movers &amp; unusual volume</span></div>
-        <div class="live" id="lv-scan"></div></div>
-      <div class="conn" id="cn-1"></div>
-      <div class="stage" id="st-research"><div class="ico">🧠</div>
-        <div class="t"><b>Research</b><span>charts, trends, levels, candles, earnings, news</span></div>
-        <div class="live" id="lv-research"></div></div>
-      <div class="conn" id="cn-2"></div>
-      <div class="stage" id="st-decide"><div class="ico">⚖️</div>
-        <div class="t"><b>Decide</b><span>write the thesis, grade the setup, size the bet</span></div>
-        <div class="live" id="lv-decide"></div></div>
-      <div class="conn" id="cn-3"></div>
-      <div class="stage" id="st-shield"><div class="ico">🛡️</div>
-        <div class="t"><b>Shield check</b><span>never short · never borrowed money · every order inspected</span></div>
-        <div class="live" id="lv-shield"></div></div>
-      <div class="conn" id="cn-4"></div>
-      <div class="stage" id="st-execute"><div class="ico">⚡</div>
-        <div class="t"><b>Execute</b><span>orders &amp; traps at the exchange, fills in milliseconds</span></div>
-        <div class="live" id="lv-execute"></div></div>
-      <div class="conn" id="cn-5"></div>
-      <div class="stage" id="st-guard"><div class="ico">🪖</div>
-        <div class="t"><b>Guard</b><span>watches every tick, cuts losers in about a second</span></div>
-        <div class="live" id="lv-guard"></div></div>
-      <div class="conn" id="cn-6"></div>
-      <div class="stage" id="st-learn"><div class="ico">📖</div>
-        <div class="t"><b>Learn</b><span>journals every outcome, updates its own rulebook weekly</span></div>
-        <div class="live" id="lv-learn"></div></div>
-    </div>
-    <div class="feed" id="feed" style="margin-top:14px"></div>
+    <svg viewBox="0 0 560 430" style="width:100%;height:auto;display:block" aria-label="Live data-flow map">
+  <defs>
+    <linearGradient id="ndg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16375f"/><stop offset="100%" stop-color="#0a1428"/></linearGradient>
+    <radialGradient id="braing" cx="50%" cy="35%">
+      <stop offset="0%" stop-color="#2c5d9e"/><stop offset="100%" stop-color="#0d1b33"/></radialGradient>
+    <filter id="ng"><feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- edges (data pipes). Each has a path + particle group. -->
+  <g class="pipe" id="p-ticks-brain"><path id="e1" d="M118,70 C180,80 200,140 232,168"/>
+    <circle r="3.2"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle>
+    <circle r="2.4"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle></g>
+  <g class="pipe" id="p-scan-brain"><path id="e2" d="M118,160 C170,165 190,180 226,192"/>
+    <circle r="3"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#e2"/></animateMotion></circle></g>
+  <g class="pipe" id="p-news-brain"><path id="e3" d="M118,250 C170,245 195,225 228,212"/>
+    <circle r="3"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite"><mpath href="#e3"/></animateMotion></circle></g>
+  <g class="pipe" id="p-mem-brain"><path id="e4" d="M118,340 C180,330 205,255 235,226"/>
+    <circle r="3.2"><animateMotion dur="2s" begin="0.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle>
+    <circle r="2.2"><animateMotion dur="2s" begin="1.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle></g>
+  <g class="pipe" id="p-brain-shield"><path id="e5" d="M338,180 C375,165 390,150 415,138"/>
+    <circle r="3.4"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#e5"/></animateMotion></circle></g>
+  <g class="pipe" id="p-shield-exch"><path id="e6" d="M470,160 C475,190 475,205 470,232"/>
+    <circle r="3.4"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#e6"/></animateMotion></circle></g>
+  <g class="pipe" id="p-exch-mem"><path id="e7" d="M430,290 C330,370 190,380 105,362"/>
+    <circle r="3"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle>
+    <circle r="2.2"><animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle></g>
+  <g class="pipe" id="p-ticks-guard"><path id="e8" d="M118,80 C140,190 200,300 245,330"/>
+    <circle r="3"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#e8"/></animateMotion></circle></g>
+  <g class="pipe" id="p-guard-shield"><path id="e9" d="M330,340 C420,330 455,230 462,165"/>
+    <circle r="3"><animateMotion dur="1.7s" begin="0.4s" repeatCount="indefinite"><mpath href="#e9"/></animateMotion></circle></g>
+
+  <!-- source nodes -->
+  <g class="nd" id="n-ticks"><rect x="8" y="46" width="110" height="46" rx="10"/>
+    <text class="nm" x="63" y="66">Price ticks</text><text class="ns" x="63" y="82" id="ns-ticks">—</text></g>
+  <g class="nd" id="n-scan"><rect x="8" y="136" width="110" height="46" rx="10"/>
+    <text class="nm" x="63" y="156">Market scan</text><text class="ns" x="63" y="172" id="ns-scan">—</text></g>
+  <g class="nd" id="n-news"><rect x="8" y="226" width="110" height="46" rx="10"/>
+    <text class="nm" x="63" y="246">News</text><text class="ns" x="63" y="262" id="ns-news">read-only</text></g>
+  <g class="nd" id="n-mem"><rect x="8" y="316" width="110" height="52" rx="10"/>
+    <text class="nm" x="63" y="336">Memory</text><text class="ns" x="63" y="352" id="ns-mem">its rulebook</text></g>
+
+  <!-- brain -->
+  <g class="nd brain" id="n-brain"><circle cx="285" cy="197" r="54" fill="url(#braing)"/>
+    <circle class="ring" cx="285" cy="197" r="61"/>
+    <text class="nm big" x="285" y="193">The Brain</text><text class="ns" x="285" y="211" id="ns-brain">—</text></g>
+
+  <!-- right column -->
+  <g class="nd" id="n-shield"><rect x="415" y="108" width="112" height="52" rx="10"/>
+    <text class="nm" x="471" y="128">The Shield</text><text class="ns" x="471" y="146" id="ns-shield">every order checked</text></g>
+  <g class="nd" id="n-exch"><rect x="415" y="232" width="112" height="52" rx="10"/>
+    <text class="nm" x="471" y="252">Exchange</text><text class="ns" x="471" y="270" id="ns-exch">—</text></g>
+  <g class="nd" id="n-guard"><rect x="245" y="314" width="112" height="48" rx="10"/>
+    <text class="nm" x="301" y="334">Reflexes</text><text class="ns" x="301" y="350" id="ns-guard">—</text></g>
+</svg>
+<div class="small" style="margin-top:8px">
+  Dots are live data moving: prices and research stream into the <b style="color:var(--ink2)">Brain</b>, which also
+  re-reads its own <b style="color:var(--ink2)">Memory</b> before every decision. Decisions pass the
+  <b style="color:var(--ink2)">Shield</b> (never short · never borrowed) to the <b style="color:var(--ink2)">Exchange</b>,
+  and every outcome flows back into Memory — that loop is how it learns. <b style="color:var(--ink2)">Reflexes</b>
+  watch raw ticks and cut losers through the Shield in about a second.
+</div>
+<div class="feed" id="feed" style="margin-top:14px"></div>
   </section>
 </div>
 <div><!-- right: mind + research -->
@@ -143,25 +195,16 @@ const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;"
 let prev = {};
 const feedItems = [];
 
-function stage(id, on, liveText) {
-  const el = $("st-" + id);
-  el.classList.toggle("active", !!on);
-  if (liveText !== undefined) $("lv-" + id).textContent = liveText;
-}
-function flash(id) {
-  const el = $("st-" + id);
-  el.classList.add("flash");
-  setTimeout(() => el.classList.remove("flash"), 1600);
-}
-function feed(txt, cls) {
-  const now = new Date().toTimeString().slice(0,8);
-  feedItems.unshift({ t: now, txt, cls: cls || "note" });
-  if (feedItems.length > 9) feedItems.pop();
-  $("feed").innerHTML = feedItems.map(f =>
-    `<div class="card"><time>${f.t}</time><span class="chip ${f.cls}">${f.cls === "buy" ? "action" : f.cls === "sell" ? "action" : "event"}</span><span class="txt">${esc(f.txt)}</span></div>`).join("");
+function pipe(id, alive) { const e = $(id); if (e) e.classList.toggle("dead", !alive); }
+function hot(id, ms) { const e = $(id); if (!e) return; e.classList.add("hot"); setTimeout(() => e.classList.remove("hot"), ms || 2500); }
+function node(id, cls, status) {
+  const n = $(id); if (!n) return;
+  n.classList.remove("on","off"); if (cls) n.classList.add(cls);
+  const s = $(id.replace("n-","ns-")); if (s && status !== undefined) s.textContent = status;
 }
 function actionChip(body) {
-  const m = (body.match(/- action: *([^\n]*)/i) || [])[1] || "";
+  const m = (body.match(/- action: *([^
+]*)/i) || [])[1] || "";
   if (/BUY|BOUGHT|entered|FIRED/i.test(m)) return ["buy", "Bought"];
   if (/SELL|SOLD|exit|flatten/i.test(m)) return ["sell", "Sold"];
   if (/HOLD/i.test(m)) return ["hold", "Held"];
@@ -181,7 +224,8 @@ async function refresh() {
   $("clock").textContent = "live · " + s.now;
   $("eq").textContent = money(s.broker.equity); $("cash").textContent = money(s.broker.cash);
   $("npos").textContent = (s.broker.positions || []).length;
-  $("nord").textContent = (s.broker.orders || []).length;
+  const nOrd = (s.broker.orders || []).length;
+  $("nord").textContent = nOrd;
   const halted = s.agents.halted;
   $("halt").textContent = halted ? "PULLED — stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
@@ -191,37 +235,46 @@ async function refresh() {
   const guardOn = a.watcher_alive;
   const streamOn = (a.stream_status || "").includes("connected");
   const nTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
-  const nOrd = (s.broker.orders || []).length;
+  const closed = s.stats && s.stats.closed || 0;
 
   $("agentstate").textContent = halted ? "stopped by kill switch" :
     thinking ? "a session is thinking right now" :
-    guardOn ? "between sessions — guard on duty" : "asleep — market closed";
+    guardOn ? "between sessions — reflexes on duty" : "asleep — market closed";
 
-  stage("scan", thinking, s.scan_ts ? "last sweep " + String(s.scan_ts).slice(11,16) : "");
-  stage("research", thinking, thinking ? "working…" : "");
-  stage("decide", thinking, thinking ? "working…" : "");
-  stage("shield", true, halted ? "KILL SWITCH PULLED" : "checking every order");
-  stage("execute", nOrd + nTrig > 0, `${nOrd} waiting · ${nTrig} traps`);
-  stage("guard", guardOn, guardOn ? (streamOn ? "live tick feed" : "on duty") : "asleep (market closed)");
-  stage("learn", false, (s.stats && s.stats.closed ? s.stats.closed + " trades scored" : ""));
-  document.querySelectorAll(".conn").forEach(c =>
-    c.classList.toggle("dead", !(thinking || guardOn)));
+  // nodes
+  node("n-ticks", streamOn ? "on" : "", streamOn ? "streaming live" : "market closed");
+  node("n-scan", "", s.scan_ts ? "swept " + String(s.scan_ts).slice(11,16) : "—");
+  node("n-news", "", "read-only");
+  node("n-mem", "on", closed ? closed + " trades remembered" : "its rulebook");
+  node("n-brain", thinking ? "on" : "", thinking ? "thinking now" : "between sessions");
+  node("n-shield", halted ? "off" : "on", halted ? "KILL SWITCH PULLED" : "every order checked");
+  node("n-exch", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : nOrd + " orders resting · " + nTrig + " traps");
+  node("n-guard", guardOn ? "on" : "", guardOn ? "on duty · cuts losers in ~1s" : "asleep (market closed)");
 
-  // event detection -> flashes + feed cards
-  if (prev.scan_ts && s.scan_ts !== prev.scan_ts) { flash("scan"); feed("Swept the whole market for movers"); }
+  // pipes (live data transfer)
+  pipe("p-ticks-brain", streamOn && thinking);
+  pipe("p-ticks-guard", streamOn && guardOn);
+  pipe("p-scan-brain", thinking);
+  pipe("p-news-brain", thinking);
+  pipe("p-mem-brain", thinking);
+  pipe("p-brain-shield", thinking);
+  pipe("p-shield-exch", !halted && (thinking || nOrd > 0));
+  pipe("p-exch-mem", guardOn || thinking);
+  pipe("p-guard-shield", guardOn);
+
+  // event bursts -> hot pipes + feed cards
+  if (prev.scan_ts && s.scan_ts !== prev.scan_ts) { hot("p-scan-brain"); feed("Swept the whole market for movers"); }
   if (prev.nOrd !== undefined && nOrd !== prev.nOrd) {
-    flash("execute");
+    hot("p-shield-exch"); hot("p-brain-shield");
     feed(nOrd > prev.nOrd ? "New order placed at the exchange" : "An order filled or was cancelled", nOrd > prev.nOrd ? "buy" : "sell");
   }
-  if (prev.wlast !== undefined && s.watcher_log?.length && s.watcher_log.at(-1) !== prev.wlast) {
-    flash("guard");
-  }
+  if (prev.wlast !== undefined && s.watcher_log?.length && s.watcher_log.at(-1) !== prev.wlast) { hot("p-guard-shield"); hot("p-ticks-guard"); }
   if (prev.jhead && s.journal?.[0] && s.journal[0].head !== prev.jhead) {
-    flash("learn"); flash("decide");
+    hot("p-exch-mem"); hot("p-mem-brain");
     const [cls, label] = actionChip(s.journal[0].body);
     feed(label + ": " + plainHead(s.journal[0].head), cls);
   }
-  if (prev.trades !== undefined && (s.trades || []).length !== prev.trades) { flash("execute"); flash("shield"); }
+  if (prev.trades !== undefined && (s.trades || []).length !== prev.trades) { hot("p-shield-exch"); hot("p-exch-mem"); }
   prev = { scan_ts: s.scan_ts, nOrd, wlast: s.watcher_log?.at(-1), jhead: s.journal?.[0]?.head, trades: (s.trades || []).length };
 
   // panels
