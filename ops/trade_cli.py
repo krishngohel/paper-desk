@@ -32,6 +32,89 @@ import sys
 sys.path.insert(0, "agent")
 
 PROFILE = "alpaca-paper-trade"
+RATE_LIMIT_N = 30          # orders per window
+RATE_LIMIT_WINDOW = 60.0   # seconds
+PRICE_BAND_PCT = 10.0      # limit price may not be >10% through the quote
+
+
+def _num(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def _blocked(code: str, **detail):
+    return {"status": "blocked", "code": code, **detail}
+
+
+def _preflight(service, symbol: str, side: str, qty: float, rest: list[str]):
+    """NautilusTrader-inspired pre-trade guards. Returns a denial dict or None."""
+    import time
+    from pathlib import Path
+
+    # RATE_LIMIT: sliding window persisted across CLI invocations.
+    window_file = Path(__file__).parent / "logs" / "order_rate.json"
+    now = time.time()
+    try:
+        stamps = [t for t in json.loads(window_file.read_text()) if now - t < RATE_LIMIT_WINDOW]
+    except Exception:  # noqa: BLE001
+        stamps = []
+    if len(stamps) >= RATE_LIMIT_N:
+        return _blocked("RATE_LIMIT", detail=f"{len(stamps)} orders in {RATE_LIMIT_WINDOW:.0f}s "
+                                             f"(max {RATE_LIMIT_N}) - runaway-loop brake")
+    stamps.append(now)
+    try:
+        window_file.write_text(json.dumps(stamps))
+    except OSError:
+        pass
+
+    # PRICE_BAND: fat-finger collar on limit prices vs current quote.
+    limit_px = None
+    if "--limit" in rest:
+        try:
+            limit_px = float(rest[rest.index("--limit") + 1])
+        except (IndexError, ValueError):
+            return _blocked("BAD_REQUEST", detail="--limit needs a numeric price")
+    if limit_px is not None:
+        q = (service.get_quote(symbol, profile_id=PROFILE) or {}).get("quote") or {}
+        bid, ask = _num(q.get("bid")), _num(q.get("ask"))
+        # Prefer the natural side; fall back to the other; DENY rather than guess
+        # with no reference at all (Nautilus MARKET_PRICE_UNAVAILABLE doctrine -
+        # a skipped check placed a $480 AAPL limit on a zero-ask Saturday quote).
+        candidates = [ask, bid] if side == "buy" else [bid, ask]
+        ref = next((c for c in candidates if c and c > 0), None)
+        if ref is None:
+            return _blocked("MARKET_PRICE_UNAVAILABLE",
+                            detail=f"no usable quote for {symbol} to sanity-check the limit price "
+                                   f"against - refusing to place a blind limit order")
+        through = ((limit_px - ref) / ref * 100) if side == "buy" else ((ref - limit_px) / ref * 100)
+        if through > PRICE_BAND_PCT:
+            return _blocked("PRICE_BAND", detail=f"{side} limit {limit_px} is {through:.1f}% through "
+                                                 f"quote ref {ref} (band {PRICE_BAND_PCT}%) - fat-finger guard")
+
+    # OVERSELL_GUARD: available = held - leaves of resting sells (never double-sell
+    # shares already promised to a resting target).
+    if side == "sell":
+        held = 0.0
+        for row in (service.get_positions(profile_id=PROFILE) or {}).get("positions") or []:
+            if str(row.get("symbol", "")).upper() == symbol:
+                held += _num(row.get("exact_quantity") or row.get("quantity")) or 0.0
+        resting = 0.0
+        for o in (service.get_open_orders(profile_id=PROFILE) or {}).get("orders") or []:
+            if (str(o.get("symbol", "")).upper() == symbol
+                    and str(o.get("side", "")).lower() == "sell"):
+                leaves = _num(o.get("leaves_quantity"))
+                if leaves is None:
+                    leaves = (_num(o.get("quantity")) or 0.0) - (_num(o.get("filled_quantity")) or 0.0)
+                resting += max(leaves, 0.0)
+        available = held - resting
+        if qty > available + 1e-9:
+            return _blocked("OVERSELL_GUARD",
+                            detail=f"sell {qty} {symbol} exceeds available {available:g} "
+                                   f"(held {held:g} minus {resting:g} promised to resting sells) - "
+                                   f"cancel the resting order first if this exit should replace it")
+    return None
 
 
 def run(cmd: str, args: list[str]):
@@ -63,9 +146,23 @@ def run(cmd: str, args: list[str]):
         # buy|sell SYM QTY [--limit PRICE] [--gtc]
         # A GTC limit order rests at the broker and fills the instant price
         # touches the level - the zero-latency way to sell highs / buy dips.
+        #
+        # Pre-flight guards (patterns adopted from NautilusTrader's RiskEngine):
+        #   OVERSELL_GUARD - available = held qty minus leaves of resting sells;
+        #     a sell beyond that could double-sell via the resting-target +
+        #     watcher-stop pair (their overselling invariant, risk mod.rs).
+        #   PRICE_BAND    - fat-finger collar: a limit priced >10% through the
+        #     current quote is a typo, not a strategy.
+        #   RATE_LIMIT    - sliding-window submit throttle (30/60s): catches
+        #     runaway loops before the broker does.
+        # Codes are stable leading tokens; the rest of the envelope is diagnostic.
         kwargs = {}
         rest = args[2:]
         qty = float(args[1])
+        guard = _preflight(service, args[0].upper(), cmd, qty, rest)
+        if guard is not None:
+            print(json.dumps(guard, indent=2))
+            return 1
         if "--limit" in rest:
             kwargs["order_type"] = "limit"
             kwargs["limit_price"] = float(rest[rest.index("--limit") + 1])

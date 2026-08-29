@@ -286,6 +286,24 @@ def tick(state: dict) -> None:
                     exit_blocked(rec, state, out)
                 continue
 
+        # OUO-lite bracket sync (NautilusTrader pattern: protective legs must track
+        # the actual position). If resting sell qty drifts from held qty (partial
+        # fill on an entry rung or a partial target fill), wake a session to
+        # resize the brackets rather than auto-amending blind.
+        try:
+            resting_sells = sum(
+                (_num(o.get("leaves_quantity")) or
+                 ((_num(o.get("quantity")) or 0) - (_num(o.get("filled_quantity")) or 0)))
+                for o in (service.get_open_orders(profile_id=PROFILE).get("orders") or [])
+                if str(o.get("symbol", "")).upper() == symbol
+                and str(o.get("side", "")).lower() == "sell"
+            )
+            if resting_sells > 0 and abs(resting_sells - qty) > 1e-6:
+                spawn_session(f"{symbol} bracket drift: {resting_sells:g} sh promised to resting "
+                              f"sells vs {qty:g} held - resize brackets to the position", state)
+        except Exception:  # noqa: BLE001
+            pass
+
         prev = _num(last_marks.get(symbol))
         if prev and abs(bid - prev) / prev >= ANOMALY_MOVE:
             spawn_session(f"{symbol} moved {((bid - prev) / prev) * 100:+.1f}% since last check "
