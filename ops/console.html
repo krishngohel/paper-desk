@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Trading Ops Console</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root { color-scheme: dark;
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --mut:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.10);
+  --a:#3987e5; --v:#d95926; --good:#0ca30c; --crit:#d03b3b; --warn:#fab219; }
+* { box-sizing:border-box; }
+body { background:var(--page); color:var(--ink); margin:0;
+  font:13.5px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { display:flex; gap:18px; align-items:baseline; padding:10px 16px;
+  border-bottom:1px solid var(--grid); position:sticky; top:0; background:var(--page); z-index:2; flex-wrap:wrap; }
+h1 { font-size:15px; margin:0; letter-spacing:.02em; }
+.stat b { font-variant-numeric:tabular-nums; font-size:15px; }
+.stat span { color:var(--mut); font-size:11px; text-transform:uppercase; letter-spacing:.05em; margin-right:4px; }
+.up { color:var(--good); } .down { color:var(--crit); }
+main { display:grid; grid-template-columns: 340px 1fr 380px; gap:12px; padding:12px 16px; align-items:start; }
+@media (max-width:1100px){ main { grid-template-columns:1fr; } }
+section { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px 12px; margin-bottom:12px; }
+h2 { font-size:11.5px; margin:0 0 8px; color:var(--mut); text-transform:uppercase; letter-spacing:.06em; }
+pre, .mono { font:12px/1.45 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word; color:var(--ink2); margin:0; }
+.entry { border-top:1px solid var(--grid); padding:7px 0; }
+.entry:first-of-type { border-top:none; }
+.entry b { font-size:12.5px; color:var(--ink); }
+.entry pre { max-height:150px; overflow:auto; margin-top:4px; }
+table { border-collapse:collapse; width:100%; font-size:12.5px; }
+th,td { text-align:left; padding:3px 8px 3px 0; border-bottom:1px solid var(--grid); }
+th { color:var(--mut); font-size:10.5px; text-transform:uppercase; }
+td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+.map { width:100%; height:auto; }
+.node rect { fill:var(--page); stroke:var(--grid); stroke-width:1.2; rx:6; }
+.node text { fill:var(--ink2); font:11px system-ui,sans-serif; }
+.node .name { fill:var(--ink); font-weight:600; font-size:12px; }
+.node.on rect { stroke:var(--good); } .node.off rect { stroke:var(--crit); }
+.node.idle rect { stroke:var(--warn); }
+.edge { stroke:var(--grid); stroke-width:1.2; fill:none; marker-end:url(#arr); }
+.pulse { animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity:.35; } }
+.tag { display:inline-block; padding:0 7px; border-radius:999px; border:1px solid var(--border);
+  font-size:10.5px; color:var(--mut); margin-left:6px; }
+.tag.on { color:var(--good); border-color:var(--good); }
+.tag.off { color:var(--crit); border-color:var(--crit); }
+.small { font-size:11px; color:var(--mut); }
+</style></head><body>
+<header>
+  <h1>Trading Ops Console</h1>
+  <div class="stat"><span>Equity</span><b id="eq">-</b></div>
+  <div class="stat"><span>Cash</span><b id="cash">-</b></div>
+  <div class="stat"><span>Positions</span><b id="npos">-</b></div>
+  <div class="stat"><span>Resting orders</span><b id="nord">-</b></div>
+  <div class="stat"><span>Halt</span><b id="halt">-</b></div>
+  <div class="stat small" id="clock"></div>
+</header>
+<main>
+<div><!-- left: agent map + machinery logs -->
+  <section>
+    <h2>Agent map <span class="small" id="mapts"></span></h2>
+    <svg class="map" viewBox="0 0 320 330" id="agentmap">
+      <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <path d="M0,0 L7,3.5 L0,7 z" fill="#2c2c2a"/></marker></defs>
+      <path class="edge" d="M160,52 V80"/>
+      <path class="edge" d="M85,128 Q60,160 85,190"/>
+      <path class="edge" d="M235,128 Q260,160 235,190"/>
+      <path class="edge" d="M160,128 V190"/>
+      <path class="edge" d="M160,238 V266"/>
+      <g class="node" id="n-relay"><rect x="90" y="12" width="140" height="40"/>
+        <text x="160" y="29" text-anchor="middle" class="name">Session relay</text>
+        <text x="160" y="44" text-anchor="middle" id="t-relay">-</text></g>
+      <g class="node" id="n-watcher"><rect x="20" y="88" width="130" height="40"/>
+        <text x="85" y="105" text-anchor="middle" class="name">Watcher (2s)</text>
+        <text x="85" y="120" text-anchor="middle" id="t-watcher">-</text></g>
+      <g class="node" id="n-stream"><rect x="170" y="88" width="130" height="40"/>
+        <text x="235" y="105" text-anchor="middle" class="name">Tick stream</text>
+        <text x="235" y="120" text-anchor="middle" id="t-stream">-</text></g>
+      <g class="node" id="n-triggers"><rect x="20" y="198" width="130" height="40"/>
+        <text x="85" y="215" text-anchor="middle" class="name">Armed triggers</text>
+        <text x="85" y="230" text-anchor="middle" id="t-triggers">-</text></g>
+      <g class="node" id="n-gate"><rect x="95" y="198" width="130" height="40" transform="translate(0,0)" visibility="hidden"/></g>
+      <g class="node" id="n-mandate"><rect x="95" y="190" width="130" height="48"/>
+        <text x="160" y="207" text-anchor="middle" class="name">Mandate gate</text>
+        <text x="160" y="222" text-anchor="middle" id="t-mandate">long-only · cash</text>
+        <text x="160" y="234" text-anchor="middle" id="t-mandate2">-</text></g>
+      <g class="node" id="n-snap"><rect x="170" y="198" width="130" height="40" transform="translate(60,0)" visibility="hidden"/></g>
+      <g class="node" id="n-snapshot"><rect x="230" y="198" width="80" height="40" visibility="hidden"/></g>
+      <g class="node" id="n-broker"><rect x="90" y="274" width="140" height="44"/>
+        <text x="160" y="291" text-anchor="middle" class="name">Alpaca (paper)</text>
+        <text x="160" y="306" text-anchor="middle" id="t-broker">-</text></g>
+    </svg>
+  </section>
+  <section><h2>Watcher log</h2><pre id="wlog" style="max-height:180px;overflow:auto"></pre></section>
+  <section><h2>Session stdout</h2><pre id="slog" style="max-height:180px;overflow:auto"></pre></section>
+</div>
+<div><!-- middle: thought stream -->
+  <section>
+    <h2>Thought stream - journal, newest first</h2>
+    <div id="journal"></div>
+  </section>
+</div>
+<div><!-- right: book, triggers, research -->
+  <section><h2>Book</h2><table id="book"></table></section>
+  <section><h2>Resting orders</h2><table id="orders"></table></section>
+  <section><h2>Armed triggers</h2><table id="trig"></table></section>
+  <section><h2>Market scan <span class="small" id="scants"></span></h2><table id="scan"></table></section>
+  <section><h2>Ledger stats</h2><pre id="stats"></pre></section>
+  <section><h2>Watchlist / battle plan</h2><pre id="wl" style="max-height:260px;overflow:auto"></pre></section>
+</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const money = v => v == null ? "-" : "$" + Number(v).toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function setNode(id, cls, text) {
+  const n = $(id); n.classList.remove("on","off","idle"); n.classList.add(cls);
+  if (text !== undefined) n.querySelector("text:last-child").textContent = text;
+}
+
+async function refresh() {
+  let s;
+  try { s = await (await fetch("/api/state")).json(); } catch (e) { $("clock").textContent = "api unreachable"; return; }
+  $("clock").textContent = "as of " + s.now + " CT · refresh 2s";
+  $("eq").textContent = money(s.broker.equity);
+  $("cash").textContent = money(s.broker.cash);
+  $("npos").textContent = (s.broker.positions || []).length;
+  $("nord").textContent = (s.broker.orders || []).length;
+  $("halt").textContent = s.agents.halted ? "HALTED" : "clear";
+  $("halt").className = s.agents.halted ? "down" : "up";
+
+  // agent map
+  const a = s.agents;
+  const lock = a.session_lock;
+  setNode("n-relay", lock && lock.age < 1500 ? "on" : "idle",
+          lock ? `${lock.owner} · lock ${lock.age}s` : "no session running");
+  setNode("n-watcher", a.watcher_alive ? "on" : "off",
+          a.watcher_log_age_s == null ? "no log" : `log ${a.watcher_log_age_s}s ago`);
+  const streamOn = (a.stream_status || "").includes("connected");
+  setNode("n-stream", streamOn ? "on" : (a.watcher_alive ? "idle" : "off"),
+          streamOn ? "connected" : "down/idle");
+  const openTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
+  setNode("n-triggers", openTrig ? "on" : "idle", openTrig + " armed");
+  $("t-mandate2").textContent = a.broker_error ? "broker err" : "enforcing";
+  setNode("n-broker", a.broker_error ? "off" : "on",
+          a.broker_error ? a.broker_error.slice(0,26) : `sync ${a.broker_ts || "-"}`);
+  $("mapts").textContent = a.last_session_header ? a.last_session_header.replace(/=/g,"").trim() : "";
+  document.querySelectorAll(".node.on rect").forEach(r => r.classList.add("pulse"));
+
+  // thought stream
+  $("journal").innerHTML = (s.journal || []).map(e =>
+    `<div class="entry"><b>${esc(e.head)}</b><pre>${esc(e.body)}</pre></div>`).join("");
+
+  // book
+  $("book").innerHTML = "<tr><th>Sym</th><th class=num>Sh</th><th class=num>Avg</th><th class=num>Now</th><th class=num>P&L</th></tr>" +
+    (s.broker.positions || []).map(p => {
+      const pnl = Number(p.unrealized_pnl || 0);
+      return `<tr><td>${esc(p.symbol)}</td><td class=num>${esc(p.quantity)}</td>` +
+        `<td class=num>${money(p.average_cost)}</td><td class=num>${money(p.current_price)}</td>` +
+        `<td class="num ${pnl >= 0 ? "up" : "down"}">${money(pnl)}</td></tr>`;
+    }).join("") || "<tr><td class=small>flat</td></tr>";
+
+  $("orders").innerHTML = "<tr><th>Sym</th><th>Side</th><th class=num>Qty</th><th class=num>Limit</th><th>TIF</th></tr>" +
+    (s.broker.orders || []).map(o =>
+      `<tr><td>${esc(o.symbol)}</td><td>${esc(o.side)}</td><td class=num>${esc(o.quantity)}</td>` +
+      `<td class=num>${money(o.limit_price)}</td><td>${esc(o.time_in_force)}</td></tr>`).join("") ||
+    "<tr><td class=small>none</td></tr>";
+
+  $("trig").innerHTML = "<tr><th>Sym</th><th>Cond</th><th class=num>Qty</th><th>Grade</th></tr>" +
+    (s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t =>
+      `<tr><td>${esc(t.symbol)}</td><td>${esc(t.condition)} ${esc(t.trigger_price)}</td>` +
+      `<td class=num>${esc(t.qty)}</td><td>${esc(t.setup_grade || "-")}</td></tr>`).join("") ||
+    "<tr><td class=small>none armed</td></tr>";
+
+  $("scants").textContent = s.scan_ts || "";
+  $("scan").innerHTML = "<tr><th>Sym</th><th class=num>Chg%</th><th class=num>$Vol M</th><th class=num>RelV</th></tr>" +
+    (s.scan || []).map(r =>
+      `<tr><td>${esc(r.symbol)}</td><td class="num ${r.change_pct >= 0 ? "up" : "down"}">${esc(r.change_pct)}</td>` +
+      `<td class=num>${esc(r.dollar_volume_m)}</td><td class=num>${esc(r.rel_volume)}</td></tr>`).join("");
+
+  $("stats").textContent = s.stats ? JSON.stringify(s.stats, null, 1) : "no closed trades yet";
+  $("wl").textContent = s.watchlist_md || "";
+  $("wlog").textContent = (s.watcher_log || []).join("\n");
+  $("slog").textContent = (s.sessions_log || []).join("\n");
+}
+refresh();
+setInterval(refresh, 2000);
+</script>
+</body></html>
