@@ -103,12 +103,81 @@ def alpaca_fallback() -> list[dict]:
     return list(rows.values())
 
 
+# Rotating exploration sweeps so the shortlist keeps turning over instead of
+# re-ranking the same liquid names. Each is a second scanner pass with a
+# different lens; results land in payload["explore"] tagged with the mode.
+EXPLORE_MODES = {
+    "gainers":  {"sort": "change", "min_dv": 10_000_000,
+                 "desc": "biggest % gainers today (looser liquidity floor)"},
+    "relvol":   {"sort": "relative_volume_10d_calc", "min_dv": 10_000_000,
+                 "desc": "most unusual volume vs 10d norm - something is happening"},
+    "smallcap": {"sort": "change", "min_dv": 5_000_000, "max_cap_b": 2.0,
+                 "desc": "small-cap movers the liquid shortlist never surfaces"},
+    "turnover": {"sort": "Value.Traded", "min_dv": 50_000_000, "min_change": 3.0,
+                 "desc": "heavily-traded names ALSO moving 3%+ today"},
+}
+
+
+def explore_sweep(mode: str) -> list[dict]:
+    cfg = EXPLORE_MODES[mode]
+    try:
+        import requests
+
+        cols = ["name", "close", "change", "volume", "relative_volume_10d_calc",
+                "market_cap_basic", "exchange", "Value.Traded"]
+        filt = [
+            {"left": "exchange", "operation": "in_range", "right": ["NASDAQ", "NYSE", "AMEX"]},
+            {"left": "is_primary", "operation": "equal", "right": True},
+            {"left": "type", "operation": "in_range", "right": ["stock", "fund"]},
+            {"left": "close", "operation": "greater", "right": MIN_PRICE},
+            {"left": "active_symbol", "operation": "equal", "right": True},
+        ]
+        if cfg.get("min_change"):
+            filt.append({"left": "change", "operation": "greater", "right": cfg["min_change"]})
+        if cfg.get("max_cap_b"):
+            filt.append({"left": "market_cap_basic", "operation": "less",
+                         "right": cfg["max_cap_b"] * 1e9})
+        body = {"filter": filt, "columns": cols,
+                "sort": {"sortBy": cfg["sort"], "sortOrder": "desc"}, "range": [0, 120]}
+        r = requests.post("https://scanner.tradingview.com/america/scan", json=body, timeout=15)
+        r.raise_for_status()
+        rows = []
+        for item in r.json().get("data") or []:
+            d = dict(zip(cols, item["d"]))
+            close, vol = d.get("close"), d.get("volume")
+            if not close or not vol or close * vol < cfg["min_dv"]:
+                continue
+            rows.append({
+                "symbol": str(d.get("name", "")).split(":")[-1],
+                "close": round(float(close), 2),
+                "change_pct": round(float(d.get("change") or 0), 2),
+                "dollar_volume_m": round(close * vol / 1e6, 1),
+                "rel_volume": round(float(d.get("relative_volume_10d_calc") or 0), 2),
+                "market_cap_b": round(float(d.get("market_cap_basic") or 0) / 1e9, 2),
+                "found_by": mode,
+            })
+        return rows[:25]
+    except Exception:  # noqa: BLE001 - unofficial endpoint, fail-soft
+        return []
+
+
 def main() -> int:
     rows = tv_sweep()
     source = "tradingview_full_market"
     if rows is None:
         rows = alpaca_fallback()
         source = "alpaca_screener_fallback"
+
+    # explore pass: --mode <name>, else rotate by hour so consecutive sessions
+    # look through different lenses automatically
+    modes = list(EXPLORE_MODES)
+    mode = None
+    if "--mode" in sys.argv:
+        want = sys.argv[sys.argv.index("--mode") + 1]
+        mode = want if want in EXPLORE_MODES else None
+    if mode is None:
+        mode = modes[datetime.now().hour % len(modes)]
+    explore = explore_sweep(mode)
 
     if rows and source == "tradingview_full_market":
         movers = sorted(rows, key=lambda r: abs(r.get("change_pct") or 0), reverse=True)[:25]
@@ -125,12 +194,17 @@ def main() -> int:
         shortlist = rows[:SHORTLIST]
         universe_size = len(rows)
 
+    known = {r["symbol"] for r in shortlist}
+    fresh = [r for r in explore if r["symbol"] not in known]
     payload = {"ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), "source": source,
                "screened_liquid_names": universe_size,
                "filters": {"min_price": MIN_PRICE, "min_dollar_volume": MIN_DOLLAR_VOLUME},
-               "shortlist": shortlist}
+               "shortlist": shortlist,
+               "explore": {"mode": mode, "desc": EXPLORE_MODES[mode]["desc"],
+                           "new_names_not_on_shortlist": fresh[:20], "all": explore}}
     OUT.write_text(json.dumps(payload, indent=1), encoding="utf-8")
-    print(f"scan: {source}, {universe_size} liquid names screened, top {len(shortlist)} shortlisted -> {OUT}")
+    print(f"scan: {source}, {universe_size} liquid names screened, top {len(shortlist)} "
+          f"shortlisted, explore[{mode}] found {len(fresh)} fresh names -> {OUT}")
     if "--show" in sys.argv:
         for r in shortlist[:12]:
             print(r)

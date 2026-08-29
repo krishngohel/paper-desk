@@ -55,9 +55,15 @@ td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
 .chip.sell { background:rgba(224,112,92,.13); color:var(--bad); border:1px solid rgba(224,112,92,.35); }
 .chip.hold { background:rgba(232,181,96,.13); color:var(--clay); border:1px solid rgba(232,181,96,.35); }
 .chip.note { background:rgba(123,164,245,.12); color:var(--blue); border:1px solid rgba(123,164,245,.3); }
-.dhead { font-size:12.5px; }
-.dwhy { font-size:12px; color:var(--ink2); margin:4px 0 2px; line-height:1.5; }
-.dplan { font-size:11.5px; color:var(--clay); margin-top:2px; }
+.dhead { font-size:13.5px; display:block; margin:3px 0 1px; line-height:1.35; }
+.dsum { font-size:12.5px; color:var(--ink2); margin:3px 0; line-height:1.55; }
+.dplan { font-size:12px; color:var(--clay); margin:3px 0 5px; }
+details.ddet summary { list-style:none; display:inline-block; cursor:pointer; margin-top:2px;
+  font:600 10.5px "Inter Tight",sans-serif; letter-spacing:.05em; color:var(--mut);
+  background:var(--well); border:1px solid var(--rule); border-radius:999px; padding:2px 12px; }
+details.ddet summary::-webkit-details-marker { display:none; }
+details.ddet[open] summary { color:var(--ink); border-color:var(--rule2); }
+details.ddet[open] summary::after { content:" · hide"; }
 .entry { border-top:1px solid var(--rule); padding:8px 0; }
 .entry:first-of-type { border-top:none; padding-top:2px; }
 .entry .head { font-size:12px; color:var(--ink2); }
@@ -302,12 +308,12 @@ const THREADS = { scene:null, raf:null, live:[], seen:new Map(), booted:false };
 function buildThreads(d) {
   const pick = (arr, fb) => arr.length ? arr : [fb];
   THREADS.scene = [
-    { name:"Market scan",        c:cssVar("--ochre"), items: pick(d.scan, "quiet") },
-    { name:"Price ticks",        c:cssVar("--blue"),  items: pick(d.ticks, "closed") },
-    { name:"The Brain",          c:cssVar("--clay"),  items: pick(d.brain, "resting") },
-    { name:"The Shield",         c:cssVar("--moss"),  items: ["long-only","no borrowing","price band","rate limit","oversell"] },
-    { name:"Alpaca · paper API", c:cssVar("--teal"),  items: pick(d.exch, "no orders") },
-    { name:"Memory",             c:cssVar("--plum"),  items: pick(d.mem, "empty") },
+    { name:"Market scan",        c:cssVar("--ochre"), fx:0,    band:[0.04,0.58], items: pick(d.scan, "quiet") },
+    { name:"Price ticks",        c:cssVar("--blue"),  fx:0,    band:[0.68,0.96], items: pick(d.ticks, "closed") },
+    { name:"The Brain",          c:cssVar("--clay"),  fx:0.42, band:[0.20,0.80], items: pick(d.brain, "resting") },
+    { name:"The Shield",         c:cssVar("--moss"),  fx:0.63, band:[0.28,0.72], items: ["long-only","no borrowing","price band","rate limit","oversell"] },
+    { name:"Alpaca · paper API", c:cssVar("--teal"),  fx:0.81, band:[0.34,0.66], items: pick(d.exch, "no orders") },
+    { name:"Memory",             c:cssVar("--plum"),  fx:1,    band:[0.20,0.80], items: pick(d.mem, "empty") },
   ];
   THREADS.live = d.live || [];
   const t = THREADS.booted ? performance.now() : 0;
@@ -335,29 +341,37 @@ function drawThreads(now) {
   const W = cv.width, H = cv.height, dpr = window.devicePixelRatio || 1;
   ctx.clearRect(0, 0, W, H);
   ctx.globalCompositeOperation = "lighter";
-  const mX = 70 * dpr, midY = H * 0.44, gap = (W - 2 * mX) / (cols.length - 1);
+  const mX = 70 * dpr;
+  const colX = cols.map(col => mX + col.fx * (W - 2 * mX));
+  const colCY = cols.map(col => H * (col.band[0] + col.band[1]) / 2);
   const pos = cols.map((col, k) => {
-    const n = col.items.length, sp = Math.min(H * 0.62 / Math.max(n, 1), 26 * dpr);
+    const n = col.items.length;
+    const span = H * (col.band[1] - col.band[0]);
+    const sp = Math.min(span / Math.max(n, 1), 26 * dpr);
     return col.items.map((it, i) => {
       const jit = (((i * 2654435761 + k * 97) >>> 0) % 9 - 4) * dpr;
-      return [mX + k * gap + jit, midY + (i - (n - 1) / 2) * sp + jit * 0.6];
+      return [colX[k] + jit, colCY[k] + (i - (n - 1) / 2) * sp + jit * 0.6];
     });
   });
-  for (let k = 0; k < cols.length - 1; k++) {
-    const A = pos[k], B = pos[k + 1], colA = cols[k].c;
-    const alive = !!THREADS.live[k];
+  // edges: [source col, dest col, liveness flag index] — both data sources feed
+  // the Brain directly; then brain -> shield -> alpaca -> memory
+  const TEDGES = [[0, 2, 0], [1, 2, 1], [2, 3, 2], [3, 4, 3], [4, 5, 4]];
+  for (const [ka, kb, li] of TEDGES) {
+    const A = pos[ka], B = pos[kb], colA = cols[ka].c;
+    const alive = !!THREADS.live[li];
+    const dx = colX[kb] - colX[ka], cyAB = (colCY[ka] + colCY[kb]) / 2;
     ctx.lineWidth = 1.1 * dpr;
     for (let i = 0; i < A.length; i++) {
       const tg = A.length * B.length <= 40 ? B.map((_, j) => j) : uniq([(i * 7 + 1) % B.length, (i * 13 + 3) % B.length, (i * 3) % B.length]);
       for (const j of tg) {
         const p0 = A[i], p3 = B[j];
-        const p1 = [p0[0] + gap * 0.45, p0[1] + (midY - p0[1]) * 0.72];
-        const p2 = [p0[0] + gap * 0.55, p3[1] + (midY - p3[1]) * 0.72];
+        const p1 = [p0[0] + dx * 0.45, p0[1] + (cyAB - p0[1]) * 0.72];
+        const p2 = [p0[0] + dx * 0.55, p3[1] + (cyAB - p3[1]) * 0.72];
         ctx.strokeStyle = rgba(colA, alive ? 0.34 : 0.12);
         ctx.beginPath(); ctx.moveTo(p0[0], p0[1]);
         ctx.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]); ctx.stroke();
         if (alive && (i + j) % 3 === 0) {
-          const t = (now / 2600 + (i * 0.17 + j * 0.31 + k * 0.5)) % 1;
+          const t = (now / 2600 + (i * 0.17 + j * 0.31 + ka * 0.5)) % 1;
           const [px, py] = bez(p0, p1, p2, p3, t);
           ctx.fillStyle = rgba(colA, 0.14); ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 7); ctx.fill();
           ctx.fillStyle = rgba(colA, 0.9); ctx.beginPath(); ctx.arc(px, py, 1.3 * dpr, 0, 7); ctx.fill();
@@ -376,15 +390,15 @@ function drawThreads(now) {
       if (showLbl) {
         ctx.globalCompositeOperation = "source-over";
         ctx.fillStyle = rgba(col.c, fresh ? 1 : 0.85); ctx.font = `${(fresh ? 10 : 9) * dpr}px "JetBrains Mono",monospace`;
-        ctx.textAlign = k === cols.length - 1 ? "left" : (k === 0 ? "right" : "center");
-        ctx.fillText(String(col.items[i]), x + (k === cols.length - 1 ? 8 : (k === 0 ? -8 : 0)) * dpr, y - 6 * dpr);
+        ctx.textAlign = col.fx === 1 ? "left" : (col.fx === 0 ? "right" : "center");
+        ctx.fillText(String(col.items[i]), x + (col.fx === 1 ? 8 : (col.fx === 0 ? -8 : 0)) * dpr, y - 6 * dpr);
         ctx.globalCompositeOperation = "lighter";
       }
     });
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = cssVar("--mut"); ctx.font = `600 ${10.5 * dpr}px "Inter Tight",sans-serif`; ctx.textAlign = "center";
     const ys = pos[k].map(p => p[1]);
-    ctx.fillText(col.name.toUpperCase(), mX + k * gap, Math.max(...ys) + 26 * dpr);
+    ctx.fillText(col.name.toUpperCase(), colX[k], Math.max(...ys) + 26 * dpr);
     ctx.globalCompositeOperation = "lighter";
   });
 }
@@ -581,12 +595,18 @@ async function refresh() {
     const dOpen = new Set([...dv.querySelectorAll("details[open]")].map(d => d.dataset.h));
     dv.innerHTML = buildDecisions(s.trades || []).map(d => {
       const hk = esc(d.sym + "|" + d.ts);
+      const cut = String(d.why).indexOf(". ");
+      let sum = cut > 30 ? String(d.why).slice(0, cut + 1) : String(d.why);
+      if (sum.length > 190) sum = sum.slice(0, 187) + "…";
+      const full = String(d.why) + (d.note ? "\n\n" + d.note : "");
       return `<div class="entry"><span class="chip ${d.chip[0]}">${d.chip[1]}</span>` +
+        `<span class="small">${fmtT(d.ts)}</span>` +
         `<b class="dhead${d.win === true ? " up" : d.win === false ? " down" : ""}">${esc(d.head)}</b>` +
-        ` <span class="small">${fmtT(d.ts)}</span>` +
-        `<div class="dwhy">${esc(d.why)}</div>` +
+        `<div class="dsum">${esc(sum)}</div>` +
         (d.plan ? `<div class="dplan">The plan: ${esc(d.plan)}</div>` : "") +
-        (d.note ? `<details data-h="${hk}"${dOpen.has(d.sym + "|" + d.ts) ? " open" : ""}><summary>more detail</summary><pre>${esc(d.note)}</pre></details>` : "") +
+        (full.length > sum.length + 10 ?
+          `<details class="ddet" data-h="${hk}"${dOpen.has(d.sym + "|" + d.ts) ? " open" : ""}>` +
+          `<summary>Show detail</summary><pre>${esc(full)}</pre></details>` : "") +
         `</div>`;
     }).join("") || "<div class=small>no decisions yet</div>";
     dv.dataset.k = dKey;
