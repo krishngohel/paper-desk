@@ -45,6 +45,7 @@ def _broker_refresher() -> None:
             acct = (service.get_account(profile_id=PROFILE) or {}).get("account") or {}
             BROKER["equity"] = acct.get("equity")
             BROKER["cash"] = acct.get("cash")
+            BROKER["last_equity"] = acct.get("last_equity")
             BROKER["positions"] = (service.get_positions(profile_id=PROFILE) or {}).get("positions") or []
             op = service.get_open_orders(profile_id=PROFILE) or {}
             BROKER["orders"] = op.get("orders") or op.get("open_orders") or []
@@ -139,6 +140,7 @@ def state() -> dict:
         "now": datetime.now().strftime("%H:%M:%S"),
         "agents": _agents(),
         "broker": {"equity": BROKER["equity"], "cash": BROKER["cash"],
+                   "last_equity": BROKER.get("last_equity"),
                    "positions": BROKER["positions"], "orders": BROKER["orders"]},
         "trades": _jsonl(JOURNAL / "trades.jsonl", 60),
         "triggers": _jsonl(JOURNAL / "triggers.jsonl", 40),

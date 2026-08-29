@@ -4,37 +4,41 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root { color-scheme: light;
-  --paper:#F3EEE3; --card:#FBF7EE; --well:#F1EADB; --rule:#E0D7C4; --rule2:#D8CFBC;
-  --ink:#1F1B16; --ink2:#57503F; --mut:#8A8171;
-  --clay:#B5563A; --moss:#4C7A4F; --ochre:#B89A55; --blue:#5B8DEF;
-  --plum:#7C5CBF; --teal:#3E7C7B; --ember:#C2410C;
-  --good:#3F6D42; --bad:#B5442F; }
+:root { color-scheme: dark;
+  --paper:#171310; --bg2:#1C1814; --card:#241E17; --well:#1A1511; --rule:#372E23; --rule2:#443929;
+  --ink:#EDE4D6; --ink2:#C9BCA8; --mut:#8F8471;
+  --clay:#C9714F; --moss:#7FA383; --ochre:#D4B36A; --blue:#7BA4F5;
+  --plum:#A78BDB; --teal:#6FB3B0; --ember:#E8703D;
+  --good:#8FBE85; --bad:#E0705C; }
 * { box-sizing:border-box; }
 html,body { height:100%; }
 body { margin:0; color:var(--ink); overflow:hidden; display:flex; flex-direction:column;
-  background: linear-gradient(180deg, #F6F1E8 0%, var(--paper) 60%, #EDE6D8 100%);
+  background: linear-gradient(180deg, #201A15 0%, var(--bg2) 55%, var(--paper) 100%);
   font:13.5px/1.5 "Inter Tight",system-ui,sans-serif; }
-body::after { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.51 0 0 0 0 0.44 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"); }
+body::after { content:""; position:fixed; inset:0; pointer-events:none; opacity:.35; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.7 0 0 0 0 0.64 0 0 0 0 0.52 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"); }
 header { flex:none; display:flex; gap:22px; align-items:center; padding:9px 18px; flex-wrap:wrap;
   background:var(--card); border-bottom:1px solid var(--rule);
-  box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 2px 8px rgba(31,27,22,.05); }
+  box-shadow: 0 1px 0 rgba(237,228,214,.06) inset, 0 2px 10px rgba(0,0,0,.35); }
 h1 { font:600 19px/1 "Newsreader",Georgia,serif; margin:0; color:var(--ink); letter-spacing:.01em; }
 h1 em { color:var(--clay); font-style:normal; }
 .stat span { display:block; color:var(--mut); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }
 .stat b { font-size:16.5px; font-weight:650; font-variant-numeric:tabular-nums; }
+.stat.big b { font-size:25px; letter-spacing:-.01em; }
+.stat.big span { color:var(--clay); }
 .up { color:var(--good); } .down { color:var(--bad); }
 .clock { color:var(--mut); font-size:11.5px; margin-left:auto; font-family:"JetBrains Mono",monospace; }
-main { flex:1; min-height:0; display:grid; grid-template-columns:315px minmax(0,1fr) 345px;
+main { flex:1; min-height:0; display:grid; grid-template-columns:300px minmax(0,1fr) 320px;
   gap:12px; padding:10px 16px 12px; }
 main > div { min-height:0; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--rule2) transparent; }
+main > div.center { overflow:hidden; display:flex; flex-direction:column; }
+main > div.center > section { flex:1; min-height:0; display:flex; flex-direction:column; }
 section { background:var(--card); border:1px solid var(--rule); border-radius:12px;
   padding:10px 14px 12px; margin-bottom:10px;
-  box-shadow: 0 1px 0 rgba(255,255,255,.75) inset, 0 1px 3px rgba(31,27,22,.07), 0 6px 16px rgba(31,27,22,.04); }
+  box-shadow: 0 1px 0 rgba(237,228,214,.05) inset, 0 2px 6px rgba(0,0,0,.3); }
 section:last-child { margin-bottom:0; }
 h2 { font:600 12.5px/1.2 "Newsreader",Georgia,serif; margin:0 0 8px; color:var(--clay);
-  text-transform:uppercase; letter-spacing:.1em; }
+  text-transform:uppercase; letter-spacing:.1em; flex:none; }
 h2 .sub { color:var(--mut); font:400 11px "Inter Tight",sans-serif; text-transform:none; letter-spacing:0; margin-left:7px; }
 table { border-collapse:collapse; width:100%; font-size:12.5px; }
 th,td { text-align:left; padding:4px 8px 4px 0; border-bottom:1px solid var(--rule); }
@@ -43,57 +47,63 @@ th { color:var(--mut); font-size:9.5px; text-transform:uppercase; letter-spacing
 td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
 .small { font-size:11.5px; color:var(--mut); }
 .chip { display:inline-block; padding:1px 9px; border-radius:999px; font-size:10.5px; font-weight:600; margin-right:7px; }
-.chip.buy  { background:rgba(76,122,79,.13); color:var(--moss); border:1px solid rgba(76,122,79,.35); }
-.chip.sell { background:rgba(181,86,58,.12); color:var(--clay); border:1px solid rgba(181,86,58,.35); }
-.chip.hold { background:rgba(184,154,85,.16); color:#8a6f33; border:1px solid rgba(184,154,85,.4); }
-.chip.note { background:rgba(91,141,239,.11); color:#3f66b8; border:1px solid rgba(91,141,239,.3); }
+.chip.buy  { background:rgba(143,190,133,.13); color:var(--good); border:1px solid rgba(143,190,133,.35); }
+.chip.sell { background:rgba(224,112,92,.13); color:var(--bad); border:1px solid rgba(224,112,92,.35); }
+.chip.hold { background:rgba(212,179,106,.13); color:var(--ochre); border:1px solid rgba(212,179,106,.35); }
+.chip.note { background:rgba(123,164,245,.12); color:var(--blue); border:1px solid rgba(123,164,245,.3); }
 .entry { border-top:1px solid var(--rule); padding:8px 0; }
 .entry:first-of-type { border-top:none; padding-top:2px; }
 .entry .head { font-size:12px; color:var(--ink2); }
 details summary { cursor:pointer; color:var(--mut); font-size:11px; margin-top:3px; }
 details pre, pre.raw { font:11.5px/1.5 "JetBrains Mono",Consolas,monospace; white-space:pre-wrap; word-break:break-word;
   color:var(--ink2); background:var(--well); border:1px solid var(--rule); border-radius:8px;
-  box-shadow: 0 1px 2px rgba(31,27,22,.06) inset;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3) inset;
   padding:8px 10px; margin:7px 0 0; max-height:150px; overflow:auto; }
 
-/* ---------- agent map: each agent has its own color ---------- */
-#n-ticks, #p-ticks-brain, #p-ticks-guard { --c:var(--blue); }
-#n-scan,  #p-scan-brain  { --c:var(--ochre); }
-#n-news,  #p-news-brain  { --c:var(--moss); }
-#n-mem,   #p-mem-brain   { --c:var(--plum); }
-#n-brain, #p-brain-shield{ --c:var(--clay); }
-#n-shield,#p-shield-exch { --c:var(--moss); }
-#n-exch,  #p-exch-mem    { --c:var(--teal); }
-#n-guard, #p-guard-shield{ --c:var(--ember); }
-svg.map { width:100%; height:auto; max-height:56vh; display:block; margin:0 auto; }
-main > div.center { display:flex; flex-direction:column; }
-main > div.center > section { flex:1; }
-.pipe path { fill:none; stroke:color-mix(in srgb, var(--c) 38%, transparent); stroke-width:1.5; }
+/* ---------- agent constellation: hubs are agents, satellites are live data ---------- */
+#n-ticks, #p-ticks-brain, #p-ticks-guard, #sat-ticks { --c:var(--blue); }
+#n-scan,  #p-scan-brain,  #sat-scan  { --c:var(--ochre); }
+#n-news,  #p-news-brain,  #sat-news  { --c:var(--moss); }
+#n-mem,   #p-mem-brain,   #sat-mem   { --c:var(--plum); }
+#n-brain, #p-brain-shield { --c:var(--clay); }
+#n-shield,#p-shield-exch  { --c:var(--moss); }
+#n-exch,  #p-exch-mem,    #sat-exch  { --c:var(--teal); }
+#n-guard, #p-guard-shield,#sat-guard { --c:var(--ember); }
+svg.map { flex:none; width:auto; max-width:100%; height:48vh; display:block; margin:0 auto; }
+.pipe path { fill:none; stroke:color-mix(in srgb, var(--c) 42%, transparent); stroke-width:1.2; }
 .pipe circle { fill:var(--c); }
-.pipe.hot path { stroke:color-mix(in srgb, var(--c) 75%, transparent); stroke-width:2; }
-.pipe.hot circle { r:4; }
-.pipe.dead path { stroke:var(--rule2); stroke-dasharray:3 5; }
+.pipe.hot path { stroke:color-mix(in srgb, var(--c) 85%, transparent); stroke-width:2; }
+.pipe.dead path { stroke:rgba(143,132,113,.15); stroke-dasharray:3 5; }
 .pipe.dead circle { display:none; }
-.nd rect { fill:#FFFDF6; stroke:color-mix(in srgb, var(--c) 55%, transparent); stroke-width:1.4;
-  filter:drop-shadow(0 1.5px 1.5px rgba(31,27,22,.12)); }
-.nd .nm { fill:var(--ink); font:600 13px "Inter Tight",sans-serif; text-anchor:middle; }
-.nd .nm.big { font:600 15.5px "Newsreader",Georgia,serif; fill:#FBF7EE; }
-.nd .ns { fill:var(--mut); font:10px "Inter Tight",sans-serif; text-anchor:middle; }
-.nd .dot { fill:var(--c); }
-.nd.on rect { stroke:var(--c); stroke-width:2; filter:drop-shadow(0 0 6px color-mix(in srgb, var(--c) 55%, transparent)); }
+.nd .glow { fill:var(--c); opacity:.12; filter:blur(7px); }
+.nd .halo { fill:var(--c); opacity:.35; filter:blur(2.5px); }
+.nd .core { fill:color-mix(in srgb, var(--c) 55%, #fff); }
+.nd .nm { fill:var(--ink); font:600 12.5px "Inter Tight",sans-serif; text-anchor:middle; }
+.nd .nm.big { font:600 15px "Newsreader",Georgia,serif; }
+.nd .ns { fill:var(--mut); font:9.5px "Inter Tight",sans-serif; text-anchor:middle; }
+.nd.on .glow { opacity:.32; } .nd.on .halo { opacity:.65; }
 .nd.on .ns { fill:var(--ink2); }
-.nd.off rect { stroke:var(--bad); stroke-width:2; filter:drop-shadow(0 0 6px rgba(181,68,47,.5)); }
-.nd.brain .ns { fill:#EDD9C8; }
-.nd.brain .ring { fill:none; stroke:color-mix(in srgb, var(--clay) 55%, transparent); stroke-width:1.6;
-  stroke-dasharray:10 14; transform-origin:285px 197px; animation: spin 16s linear infinite; }
-.nd.brain.on circle:first-of-type { filter:drop-shadow(0 0 10px rgba(181,86,58,.55)); }
+.nd.off .core, .nd.off .halo { fill:var(--bad); }
+.nd.off .glow { fill:var(--bad); opacity:.28; }
+.nd.brain .ring { fill:none; stroke:color-mix(in srgb, var(--clay) 55%, transparent); stroke-width:1.4;
+  stroke-dasharray:9 13; transform-origin:460px 235px; animation: spin 16s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.legend { font-size:11px; color:var(--mut); margin-top:6px; }
+.sats line { stroke:color-mix(in srgb, var(--c) 28%, transparent); stroke-width:.8; }
+.sats circle { fill:var(--c); animation: twinkle 2.8s ease-in-out infinite; }
+.sats text { fill:color-mix(in srgb, var(--c) 72%, var(--ink)); font:500 7.5px "JetBrains Mono",monospace; text-anchor:middle; }
+@keyframes twinkle { 50% { opacity:.4; } }
+.legend { flex:none; font-size:11px; color:var(--mut); margin-top:4px; }
 .legend b { font-weight:600; }
+/* below the brain: live events + the journal, side by side, inside the viewport */
+.below { flex:1; min-height:0; display:grid; grid-template-columns:5fr 7fr; gap:10px; margin-top:10px; }
+.below > div { min-height:0; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--rule2) transparent;
+  background:var(--well); border:1px solid var(--rule); border-radius:10px; padding:8px 12px; }
+.below h3 { font:600 11px/1.2 "Newsreader",Georgia,serif; margin:0 0 6px; color:var(--clay);
+  text-transform:uppercase; letter-spacing:.1em; position:sticky; top:-8px; background:var(--well); padding:8px 0 4px; }
+.below h3 .sub { color:var(--mut); font:400 10.5px "Inter Tight",sans-serif; text-transform:none; letter-spacing:0; margin-left:6px; }
 /* task feed */
-.feed { margin-top:10px; }
 .card { display:flex; gap:9px; align-items:baseline; padding:6px 11px; margin-bottom:5px; border-radius:9px;
-  background:var(--well); border:1px solid var(--rule); animation: slidein .45s ease; }
+  background:var(--card); border:1px solid var(--rule); animation: slidein .45s ease; }
 @keyframes slidein { from { transform: translateY(-8px); opacity:0; } }
 .card time { color:var(--mut); font-size:10.5px; font-variant-numeric:tabular-nums; flex:none; font-family:"JetBrains Mono",monospace; }
 .card .txt { font-size:12px; color:var(--ink2); }
@@ -101,6 +111,8 @@ main > div.center > section { flex:1; }
 </style></head><body>
 <header>
   <h1>Paper Desk <em>· Live</em></h1>
+  <div class="stat big"><span>Today's P/L</span><b id="daypl">—</b></div>
+  <div class="stat big"><span>All-time P/L</span><b id="allpl">—</b></div>
   <div class="stat"><span>Account value</span><b id="eq">—</b></div>
   <div class="stat"><span>Cash ready</span><b id="cash">—</b></div>
   <div class="stat"><span>Holdings</span><b id="npos">—</b></div>
@@ -112,7 +124,7 @@ main > div.center > section { flex:1; }
 <div><!-- left: state -->
   <section><h2>What it owns</h2><table id="book"></table></section>
   <section><h2>Orders waiting</h2><table id="orders"></table></section>
-  <section><h2>Traps set <span class="sub">buys that fire the second their price prints</span></h2><table id="trig"></table></section>
+  <section><h2>Traps set <span class="sub">buys that fire on their price</span></h2><table id="trig"></table></section>
   <section><h2>Track record</h2><div id="record" class="small">no completed trades yet</div></section>
   <section><h2>Under the hood <span class="sub">technical logs</span></h2>
     <details><summary>Safety-net activity (watcher)</summary><pre class="raw" id="wlog"></pre></details>
@@ -122,78 +134,76 @@ main > div.center > section { flex:1; }
 <div class="center"><!-- center: the agent, animated -->
   <section>
     <h2>The agent at work <span class="sub" id="agentstate"></span></h2>
-    <svg class="map" viewBox="0 0 560 430" aria-label="Live data-flow map">
-  <defs>
-    <radialGradient id="braing" cx="50%" cy="35%">
-      <stop offset="0%" stop-color="#C9714F"/><stop offset="100%" stop-color="#7E3520"/></radialGradient>
-  </defs>
-
+    <svg class="map" viewBox="0 0 900 520" aria-label="Live data-flow map">
   <!-- edges (data pipes). Each has a path + particle group. -->
-  <g class="pipe" id="p-ticks-brain"><path id="e1" d="M118,70 C180,80 200,140 232,168"/>
-    <circle r="3.2"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle>
-    <circle r="2.4"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle></g>
-  <g class="pipe" id="p-scan-brain"><path id="e2" d="M118,160 C170,165 190,180 226,192"/>
-    <circle r="3"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#e2"/></animateMotion></circle></g>
-  <g class="pipe" id="p-news-brain"><path id="e3" d="M118,250 C170,245 195,225 228,212"/>
-    <circle r="3"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite"><mpath href="#e3"/></animateMotion></circle></g>
-  <g class="pipe" id="p-mem-brain"><path id="e4" d="M118,340 C180,330 205,255 235,226"/>
-    <circle r="3.2"><animateMotion dur="2s" begin="0.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle>
-    <circle r="2.2"><animateMotion dur="2s" begin="1.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle></g>
-  <g class="pipe" id="p-brain-shield"><path id="e5" d="M338,180 C375,165 390,150 415,138"/>
-    <circle r="3.4"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#e5"/></animateMotion></circle></g>
-  <g class="pipe" id="p-shield-exch"><path id="e6" d="M470,160 C475,190 475,205 470,232"/>
-    <circle r="3.4"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#e6"/></animateMotion></circle></g>
-  <g class="pipe" id="p-exch-mem"><path id="e7" d="M430,290 C330,370 190,380 105,362"/>
-    <circle r="3"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle>
-    <circle r="2.2"><animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle></g>
-  <g class="pipe" id="p-ticks-guard"><path id="e8" d="M118,80 C140,190 200,300 245,330"/>
-    <circle r="3"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#e8"/></animateMotion></circle></g>
-  <g class="pipe" id="p-guard-shield"><path id="e9" d="M330,340 C420,330 455,230 462,165"/>
-    <circle r="3"><animateMotion dur="1.7s" begin="0.4s" repeatCount="indefinite"><mpath href="#e9"/></animateMotion></circle></g>
+  <g class="pipe" id="p-ticks-brain"><path id="e1" d="M150,110 C260,130 350,180 415,210"/>
+    <circle r="3"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle>
+    <circle r="2.2"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle></g>
+  <g class="pipe" id="p-scan-brain"><path id="e2" d="M130,290 C240,280 330,260 408,245"/>
+    <circle r="2.8"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#e2"/></animateMotion></circle></g>
+  <g class="pipe" id="p-news-brain"><path id="e3" d="M200,455 C290,400 360,320 425,275"/>
+    <circle r="2.8"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite"><mpath href="#e3"/></animateMotion></circle></g>
+  <g class="pipe" id="p-mem-brain"><path id="e4" d="M360,455 C390,390 420,320 445,285"/>
+    <circle r="3"><animateMotion dur="2s" begin="0.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle>
+    <circle r="2.1"><animateMotion dur="2s" begin="1.3s" repeatCount="indefinite"><mpath href="#e4"/></animateMotion></circle></g>
+  <g class="pipe" id="p-brain-shield"><path id="e5" d="M505,215 C560,185 600,160 640,140"/>
+    <circle r="3.2"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#e5"/></animateMotion></circle></g>
+  <g class="pipe" id="p-shield-exch"><path id="e6" d="M675,155 C710,200 740,250 760,280"/>
+    <circle r="3.2"><animateMotion dur="1.1s" repeatCount="indefinite"><mpath href="#e6"/></animateMotion></circle></g>
+  <g class="pipe" id="p-exch-mem"><path id="e7" d="M755,325 C640,430 500,470 395,462"/>
+    <circle r="2.8"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle>
+    <circle r="2.1"><animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite"><mpath href="#e7"/></animateMotion></circle></g>
+  <g class="pipe" id="p-ticks-guard"><path id="e8" d="M165,130 C300,260 480,380 600,430"/>
+    <circle r="2.8"><animateMotion dur="1.3s" repeatCount="indefinite"><mpath href="#e8"/></animateMotion></circle></g>
+  <g class="pipe" id="p-guard-shield"><path id="e9" d="M635,425 C680,340 665,220 662,152"/>
+    <circle r="2.8"><animateMotion dur="1.7s" begin="0.4s" repeatCount="indefinite"><mpath href="#e9"/></animateMotion></circle></g>
 
-  <!-- source nodes -->
-  <g class="nd" id="n-ticks"><rect x="8" y="46" width="110" height="46" rx="10"/>
-    <circle class="dot" cx="22" cy="60" r="3.5"/>
-    <text class="nm" x="66" y="66">Price ticks</text><text class="ns" x="66" y="82" id="ns-ticks">—</text></g>
-  <g class="nd" id="n-scan"><rect x="8" y="136" width="110" height="46" rx="10"/>
-    <circle class="dot" cx="22" cy="150" r="3.5"/>
-    <text class="nm" x="66" y="156">Market scan</text><text class="ns" x="66" y="172" id="ns-scan">—</text></g>
-  <g class="nd" id="n-news"><rect x="8" y="226" width="110" height="46" rx="10"/>
-    <circle class="dot" cx="22" cy="240" r="3.5"/>
-    <text class="nm" x="66" y="246">News</text><text class="ns" x="66" y="262" id="ns-news">read-only</text></g>
-  <g class="nd" id="n-mem"><rect x="8" y="316" width="110" height="52" rx="10"/>
-    <circle class="dot" cx="22" cy="330" r="3.5"/>
-    <text class="nm" x="66" y="336">Memory</text><text class="ns" x="66" y="352" id="ns-mem">its rulebook</text></g>
+  <!-- satellite constellations: the data each agent is holding right now (filled live by JS) -->
+  <g class="sats" id="sat-ticks"></g><g class="sats" id="sat-scan"></g><g class="sats" id="sat-news"></g>
+  <g class="sats" id="sat-mem"></g><g class="sats" id="sat-exch"></g><g class="sats" id="sat-guard"></g>
 
-  <!-- brain -->
-  <g class="nd brain" id="n-brain"><circle cx="285" cy="197" r="54" fill="url(#braing)"/>
-    <circle class="ring" cx="285" cy="197" r="61"/>
-    <text class="nm big" x="285" y="193">The Brain</text><text class="ns" x="285" y="211" id="ns-brain">—</text></g>
-
-  <!-- right column -->
-  <g class="nd" id="n-shield"><rect x="415" y="108" width="112" height="52" rx="10"/>
-    <circle class="dot" cx="429" cy="122" r="3.5"/>
-    <text class="nm" x="471" y="128">The Shield</text><text class="ns" x="471" y="146" id="ns-shield">every order checked</text></g>
-  <g class="nd" id="n-exch"><rect x="415" y="232" width="112" height="52" rx="10"/>
-    <circle class="dot" cx="429" cy="246" r="3.5"/>
-    <text class="nm" x="471" y="252">Exchange</text><text class="ns" x="471" y="270" id="ns-exch">—</text></g>
-  <g class="nd" id="n-guard"><rect x="245" y="314" width="112" height="48" rx="10"/>
-    <circle class="dot" cx="259" cy="328" r="3.5"/>
-    <text class="nm" x="301" y="334">Reflexes</text><text class="ns" x="301" y="350" id="ns-guard">—</text></g>
+  <!-- agent hubs -->
+  <g class="nd" id="n-ticks"><circle class="glow" cx="150" cy="110" r="18"/><circle class="halo" cx="150" cy="110" r="9"/>
+    <circle class="core" cx="150" cy="110" r="5"/>
+    <text class="nm" x="150" y="138">Price ticks</text><text class="ns" x="150" y="151" id="ns-ticks">—</text></g>
+  <g class="nd" id="n-scan"><circle class="glow" cx="130" cy="290" r="18"/><circle class="halo" cx="130" cy="290" r="9"/>
+    <circle class="core" cx="130" cy="290" r="5"/>
+    <text class="nm" x="130" y="318">Market scan</text><text class="ns" x="130" y="331" id="ns-scan">—</text></g>
+  <g class="nd" id="n-news"><circle class="glow" cx="200" cy="455" r="16"/><circle class="halo" cx="200" cy="455" r="8"/>
+    <circle class="core" cx="200" cy="455" r="4.5"/>
+    <text class="nm" x="200" y="431">News</text><text class="ns" x="200" y="443" id="ns-news">read-only</text></g>
+  <g class="nd" id="n-mem"><circle class="glow" cx="360" cy="455" r="18"/><circle class="halo" cx="360" cy="455" r="9"/>
+    <circle class="core" cx="360" cy="455" r="5"/>
+    <text class="nm" x="360" y="429">Memory</text><text class="ns" x="360" y="441" id="ns-mem">its rulebook</text></g>
+  <g class="nd brain" id="n-brain"><circle class="glow" cx="460" cy="235" r="30"/><circle class="halo" cx="460" cy="235" r="16"/>
+    <circle class="core" cx="460" cy="235" r="8"/><circle class="ring" cx="460" cy="235" r="36"/>
+    <text class="nm big" x="460" y="292">The Brain</text><text class="ns" x="460" y="306" id="ns-brain">—</text></g>
+  <g class="nd" id="n-shield"><circle class="glow" cx="660" cy="130" r="18"/><circle class="halo" cx="660" cy="130" r="9"/>
+    <circle class="core" cx="660" cy="130" r="5"/>
+    <text class="nm" x="660" y="102">The Shield</text><text class="ns" x="660" y="115" id="ns-shield">every order checked</text></g>
+  <g class="nd" id="n-exch"><circle class="glow" cx="770" cy="300" r="18"/><circle class="halo" cx="770" cy="300" r="9"/>
+    <circle class="core" cx="770" cy="300" r="5"/>
+    <text class="nm" x="770" y="328">Exchange</text><text class="ns" x="770" y="341" id="ns-exch">—</text></g>
+  <g class="nd" id="n-guard"><circle class="glow" cx="620" cy="440" r="16"/><circle class="halo" cx="620" cy="440" r="8"/>
+    <circle class="core" cx="620" cy="440" r="4.5"/>
+    <text class="nm" x="620" y="414">Reflexes</text><text class="ns" x="620" y="426" id="ns-guard">—</text></g>
 </svg>
 <div class="legend">
-  Dots are live data moving. Prices and research stream into the <b style="color:var(--clay)">Brain</b>, which re-reads its
-  <b style="color:var(--plum)">Memory</b> before every decision. Decisions pass the <b style="color:var(--moss)">Shield</b>
-  (never short, never borrowed) to the <b style="color:var(--teal)">Exchange</b>, and outcomes flow back into Memory.
-  <b style="color:var(--ember)">Reflexes</b> watch raw ticks and cut losers in about a second.
+  Big glows are the agents; the small dots around each one are the actual stocks and orders it is holding right now,
+  and moving dots on the lines are live data in transit. Everything streams into the <b style="color:var(--clay)">Brain</b>,
+  which re-reads its <b style="color:var(--plum)">Memory</b> before every decision. Decisions pass the
+  <b style="color:var(--moss)">Shield</b> (never short, never borrowed) to the <b style="color:var(--teal)">Exchange</b>,
+  outcomes flow back into Memory, and <b style="color:var(--ember)">Reflexes</b> cut losers in about a second.
 </div>
-<div class="feed" id="feed"></div>
+<div class="below">
+  <div><h3>Live events</h3><div id="feed"></div></div>
+  <div><h3>What it's thinking <span class="sub">newest first</span></h3><div id="journal"></div></div>
+</div>
   </section>
 </div>
-<div><!-- right: mind + research -->
-  <section><h2>What it's thinking <span class="sub">newest first</span></h2><div id="journal"></div></section>
+<div><!-- right: research -->
   <section><h2>What's moving <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
-  <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:170px"></pre></section>
+  <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:34vh"></pre></section>
 </div>
 </main>
 <script>
@@ -206,9 +216,37 @@ const feedItems = [];
 function feed(txt, cls) {
   const now = new Date().toTimeString().slice(0,8);
   feedItems.unshift({ t: now, txt, cls: cls || "note" });
-  if (feedItems.length > 8) feedItems.pop();
+  if (feedItems.length > 12) feedItems.pop();
   $("feed").innerHTML = feedItems.map(f =>
     `<div class="card"><time>${f.t}</time><span class="chip ${f.cls}">event</span><span class="txt">${esc(f.txt)}</span></div>`).join("");
+}
+const uniq = arr => [...new Set(arr)];
+const HUBS = { ticks:[150,110], scan:[130,290], news:[200,455], mem:[360,455], exch:[770,300], guard:[620,440] };
+function renderSats(name, items) {
+  const g = $("sat-" + name); if (!g) return;
+  const key = JSON.stringify(items);
+  if (g.dataset.k === key) return;
+  g.dataset.k = key;
+  const [hx, hy] = HUBS[name];
+  const away = Math.atan2(hy - 262, hx - 460);
+  const n = items.length; let out = "";
+  items.forEach((it, i) => {
+    const t = n === 1 ? 0 : (i / (n - 1) - 0.5);
+    const a = away + t * 2.4;
+    const r = 48 + ((i * 37) % 3) * 15 + ((i * 13) % 9);
+    const x = hx + Math.cos(a) * r, y = hy + Math.sin(a) * r;
+    out += `<line x1="${hx}" y1="${hy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>` +
+      `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.4" style="animation-delay:${((i * 0.37) % 2.8).toFixed(2)}s"/>` +
+      `<text x="${(hx + Math.cos(a) * (r + 11)).toFixed(1)}" y="${(hy + Math.sin(a) * (r + 11) + 2.5).toFixed(1)}">${esc(it)}</text>`;
+  });
+  g.innerHTML = out;
+}
+function setPl(id, v, base) {
+  const el = $(id); if (v == null) { el.textContent = "—"; el.className = ""; return; }
+  const pct = base ? v / base * 100 : 0;
+  el.textContent = (v < 0 ? "−" : "+") + money(Math.abs(v)) +
+    " (" + (v < 0 ? "−" : "+") + Math.abs(pct).toFixed(2) + "%)";
+  el.className = v >= 0 ? "up" : "down";
 }
 function pipe(id, alive) { const e = $(id); if (e) e.classList.toggle("dead", !alive); }
 function hot(id, ms) { const e = $(id); if (!e) return; e.classList.add("hot"); setTimeout(() => e.classList.remove("hot"), ms || 2500); }
@@ -244,6 +282,17 @@ async function refresh() {
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
+  // big P/L counters
+  const eqN = Number(s.broker.equity) || null;
+  setPl("allpl", eqN ? eqN - 100000 : null, 100000);
+  let dayBase = Number(s.broker.last_equity) || null;
+  if (!dayBase && eqN) {
+    const d = new Date(), key = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const prior = (s.performance || []).filter(p => String(p.ts).slice(0, 10) < key && Number(p.equity));
+    dayBase = prior.length ? Number(prior[prior.length - 1].equity) : null;
+  }
+  setPl("daypl", eqN && dayBase ? eqN - dayBase : null, dayBase);
+
   const a = s.agents, lock = a.session_lock;
   const thinking = lock && lock.age < 1500;
   const guardOn = a.watcher_alive;
@@ -264,6 +313,18 @@ async function refresh() {
   node("n-shield", halted ? "off" : "on", halted ? "KILL SWITCH PULLED" : "every order checked");
   node("n-exch", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : nOrd + " orders · " + nTrig + " traps");
   node("n-guard", guardOn ? "on" : "", guardOn ? "on duty · cuts losers in ~1s" : "asleep (market closed)");
+
+  // satellites: the data each agent is holding right now
+  const posSyms = (s.broker.positions || []).map(p => p.symbol);
+  const ordSyms = (s.broker.orders || []).map(o => o.symbol);
+  const trapSyms = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t => t.symbol);
+  renderSats("ticks", uniq([...posSyms, ...ordSyms, ...trapSyms]).slice(0, 12));
+  renderSats("scan", (s.scan || []).slice(0, 14).map(r => r.symbol));
+  renderSats("news", uniq([...posSyms, ...ordSyms]).slice(0, 5));
+  renderSats("mem", uniq((s.trades || []).map(t => t.symbol)).slice(0, 12));
+  renderSats("exch", (s.broker.orders || []).map(o => o.symbol + " $" + Number(o.limit_price || 0).toFixed(0))
+    .concat(trapSyms.map(x => x + "·trap")).slice(0, 12));
+  renderSats("guard", uniq(posSyms.length ? posSyms : ordSyms).slice(0, 8));
 
   // pipes (live data transfer)
   pipe("p-ticks-brain", streamOn && thinking);
