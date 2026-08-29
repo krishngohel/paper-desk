@@ -193,7 +193,7 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
     <text class="nm" x="660" y="102">The Shield</text><text class="ns" x="660" y="115" id="ns-shield">every order checked</text></g>
   <g class="nd" id="n-exch"><circle class="glow" cx="770" cy="300" r="18"/><circle class="halo" cx="770" cy="300" r="9"/>
     <circle class="core" cx="770" cy="300" r="5"/>
-    <text class="nm" x="770" y="328">Exchange</text><text class="ns" x="770" y="341" id="ns-exch">—</text></g>
+    <text class="nm" x="770" y="328">Alpaca</text><text class="ns" x="770" y="341" id="ns-exch">—</text></g>
   <g class="nd" id="n-guard"><circle class="glow" cx="620" cy="440" r="16"/><circle class="halo" cx="620" cy="440" r="8"/>
     <circle class="core" cx="620" cy="440" r="4.5"/>
     <text class="nm" x="620" y="414">Reflexes</text><text class="ns" x="620" y="426" id="ns-guard">—</text></g>
@@ -203,8 +203,9 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
   Big glows are the agents; the small dots around each one are the actual stocks and orders it is holding right now,
   and moving dots on the lines are live data in transit. Everything streams into the <b style="color:var(--clay)">Brain</b>,
   which re-reads its <b style="color:var(--plum)">Memory</b> before every decision. Decisions pass the
-  <b style="color:var(--moss)">Shield</b> (never short, never borrowed) to the <b style="color:var(--teal)">Exchange</b>,
-  outcomes flow back into Memory, and <b style="color:var(--ember)">Reflexes</b> cut losers in about a second.
+  <b style="color:var(--moss)">Shield</b> (never short, never borrowed) to <b style="color:var(--teal)">Alpaca</b>,
+  the real paper-broker endpoint, outcomes flow back into Memory, and <b style="color:var(--ember)">Reflexes</b> cut losers in about a second.
+  Moving dots only animate on links that are transferring data right now.
 </div>
 <div class="below">
   <div><h3>Live events</h3><div id="feed"></div></div>
@@ -289,17 +290,25 @@ function rgba(hex, a) {
   const h = hex.replace("#",""); const v = parseInt(h.length === 3 ? h.split("").map(c=>c+c).join("") : h, 16);
   return `rgba(${v>>16&255},${v>>8&255},${v&255},${a})`;
 }
-const THREADS = { scene:null, raf:null };
+const THREADS = { scene:null, raf:null, live:[], seen:new Map(), booted:false };
 function buildThreads(d) {
   const pick = (arr, fb) => arr.length ? arr : [fb];
   THREADS.scene = [
-    { name:"Market scan", c:cssVar("--ochre"), items: pick(d.scan, "quiet") },
-    { name:"Price ticks", c:cssVar("--blue"),  items: pick(d.ticks, "closed") },
-    { name:"The Brain",   c:cssVar("--clay"),  items: pick(d.brain, "resting") },
-    { name:"The Shield",  c:cssVar("--moss"),  items: ["long-only","no borrowing","price band","rate limit","oversell"] },
-    { name:"Exchange",    c:cssVar("--teal"),  items: pick(d.exch, "no orders") },
-    { name:"Memory",      c:cssVar("--plum"),  items: pick(d.mem, "empty") },
+    { name:"Market scan",        c:cssVar("--ochre"), items: pick(d.scan, "quiet") },
+    { name:"Price ticks",        c:cssVar("--blue"),  items: pick(d.ticks, "closed") },
+    { name:"The Brain",          c:cssVar("--clay"),  items: pick(d.brain, "resting") },
+    { name:"The Shield",         c:cssVar("--moss"),  items: ["long-only","no borrowing","price band","rate limit","oversell"] },
+    { name:"Alpaca · paper API", c:cssVar("--teal"),  items: pick(d.exch, "no orders") },
+    { name:"Memory",             c:cssVar("--plum"),  items: pick(d.mem, "empty") },
   ];
+  THREADS.live = d.live || [];
+  const t = THREADS.booted ? performance.now() : 0;
+  THREADS.scene.forEach(col => col.items.forEach(it => {
+    const k = col.name + "|" + it;
+    if (!THREADS.seen.has(k)) THREADS.seen.set(k, t);
+  }));
+  if (THREADS.seen.size > 600) THREADS.seen.clear();
+  THREADS.booted = true;
 }
 function sizeThreads() {
   const cv = $("threads"), r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
@@ -328,6 +337,7 @@ function drawThreads(now) {
   });
   for (let k = 0; k < cols.length - 1; k++) {
     const A = pos[k], B = pos[k + 1], colA = cols[k].c;
+    const alive = !!THREADS.live[k];
     ctx.lineWidth = 0.8 * dpr;
     for (let i = 0; i < A.length; i++) {
       const tg = A.length * B.length <= 40 ? B.map((_, j) => j) : uniq([(i * 7 + 1) % B.length, (i * 13 + 3) % B.length, (i * 3) % B.length]);
@@ -335,10 +345,10 @@ function drawThreads(now) {
         const p0 = A[i], p3 = B[j];
         const p1 = [p0[0] + gap * 0.45, p0[1] + (midY - p0[1]) * 0.72];
         const p2 = [p0[0] + gap * 0.55, p3[1] + (midY - p3[1]) * 0.72];
-        ctx.strokeStyle = rgba(colA, 0.16);
+        ctx.strokeStyle = rgba(colA, alive ? 0.17 : 0.055);
         ctx.beginPath(); ctx.moveTo(p0[0], p0[1]);
         ctx.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]); ctx.stroke();
-        if ((i + j) % 3 === 0) {
+        if (alive && (i + j) % 3 === 0) {
           const t = (now / 2600 + (i * 0.17 + j * 0.31 + k * 0.5)) % 1;
           const [px, py] = bez(p0, p1, p2, p3, t);
           ctx.fillStyle = rgba(colA, 0.14); ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 7); ctx.fill();
@@ -348,13 +358,16 @@ function drawThreads(now) {
     }
   }
   cols.forEach((col, k) => {
-    const showLbl = col.items.length <= 14;
+    const showLbl = col.items.length <= 22;
     pos[k].forEach(([x, y], i) => {
-      ctx.fillStyle = rgba(col.c, 0.18); ctx.beginPath(); ctx.arc(x, y, 5 * dpr, 0, 7); ctx.fill();
-      ctx.fillStyle = rgba(col.c, 0.95); ctx.beginPath(); ctx.arc(x, y, 2.2 * dpr, 0, 7); ctx.fill();
+      const ts = THREADS.seen.get(col.name + "|" + col.items[i]) || 0;
+      const fresh = ts > 0 && now - ts < 45000;
+      const pump = fresh ? 1 + 0.35 * Math.sin(now / 220) : 1;
+      ctx.fillStyle = rgba(col.c, fresh ? 0.35 : 0.18); ctx.beginPath(); ctx.arc(x, y, (fresh ? 7.5 : 5) * dpr * pump, 0, 7); ctx.fill();
+      ctx.fillStyle = rgba(col.c, 0.95); ctx.beginPath(); ctx.arc(x, y, (fresh ? 3 : 2.2) * dpr * pump, 0, 7); ctx.fill();
       if (showLbl) {
         ctx.globalCompositeOperation = "source-over";
-        ctx.fillStyle = rgba(col.c, 0.85); ctx.font = `${9 * dpr}px "JetBrains Mono",monospace`;
+        ctx.fillStyle = rgba(col.c, fresh ? 1 : 0.85); ctx.font = `${(fresh ? 10 : 9) * dpr}px "JetBrains Mono",monospace`;
         ctx.textAlign = k === cols.length - 1 ? "left" : (k === 0 ? "right" : "center");
         ctx.fillText(String(col.items[i]), x + (k === cols.length - 1 ? 8 : (k === 0 ? -8 : 0)) * dpr, y - 6 * dpr);
         ctx.globalCompositeOperation = "lighter";
@@ -455,7 +468,7 @@ async function refresh() {
   const ordSyms = (s.broker.orders || []).map(o => o.symbol);
   const trapSyms = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t => t.symbol);
   const tickList = uniq([...posSyms, ...ordSyms, ...trapSyms]).slice(0, 12);
-  const scanList = (s.scan || []).slice(0, 14).map(r => r.symbol);
+  const scanList = (s.scan || []).slice(0, 20).map(r => r.symbol);
   const memList = uniq((s.trades || []).map(t => t.symbol)).slice(0, 12);
   const exchList = (s.broker.orders || []).map(o => o.symbol + " $" + Number(o.limit_price || 0).toFixed(0))
     .concat(trapSyms.map(x => x + "·trap")).slice(0, 12);
@@ -466,7 +479,16 @@ async function refresh() {
   renderSats("mem", memList);
   renderSats("exch", exchList);
   renderSats("guard", uniq(posSyms.length ? posSyms : ordSyms).slice(0, 8));
-  buildThreads({ scan: scanList, ticks: tickList, brain: brainList, exch: exchList, mem: memList });
+  buildThreads({ scan: scanList, ticks: tickList, brain: brainList, exch: exchList, mem: memList,
+    live: [thinking, streamOn && thinking, thinking, !halted && (thinking || nOrd > 0), guardOn || thinking] });
+
+  // scanner interest changes -> feed
+  if (prev.scanKey && prev.scanKey !== scanList.join(",")) {
+    const old = prev.scanKey.split(",");
+    const added = scanList.filter(x => !old.includes(x)), dropped = old.filter(x => x && !scanList.includes(x));
+    if (added.length) feed("Scanner now interested in " + added.join(", "));
+    if (dropped.length) feed("Scanner lost interest in " + dropped.join(", "));
+  }
 
   // pipes (live data transfer)
   pipe("p-ticks-brain", streamOn && thinking);
@@ -492,7 +514,8 @@ async function refresh() {
     feed(label + ": " + plainHead(s.journal[0].head), cls);
   }
   if (prev.trades !== undefined && (s.trades || []).length !== prev.trades) { hot("p-shield-exch"); hot("p-exch-mem"); }
-  prev = { scan_ts: s.scan_ts, nOrd, wlast: s.watcher_log?.at(-1), jhead: s.journal?.[0]?.head, trades: (s.trades || []).length };
+  prev = { scan_ts: s.scan_ts, nOrd, wlast: s.watcher_log?.at(-1), jhead: s.journal?.[0]?.head,
+    trades: (s.trades || []).length, scanKey: scanList.join(",") };
 
   // panels
   $("journal").innerHTML = (s.journal || []).map(e => {

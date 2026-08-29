@@ -148,7 +148,7 @@ def state() -> dict:
         "journal": _journal_entries(),
         "watcher_log": _tail(LOGS / "watcher.log", 25),
         "sessions_log": _tail(LOGS / "sessions.log", 30),
-        "scan": (scan.get("shortlist") or [])[:12],
+        "scan": (scan.get("shortlist") or [])[:24],
         "scan_ts": scan.get("ts"),
         "stats": stats.get("overall"),
         "watchlist_md": watchlist,
