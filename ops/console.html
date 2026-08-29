@@ -3,180 +3,251 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root { color-scheme: dark;
-  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --mut:#898781;
-  --grid:#2c2c2a; --border:rgba(255,255,255,.10);
-  --a:#3987e5; --v:#d95926; --good:#0ca30c; --crit:#d03b3b; --warn:#fab219; }
+  --bg0:#04070f; --bg1:#0a1224; --panel:rgba(14,23,42,.72); --line:rgba(56,189,248,.14);
+  --ink:#e8f4ff; --ink2:#9fb6cc; --mut:#5b7188;
+  --cyan:#38bdf8; --blue:#2563eb; --good:#2dd4a7; --bad:#ff5d5d; --warn:#fbbf24; }
 * { box-sizing:border-box; }
-body { background:var(--page); color:var(--ink); margin:0;
-  font:13.5px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
-header { display:flex; gap:18px; align-items:baseline; padding:10px 16px;
-  border-bottom:1px solid var(--grid); position:sticky; top:0; background:var(--page); z-index:2; flex-wrap:wrap; }
-h1 { font-size:15px; margin:0; letter-spacing:.02em; }
-.stat b { font-variant-numeric:tabular-nums; font-size:15px; }
-.stat span { color:var(--mut); font-size:11px; text-transform:uppercase; letter-spacing:.05em; margin-right:4px; }
-.up { color:var(--good); } .down { color:var(--crit); }
-main { display:grid; grid-template-columns: 340px 1fr 380px; gap:12px; padding:12px 16px; align-items:start; }
-@media (max-width:1100px){ main { grid-template-columns:1fr; } }
-section { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px 12px; margin-bottom:12px; }
-h2 { font-size:11.5px; margin:0 0 8px; color:var(--mut); text-transform:uppercase; letter-spacing:.06em; }
-pre, .mono { font:12px/1.45 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word; color:var(--ink2); margin:0; }
-.entry { border-top:1px solid var(--grid); padding:7px 0; }
-.entry:first-of-type { border-top:none; }
-.entry b { font-size:12.5px; color:var(--ink); }
-.entry pre { max-height:150px; overflow:auto; margin-top:4px; }
-table { border-collapse:collapse; width:100%; font-size:12.5px; }
-th,td { text-align:left; padding:3px 8px 3px 0; border-bottom:1px solid var(--grid); }
-th { color:var(--mut); font-size:10.5px; text-transform:uppercase; }
+body { margin:0; color:var(--ink);
+  background: radial-gradient(1200px 700px at 50% -10%, #0e2a4d 0%, var(--bg1) 45%, var(--bg0) 100%) fixed;
+  font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { display:flex; gap:26px; align-items:center; padding:14px 22px; flex-wrap:wrap;
+  position:sticky; top:0; z-index:5; backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(4,7,15,.92), rgba(4,7,15,.75));
+  border-bottom:1px solid var(--line); }
+h1 { font-size:16px; margin:0; letter-spacing:.14em; text-transform:uppercase;
+  background: linear-gradient(90deg, var(--cyan), #8ab8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.stat span { display:block; color:var(--mut); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.stat b { font-size:19px; font-weight:650; font-variant-numeric:tabular-nums; }
+.up { color:var(--good); } .down { color:var(--bad); }
+.clock { color:var(--mut); font-size:12px; margin-left:auto; }
+main { display:grid; grid-template-columns: 400px 1fr 400px; gap:14px; padding:14px 22px; align-items:start; }
+@media (max-width:1200px){ main { grid-template-columns:1fr; } }
+section { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; margin-bottom:14px; box-shadow: 0 0 24px rgba(37,99,235,.06) inset; }
+h2 { font-size:12px; margin:0 0 10px; color:var(--cyan); text-transform:uppercase; letter-spacing:.12em; font-weight:600; }
+h2 .sub { color:var(--mut); text-transform:none; letter-spacing:0; font-weight:400; margin-left:8px; }
+table { border-collapse:collapse; width:100%; font-size:14px; }
+th,td { text-align:left; padding:5px 10px 5px 0; border-bottom:1px solid rgba(56,189,248,.08); }
+th { color:var(--mut); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; }
 td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
-.map { width:100%; height:auto; }
-.node rect { fill:var(--page); stroke:var(--grid); stroke-width:1.2; rx:6; }
-.node text { fill:var(--ink2); font:11px system-ui,sans-serif; }
-.node .name { fill:var(--ink); font-weight:600; font-size:12px; }
-.node.on rect { stroke:var(--good); } .node.off rect { stroke:var(--crit); }
-.node.idle rect { stroke:var(--warn); }
-.edge { stroke:var(--grid); stroke-width:1.2; fill:none; marker-end:url(#arr); }
-.pulse { animation: pulse 1.6s infinite; }
-@keyframes pulse { 50% { opacity:.35; } }
-.tag { display:inline-block; padding:0 7px; border-radius:999px; border:1px solid var(--border);
-  font-size:10.5px; color:var(--mut); margin-left:6px; }
-.tag.on { color:var(--good); border-color:var(--good); }
-.tag.off { color:var(--crit); border-color:var(--crit); }
-.small { font-size:11px; color:var(--mut); }
+.entry { border-top:1px solid rgba(56,189,248,.08); padding:10px 0; }
+.entry:first-of-type { border-top:none; padding-top:2px; }
+.entry .head { font-size:13px; color:var(--ink2); }
+.chip { display:inline-block; padding:1px 10px; border-radius:999px; font-size:11.5px; font-weight:600;
+  letter-spacing:.03em; margin-right:8px; vertical-align:1px; }
+.chip.buy { background:rgba(45,212,167,.15); color:var(--good); border:1px solid rgba(45,212,167,.4); }
+.chip.sell { background:rgba(255,93,93,.14); color:var(--bad); border:1px solid rgba(255,93,93,.4); }
+.chip.hold { background:rgba(251,191,36,.12); color:var(--warn); border:1px solid rgba(251,191,36,.35); }
+.chip.note { background:rgba(56,189,248,.12); color:var(--cyan); border:1px solid rgba(56,189,248,.35); }
+details summary { cursor:pointer; color:var(--mut); font-size:12px; margin-top:4px; }
+details pre { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
+  color:var(--ink2); background:rgba(4,7,15,.5); border-radius:8px; padding:10px; margin:8px 0 0; max-height:260px; overflow:auto; }
+pre.raw { font:12px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; color:var(--ink2);
+  max-height:200px; overflow:auto; margin:0; }
+.small { font-size:12px; color:var(--mut); }
+/* ------- JARVIS map ------- */
+.map { width:100%; height:auto; display:block; }
+.core-ring { fill:none; stroke:url(#ringGrad); stroke-width:2; opacity:.9;
+  transform-origin: 210px 150px; animation: spin 14s linear infinite; }
+.core-ring2 { fill:none; stroke:rgba(56,189,248,.35); stroke-width:1; stroke-dasharray: 4 10;
+  transform-origin: 210px 150px; animation: spin 30s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.edge { stroke:url(#edgeGrad); stroke-width:1.6; fill:none; stroke-dasharray:6 8;
+  animation: flow 1.4s linear infinite; opacity:.8; }
+.edge.dead { stroke:rgba(91,113,136,.35); animation:none; }
+@keyframes flow { to { stroke-dashoffset:-14; } }
+.orb circle.body { fill:url(#orbGrad); stroke-width:1.6; }
+.orb.on circle.body { stroke:var(--good); filter:url(#glowG); }
+.orb.idle circle.body { stroke:var(--warn); }
+.orb.off circle.body { stroke:var(--bad); filter:url(#glowR); }
+.orb text.name { fill:var(--ink); font:600 12.5px system-ui,sans-serif; text-anchor:middle; }
+.orb text.st { fill:var(--ink2); font:11px system-ui,sans-serif; text-anchor:middle; }
+.corelabel { fill:var(--ink); font:700 13px system-ui,sans-serif; text-anchor:middle; letter-spacing:.08em; }
+.corestate { fill:var(--cyan); font:11.5px system-ui,sans-serif; text-anchor:middle; }
+@media (prefers-reduced-motion: reduce) { .core-ring,.core-ring2,.edge { animation:none; } }
 </style></head><body>
 <header>
-  <h1>Trading Ops Console</h1>
-  <div class="stat"><span>Equity</span><b id="eq">-</b></div>
-  <div class="stat"><span>Cash</span><b id="cash">-</b></div>
-  <div class="stat"><span>Positions</span><b id="npos">-</b></div>
-  <div class="stat"><span>Resting orders</span><b id="nord">-</b></div>
-  <div class="stat"><span>Halt</span><b id="halt">-</b></div>
-  <div class="stat small" id="clock"></div>
+  <h1>Paper Desk · Live</h1>
+  <div class="stat"><span>Account value</span><b id="eq">—</b></div>
+  <div class="stat"><span>Cash ready</span><b id="cash">—</b></div>
+  <div class="stat"><span>Holdings</span><b id="npos">—</b></div>
+  <div class="stat"><span>Orders waiting</span><b id="nord">—</b></div>
+  <div class="stat"><span>Kill switch</span><b id="halt">—</b></div>
+  <div class="clock" id="clock"></div>
 </header>
 <main>
-<div><!-- left: agent map + machinery logs -->
+<div><!-- left -->
   <section>
-    <h2>Agent map <span class="small" id="mapts"></span></h2>
-    <svg class="map" viewBox="0 0 320 330" id="agentmap">
-      <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-        <path d="M0,0 L7,3.5 L0,7 z" fill="#2c2c2a"/></marker></defs>
-      <path class="edge" d="M160,52 V80"/>
-      <path class="edge" d="M85,128 Q60,160 85,190"/>
-      <path class="edge" d="M235,128 Q260,160 235,190"/>
-      <path class="edge" d="M160,128 V190"/>
-      <path class="edge" d="M160,238 V266"/>
-      <g class="node" id="n-relay"><rect x="90" y="12" width="140" height="40"/>
-        <text x="160" y="29" text-anchor="middle" class="name">Session relay</text>
-        <text x="160" y="44" text-anchor="middle" id="t-relay">-</text></g>
-      <g class="node" id="n-watcher"><rect x="20" y="88" width="130" height="40"/>
-        <text x="85" y="105" text-anchor="middle" class="name">Watcher (2s)</text>
-        <text x="85" y="120" text-anchor="middle" id="t-watcher">-</text></g>
-      <g class="node" id="n-stream"><rect x="170" y="88" width="130" height="40"/>
-        <text x="235" y="105" text-anchor="middle" class="name">Tick stream</text>
-        <text x="235" y="120" text-anchor="middle" id="t-stream">-</text></g>
-      <g class="node" id="n-triggers"><rect x="20" y="198" width="130" height="40"/>
-        <text x="85" y="215" text-anchor="middle" class="name">Armed triggers</text>
-        <text x="85" y="230" text-anchor="middle" id="t-triggers">-</text></g>
-      <g class="node" id="n-gate"><rect x="95" y="198" width="130" height="40" transform="translate(0,0)" visibility="hidden"/></g>
-      <g class="node" id="n-mandate"><rect x="95" y="190" width="130" height="48"/>
-        <text x="160" y="207" text-anchor="middle" class="name">Mandate gate</text>
-        <text x="160" y="222" text-anchor="middle" id="t-mandate">long-only · cash</text>
-        <text x="160" y="234" text-anchor="middle" id="t-mandate2">-</text></g>
-      <g class="node" id="n-snap"><rect x="170" y="198" width="130" height="40" transform="translate(60,0)" visibility="hidden"/></g>
-      <g class="node" id="n-snapshot"><rect x="230" y="198" width="80" height="40" visibility="hidden"/></g>
-      <g class="node" id="n-broker"><rect x="90" y="274" width="140" height="44"/>
-        <text x="160" y="291" text-anchor="middle" class="name">Alpaca (paper)</text>
-        <text x="160" y="306" text-anchor="middle" id="t-broker">-</text></g>
+    <h2>The system <span class="sub" id="mapts"></span></h2>
+    <svg class="map" viewBox="0 0 420 320" aria-label="Live map of the trading system">
+      <defs>
+        <radialGradient id="coreGrad" cx="50%" cy="45%">
+          <stop offset="0%" stop-color="#7dd3fc" stop-opacity=".95"/>
+          <stop offset="45%" stop-color="#2563eb" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#0a1224" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="orbGrad" cx="50%" cy="38%">
+          <stop offset="0%" stop-color="#123055"/>
+          <stop offset="100%" stop-color="#0a1224"/>
+        </radialGradient>
+        <linearGradient id="ringGrad"><stop offset="0%" stop-color="#38bdf8"/>
+          <stop offset="60%" stop-color="#2563eb"/><stop offset="100%" stop-color="#38bdf8" stop-opacity=".15"/></linearGradient>
+        <linearGradient id="edgeGrad"><stop offset="0%" stop-color="#38bdf8" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#2563eb" stop-opacity=".35"/></linearGradient>
+        <filter id="glowG"><feGaussianBlur stdDeviation="2.6" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glowR"><feGaussianBlur stdDeviation="2.6" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <path class="edge" id="e-brain" d="M210,150 L90,64"/>
+      <path class="edge" id="e-eyes" d="M210,150 L330,64"/>
+      <path class="edge" id="e-guard" d="M210,150 L70,205"/>
+      <path class="edge" id="e-trig" d="M210,150 L350,205"/>
+      <path class="edge" id="e-market" d="M210,150 L210,278"/>
+      <circle cx="210" cy="150" r="86" fill="url(#coreGrad)"/>
+      <circle class="core-ring" cx="210" cy="150" r="46"/>
+      <circle class="core-ring2" cx="210" cy="150" r="58"/>
+      <text class="corelabel" x="210" y="147">THE SHIELD</text>
+      <text class="corestate" x="210" y="163" id="c-core">long-only · cash only</text>
+      <g class="orb" id="o-brain"><circle class="body" cx="90" cy="64" r="34"/>
+        <text class="name" x="90" y="60">Brain</text><text class="st" x="90" y="76" id="s-brain">—</text></g>
+      <g class="orb" id="o-eyes"><circle class="body" cx="330" cy="64" r="34"/>
+        <text class="name" x="330" y="60">Eyes</text><text class="st" x="330" y="76" id="s-eyes">—</text></g>
+      <g class="orb" id="o-guard"><circle class="body" cx="70" cy="205" r="34"/>
+        <text class="name" x="70" y="201">Reflexes</text><text class="st" x="70" y="217" id="s-guard">—</text></g>
+      <g class="orb" id="o-trig"><circle class="body" cx="350" cy="205" r="34"/>
+        <text class="name" x="350" y="201">Traps</text><text class="st" x="350" y="217" id="s-trig">—</text></g>
+      <g class="orb" id="o-market"><circle class="body" cx="210" cy="278" r="30"/>
+        <text class="name" x="210" y="274">Market</text><text class="st" x="210" y="290" id="s-market">—</text></g>
     </svg>
+    <div class="small" style="margin-top:6px">
+      <b style="color:var(--ink2)">Brain</b> researches and decides · <b style="color:var(--ink2)">Eyes</b> watch every price tick ·
+      <b style="color:var(--ink2)">Reflexes</b> pull the ripcord on losers in ~1s ·
+      <b style="color:var(--ink2)">Traps</b> are pre-planned buys waiting for their price ·
+      everything passes through <b style="color:var(--ink2)">the Shield</b>: never short, never borrowed money.
+    </div>
   </section>
-  <section><h2>Watcher log</h2><pre id="wlog" style="max-height:180px;overflow:auto"></pre></section>
-  <section><h2>Session stdout</h2><pre id="slog" style="max-height:180px;overflow:auto"></pre></section>
-</div>
-<div><!-- middle: thought stream -->
   <section>
-    <h2>Thought stream - journal, newest first</h2>
+    <h2>Track record</h2>
+    <div id="record" class="small">no completed trades yet</div>
+  </section>
+  <section>
+    <h2>Under the hood <span class="sub">technical logs, if you're curious</span></h2>
+    <details><summary>Safety-net activity (watcher)</summary><pre class="raw" id="wlog"></pre></details>
+    <details><summary>Session output (raw)</summary><pre class="raw" id="slog"></pre></details>
+  </section>
+</div>
+<div><!-- middle -->
+  <section>
+    <h2>What it's thinking <span class="sub">newest first, updates live</span></h2>
     <div id="journal"></div>
   </section>
 </div>
-<div><!-- right: book, triggers, research -->
-  <section><h2>Book</h2><table id="book"></table></section>
-  <section><h2>Resting orders</h2><table id="orders"></table></section>
-  <section><h2>Armed triggers</h2><table id="trig"></table></section>
-  <section><h2>Market scan <span class="small" id="scants"></span></h2><table id="scan"></table></section>
-  <section><h2>Ledger stats</h2><pre id="stats"></pre></section>
-  <section><h2>Watchlist / battle plan</h2><pre id="wl" style="max-height:260px;overflow:auto"></pre></section>
+<div><!-- right -->
+  <section><h2>What it owns</h2><table id="book"></table></section>
+  <section><h2>Orders waiting at the exchange</h2><table id="orders"></table></section>
+  <section><h2>Traps set <span class="sub">buys that fire the second their price prints</span></h2><table id="trig"></table></section>
+  <section><h2>What's moving in the market <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
+  <section><h2>The plan for Monday</h2><details open><summary class="small">battle plan (from weekend research)</summary><pre class="raw" id="wl" style="max-height:280px"></pre></details></section>
 </div>
 </main>
 <script>
 const $ = id => document.getElementById(id);
-const money = v => v == null ? "-" : "$" + Number(v).toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+const money = v => v == null ? "—" : "$" + Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 
-function setNode(id, cls, text) {
-  const n = $(id); n.classList.remove("on","off","idle"); n.classList.add(cls);
-  if (text !== undefined) n.querySelector("text:last-child").textContent = text;
+function orb(id, cls, text) {
+  const o = $( "o-" + id); o.classList.remove("on","idle","off"); o.classList.add(cls);
+  $("s-" + id).textContent = text;
+  const e = $("e-" + { brain:"brain", eyes:"eyes", guard:"guard", trig:"trig", market:"market" }[id]);
+  if (e) e.classList.toggle("dead", cls !== "on");
+}
+
+function actionChip(body) {
+  const m = (body.match(/- action: *([^\n]*)/i) || [])[1] || "";
+  if (/BUY|BOUGHT|entered|FIRED/i.test(m)) return ["buy", "Bought"];
+  if (/SELL|SOLD|exit|flatten/i.test(m)) return ["sell", "Sold"];
+  if (/HOLD/i.test(m)) return ["hold", "Held"];
+  return ["note", "Note"];
+}
+function plainHead(head) {
+  return head
+    .replace(/ CT - continuous/i, " — trading session")
+    .replace(/ CT - intraday/i, " — trading session")
+    .replace(/ CT - open/i, " — opening session")
+    .replace(/ CT - preclose/i, " — end-of-day wrap-up")
+    .replace(/ CT - weekly-review/i, " — weekly self-review")
+    .replace(/ CT - research/i, " — homework session")
+    .replace(/ CT - triggered/i, " — wake-up check")
+    .replace(/ CT - watcher/i, " — safety net acted")
+    .replace(/ CT - operator-note.*/i, " — note from the human");
 }
 
 async function refresh() {
   let s;
-  try { s = await (await fetch("/api/state")).json(); } catch (e) { $("clock").textContent = "api unreachable"; return; }
-  $("clock").textContent = "as of " + s.now + " CT · refresh 2s";
+  try { s = await (await fetch("/api/state")).json(); } catch (e) { $("clock").textContent = "reconnecting…"; return; }
+  $("clock").textContent = "live · " + s.now;
   $("eq").textContent = money(s.broker.equity);
   $("cash").textContent = money(s.broker.cash);
   $("npos").textContent = (s.broker.positions || []).length;
   $("nord").textContent = (s.broker.orders || []).length;
-  $("halt").textContent = s.agents.halted ? "HALTED" : "clear";
-  $("halt").className = s.agents.halted ? "down" : "up";
+  const halted = s.agents.halted;
+  $("halt").textContent = halted ? "PULLED — all trading stopped" : "armed";
+  $("halt").className = halted ? "down" : "up";
 
-  // agent map
-  const a = s.agents;
-  const lock = a.session_lock;
-  setNode("n-relay", lock && lock.age < 1500 ? "on" : "idle",
-          lock ? `${lock.owner} · lock ${lock.age}s` : "no session running");
-  setNode("n-watcher", a.watcher_alive ? "on" : "off",
-          a.watcher_log_age_s == null ? "no log" : `log ${a.watcher_log_age_s}s ago`);
+  const a = s.agents, lock = a.session_lock;
+  const thinking = lock && lock.age < 1500;
+  orb("brain", thinking ? "on" : "idle", thinking ? "thinking now" : "between sessions");
   const streamOn = (a.stream_status || "").includes("connected");
-  setNode("n-stream", streamOn ? "on" : (a.watcher_alive ? "idle" : "off"),
-          streamOn ? "connected" : "down/idle");
-  const openTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
-  setNode("n-triggers", openTrig ? "on" : "idle", openTrig + " armed");
-  $("t-mandate2").textContent = a.broker_error ? "broker err" : "enforcing";
-  setNode("n-broker", a.broker_error ? "off" : "on",
-          a.broker_error ? a.broker_error.slice(0,26) : `sync ${a.broker_ts || "-"}`);
-  $("mapts").textContent = a.last_session_header ? a.last_session_header.replace(/=/g,"").trim() : "";
-  document.querySelectorAll(".node.on rect").forEach(r => r.classList.add("pulse"));
+  orb("eyes", streamOn ? "on" : (a.watcher_alive ? "idle" : "off"),
+      streamOn ? "watching every tick" : (a.watcher_alive ? "warming up" : "asleep (market closed)"));
+  orb("guard", a.watcher_alive ? "on" : "off",
+      a.watcher_alive ? "guarding positions" : "asleep (market closed)");
+  const nTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
+  orb("trig", nTrig ? "on" : "idle", nTrig ? nTrig + " set and waiting" : "none set");
+  orb("market", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : "connected");
+  $("c-core").textContent = halted ? "STOPPED BY KILL SWITCH" : "long-only · cash only · every order checked";
+  $("mapts").textContent = "";
 
-  // thought stream
-  $("journal").innerHTML = (s.journal || []).map(e =>
-    `<div class="entry"><b>${esc(e.head)}</b><pre>${esc(e.body)}</pre></div>`).join("");
+  $("journal").innerHTML = (s.journal || []).map(e => {
+    const [cls, label] = actionChip(e.body);
+    return `<div class="entry"><span class="chip ${cls}">${label}</span>` +
+      `<span class="head">${esc(plainHead(e.head))}</span>` +
+      `<details><summary>read its reasoning</summary><pre>${esc(e.body)}</pre></details></div>`;
+  }).join("");
 
-  // book
-  $("book").innerHTML = "<tr><th>Sym</th><th class=num>Sh</th><th class=num>Avg</th><th class=num>Now</th><th class=num>P&L</th></tr>" +
-    (s.broker.positions || []).map(p => {
+  $("book").innerHTML = "<tr><th>Stock</th><th class=num>Shares</th><th class=num>Paid</th><th class=num>Now</th><th class=num>Profit</th></tr>" +
+    ((s.broker.positions || []).map(p => {
       const pnl = Number(p.unrealized_pnl || 0);
       return `<tr><td>${esc(p.symbol)}</td><td class=num>${esc(p.quantity)}</td>` +
         `<td class=num>${money(p.average_cost)}</td><td class=num>${money(p.current_price)}</td>` +
         `<td class="num ${pnl >= 0 ? "up" : "down"}">${money(pnl)}</td></tr>`;
-    }).join("") || "<tr><td class=small>flat</td></tr>";
+    }).join("") || "<tr><td class=small colspan=5>nothing right now — all cash</td></tr>");
 
-  $("orders").innerHTML = "<tr><th>Sym</th><th>Side</th><th class=num>Qty</th><th class=num>Limit</th><th>TIF</th></tr>" +
-    (s.broker.orders || []).map(o =>
-      `<tr><td>${esc(o.symbol)}</td><td>${esc(o.side)}</td><td class=num>${esc(o.quantity)}</td>` +
-      `<td class=num>${money(o.limit_price)}</td><td>${esc(o.time_in_force)}</td></tr>`).join("") ||
-    "<tr><td class=small>none</td></tr>";
+  $("orders").innerHTML = "<tr><th>Stock</th><th>What</th><th class=num>Shares</th><th class=num>At price</th></tr>" +
+    ((s.broker.orders || []).map(o =>
+      `<tr><td>${esc(o.symbol)}</td><td>${o.side === "buy" ? "buy if it dips to" : "sell if it reaches"}</td>` +
+      `<td class=num>${esc(o.quantity)}</td><td class=num>${money(o.limit_price)}</td></tr>`).join("") ||
+      "<tr><td class=small colspan=4>none</td></tr>");
 
-  $("trig").innerHTML = "<tr><th>Sym</th><th>Cond</th><th class=num>Qty</th><th>Grade</th></tr>" +
-    (s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t =>
-      `<tr><td>${esc(t.symbol)}</td><td>${esc(t.condition)} ${esc(t.trigger_price)}</td>` +
-      `<td class=num>${esc(t.qty)}</td><td>${esc(t.setup_grade || "-")}</td></tr>`).join("") ||
-    "<tr><td class=small>none armed</td></tr>";
+  $("trig").innerHTML = "<tr><th>Stock</th><th>Fires when</th><th class=num>Shares</th></tr>" +
+    ((s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t =>
+      `<tr><td>${esc(t.symbol)}</td><td>price ${t.condition === ">=" ? "breaks above" : "drops to"} ${money(t.trigger_price)}</td>` +
+      `<td class=num>${esc(t.qty)}</td></tr>`).join("") ||
+      "<tr><td class=small colspan=3>none</td></tr>");
 
-  $("scants").textContent = s.scan_ts || "";
-  $("scan").innerHTML = "<tr><th>Sym</th><th class=num>Chg%</th><th class=num>$Vol M</th><th class=num>RelV</th></tr>" +
-    (s.scan || []).map(r =>
-      `<tr><td>${esc(r.symbol)}</td><td class="num ${r.change_pct >= 0 ? "up" : "down"}">${esc(r.change_pct)}</td>` +
-      `<td class=num>${esc(r.dollar_volume_m)}</td><td class=num>${esc(r.rel_volume)}</td></tr>`).join("");
+  $("scants").textContent = s.scan_ts ? "as of " + s.scan_ts.slice(11,16) : "";
+  $("scan").innerHTML = "<tr><th>Stock</th><th class=num>Today</th><th class=num>Traded ($M)</th><th class=num>Unusual volume</th></tr>" +
+    ((s.scan || []).map(r =>
+      `<tr><td>${esc(r.symbol)}</td><td class="num ${r.change_pct >= 0 ? "up" : "down"}">${r.change_pct > 0 ? "+" : ""}${esc(r.change_pct)}%</td>` +
+      `<td class=num>${esc(r.dollar_volume_m)}</td><td class=num>${r.rel_volume ? r.rel_volume + "×" : "—"}</td></tr>`).join(""));
 
-  $("stats").textContent = s.stats ? JSON.stringify(s.stats, null, 1) : "no closed trades yet";
+  const st = s.stats;
+  $("record").innerHTML = !st || !st.closed ? "no completed trades yet" :
+    `<b>${st.closed}</b> completed trades · <b class="${st.win_rate_pct >= 50 ? "up" : "down"}">${st.win_rate_pct}%</b> winners · ` +
+    `average winner <b class="up">${money(st.avg_win)}</b> vs loser <b class="down">${money(st.avg_loss)}</b> · ` +
+    `all-time <b class="${st.total_pnl >= 0 ? "up" : "down"}">${money(st.total_pnl)}</b>`;
+
   $("wl").textContent = s.watchlist_md || "";
   $("wlog").textContent = (s.watcher_log || []).join("\n");
   $("slog").textContent = (s.sessions_log || []).join("\n");
