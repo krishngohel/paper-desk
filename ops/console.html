@@ -20,8 +20,8 @@ h1 { font-size:16px; margin:0; letter-spacing:.14em; text-transform:uppercase;
 .stat b { font-size:19px; font-weight:650; font-variant-numeric:tabular-nums; }
 .up { color:var(--good); } .down { color:var(--bad); }
 .clock { color:var(--mut); font-size:12px; margin-left:auto; }
-main { display:grid; grid-template-columns: 400px 1fr 400px; gap:14px; padding:14px 22px; align-items:start; }
-@media (max-width:1200px){ main { grid-template-columns:1fr; } }
+main { display:grid; grid-template-columns: 360px 1fr 400px; gap:14px; padding:14px 22px; align-items:start; }
+@media (max-width:1250px){ main { grid-template-columns:1fr; } }
 section { background:var(--panel); border:1px solid var(--line); border-radius:12px;
   padding:14px 16px; margin-bottom:14px; box-shadow: 0 0 24px rgba(37,99,235,.06) inset; }
 h2 { font-size:12px; margin:0 0 10px; color:var(--cyan); text-transform:uppercase; letter-spacing:.12em; font-weight:600; }
@@ -30,41 +30,50 @@ table { border-collapse:collapse; width:100%; font-size:14px; }
 th,td { text-align:left; padding:5px 10px 5px 0; border-bottom:1px solid rgba(56,189,248,.08); }
 th { color:var(--mut); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; }
 td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
-.entry { border-top:1px solid rgba(56,189,248,.08); padding:10px 0; }
-.entry:first-of-type { border-top:none; padding-top:2px; }
-.entry .head { font-size:13px; color:var(--ink2); }
-.chip { display:inline-block; padding:1px 10px; border-radius:999px; font-size:11.5px; font-weight:600;
-  letter-spacing:.03em; margin-right:8px; vertical-align:1px; }
+.small { font-size:12px; color:var(--mut); }
+.chip { display:inline-block; padding:1px 10px; border-radius:999px; font-size:11.5px; font-weight:600; margin-right:8px; }
 .chip.buy { background:rgba(45,212,167,.15); color:var(--good); border:1px solid rgba(45,212,167,.4); }
 .chip.sell { background:rgba(255,93,93,.14); color:var(--bad); border:1px solid rgba(255,93,93,.4); }
 .chip.hold { background:rgba(251,191,36,.12); color:var(--warn); border:1px solid rgba(251,191,36,.35); }
 .chip.note { background:rgba(56,189,248,.12); color:var(--cyan); border:1px solid rgba(56,189,248,.35); }
+.entry { border-top:1px solid rgba(56,189,248,.08); padding:10px 0; }
+.entry:first-of-type { border-top:none; padding-top:2px; }
+.entry .head { font-size:13px; color:var(--ink2); }
 details summary { cursor:pointer; color:var(--mut); font-size:12px; margin-top:4px; }
-details pre { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
-  color:var(--ink2); background:rgba(4,7,15,.5); border-radius:8px; padding:10px; margin:8px 0 0; max-height:260px; overflow:auto; }
-pre.raw { font:12px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; color:var(--ink2);
-  max-height:200px; overflow:auto; margin:0; }
-.small { font-size:12px; color:var(--mut); }
-/* ------- JARVIS map ------- */
-.map { width:100%; height:auto; display:block; }
-.core-ring { fill:none; stroke:url(#ringGrad); stroke-width:2; opacity:.9;
-  transform-origin: 210px 150px; animation: spin 14s linear infinite; }
-.core-ring2 { fill:none; stroke:rgba(56,189,248,.35); stroke-width:1; stroke-dasharray: 4 10;
-  transform-origin: 210px 150px; animation: spin 30s linear infinite reverse; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.edge { stroke:url(#edgeGrad); stroke-width:1.6; fill:none; stroke-dasharray:6 8;
-  animation: flow 1.4s linear infinite; opacity:.8; }
-.edge.dead { stroke:rgba(91,113,136,.35); animation:none; }
-@keyframes flow { to { stroke-dashoffset:-14; } }
-.orb circle.body { fill:url(#orbGrad); stroke-width:1.6; }
-.orb.on circle.body { stroke:var(--good); filter:url(#glowG); }
-.orb.idle circle.body { stroke:var(--warn); }
-.orb.off circle.body { stroke:var(--bad); filter:url(#glowR); }
-.orb text.name { fill:var(--ink); font:600 12.5px system-ui,sans-serif; text-anchor:middle; }
-.orb text.st { fill:var(--ink2); font:11px system-ui,sans-serif; text-anchor:middle; }
-.corelabel { fill:var(--ink); font:700 13px system-ui,sans-serif; text-anchor:middle; letter-spacing:.08em; }
-.corestate { fill:var(--cyan); font:11.5px system-ui,sans-serif; text-anchor:middle; }
-@media (prefers-reduced-motion: reduce) { .core-ring,.core-ring2,.edge { animation:none; } }
+details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
+  color:var(--ink2); background:rgba(4,7,15,.5); border-radius:8px; padding:10px; margin:8px 0 0; max-height:240px; overflow:auto; }
+
+/* ---------- workflow pipeline (center) ---------- */
+.flow { display:flex; flex-direction:column; gap:0; padding:6px 4px; }
+.stage { position:relative; display:flex; align-items:center; gap:14px;
+  background: linear-gradient(135deg, rgba(18,48,85,.55), rgba(10,18,36,.75));
+  border:1px solid var(--line); border-radius:12px; padding:12px 16px; transition: all .35s; }
+.stage .ico { width:38px; height:38px; border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center;
+  font-size:19px; background: radial-gradient(circle at 35% 30%, rgba(56,189,248,.35), rgba(37,99,235,.12));
+  border:1px solid rgba(56,189,248,.3); }
+.stage .t b { display:block; font-size:14.5px; }
+.stage .t span { font-size:12.5px; color:var(--mut); }
+.stage .live { margin-left:auto; font-size:12px; color:var(--mut); text-align:right; max-width:46%; }
+.stage.active { border-color: var(--cyan); box-shadow: 0 0 18px rgba(56,189,248,.25), 0 0 40px rgba(37,99,235,.12);
+  background: linear-gradient(135deg, rgba(26,64,110,.7), rgba(12,24,48,.8)); }
+.stage.active .ico { animation: breathe 1.6s ease-in-out infinite; }
+.stage.flash { border-color: var(--good); box-shadow: 0 0 22px rgba(45,212,167,.35); }
+@keyframes breathe { 50% { transform: scale(1.12); filter: brightness(1.4);} }
+.conn { position:relative; height:26px; width:2px; margin-left:34px;
+  background: linear-gradient(180deg, rgba(56,189,248,.5), rgba(37,99,235,.2)); }
+.conn::after { content:""; position:absolute; left:-2.2px; width:6px; height:6px; border-radius:50%;
+  background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: drop 1.3s linear infinite; }
+.conn.dead { background: rgba(91,113,136,.25); } .conn.dead::after { display:none; }
+@keyframes drop { from { top:-4px; opacity:0; } 15% { opacity:1; } to { top:24px; opacity:0; } }
+/* task feed */
+.feed { margin-top:4px; }
+.card { display:flex; gap:10px; align-items:baseline; padding:8px 12px; margin-bottom:6px; border-radius:10px;
+  background: rgba(10,18,36,.7); border:1px solid rgba(56,189,248,.1);
+  animation: slidein .45s ease; }
+@keyframes slidein { from { transform: translateY(-8px); opacity:0; } }
+.card time { color:var(--mut); font-size:11.5px; font-variant-numeric:tabular-nums; flex:none; }
+.card .txt { font-size:13px; color:var(--ink2); }
+@media (prefers-reduced-motion: reduce){ .conn::after,.stage.active .ico,.card{ animation:none; } }
 </style></head><body>
 <header>
   <h1>Paper Desk · Live</h1>
@@ -76,93 +85,81 @@ pre.raw { font:12px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; c
   <div class="clock" id="clock"></div>
 </header>
 <main>
-<div><!-- left -->
-  <section>
-    <h2>The system <span class="sub" id="mapts"></span></h2>
-    <svg class="map" viewBox="0 0 420 320" aria-label="Live map of the trading system">
-      <defs>
-        <radialGradient id="coreGrad" cx="50%" cy="45%">
-          <stop offset="0%" stop-color="#7dd3fc" stop-opacity=".95"/>
-          <stop offset="45%" stop-color="#2563eb" stop-opacity=".55"/>
-          <stop offset="100%" stop-color="#0a1224" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="orbGrad" cx="50%" cy="38%">
-          <stop offset="0%" stop-color="#123055"/>
-          <stop offset="100%" stop-color="#0a1224"/>
-        </radialGradient>
-        <linearGradient id="ringGrad"><stop offset="0%" stop-color="#38bdf8"/>
-          <stop offset="60%" stop-color="#2563eb"/><stop offset="100%" stop-color="#38bdf8" stop-opacity=".15"/></linearGradient>
-        <linearGradient id="edgeGrad"><stop offset="0%" stop-color="#38bdf8" stop-opacity=".9"/>
-          <stop offset="100%" stop-color="#2563eb" stop-opacity=".35"/></linearGradient>
-        <filter id="glowG"><feGaussianBlur stdDeviation="2.6" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="glowR"><feGaussianBlur stdDeviation="2.6" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <path class="edge" id="e-brain" d="M210,150 L90,64"/>
-      <path class="edge" id="e-eyes" d="M210,150 L330,64"/>
-      <path class="edge" id="e-guard" d="M210,150 L70,205"/>
-      <path class="edge" id="e-trig" d="M210,150 L350,205"/>
-      <path class="edge" id="e-market" d="M210,150 L210,278"/>
-      <circle cx="210" cy="150" r="86" fill="url(#coreGrad)"/>
-      <circle class="core-ring" cx="210" cy="150" r="46"/>
-      <circle class="core-ring2" cx="210" cy="150" r="58"/>
-      <text class="corelabel" x="210" y="147">THE SHIELD</text>
-      <text class="corestate" x="210" y="163" id="c-core">long-only · cash only</text>
-      <g class="orb" id="o-brain"><circle class="body" cx="90" cy="64" r="34"/>
-        <text class="name" x="90" y="60">Brain</text><text class="st" x="90" y="76" id="s-brain">—</text></g>
-      <g class="orb" id="o-eyes"><circle class="body" cx="330" cy="64" r="34"/>
-        <text class="name" x="330" y="60">Eyes</text><text class="st" x="330" y="76" id="s-eyes">—</text></g>
-      <g class="orb" id="o-guard"><circle class="body" cx="70" cy="205" r="34"/>
-        <text class="name" x="70" y="201">Reflexes</text><text class="st" x="70" y="217" id="s-guard">—</text></g>
-      <g class="orb" id="o-trig"><circle class="body" cx="350" cy="205" r="34"/>
-        <text class="name" x="350" y="201">Traps</text><text class="st" x="350" y="217" id="s-trig">—</text></g>
-      <g class="orb" id="o-market"><circle class="body" cx="210" cy="278" r="30"/>
-        <text class="name" x="210" y="274">Market</text><text class="st" x="210" y="290" id="s-market">—</text></g>
-    </svg>
-    <div class="small" style="margin-top:6px">
-      <b style="color:var(--ink2)">Brain</b> researches and decides · <b style="color:var(--ink2)">Eyes</b> watch every price tick ·
-      <b style="color:var(--ink2)">Reflexes</b> pull the ripcord on losers in ~1s ·
-      <b style="color:var(--ink2)">Traps</b> are pre-planned buys waiting for their price ·
-      everything passes through <b style="color:var(--ink2)">the Shield</b>: never short, never borrowed money.
-    </div>
-  </section>
-  <section>
-    <h2>Track record</h2>
-    <div id="record" class="small">no completed trades yet</div>
-  </section>
-  <section>
-    <h2>Under the hood <span class="sub">technical logs, if you're curious</span></h2>
+<div><!-- left: state -->
+  <section><h2>What it owns</h2><table id="book"></table></section>
+  <section><h2>Orders waiting at the exchange</h2><table id="orders"></table></section>
+  <section><h2>Traps set <span class="sub">buys that fire the second their price prints</span></h2><table id="trig"></table></section>
+  <section><h2>Track record</h2><div id="record" class="small">no completed trades yet</div></section>
+  <section><h2>Under the hood <span class="sub">technical logs</span></h2>
     <details><summary>Safety-net activity (watcher)</summary><pre class="raw" id="wlog"></pre></details>
     <details><summary>Session output (raw)</summary><pre class="raw" id="slog"></pre></details>
   </section>
 </div>
-<div><!-- middle -->
+<div><!-- center: the agent, animated -->
   <section>
-    <h2>What it's thinking <span class="sub">newest first, updates live</span></h2>
-    <div id="journal"></div>
+    <h2>The agent at work <span class="sub" id="agentstate"></span></h2>
+    <div class="flow">
+      <div class="stage" id="st-scan"><div class="ico">🔭</div>
+        <div class="t"><b>Scan the market</b><span>sweeps every US stock for movers &amp; unusual volume</span></div>
+        <div class="live" id="lv-scan"></div></div>
+      <div class="conn" id="cn-1"></div>
+      <div class="stage" id="st-research"><div class="ico">🧠</div>
+        <div class="t"><b>Research</b><span>charts, trends, levels, candles, earnings, news</span></div>
+        <div class="live" id="lv-research"></div></div>
+      <div class="conn" id="cn-2"></div>
+      <div class="stage" id="st-decide"><div class="ico">⚖️</div>
+        <div class="t"><b>Decide</b><span>write the thesis, grade the setup, size the bet</span></div>
+        <div class="live" id="lv-decide"></div></div>
+      <div class="conn" id="cn-3"></div>
+      <div class="stage" id="st-shield"><div class="ico">🛡️</div>
+        <div class="t"><b>Shield check</b><span>never short · never borrowed money · every order inspected</span></div>
+        <div class="live" id="lv-shield"></div></div>
+      <div class="conn" id="cn-4"></div>
+      <div class="stage" id="st-execute"><div class="ico">⚡</div>
+        <div class="t"><b>Execute</b><span>orders &amp; traps at the exchange, fills in milliseconds</span></div>
+        <div class="live" id="lv-execute"></div></div>
+      <div class="conn" id="cn-5"></div>
+      <div class="stage" id="st-guard"><div class="ico">🪖</div>
+        <div class="t"><b>Guard</b><span>watches every tick, cuts losers in about a second</span></div>
+        <div class="live" id="lv-guard"></div></div>
+      <div class="conn" id="cn-6"></div>
+      <div class="stage" id="st-learn"><div class="ico">📖</div>
+        <div class="t"><b>Learn</b><span>journals every outcome, updates its own rulebook weekly</span></div>
+        <div class="live" id="lv-learn"></div></div>
+    </div>
+    <div class="feed" id="feed" style="margin-top:14px"></div>
   </section>
 </div>
-<div><!-- right -->
-  <section><h2>What it owns</h2><table id="book"></table></section>
-  <section><h2>Orders waiting at the exchange</h2><table id="orders"></table></section>
-  <section><h2>Traps set <span class="sub">buys that fire the second their price prints</span></h2><table id="trig"></table></section>
+<div><!-- right: mind + research -->
+  <section><h2>What it's thinking <span class="sub">newest first</span></h2><div id="journal"></div></section>
   <section><h2>What's moving in the market <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
-  <section><h2>The plan for Monday</h2><details open><summary class="small">battle plan (from weekend research)</summary><pre class="raw" id="wl" style="max-height:280px"></pre></details></section>
+  <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:260px"></pre></section>
 </div>
 </main>
 <script>
 const $ = id => document.getElementById(id);
 const money = v => v == null ? "—" : "$" + Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let prev = {};
+const feedItems = [];
 
-function orb(id, cls, text) {
-  const o = $( "o-" + id); o.classList.remove("on","idle","off"); o.classList.add(cls);
-  $("s-" + id).textContent = text;
-  const e = $("e-" + { brain:"brain", eyes:"eyes", guard:"guard", trig:"trig", market:"market" }[id]);
-  if (e) e.classList.toggle("dead", cls !== "on");
+function stage(id, on, liveText) {
+  const el = $("st-" + id);
+  el.classList.toggle("active", !!on);
+  if (liveText !== undefined) $("lv-" + id).textContent = liveText;
 }
-
+function flash(id) {
+  const el = $("st-" + id);
+  el.classList.add("flash");
+  setTimeout(() => el.classList.remove("flash"), 1600);
+}
+function feed(txt, cls) {
+  const now = new Date().toTimeString().slice(0,8);
+  feedItems.unshift({ t: now, txt, cls: cls || "note" });
+  if (feedItems.length > 9) feedItems.pop();
+  $("feed").innerHTML = feedItems.map(f =>
+    `<div class="card"><time>${f.t}</time><span class="chip ${f.cls}">${f.cls === "buy" ? "action" : f.cls === "sell" ? "action" : "event"}</span><span class="txt">${esc(f.txt)}</span></div>`).join("");
+}
 function actionChip(body) {
   const m = (body.match(/- action: *([^\n]*)/i) || [])[1] || "";
   if (/BUY|BOUGHT|entered|FIRED/i.test(m)) return ["buy", "Bought"];
@@ -170,16 +167,11 @@ function actionChip(body) {
   if (/HOLD/i.test(m)) return ["hold", "Held"];
   return ["note", "Note"];
 }
-function plainHead(head) {
-  return head
-    .replace(/ CT - continuous/i, " — trading session")
-    .replace(/ CT - intraday/i, " — trading session")
-    .replace(/ CT - open/i, " — opening session")
-    .replace(/ CT - preclose/i, " — end-of-day wrap-up")
-    .replace(/ CT - weekly-review/i, " — weekly self-review")
-    .replace(/ CT - research/i, " — homework session")
-    .replace(/ CT - triggered/i, " — wake-up check")
-    .replace(/ CT - watcher/i, " — safety net acted")
+function plainHead(h) {
+  return h.replace(/ CT - (continuous|intraday)/i, " — trading session")
+    .replace(/ CT - open/i, " — opening session").replace(/ CT - preclose/i, " — end-of-day wrap-up")
+    .replace(/ CT - weekly-review/i, " — weekly self-review").replace(/ CT - research/i, " — homework session")
+    .replace(/ CT - triggered/i, " — wake-up check").replace(/ CT - watcher/i, " — safety net acted")
     .replace(/ CT - operator-note.*/i, " — note from the human");
 }
 
@@ -187,28 +179,52 @@ async function refresh() {
   let s;
   try { s = await (await fetch("/api/state")).json(); } catch (e) { $("clock").textContent = "reconnecting…"; return; }
   $("clock").textContent = "live · " + s.now;
-  $("eq").textContent = money(s.broker.equity);
-  $("cash").textContent = money(s.broker.cash);
+  $("eq").textContent = money(s.broker.equity); $("cash").textContent = money(s.broker.cash);
   $("npos").textContent = (s.broker.positions || []).length;
   $("nord").textContent = (s.broker.orders || []).length;
   const halted = s.agents.halted;
-  $("halt").textContent = halted ? "PULLED — all trading stopped" : "armed";
+  $("halt").textContent = halted ? "PULLED — stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
   const a = s.agents, lock = a.session_lock;
   const thinking = lock && lock.age < 1500;
-  orb("brain", thinking ? "on" : "idle", thinking ? "thinking now" : "between sessions");
+  const guardOn = a.watcher_alive;
   const streamOn = (a.stream_status || "").includes("connected");
-  orb("eyes", streamOn ? "on" : (a.watcher_alive ? "idle" : "off"),
-      streamOn ? "watching every tick" : (a.watcher_alive ? "warming up" : "asleep (market closed)"));
-  orb("guard", a.watcher_alive ? "on" : "off",
-      a.watcher_alive ? "guarding positions" : "asleep (market closed)");
   const nTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
-  orb("trig", nTrig ? "on" : "idle", nTrig ? nTrig + " set and waiting" : "none set");
-  orb("market", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : "connected");
-  $("c-core").textContent = halted ? "STOPPED BY KILL SWITCH" : "long-only · cash only · every order checked";
-  $("mapts").textContent = "";
+  const nOrd = (s.broker.orders || []).length;
 
+  $("agentstate").textContent = halted ? "stopped by kill switch" :
+    thinking ? "a session is thinking right now" :
+    guardOn ? "between sessions — guard on duty" : "asleep — market closed";
+
+  stage("scan", thinking, s.scan_ts ? "last sweep " + String(s.scan_ts).slice(11,16) : "");
+  stage("research", thinking, thinking ? "working…" : "");
+  stage("decide", thinking, thinking ? "working…" : "");
+  stage("shield", true, halted ? "KILL SWITCH PULLED" : "checking every order");
+  stage("execute", nOrd + nTrig > 0, `${nOrd} waiting · ${nTrig} traps`);
+  stage("guard", guardOn, guardOn ? (streamOn ? "live tick feed" : "on duty") : "asleep (market closed)");
+  stage("learn", false, (s.stats && s.stats.closed ? s.stats.closed + " trades scored" : ""));
+  document.querySelectorAll(".conn").forEach(c =>
+    c.classList.toggle("dead", !(thinking || guardOn)));
+
+  // event detection -> flashes + feed cards
+  if (prev.scan_ts && s.scan_ts !== prev.scan_ts) { flash("scan"); feed("Swept the whole market for movers"); }
+  if (prev.nOrd !== undefined && nOrd !== prev.nOrd) {
+    flash("execute");
+    feed(nOrd > prev.nOrd ? "New order placed at the exchange" : "An order filled or was cancelled", nOrd > prev.nOrd ? "buy" : "sell");
+  }
+  if (prev.wlast !== undefined && s.watcher_log?.length && s.watcher_log.at(-1) !== prev.wlast) {
+    flash("guard");
+  }
+  if (prev.jhead && s.journal?.[0] && s.journal[0].head !== prev.jhead) {
+    flash("learn"); flash("decide");
+    const [cls, label] = actionChip(s.journal[0].body);
+    feed(label + ": " + plainHead(s.journal[0].head), cls);
+  }
+  if (prev.trades !== undefined && (s.trades || []).length !== prev.trades) { flash("execute"); flash("shield"); }
+  prev = { scan_ts: s.scan_ts, nOrd, wlast: s.watcher_log?.at(-1), jhead: s.journal?.[0]?.head, trades: (s.trades || []).length };
+
+  // panels
   $("journal").innerHTML = (s.journal || []).map(e => {
     const [cls, label] = actionChip(e.body);
     return `<div class="entry"><span class="chip ${cls}">${label}</span>` +
@@ -224,7 +240,7 @@ async function refresh() {
         `<td class="num ${pnl >= 0 ? "up" : "down"}">${money(pnl)}</td></tr>`;
     }).join("") || "<tr><td class=small colspan=5>nothing right now — all cash</td></tr>");
 
-  $("orders").innerHTML = "<tr><th>Stock</th><th>What</th><th class=num>Shares</th><th class=num>At price</th></tr>" +
+  $("orders").innerHTML = "<tr><th>Stock</th><th>What</th><th class=num>Shares</th><th class=num>At</th></tr>" +
     ((s.broker.orders || []).map(o =>
       `<tr><td>${esc(o.symbol)}</td><td>${o.side === "buy" ? "buy if it dips to" : "sell if it reaches"}</td>` +
       `<td class=num>${esc(o.quantity)}</td><td class=num>${money(o.limit_price)}</td></tr>`).join("") ||
@@ -233,19 +249,18 @@ async function refresh() {
   $("trig").innerHTML = "<tr><th>Stock</th><th>Fires when</th><th class=num>Shares</th></tr>" +
     ((s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t =>
       `<tr><td>${esc(t.symbol)}</td><td>price ${t.condition === ">=" ? "breaks above" : "drops to"} ${money(t.trigger_price)}</td>` +
-      `<td class=num>${esc(t.qty)}</td></tr>`).join("") ||
-      "<tr><td class=small colspan=3>none</td></tr>");
+      `<td class=num>${esc(t.qty)}</td></tr>`).join("") || "<tr><td class=small colspan=3>none</td></tr>");
 
-  $("scants").textContent = s.scan_ts ? "as of " + s.scan_ts.slice(11,16) : "";
-  $("scan").innerHTML = "<tr><th>Stock</th><th class=num>Today</th><th class=num>Traded ($M)</th><th class=num>Unusual volume</th></tr>" +
-    ((s.scan || []).map(r =>
+  $("scants").textContent = s.scan_ts ? "as of " + String(s.scan_ts).slice(11,16) : "";
+  $("scan").innerHTML = "<tr><th>Stock</th><th class=num>Today</th><th class=num>Traded ($M)</th><th class=num>Volume</th></tr>" +
+    ((s.scan || []).slice(0,10).map(r =>
       `<tr><td>${esc(r.symbol)}</td><td class="num ${r.change_pct >= 0 ? "up" : "down"}">${r.change_pct > 0 ? "+" : ""}${esc(r.change_pct)}%</td>` +
       `<td class=num>${esc(r.dollar_volume_m)}</td><td class=num>${r.rel_volume ? r.rel_volume + "×" : "—"}</td></tr>`).join(""));
 
   const st = s.stats;
   $("record").innerHTML = !st || !st.closed ? "no completed trades yet" :
     `<b>${st.closed}</b> completed trades · <b class="${st.win_rate_pct >= 50 ? "up" : "down"}">${st.win_rate_pct}%</b> winners · ` +
-    `average winner <b class="up">${money(st.avg_win)}</b> vs loser <b class="down">${money(st.avg_loss)}</b> · ` +
+    `avg winner <b class="up">${money(st.avg_win)}</b> vs loser <b class="down">${money(st.avg_loss)}</b> · ` +
     `all-time <b class="${st.total_pnl >= 0 ? "up" : "down"}">${money(st.total_pnl)}</b>`;
 
   $("wl").textContent = s.watchlist_md || "";
