@@ -69,7 +69,15 @@ details pre, pre.raw { font:11.5px/1.5 "JetBrains Mono",Consolas,monospace; whit
 #n-shield,#p-shield-exch  { --c:var(--moss); }
 #n-exch,  #p-exch-mem,    #sat-exch  { --c:var(--teal); }
 #n-guard, #p-guard-shield,#sat-guard { --c:var(--ember); }
-svg.map { flex:none; width:auto; max-width:100%; height:48vh; display:block; margin:0 auto; }
+svg.map { flex:none; width:auto; max-width:100%; height:48vh; display:block; margin:0 auto;
+  cursor:grab; touch-action:none; }
+svg.map:active { cursor:grabbing; }
+canvas.map { flex:none; width:100%; height:48vh; display:block; }
+.map[hidden] { display:none; }
+.views { float:right; display:inline-flex; gap:4px; }
+.views button { font:600 10.5px "Inter Tight",sans-serif; letter-spacing:.05em; cursor:pointer;
+  color:var(--mut); background:var(--well); border:1px solid var(--rule); border-radius:999px; padding:2px 12px; }
+.views button.act { color:var(--ink); border-color:var(--clay); background:rgba(201,113,79,.14); }
 .pipe path { fill:none; stroke:color-mix(in srgb, var(--c) 42%, transparent); stroke-width:1.2; }
 .pipe circle { fill:var(--c); }
 .pipe.hot path { stroke:color-mix(in srgb, var(--c) 85%, transparent); stroke-width:2; }
@@ -133,8 +141,10 @@ svg.map { flex:none; width:auto; max-width:100%; height:48vh; display:block; mar
 </div>
 <div class="center"><!-- center: the agent, animated -->
   <section>
-    <h2>The agent at work <span class="sub" id="agentstate"></span></h2>
-    <svg class="map" viewBox="0 0 900 520" aria-label="Live data-flow map">
+    <h2>The agent at work <span class="sub" id="agentstate"></span>
+      <span class="views"><button id="v-const">Constellation</button><button id="v-threads">Threads</button></span></h2>
+    <canvas id="threads" class="map" hidden></canvas>
+    <svg id="svgmap" class="map" viewBox="0 0 900 520" aria-label="Live data-flow map">
   <!-- edges (data pipes). Each has a path + particle group. -->
   <g class="pipe" id="p-ticks-brain"><path id="e1" d="M150,110 C260,130 350,180 415,210"/>
     <circle r="3"><animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#e1"/></animateMotion></circle>
@@ -189,6 +199,7 @@ svg.map { flex:none; width:auto; max-width:100%; height:48vh; display:block; mar
     <text class="nm" x="620" y="414">Reflexes</text><text class="ns" x="620" y="426" id="ns-guard">—</text></g>
 </svg>
 <div class="legend">
+  <b>Scroll to zoom · drag to move · double-click to reset.</b>
   Big glows are the agents; the small dots around each one are the actual stocks and orders it is holding right now,
   and moving dots on the lines are live data in transit. Everything streams into the <b style="color:var(--clay)">Brain</b>,
   which re-reads its <b style="color:var(--plum)">Memory</b> before every decision. Decisions pass the
@@ -248,6 +259,131 @@ function setPl(id, v, base) {
     " (" + (v < 0 ? "−" : "+") + Math.abs(pct).toFixed(2) + "%)";
   el.className = v >= 0 ? "up" : "down";
 }
+/* ---- constellation zoom + pan ---- */
+const svgEl = document.getElementById("svgmap");
+let vb = { x:0, y:0, w:900, h:520 }, dragSt = null;
+function applyVB() { svgEl.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`); }
+svgEl.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = svgEl.getBoundingClientRect();
+  const mx = vb.x + (e.clientX - r.left) / r.width * vb.w, my = vb.y + (e.clientY - r.top) / r.height * vb.h;
+  const f = e.deltaY > 0 ? 1.15 : 1 / 1.15;
+  const nw = Math.min(Math.max(vb.w * f, 180), 2600), nh = nw * 520 / 900;
+  vb = { x: mx - (mx - vb.x) * (nw / vb.w), y: my - (my - vb.y) * (nh / vb.h), w: nw, h: nh };
+  applyVB();
+}, { passive:false });
+svgEl.addEventListener("pointerdown", e => { dragSt = { x:e.clientX, y:e.clientY, vx:vb.x, vy:vb.y }; svgEl.setPointerCapture(e.pointerId); });
+svgEl.addEventListener("pointermove", e => {
+  if (!dragSt) return;
+  const r = svgEl.getBoundingClientRect();
+  vb.x = dragSt.vx - (e.clientX - dragSt.x) / r.width * vb.w;
+  vb.y = dragSt.vy - (e.clientY - dragSt.y) / r.height * vb.h;
+  applyVB();
+});
+svgEl.addEventListener("pointerup", () => dragSt = null);
+svgEl.addEventListener("dblclick", () => { vb = { x:0, y:0, w:900, h:520 }; applyVB(); });
+
+/* ---- threads view (fiber-bundle chain) ---- */
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function rgba(hex, a) {
+  const h = hex.replace("#",""); const v = parseInt(h.length === 3 ? h.split("").map(c=>c+c).join("") : h, 16);
+  return `rgba(${v>>16&255},${v>>8&255},${v&255},${a})`;
+}
+const THREADS = { scene:null, raf:null };
+function buildThreads(d) {
+  const pick = (arr, fb) => arr.length ? arr : [fb];
+  THREADS.scene = [
+    { name:"Market scan", c:cssVar("--ochre"), items: pick(d.scan, "quiet") },
+    { name:"Price ticks", c:cssVar("--blue"),  items: pick(d.ticks, "closed") },
+    { name:"The Brain",   c:cssVar("--clay"),  items: pick(d.brain, "resting") },
+    { name:"The Shield",  c:cssVar("--moss"),  items: ["long-only","no borrowing","price band","rate limit","oversell"] },
+    { name:"Exchange",    c:cssVar("--teal"),  items: pick(d.exch, "no orders") },
+    { name:"Memory",      c:cssVar("--plum"),  items: pick(d.mem, "empty") },
+  ];
+}
+function sizeThreads() {
+  const cv = $("threads"), r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  cv.width = Math.max(300, r.width * dpr); cv.height = Math.max(200, r.height * dpr);
+}
+function bez(p0, p1, p2, p3, t) {
+  const u = 1 - t;
+  return [u*u*u*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t*t*t*p3[0],
+          u*u*u*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t*t*t*p3[1]];
+}
+function drawThreads(now) {
+  if (view !== "threads") { THREADS.raf = null; return; }
+  THREADS.raf = requestAnimationFrame(drawThreads);
+  const cv = $("threads"), ctx = cv.getContext("2d"), cols = THREADS.scene;
+  if (!cols) return;
+  const W = cv.width, H = cv.height, dpr = window.devicePixelRatio || 1;
+  ctx.clearRect(0, 0, W, H);
+  ctx.globalCompositeOperation = "lighter";
+  const mX = 70 * dpr, midY = H * 0.44, gap = (W - 2 * mX) / (cols.length - 1);
+  const pos = cols.map((col, k) => {
+    const n = col.items.length, sp = Math.min(H * 0.62 / Math.max(n, 1), 26 * dpr);
+    return col.items.map((it, i) => {
+      const jit = (((i * 2654435761 + k * 97) >>> 0) % 9 - 4) * dpr;
+      return [mX + k * gap + jit, midY + (i - (n - 1) / 2) * sp + jit * 0.6];
+    });
+  });
+  for (let k = 0; k < cols.length - 1; k++) {
+    const A = pos[k], B = pos[k + 1], colA = cols[k].c;
+    ctx.lineWidth = 0.8 * dpr;
+    for (let i = 0; i < A.length; i++) {
+      const tg = A.length * B.length <= 40 ? B.map((_, j) => j) : uniq([(i * 7 + 1) % B.length, (i * 13 + 3) % B.length, (i * 3) % B.length]);
+      for (const j of tg) {
+        const p0 = A[i], p3 = B[j];
+        const p1 = [p0[0] + gap * 0.45, p0[1] + (midY - p0[1]) * 0.72];
+        const p2 = [p0[0] + gap * 0.55, p3[1] + (midY - p3[1]) * 0.72];
+        ctx.strokeStyle = rgba(colA, 0.16);
+        ctx.beginPath(); ctx.moveTo(p0[0], p0[1]);
+        ctx.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]); ctx.stroke();
+        if ((i + j) % 3 === 0) {
+          const t = (now / 2600 + (i * 0.17 + j * 0.31 + k * 0.5)) % 1;
+          const [px, py] = bez(p0, p1, p2, p3, t);
+          ctx.fillStyle = rgba(colA, 0.14); ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 7); ctx.fill();
+          ctx.fillStyle = rgba(colA, 0.9); ctx.beginPath(); ctx.arc(px, py, 1.3 * dpr, 0, 7); ctx.fill();
+        }
+      }
+    }
+  }
+  cols.forEach((col, k) => {
+    const showLbl = col.items.length <= 14;
+    pos[k].forEach(([x, y], i) => {
+      ctx.fillStyle = rgba(col.c, 0.18); ctx.beginPath(); ctx.arc(x, y, 5 * dpr, 0, 7); ctx.fill();
+      ctx.fillStyle = rgba(col.c, 0.95); ctx.beginPath(); ctx.arc(x, y, 2.2 * dpr, 0, 7); ctx.fill();
+      if (showLbl) {
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = rgba(col.c, 0.85); ctx.font = `${9 * dpr}px "JetBrains Mono",monospace`;
+        ctx.textAlign = k === cols.length - 1 ? "left" : (k === 0 ? "right" : "center");
+        ctx.fillText(String(col.items[i]), x + (k === cols.length - 1 ? 8 : (k === 0 ? -8 : 0)) * dpr, y - 6 * dpr);
+        ctx.globalCompositeOperation = "lighter";
+      }
+    });
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = cssVar("--mut"); ctx.font = `600 ${10.5 * dpr}px "Inter Tight",sans-serif`; ctx.textAlign = "center";
+    const ys = pos[k].map(p => p[1]);
+    ctx.fillText(col.name.toUpperCase(), mX + k * gap, Math.max(...ys) + 26 * dpr);
+    ctx.globalCompositeOperation = "lighter";
+  });
+}
+
+/* ---- view toggle ---- */
+let view = "const";
+try { view = localStorage.getItem("pd-view") || "const"; } catch (e) {}
+function setView(v) {
+  view = v;
+  svgEl.style.display = v === "const" ? "block" : "none";
+  $("threads").style.display = v === "threads" ? "block" : "none";
+  $("v-const").classList.toggle("act", v === "const");
+  $("v-threads").classList.toggle("act", v === "threads");
+  try { localStorage.setItem("pd-view", v); } catch (e) {}
+  if (v === "threads") { sizeThreads(); if (!THREADS.raf) THREADS.raf = requestAnimationFrame(drawThreads); }
+}
+$("v-const").onclick = () => setView("const");
+$("v-threads").onclick = () => setView("threads");
+window.addEventListener("resize", () => { if (view === "threads") sizeThreads(); });
+
 function pipe(id, alive) { const e = $(id); if (e) e.classList.toggle("dead", !alive); }
 function hot(id, ms) { const e = $(id); if (!e) return; e.classList.add("hot"); setTimeout(() => e.classList.remove("hot"), ms || 2500); }
 function node(id, cls, status) {
@@ -314,17 +450,23 @@ async function refresh() {
   node("n-exch", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : nOrd + " orders · " + nTrig + " traps");
   node("n-guard", guardOn ? "on" : "", guardOn ? "on duty · cuts losers in ~1s" : "asleep (market closed)");
 
-  // satellites: the data each agent is holding right now
+  // shared live-data lists: satellites (constellation) + fiber columns (threads)
   const posSyms = (s.broker.positions || []).map(p => p.symbol);
   const ordSyms = (s.broker.orders || []).map(o => o.symbol);
   const trapSyms = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).map(t => t.symbol);
-  renderSats("ticks", uniq([...posSyms, ...ordSyms, ...trapSyms]).slice(0, 12));
-  renderSats("scan", (s.scan || []).slice(0, 14).map(r => r.symbol));
+  const tickList = uniq([...posSyms, ...ordSyms, ...trapSyms]).slice(0, 12);
+  const scanList = (s.scan || []).slice(0, 14).map(r => r.symbol);
+  const memList = uniq((s.trades || []).map(t => t.symbol)).slice(0, 12);
+  const exchList = (s.broker.orders || []).map(o => o.symbol + " $" + Number(o.limit_price || 0).toFixed(0))
+    .concat(trapSyms.map(x => x + "·trap")).slice(0, 12);
+  const brainList = (s.journal || []).slice(0, 8).map(e => actionChip(e.body)[1] + " " + String(e.head).slice(11, 16));
+  renderSats("ticks", tickList);
+  renderSats("scan", scanList);
   renderSats("news", uniq([...posSyms, ...ordSyms]).slice(0, 5));
-  renderSats("mem", uniq((s.trades || []).map(t => t.symbol)).slice(0, 12));
-  renderSats("exch", (s.broker.orders || []).map(o => o.symbol + " $" + Number(o.limit_price || 0).toFixed(0))
-    .concat(trapSyms.map(x => x + "·trap")).slice(0, 12));
+  renderSats("mem", memList);
+  renderSats("exch", exchList);
   renderSats("guard", uniq(posSyms.length ? posSyms : ordSyms).slice(0, 8));
+  buildThreads({ scan: scanList, ticks: tickList, brain: brainList, exch: exchList, mem: memList });
 
   // pipes (live data transfer)
   pipe("p-ticks-brain", streamOn && thinking);
@@ -395,6 +537,7 @@ async function refresh() {
   $("wlog").textContent = (s.watcher_log || []).join("\n");
   $("slog").textContent = (s.sessions_log || []).join("\n");
 }
+setView(view);
 refresh();
 setInterval(refresh, 2000);
 </script>
