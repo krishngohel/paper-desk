@@ -1,5 +1,5 @@
 {
- "ts": "2026-08-28T18:47:11",
+ "ts": "2026-08-29T11:04:14",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -8,19 +8,28 @@
  },
  "shortlist": [
   {
+   "symbol": "PSQL",
+   "close": 19.11,
+   "change_pct": 95.2,
+   "dollar_volume_m": 70.2,
+   "rel_volume": 14.73,
+   "market_cap_b": 0.73,
+   "exchange": "NASDAQ"
+  },
+  {
    "symbol": "VISN",
    "close": 6.06,
    "change_pct": -47.89,
    "dollar_volume_m": 189.2,
    "rel_volume": 3.79,
-   "market_cap_b": 2.68,
+   "market_cap_b": 1.4,
    "exchange": "NASDAQ"
   },
   {
    "symbol": "IRE",
    "close": 7.32,
    "change_pct": -25.38,
-   "dollar_volume_m": 124.2,
+   "dollar_volume_m": 124.4,
    "rel_volume": 2.47,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
@@ -29,7 +38,7 @@
    "symbol": "MVLL",
    "close": 25.06,
    "change_pct": -20.95,
-   "dollar_volume_m": 265.6,
+   "dollar_volume_m": 266.0,
    "rel_volume": 1.97,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -38,8 +47,8 @@
    "symbol": "ESTC",
    "close": 99.91,
    "change_pct": 19.31,
-   "dollar_volume_m": 1010.4,
-   "rel_volume": 3.67,
+   "dollar_volume_m": 1010.5,
+   "rel_volume": 3.68,
    "market_cap_b": 10.39,
    "exchange": "NYSE"
   },
@@ -47,7 +56,7 @@
    "symbol": "LPTH",
    "close": 11.23,
    "change_pct": -18.56,
-   "dollar_volume_m": 99.0,
+   "dollar_volume_m": 99.1,
    "rel_volume": 3.1,
    "market_cap_b": 0.75,
    "exchange": "NASDAQ"
@@ -56,7 +65,7 @@
    "symbol": "BRUN",
    "close": 17.05,
    "change_pct": -17.27,
-   "dollar_volume_m": 61.9,
+   "dollar_volume_m": 62.1,
    "rel_volume": 1.36,
    "market_cap_b": 1.43,
    "exchange": "NASDAQ"
@@ -65,8 +74,8 @@
    "symbol": "AEMD",
    "close": 2.49,
    "change_pct": 14.75,
-   "dollar_volume_m": 112.2,
-   "rel_volume": 26.52,
+   "dollar_volume_m": 112.3,
+   "rel_volume": 26.55,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -74,7 +83,7 @@
    "symbol": "MSTX",
    "close": 13.87,
    "change_pct": -14.59,
-   "dollar_volume_m": 156.3,
+   "dollar_volume_m": 156.7,
    "rel_volume": 0.98,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -83,7 +92,7 @@
    "symbol": "SLS",
    "close": 13.21,
    "change_pct": -13.15,
-   "dollar_volume_m": 129.7,
+   "dollar_volume_m": 129.8,
    "rel_volume": 1.22,
    "market_cap_b": 2.67,
    "exchange": "NASDAQ"
@@ -92,7 +101,7 @@
    "symbol": "CONL",
    "close": 5.65,
    "change_pct": -13.08,
-   "dollar_volume_m": 143.4,
+   "dollar_volume_m": 143.7,
    "rel_volume": 0.87,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -101,8 +110,8 @@
    "symbol": "RBRK",
    "close": 93.05,
    "change_pct": -13.05,
-   "dollar_volume_m": 877.8,
-   "rel_volume": 2.77,
+   "dollar_volume_m": 878.3,
+   "rel_volume": 2.78,
    "market_cap_b": 19.15,
    "exchange": "NYSE"
   },
@@ -128,8 +137,8 @@
    "symbol": "PYPL",
    "close": 53.66,
    "change_pct": -12.71,
-   "dollar_volume_m": 1949.0,
-   "rel_volume": 3.38,
+   "dollar_volume_m": 1950.0,
+   "rel_volume": 3.39,
    "market_cap_b": 45.9,
    "exchange": "NASDAQ"
   },
@@ -137,17 +146,17 @@
    "symbol": "IREN",
    "close": 35.45,
    "change_pct": -12.53,
-   "dollar_volume_m": 3184.0,
+   "dollar_volume_m": 3186.0,
    "rel_volume": 2.14,
-   "market_cap_b": 12.65,
+   "market_cap_b": 13.95,
    "exchange": "NASDAQ"
   },
   {
    "symbol": "AXTI",
    "close": 58.63,
    "change_pct": -12.39,
-   "dollar_volume_m": 488.2,
-   "rel_volume": 0.83,
+   "dollar_volume_m": 489.5,
+   "rel_volume": 0.84,
    "market_cap_b": 3.84,
    "exchange": "NASDAQ"
   },
@@ -164,7 +173,7 @@
    "symbol": "SOLT",
    "close": 59.79,
    "change_pct": -11.7,
-   "dollar_volume_m": 62.2,
+   "dollar_volume_m": 62.4,
    "rel_volume": 1.54,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -182,7 +191,7 @@
    "symbol": "CRML",
    "close": 7.12,
    "change_pct": -11.44,
-   "dollar_volume_m": 63.8,
+   "dollar_volume_m": 63.9,
    "rel_volume": 0.91,
    "market_cap_b": 1.05,
    "exchange": "NASDAQ"
@@ -191,7 +200,7 @@
    "symbol": "LABU",
    "close": 295.76,
    "change_pct": -10.71,
-   "dollar_volume_m": 156.8,
+   "dollar_volume_m": 156.9,
    "rel_volume": 1.26,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
@@ -200,7 +209,7 @@
    "symbol": "AEHR",
    "close": 80.81,
    "change_pct": -10.67,
-   "dollar_volume_m": 185.0,
+   "dollar_volume_m": 185.2,
    "rel_volume": 1.0,
    "market_cap_b": 2.64,
    "exchange": "NASDAQ"
@@ -218,19 +227,10 @@
    "symbol": "LABD",
    "close": 6.61,
    "change_pct": 10.54,
-   "dollar_volume_m": 171.2,
-   "rel_volume": 1.29,
+   "dollar_volume_m": 171.6,
+   "rel_volume": 1.3,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
-  },
-  {
-   "symbol": "MRVL",
-   "close": 216.62,
-   "change_pct": -10.28,
-   "dollar_volume_m": 10601.9,
-   "rel_volume": 1.89,
-   "market_cap_b": 189.71,
-   "exchange": "NASDAQ"
   },
   {
    "symbol": "GIGL",
@@ -254,7 +254,7 @@
    "symbol": "TENB",
    "close": 37.67,
    "change_pct": 0.13,
-   "dollar_volume_m": 904.4,
+   "dollar_volume_m": 904.5,
    "rel_volume": 9.55,
    "market_cap_b": 4.15,
    "exchange": "NASDAQ"
@@ -263,9 +263,9 @@
    "symbol": "AFRM",
    "close": 77.76,
    "change_pct": 0.35,
-   "dollar_volume_m": 2260.8,
+   "dollar_volume_m": 2261.6,
    "rel_volume": 8.69,
-   "market_cap_b": 26.04,
+   "market_cap_b": 26.24,
    "exchange": "NASDAQ"
   },
   {
@@ -353,7 +353,7 @@
    "symbol": "IAUM",
    "close": 44.43,
    "change_pct": -3.27,
-   "dollar_volume_m": 461.2,
+   "dollar_volume_m": 461.3,
    "rel_volume": 3.43,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
@@ -362,7 +362,7 @@
    "symbol": "PALL",
    "close": 25.79,
    "change_pct": 4.92,
-   "dollar_volume_m": 72.3,
+   "dollar_volume_m": 72.4,
    "rel_volume": 3.41,
    "market_cap_b": 0.0,
    "exchange": "AMEX"

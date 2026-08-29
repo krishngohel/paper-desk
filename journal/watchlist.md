@@ -89,6 +89,22 @@ the technical read, especially the two staged orders below.**
    counter-trend catch). Trigger: a confirmed higher low forming above 34.81 (today's
    low) on a 5m/daily basis - not yet present. next_earnings 2026-11-05 (safe).
 
+9. **GAP** (Gap Inc.) - retailer, gapped +13.23% on 2.23x volume, EMA9>EMA21>EMA50 uptrend
+   stack, TradingView strong_buy/buy. Added 2026-08-29 (Saturday research session) - a
+   liquid mover missed by Friday's initial pass (dollar_volume $619.5M, mkt cap $8.45B,
+   both well above the liquidity bar). Extended like ESTC's setup: RSI14 71.5,
+   pos_in_20d_range 100%, zero resistance_above (broke through everything - price
+   discovery), and the last hour of 5m bars faded (buying marubozu + hammer defended
+   23.63 at 19:00-19:05, then two selling marubozu into the close at 19:30/19:40) -
+   momentum stalling after the gap, same as ESTC's late-session tell. Nearest support
+   21.09 is ~10% below Friday's close (23.48), too far to stage a conservative probe
+   without chasing. WATCH ONLY, no order staged. Trigger: a genuine pullback to a NEW
+   base (watch where 5m bars stop making new lows Monday) followed by a reclaim, OR a
+   clean continuation break above today's high 23.82 on rel_volume >= 1.5 - either is a
+   C/B-grade probe given the single-day move has no track record yet. Kill: a close back
+   below prior-day's close (20.82) would erase the entire gap and invalidate the thesis
+   outright. next_earnings 2026-11-19 (safe).
+
 Pruned from consideration entirely (no tradable structure): VISN/IRE/MVLL/LPTH/BRUN/AEMD/
 MSTX/SLS/CONL/SOLS/AXTI/XHLD/SOLT/SHAZ/CRML/LABU/AEHR/INFQ/LABD - sub-$3B or unrated
 market cap, illiquid/gappy microcaps, or single-print volume spikes (GIGL/SPTB/PULS/IAUM/
@@ -108,3 +124,23 @@ Monday's planning leg (phase 0-1 of the `open`/first `continuous` session): re-c
 `orders` for fills on both, re-check overnight news on both symbols before trusting
 either level (neither could be news-verified this session), and cancel either whose
 thesis is invalidated by a gap or a headline before the open.
+
+## 2026-08-29 (Saturday) research session addendum
+
+Re-verified from a cold read (not touched since Friday 18:45 CT): `status`/`account`/
+`positions`/`orders` show the book unchanged - flat (0 positions), both MRVL and PCG
+GTC buy-limits still resting/accepted, no fills possible (market closed all weekend).
+`ta.py --market` and fresh `ta.py MRVL`/`ta.py PCG` pulls returned data identical to
+Friday's close (no new bars can print over a weekend) - both staged theses, stops, and
+targets stand unchanged, nothing to revise. Added GAP (#9 above) after finding it in
+Friday's own `universe_scan.json` shortlist unresearched and unpruned - a liquid mover
+that fell through the cracks; no order staged for it (too extended). Attempted WebSearch
+to finally get real catalyst confirmation on the MRVL/PCG drops (10+ sessions now with
+alpaca-paper/vibe-research MCP unavailable) - WebSearch itself is unauthorized in this
+non-interactive session, so the catalyst gap remains unresolved; still flagging for the
+human. Macro note (from memory, unverified - no calendar tool available): 2026-09-04 is
+a first-Friday-of-month, historically nonfarm payrolls day, AND the last day of the
+active-training directive (SOP rule 6) - expect elevated volatility into a session that
+also marks the training-window boundary; no confirmed FOMC/CPI date found for the
+2026-08-31 to 2026-09-04 window. No US market holiday falls in that window (Labor Day
+2026 is 2026-09-07, the following Monday, after the training window closes).
