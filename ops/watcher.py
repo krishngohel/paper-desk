@@ -42,8 +42,98 @@ sys.path.insert(0, "agent")
 from src.live.halt import halt_flag_set  # noqa: E402
 from src.trading import service  # noqa: E402
 
+# ---------------------------------------------------------------------------
+# Tick stream: to-the-second prices without REST polling. A daemon thread runs
+# alpaca-py's websocket stream for every symbol we hold, stalk, or have armed
+# triggers on; handlers drop the latest trade price into PRICES. The main loop
+# then evaluates every POLL_SECONDS using streamed prices, falling back to REST
+# quotes (at a gentler cadence) if the stream is down. Orders still go through
+# the gated service path - the stream has no execution powers of its own.
+# ---------------------------------------------------------------------------
+import threading
+
+PRICES: dict[str, tuple[float, float]] = {}   # symbol -> (price, epoch_ts)
+_STREAM_SYMBOLS: set[str] = set()
+_STREAM_ALIVE = {"ok": False}
+
+
+def _stream_thread() -> None:
+    from src.trading.connectors.alpaca import sdk as _sdk
+
+    cfg = _sdk.load_config()
+    while True:
+        try:
+            from alpaca.data.live import StockDataStream
+
+            stream = StockDataStream(cfg.api_key, cfg.secret_key)
+
+            async def _on_trade(data):  # noqa: ANN001
+                try:
+                    PRICES[str(data.symbol).upper()] = (float(data.price), time.time())
+                except Exception:  # noqa: BLE001
+                    pass
+
+            symbols = sorted(_STREAM_SYMBOLS) or ["SPY"]
+            stream.subscribe_trades(_on_trade, *symbols)
+            _STREAM_ALIVE["ok"] = True
+            _STREAM_ALIVE["symbols"] = set(symbols)
+            log(f"stream connected: {symbols}")
+            stream.run()  # blocks until closed
+        except Exception as exc:  # noqa: BLE001
+            log(f"stream error: {str(exc)[:150]} - reconnecting in 10s")
+        _STREAM_ALIVE["ok"] = False
+        time.sleep(10)
+
+
+def ensure_stream(symbols: set[str]) -> None:
+    """(Re)start the stream thread; restart it when the symbol set changes."""
+    global _STREAM_SYMBOLS
+    if symbols != _STREAM_SYMBOLS:
+        _STREAM_SYMBOLS = set(symbols)
+        # Simplest robust resubscribe: kill by letting the old thread's run()
+        # error out on next reconnect; start a fresh thread now.
+        threading.Thread(target=_stream_thread, daemon=True).start()
+
+
+def live_price(symbol: str, max_age: float = 5.0) -> float | None:
+    """Streamed last trade if fresh, else None (caller falls back to REST)."""
+    px = PRICES.get(symbol.upper())
+    if px and time.time() - px[1] <= max_age:
+        return px[0]
+    return None
+
+
+def load_triggers() -> list[dict]:
+    out = []
+    if TRIGGERS.is_file():
+        for line in TRIGGERS.read_text(encoding="utf-8").splitlines():
+            try:
+                trg = json.loads(line)
+            except ValueError:
+                continue
+            if not trg.get("consumed") and not trg.get("cancelled"):
+                out.append(trg)
+    return out
+
+
+def consume_trigger(trigger_id: str, note: str) -> None:
+    lines = TRIGGERS.read_text(encoding="utf-8").splitlines()
+    for i, line in enumerate(lines):
+        try:
+            trg = json.loads(line)
+        except ValueError:
+            continue
+        if trg.get("trigger_id") == trigger_id:
+            trg["consumed"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+            trg["consumed_note"] = note
+            lines[i] = json.dumps(trg)
+            break
+    TRIGGERS.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
 PROFILE = "alpaca-paper-trade"
-POLL_SECONDS = 15
+POLL_SECONDS = 2           # evaluation cadence; prices come from the tick stream
+REST_POLL_SECONDS = 15     # fallback cadence when the stream is down
+TRIGGERS = ROOT / "journal" / "triggers.jsonl"
 CLOSE_HHMM = 1505          # stop looping at 15:05 CT
 SPAWN_COOLDOWN = 600       # one triggered session per 10 min
 FRESHNESS_EVERY = 900      # performance point + deploy every 15 min
@@ -317,19 +407,126 @@ def tick(state: dict) -> None:
     freshness(state)
 
 
+CACHE: dict = {"records": [], "qty": {}, "ts": 0.0}
+
+
+def fire_trigger(trg: dict, px: float, state: dict) -> None:
+    """Execute an armed trigger within ~a second of its price printing.
+    NautilusTrader emulator pattern: held locally, transformed to a market order
+    on trigger, and sent through the SAME gated path as every other order."""
+    symbol = str(trg.get("symbol", "")).upper()
+    qty = _num(trg.get("qty"))
+    if str(trg.get("side", "buy")).lower() != "buy" or not qty or qty <= 0:
+        consume_trigger(trg["trigger_id"], "invalid: only long buy triggers are supported")
+        return
+    out = service.place_order(symbol=symbol, side="buy", quantity=qty,
+                              profile_id=PROFILE, session_id="watcher-trigger")
+    ok = isinstance(out, dict) and out.get("status") == "ok"
+    log(f"TRIGGER {trg['trigger_id']} {symbol} @ {px}: {'FILLED-PATH' if ok else 'REFUSED'} "
+        f"{json.dumps(out, default=str)[:200]}")
+    consume_trigger(trg["trigger_id"], f"fired at {px}: {'ok' if ok else 'refused'}")
+    if ok:
+        oid = out.get("order_id")
+        rec = {"trade_id": f"t-{datetime.now().strftime('%Y-%m-%d')}-trg-{trg['trigger_id'][-6:]}",
+               "symbol": symbol, "opened_ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+               "entry_order_id": str(oid), "entry_qty": qty, "entry_price": px,
+               "entry_notional": round(px * qty, 2),
+               "thesis": trg.get("thesis", ""), "lesson_refs": trg.get("lesson_refs", []),
+               "exit_condition": trg.get("exit_condition", ""),
+               "setup_grade": trg.get("setup_grade"), "probe": trg.get("probe", False),
+               "stop": trg.get("stop"), "target": trg.get("target"),
+               "time_stop": trg.get("time_stop"), "target_order_id": None,
+               "closed_ts": None, "exit_order_id": None, "exit_price": None,
+               "exit_reason": None, "realized_pnl": None, "realized_pnl_pct": None,
+               "holding_days": None, "voo_pnl_pct_same_window": None,
+               "review_verdict": None, "review_notes": None,
+               "sizing_rationale": trg.get("sizing_rationale", ""),
+               "entered_by": "watcher-trigger"}
+        with (ROOT / "journal" / "trades.jsonl").open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(rec) + "\n")
+        journal_note(f"ARMED TRIGGER FIRED: {trg['trigger_id']} bought {qty} {symbol} at ~{px} "
+                     f"(trigger: {trg.get('condition')} {trg.get('trigger_price')}). "
+                     f"Ledger {rec['trade_id']} opened with stop {trg.get('stop')} / target {trg.get('target')}.")
+        spawn_session(f"armed trigger {trg['trigger_id']} fired: bought {qty} {symbol} ~{px} - "
+                      f"rest the target bracket and verify the fill", state)
+    else:
+        journal_note(f"ARMED TRIGGER {trg['trigger_id']} on {symbol} fired at {px} but the order "
+                     f"was refused: {json.dumps(out, default=str)[:200]}")
+
+
+def fast_eval(state: dict) -> None:
+    """Sub-second-reaction pass on streamed prices: stops and armed triggers.
+    Uses only cached book state (refreshed by the slow tick) + live ticks."""
+    if halt_flag_set():
+        return
+    # Stops on streamed prices.
+    for rec in CACHE["records"]:
+        symbol = str(rec.get("symbol", "")).upper()
+        qty = CACHE["qty"].get(symbol)
+        stop = _num(rec.get("stop"))
+        px = live_price(symbol)
+        if not qty or stop is None or px is None or _backed_off(rec, state):
+            continue
+        if px <= stop:
+            cancel_symbol_orders(symbol)
+            out = market_sell(symbol, qty, f"STREAM stop {stop} breached at {px}")
+            if sell_succeeded(out):
+                oid = out.get("order_id")
+                close_record(rec["trade_id"], px, str(oid) if oid else None, "exit-condition-hit")
+                journal_note(f"STOP enforced (stream, ~1s) on {symbol}: {px} <= {stop}. "
+                             f"Sold {qty} (order {oid}). Ledger {rec['trade_id']} closed.")
+                CACHE["records"] = [r for r in CACHE["records"] if r.get("trade_id") != rec["trade_id"]]
+            else:
+                exit_blocked(rec, state, out)
+    # Armed triggers on streamed prices.
+    now_iso = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    for trg in load_triggers():
+        if str(trg.get("expires", "9999")) < now_iso:
+            continue  # slow tick reaps expired ones
+        symbol = str(trg.get("symbol", "")).upper()
+        px = live_price(symbol)
+        tp = _num(trg.get("trigger_price"))
+        cond = str(trg.get("condition", ">="))
+        if px is None or tp is None:
+            continue
+        if (cond == ">=" and px >= tp) or (cond == "<=" and px <= tp):
+            fire_trigger(trg, px, state)
+
+
 def main() -> int:
     once = "--once" in sys.argv
-    log(f"watcher start (once={once})")
+    log(f"watcher start (once={once}, stream+fast-eval mode)")
     state = load_state()
+    last_slow = 0.0
     while True:
         try:
-            tick(state)
+            now = time.time()
+            if now - last_slow >= REST_POLL_SECONDS:
+                tick(state)
+                # Refresh the fast-eval cache and the stream subscription set.
+                records = open_records()
+                CACHE["records"] = records
+                try:
+                    CACHE["qty"] = {
+                        str(p.get("symbol", "")).upper():
+                            _num(p.get("exact_quantity") or p.get("quantity"))
+                        for p in (service.get_positions(profile_id=PROFILE).get("positions") or [])
+                    }
+                except Exception:  # noqa: BLE001
+                    pass
+                symbols = {str(r.get("symbol", "")).upper() for r in records}
+                symbols |= {str(t.get("symbol", "")).upper() for t in load_triggers()}
+                symbols.add("SPY")
+                ensure_stream(symbols)
+                last_slow = now
+            else:
+                fast_eval(state)
         except Exception as exc:  # noqa: BLE001 - the watcher must survive anything
             log(f"tick error: {exc}")
         if once:
             return 0
-        now = datetime.now()
-        if now.hour * 100 + now.minute >= CLOSE_HHMM:
+        dt = datetime.now()
+        if dt.hour * 100 + dt.minute >= CLOSE_HHMM:
             log("market closed - watcher exiting")
             return 0
         time.sleep(POLL_SECONDS)
