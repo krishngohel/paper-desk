@@ -51,6 +51,9 @@ td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
 .chip.sell { background:rgba(224,112,92,.13); color:var(--bad); border:1px solid rgba(224,112,92,.35); }
 .chip.hold { background:rgba(232,181,96,.13); color:var(--clay); border:1px solid rgba(232,181,96,.35); }
 .chip.note { background:rgba(123,164,245,.12); color:var(--blue); border:1px solid rgba(123,164,245,.3); }
+.dhead { font-size:12.5px; }
+.dwhy { font-size:12px; color:var(--ink2); margin:4px 0 2px; line-height:1.5; }
+.dplan { font-size:11.5px; color:var(--clay); margin-top:2px; }
 .entry { border-top:1px solid var(--rule); padding:8px 0; }
 .entry:first-of-type { border-top:none; padding-top:2px; }
 .entry .head { font-size:12px; color:var(--ink2); }
@@ -214,6 +217,7 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
   </section>
 </div>
 <div><!-- right: research -->
+  <section><h2>Buy &amp; sell decisions <span class="sub">why it bought, sold, or backed out</span></h2><div id="decisions"></div></section>
   <section><h2>What's moving <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
   <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:34vh"></pre></section>
 </div>
@@ -404,6 +408,56 @@ function node(id, cls, status) {
   n.classList.remove("on","off"); if (cls) n.classList.add(cls);
   const s = $(id.replace("n-","ns-")); if (s && status !== undefined) s.textContent = status;
 }
+/* translate trader-speak into plain English */
+function jargon(t) {
+  return String(t || "")
+    .replace(/close\/touch below ([\d.]+)/gi, "if it falls to $$$1")
+    .replace(/close\/touch above ([\d.]+)/gi, "if it climbs to $$$1")
+    .replace(/day_change (-[\d.]+)pct/g, "fell $1% in one day")
+    .replace(/day_change \+?([\d.]+)pct/g, "rose $1% in one day")
+    .replace(/gap (-?[\d.]+)pct/g, "opened $1% away from yesterday's close")
+    .replace(/(-?[\d.]+)\s?pct/g, "$1%")
+    .replace(/([\d.]+)x the 20d average/g, "$1 times its normal trading volume")
+    .replace(/~?([\d.]+)xATR14/g, "about $1 times its typical daily swing")
+    .replace(/ATR14/g, "its typical daily swing")
+    .replace(/RSI14 ([\d.]+)/g, "momentum reading $1 out of 100")
+    .replace(/EMA(\d+)/g, "$1-day trend line")
+    .replace(/vwap/gi, "the day's average price")
+    .replace(/GTC buy-limit/gi, "standing buy order")
+    .replace(/buy-limit/gi, "buy order");
+}
+function fmtT(ts) { const d = String(ts || ""); return d.length > 15 ? d.slice(5, 10).replace("-", "/") + " " + d.slice(11, 16) : ""; }
+function buildDecisions(trades) {
+  const out = [];
+  for (const r of trades) {
+    const stagedPx = (String(r.sizing_rationale || "").match(/entry ([\d.]+)/) || [])[1];
+    if (r.thesis) out.push({
+      ts: r.opened_ts || r.staged_ts || "", chip: r.opened_ts ? ["buy", "Bought"] : ["note", "Staged"], sym: r.symbol,
+      head: r.opened_ts
+        ? `Bought ${r.entry_qty} shares of ${r.symbol}` + (r.entry_price ? ` at ${money(r.entry_price)}` : "")
+        : `Wants ${r.entry_qty} shares of ${r.symbol}` + (stagedPx ? ` if the price dips to $${stagedPx}` : "") + (r.aborted ? " — later called off" : ""),
+      why: jargon(r.thesis),
+      plan: [r.stop ? `cut the loss at ${money(r.stop)}` : null, r.target ? `take profit at ${money(r.target)}` : null,
+             r.time_stop ? `or walk away by ${r.time_stop}` : null].filter(Boolean).join(" · "),
+      note: r.sizing_rationale ? "How much it risked: " + jargon(r.sizing_rationale) : "" });
+    if (r.aborted && r.abort_reason) out.push({
+      ts: ((String(r.abort_reason).match(/\d{4}-\d{2}-\d{2}/) || [""])[0]) + "T23:59", chip: ["hold", "Called off"], sym: r.symbol,
+      head: `Backed out of the ${r.symbol} buy before it filled`,
+      why: jargon(String(r.abort_reason).replace(/^CANCELLED [^,]*, order [0-9a-f-]+ successfully cancelled via trade_cli\.py\.?\s*/i, "")),
+      plan: "", note: "" });
+    if (r.closed_ts) {
+      const win = Number(r.realized_pnl) >= 0;
+      out.push({ ts: r.closed_ts, chip: ["sell", "Sold"], sym: r.symbol, win,
+        head: `Sold ${r.entry_qty} ${r.symbol} at ${money(r.exit_price)} — ${win ? "made" : "lost"} ${money(Math.abs(r.realized_pnl))} (${r.realized_pnl_pct}%)`,
+        why: (r.exit_reason === "exit-condition-hit" ? "The exit level it planned in advance was hit. " :
+              r.exit_reason ? jargon(r.exit_reason) + ". " : "") + jargon(r.closing_note || ""),
+        plan: "",
+        note: r.review_verdict ? `Its own weekly review graded this trade "${r.review_verdict}": ` + jargon(r.review_notes || "") : "" });
+    }
+  }
+  out.sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+  return out.slice(0, 10);
+}
 function actionChip(body) {
   const m = (body.match(/- action: *(.*)/i) || [])[1] || "";
   if (/BUY|BOUGHT|entered|FIRED/i.test(m)) return ["buy", "Bought"];
@@ -516,6 +570,23 @@ async function refresh() {
   if (prev.trades !== undefined && (s.trades || []).length !== prev.trades) { hot("p-shield-exch"); hot("p-exch-mem"); }
   prev = { scan_ts: s.scan_ts, nOrd, wlast: s.watcher_log?.at(-1), jhead: s.journal?.[0]?.head,
     trades: (s.trades || []).length, scanKey: scanList.join(",") };
+
+  // buy & sell decisions panel (only re-renders on change; keeps open notes open)
+  const dv = $("decisions"), dKey = JSON.stringify(s.trades || []);
+  if (dv.dataset.k !== dKey) {
+    const dOpen = new Set([...dv.querySelectorAll("details[open]")].map(d => d.dataset.h));
+    dv.innerHTML = buildDecisions(s.trades || []).map(d => {
+      const hk = esc(d.sym + "|" + d.ts);
+      return `<div class="entry"><span class="chip ${d.chip[0]}">${d.chip[1]}</span>` +
+        `<b class="dhead${d.win === true ? " up" : d.win === false ? " down" : ""}">${esc(d.head)}</b>` +
+        ` <span class="small">${fmtT(d.ts)}</span>` +
+        `<div class="dwhy">${esc(d.why)}</div>` +
+        (d.plan ? `<div class="dplan">The plan: ${esc(d.plan)}</div>` : "") +
+        (d.note ? `<details data-h="${hk}"${dOpen.has(d.sym + "|" + d.ts) ? " open" : ""}><summary>more detail</summary><pre>${esc(d.note)}</pre></details>` : "") +
+        `</div>`;
+    }).join("") || "<div class=small>no decisions yet</div>";
+    dv.dataset.k = dKey;
+  }
 
   // panels (journal only re-renders on change, and keeps your open notes open)
   const jr = $("journal"), jKey = JSON.stringify(s.journal || []);
