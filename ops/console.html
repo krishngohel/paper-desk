@@ -195,6 +195,13 @@ const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;"
 let prev = {};
 const feedItems = [];
 
+function feed(txt, cls) {
+  const now = new Date().toTimeString().slice(0,8);
+  feedItems.unshift({ t: now, txt, cls: cls || "note" });
+  if (feedItems.length > 9) feedItems.pop();
+  $("feed").innerHTML = feedItems.map(f =>
+    `<div class="card"><time>${f.t}</time><span class="chip ${f.cls}">event</span><span class="txt">${esc(f.txt)}</span></div>`).join("");
+}
 function pipe(id, alive) { const e = $(id); if (e) e.classList.toggle("dead", !alive); }
 function hot(id, ms) { const e = $(id); if (!e) return; e.classList.add("hot"); setTimeout(() => e.classList.remove("hot"), ms || 2500); }
 function node(id, cls, status) {
@@ -203,8 +210,7 @@ function node(id, cls, status) {
   const s = $(id.replace("n-","ns-")); if (s && status !== undefined) s.textContent = status;
 }
 function actionChip(body) {
-  const m = (body.match(/- action: *([^
-]*)/i) || [])[1] || "";
+  const m = (body.match(/- action: *(.*)/i) || [])[1] || "";
   if (/BUY|BOUGHT|entered|FIRED/i.test(m)) return ["buy", "Bought"];
   if (/SELL|SOLD|exit|flatten/i.test(m)) return ["sell", "Sold"];
   if (/HOLD/i.test(m)) return ["hold", "Held"];
