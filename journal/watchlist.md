@@ -115,15 +115,89 @@ numeric trigger.
 
 - **MRVL** buy-limit 10 sh @ 211.50 GTC (order `5d4f1e58-3616-4a04-a3ba-c24fd633d2e1`),
   staged 2026-08-28 18:45 CT. Ledger: `t-2026-08-28-002` (pending_entry). Stop 202.00,
-  target 222.64, time_stop 2026-09-03.
-- **PCG** buy-limit 100 sh @ 16.45 GTC (order `cc6fe7f6-edcc-401a-a501-3e579b29b6e9`),
-  staged 2026-08-28 18:45 CT. Ledger: `t-2026-08-28-003` (pending_entry). Stop 16.00,
-  target 17.02, time_stop 2026-09-03.
+  target 222.64, time_stop 2026-09-03. **Confirmed still resting as of the 2026-08-29
+  later research session; catalyst now resolved bullish - see below.**
+- ~~PCG buy-limit 100 sh @ 16.45 GTC~~ **CANCELLED 2026-08-29 later research session**
+  (order `cc6fe7f6-edcc-401a-a501-3e579b29b6e9` cancelled via `trade_cli.py`; ledger
+  `t-2026-08-28-003` marked `aborted`). Confirmed negative catalyst below.
 
 Monday's planning leg (phase 0-1 of the `open`/first `continuous` session): re-check
-`orders` for fills on both, re-check overnight news on both symbols before trusting
-either level (neither could be news-verified this session), and cancel either whose
-thesis is invalidated by a gap or a headline before the open.
+`orders` for the MRVL fill, re-verify PCG stays cancelled (do not re-stage without a
+new thesis), and treat the catalyst notes below as current going into the open.
+
+## Macro calendar - CONFIRMED (2026-08-29 later research session, via web_search)
+
+Resolves the "unverified, from memory" macro flag repeated in the two earlier sessions
+today. Confirmed via web search (financecalendar.com, tradersquant.com, polymarkettrader.com):
+- **2026-09-04 (Fri) 8:30am ET: NFP jobs report** (Employment Situation) - confirmed, as
+  flagged. This IS the last trading day of the active-training directive (SOP rule 6) and
+  MRVL's time_stop (2026-09-03) sits one session before it - expect elevated volatility
+  risk on 09-04 specifically for anything still open into that date.
+- **2026-09-11 (Fri) 8:30am ET: CPI report** - falls after the training window closes,
+  not an immediate concern for currently-staged probes but relevant to any position
+  carried past 2026-09-04.
+- **2026-09-15/16 (Tue/Wed): FOMC meeting**, decision 2:00pm ET on the 16th - ALSO after
+  the training window closes. Correction to the earlier flag: there is no FOMC date inside
+  the 2026-08-31 to 2026-09-04 window, only the NFP print on the 4th itself.
+- No US market holiday in the 2026-08-31 to 2026-09-05 window (confirmed previously;
+  Labor Day 2026-09-07 falls after training window close).
+Net: only ONE scheduled macro event (NFP, 09-04) falls inside the remaining training
+window, and it lands on the window's own last day - not a mid-week whipsaw risk, but
+worth treating 09-04 itself as reduced-size/manage-tighter per playbook s5 if anything
+is still open that morning.
+
+## Catalyst confirmation (2026-08-29 later session - alpaca-paper MCP finally restored)
+
+After 11+ consecutive sessions with `get_news` unavailable (root-caused and fixed by
+the operator 2026-08-29 11:35 CT per the operator-note in the journal - MCP servers
+were registered outside the session's config home), this session ran `get_news` on
+every mover with an unconfirmed catalyst. Major finding: nearly the ENTIRE Friday
+loser list (MRVL, AFRM, IREN, RBRK, ESTC) was swept down by ONE shared macro catalyst
+- Fed's Kevin Warsh reviving September rate-hike odds to 60%, hitting growth/tech
+broadly (Benzinga "Warsh Sparks Rate-Hike Bets... Nasdaq 100 Falls", 2026-08-28
+16:46-20:00 CT, explicitly naming AFRM/AMKR/ESTC/GAP/IREN/MRVL/PYPL/RBRK among others)
+- while several of these names had genuinely GOOD same-day company news getting
+overrun by the macro fear:
+- **MRVL**: -10.48% day was macro-driven, NOT fundamental - same-day news was strongly
+  bullish (Google AI chip deal called a "monster number" by the CEO, 5 separate analyst
+  price-target raises to $245-325, all 15-55% above the 211-216 zone the selloff left
+  it in). Upgrades confidence that 211.13 support holding Monday is a macro-dip-in-a-
+  strengthening-name, not a broken thesis. Staged probe left unchanged (already
+  conservative); Monday's live workup can decide whether to add on confirmation.
+- **PCG**: -7.54% day IS catalyst-driven and it's a genuine structural negative:
+  California lawmakers blocked Newsom's push to shield utilities from wildfire-liability
+  lawsuits (Benzinga, 2026-08-28 17:07-18:39 CT). This is exactly the "if catalyst-driven,
+  expect a gap through the stop" scenario the original thesis flagged as its own kill
+  condition - probe CANCELLED, not carried into Monday's gap risk.
+- **AFRM**: strong Q4 beat + raised FY2027 guidance, 35% GMV growth, Shopify expansion -
+  genuinely bullish (analyst targets $90-124 vs Friday's 77.76 close). The intraday fade
+  from +11% to flat was the same macro rate-fear hitting Nasdaq that afternoon, not a
+  failed gap-and-go on the fundamentals. Existing WATCH-only plan (triggers unchanged)
+  stands, with more confidence than a pure technical fade would warrant.
+- **RBRK**: also a Q2 beat + raised guidance with SIX analyst price-target raises to
+  $114-130 (vs ~93 close) - the stock's weakness is post-earnings-pop giveback compounded
+  by the macro selloff, not a broken story. Technicals still show no confirmed higher low
+  (closed at the day low) - WATCH-only plan unchanged, but the fundamental backdrop is
+  more supportive than the chart alone suggests.
+- **IREN**: also strongly positive same-day news (new multi-year AI cloud contract,
+  $2.8B in deals targeting $4B ARR, a $2.4B Blue Owl debt deal to buy Nvidia chips, 2026
+  capacity "sold out", BTIG reiterating Buy/$80 PT vs ~34.81 close) swept down by the
+  same macro selloff. WATCH-only plan unchanged (downtrend structure, no higher low yet
+  per playbook s2), but the fundamental catalyst is a genuine positive, not a red flag.
+- **PYPL**: the one name with a real, idiosyncratic NEGATIVE catalyst distinct from the
+  macro selloff - Stripe/Advent abandoned their takeover bid, pulling the rug out from
+  under a deal-premium David Einhorn had just bought into. This is a fundamental
+  de-rating, not tape noise - reinforces the existing "falling knife, watch only"
+  treatment; no reason to get more constructive here even if it bounces technically.
+- **GAP**: independently confirmed the +12.94% gap was a real earnings beat + raised
+  guidance (multiple analyst PT raises $23-42), not speculative - still extended
+  (RSI14 71.5, 100% of 20d range) with no fresh base, WATCH-only plan unchanged.
+
+Net effect: the regime read (SPY/QQQ range/mixed, no broad tailwind) stands, but the
+READ on individual names shifts from "several unconfirmed, possibly broken theses" to
+"one real macro wobble (rate-hike fear) sweeping over a batch of names with mostly-
+strong underlying fundamentals, plus two genuine idiosyncratic risks (PCG legal,
+PYPL deal-collapse) correctly separated out and treated with more caution."
 
 ## 2026-08-29 (Saturday) research session addendum
 
@@ -144,3 +218,20 @@ active-training directive (SOP rule 6) - expect elevated volatility into a sessi
 also marks the training-window boundary; no confirmed FOMC/CPI date found for the
 2026-08-31 to 2026-09-04 window. No US market holiday falls in that window (Labor Day
 2026 is 2026-09-07, the following Monday, after the training window closes).
+
+## 2026-08-29 third research session addendum (evening pass)
+
+Re-verified from a cold read: `status`/`account`/`positions`/`orders` unchanged since the
+17:05 CT session - flat (0 positions), MRVL 10sh @ 211.50 GTC still `accepted`/unfilled,
+PCG stays cancelled (no re-stage, no new thesis to justify one). `mcp__vibe-research__web_search`
+is now reachable (unlike the two earlier sessions today, which got "permissions not granted") -
+used it to finally close the macro-calendar gap flagged twice today; see the "Macro calendar -
+CONFIRMED" section above for the resolved NFP/CPI/FOMC dates (net: only NFP on 09-04 falls
+inside the training window, no FOMC/CPI collision). Ran a fresh `get_news` pass on MRVL
+(the one open thesis) - two new Benzinga pieces from today (13:00 CT, 12:01 CT) are retail-
+sentiment roundups ("stocks investors couldn't stop buzzing about") naming MRVL alongside
+NVDA/CRM/CRWD/IREN, no new price-moving fact, nothing that changes the staged probe's thesis
+or levels. No new candidates found beyond the 9 already ranked; TENB/AFRM/PYPL/ESTC/RBRK/
+IREN/GAP remain WATCH ONLY for the same reason stated twice already today (no level close
+enough to Friday's close to stage without chasing) - not re-litigating that call a third time
+without new information. No new orders staged this session.
