@@ -254,7 +254,7 @@ async function refresh() {
   node("n-mem", "on", closed ? closed + " trades remembered" : "its rulebook");
   node("n-brain", thinking ? "on" : "", thinking ? "thinking now" : "between sessions");
   node("n-shield", halted ? "off" : "on", halted ? "KILL SWITCH PULLED" : "every order checked");
-  node("n-exch", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : nOrd + " orders resting · " + nTrig + " traps");
+  node("n-exch", a.broker_error ? "off" : "on", a.broker_error ? "connection issue" : nOrd + " orders · " + nTrig + " traps");
   node("n-guard", guardOn ? "on" : "", guardOn ? "on duty · cuts losers in ~1s" : "asleep (market closed)");
 
   // pipes (live data transfer)
