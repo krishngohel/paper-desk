@@ -101,7 +101,8 @@ def _preflight(service, symbol: str, side: str, qty: float, rest: list[str]):
             if str(row.get("symbol", "")).upper() == symbol:
                 held += _num(row.get("exact_quantity") or row.get("quantity")) or 0.0
         resting = 0.0
-        for o in (service.get_open_orders(profile_id=PROFILE) or {}).get("orders") or []:
+        payload = service.get_open_orders(profile_id=PROFILE) or {}
+        for o in payload.get("orders") or payload.get("open_orders") or []:
             if (str(o.get("symbol", "")).upper() == symbol
                     and str(o.get("side", "")).lower() == "sell"):
                 leaves = _num(o.get("leaves_quantity"))

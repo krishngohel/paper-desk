@@ -141,7 +141,8 @@ def good_quote(symbol: str) -> tuple[float, float] | None:
 
 def cancel_symbol_orders(symbol: str) -> None:
     try:
-        orders = service.get_open_orders(profile_id=PROFILE).get("orders") or []
+        payload = service.get_open_orders(profile_id=PROFILE) or {}
+        orders = payload.get("orders") or payload.get("open_orders") or []
     except Exception:  # noqa: BLE001
         return
     for o in orders:
@@ -269,7 +270,8 @@ def tick(state: dict) -> None:
         if target is not None and bid >= target:
             # Normally a resting GTC limit handles this; fallback if none exists.
             try:
-                orders = service.get_open_orders(profile_id=PROFILE).get("orders") or []
+                payload = service.get_open_orders(profile_id=PROFILE) or {}
+                orders = payload.get("orders") or payload.get("open_orders") or []
             except Exception:  # noqa: BLE001
                 orders = []
             has_resting_sell = any(str(o.get("symbol", "")).upper() == symbol
@@ -291,10 +293,11 @@ def tick(state: dict) -> None:
         # fill on an entry rung or a partial target fill), wake a session to
         # resize the brackets rather than auto-amending blind.
         try:
+            _op = service.get_open_orders(profile_id=PROFILE) or {}
             resting_sells = sum(
                 (_num(o.get("leaves_quantity")) or
                  ((_num(o.get("quantity")) or 0) - (_num(o.get("filled_quantity")) or 0)))
-                for o in (service.get_open_orders(profile_id=PROFILE).get("orders") or [])
+                for o in (_op.get("orders") or _op.get("open_orders") or [])
                 if str(o.get("symbol", "")).upper() == symbol
                 and str(o.get("side", "")).lower() == "sell"
             )
