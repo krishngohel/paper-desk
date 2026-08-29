@@ -28,10 +28,14 @@ h1 em { color:var(--clay); font-style:normal; }
 .stat.big span { color:var(--clay); }
 .up { color:var(--good); } .down { color:var(--bad); }
 .clock { color:var(--mut); font-size:11.5px; margin-left:auto; font-family:"JetBrains Mono",monospace; }
-main { flex:1; min-height:0; display:grid; grid-template-columns:300px minmax(0,1fr) 320px;
+main { flex:1; min-height:0; display:grid; grid-template-columns:340px minmax(0,1fr) 300px;
   gap:12px; padding:10px 16px 12px; }
 main > div { min-height:0; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--rule2) transparent; }
 main > div.center { overflow:hidden; display:flex; flex-direction:column; }
+main > div.left { overflow:hidden; display:flex; flex-direction:column; }
+main > div.left > section { flex:none; }
+main > div.left > section.dec-sec { flex:1; min-height:110px; display:flex; flex-direction:column; }
+.dec-sec #decisions { flex:1; min-height:0; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--rule2) transparent; padding-right:4px; }
 main > div.center > section { flex:1; min-height:0; display:flex; flex-direction:column; }
 section { background:var(--card); border:1px solid var(--rule); border-radius:12px;
   padding:10px 14px 12px; margin-bottom:10px;
@@ -132,11 +136,12 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
   <div class="clock" id="clock"></div>
 </header>
 <main>
-<div><!-- left: state -->
+<div class="left"><!-- left: state + decisions -->
   <section><h2>What it owns</h2><table id="book"></table></section>
   <section><h2>Orders waiting</h2><table id="orders"></table></section>
   <section><h2>Traps set <span class="sub">buys that fire on their price</span></h2><table id="trig"></table></section>
   <section><h2>Track record</h2><div id="record" class="small">no completed trades yet</div></section>
+  <section class="dec-sec"><h2>Buy &amp; sell decisions <span class="sub">why it bought, sold, or backed out</span></h2><div id="decisions"></div></section>
   <section><h2>Under the hood <span class="sub">technical logs</span></h2>
     <details><summary>Safety-net activity (watcher)</summary><pre class="raw" id="wlog"></pre></details>
     <details><summary>Session output (raw)</summary><pre class="raw" id="slog"></pre></details>
@@ -217,7 +222,6 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
   </section>
 </div>
 <div><!-- right: research -->
-  <section><h2>Buy &amp; sell decisions <span class="sub">why it bought, sold, or backed out</span></h2><div id="decisions"></div></section>
   <section><h2>What's moving <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
   <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:34vh"></pre></section>
 </div>
