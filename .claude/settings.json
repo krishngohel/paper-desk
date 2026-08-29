@@ -9,7 +9,9 @@
       "Bash(cd *)",
       "PowerShell(C:\\Users\\awsom\\Documents\\Projects\\trading-agent\\.venv\\Scripts\\python.exe *)",
       "PowerShell(..\\.venv\\Scripts\\python.exe *)",
-      "Artifact"
+      "Artifact",
+      "mcp__alpaca-paper",
+      "mcp__vibe-research"
     ],
     "deny": [
       "Bash(*commit_paper_mandate*)",
