@@ -1,100 +1,106 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Trading Ops Console</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root { color-scheme: dark;
-  --bg0:#04070f; --bg1:#0a1224; --panel:rgba(14,23,42,.72); --line:rgba(56,189,248,.14);
-  --ink:#e8f4ff; --ink2:#9fb6cc; --mut:#5b7188;
-  --cyan:#38bdf8; --blue:#2563eb; --good:#2dd4a7; --bad:#ff5d5d; --warn:#fbbf24; }
+:root { color-scheme: light;
+  --paper:#F3EEE3; --card:#FBF7EE; --well:#F1EADB; --rule:#E0D7C4; --rule2:#D8CFBC;
+  --ink:#1F1B16; --ink2:#57503F; --mut:#8A8171;
+  --clay:#B5563A; --moss:#4C7A4F; --ochre:#B89A55; --blue:#5B8DEF;
+  --plum:#7C5CBF; --teal:#3E7C7B; --ember:#C2410C;
+  --good:#3F6D42; --bad:#B5442F; }
 * { box-sizing:border-box; }
-body { margin:0; color:var(--ink);
-  background: radial-gradient(1200px 700px at 50% -10%, #0e2a4d 0%, var(--bg1) 45%, var(--bg0) 100%) fixed;
-  font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
-header { display:flex; gap:26px; align-items:center; padding:14px 22px; flex-wrap:wrap;
-  position:sticky; top:0; z-index:5; backdrop-filter: blur(8px);
-  background: linear-gradient(180deg, rgba(4,7,15,.92), rgba(4,7,15,.75));
-  border-bottom:1px solid var(--line); }
-h1 { font-size:16px; margin:0; letter-spacing:.14em; text-transform:uppercase;
-  background: linear-gradient(90deg, var(--cyan), #8ab8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.stat span { display:block; color:var(--mut); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
-.stat b { font-size:19px; font-weight:650; font-variant-numeric:tabular-nums; }
+html,body { height:100%; }
+body { margin:0; color:var(--ink); overflow:hidden; display:flex; flex-direction:column;
+  background: linear-gradient(180deg, #F6F1E8 0%, var(--paper) 60%, #EDE6D8 100%);
+  font:13.5px/1.5 "Inter Tight",system-ui,sans-serif; }
+body::after { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.51 0 0 0 0 0.44 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"); }
+header { flex:none; display:flex; gap:22px; align-items:center; padding:9px 18px; flex-wrap:wrap;
+  background:var(--card); border-bottom:1px solid var(--rule);
+  box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 2px 8px rgba(31,27,22,.05); }
+h1 { font:600 19px/1 "Newsreader",Georgia,serif; margin:0; color:var(--ink); letter-spacing:.01em; }
+h1 em { color:var(--clay); font-style:normal; }
+.stat span { display:block; color:var(--mut); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }
+.stat b { font-size:16.5px; font-weight:650; font-variant-numeric:tabular-nums; }
 .up { color:var(--good); } .down { color:var(--bad); }
-.clock { color:var(--mut); font-size:12px; margin-left:auto; }
-main { display:grid; grid-template-columns: 360px 1fr 400px; gap:14px; padding:14px 22px; align-items:start; }
-@media (max-width:1250px){ main { grid-template-columns:1fr; } }
-section { background:var(--panel); border:1px solid var(--line); border-radius:12px;
-  padding:14px 16px; margin-bottom:14px; box-shadow: 0 0 24px rgba(37,99,235,.06) inset; }
-h2 { font-size:12px; margin:0 0 10px; color:var(--cyan); text-transform:uppercase; letter-spacing:.12em; font-weight:600; }
-h2 .sub { color:var(--mut); text-transform:none; letter-spacing:0; font-weight:400; margin-left:8px; }
-table { border-collapse:collapse; width:100%; font-size:14px; }
-th,td { text-align:left; padding:5px 10px 5px 0; border-bottom:1px solid rgba(56,189,248,.08); }
-th { color:var(--mut); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; }
+.clock { color:var(--mut); font-size:11.5px; margin-left:auto; font-family:"JetBrains Mono",monospace; }
+main { flex:1; min-height:0; display:grid; grid-template-columns:315px minmax(0,1fr) 345px;
+  gap:12px; padding:10px 16px 12px; }
+main > div { min-height:0; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--rule2) transparent; }
+section { background:var(--card); border:1px solid var(--rule); border-radius:12px;
+  padding:10px 14px 12px; margin-bottom:10px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.75) inset, 0 1px 3px rgba(31,27,22,.07), 0 6px 16px rgba(31,27,22,.04); }
+section:last-child { margin-bottom:0; }
+h2 { font:600 12.5px/1.2 "Newsreader",Georgia,serif; margin:0 0 8px; color:var(--clay);
+  text-transform:uppercase; letter-spacing:.1em; }
+h2 .sub { color:var(--mut); font:400 11px "Inter Tight",sans-serif; text-transform:none; letter-spacing:0; margin-left:7px; }
+table { border-collapse:collapse; width:100%; font-size:12.5px; }
+th,td { text-align:left; padding:4px 8px 4px 0; border-bottom:1px solid var(--rule); }
+tr:last-child td { border-bottom:none; }
+th { color:var(--mut); font-size:9.5px; text-transform:uppercase; letter-spacing:.07em; }
 td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
-.small { font-size:12px; color:var(--mut); }
-.chip { display:inline-block; padding:1px 10px; border-radius:999px; font-size:11.5px; font-weight:600; margin-right:8px; }
-.chip.buy { background:rgba(45,212,167,.15); color:var(--good); border:1px solid rgba(45,212,167,.4); }
-.chip.sell { background:rgba(255,93,93,.14); color:var(--bad); border:1px solid rgba(255,93,93,.4); }
-.chip.hold { background:rgba(251,191,36,.12); color:var(--warn); border:1px solid rgba(251,191,36,.35); }
-.chip.note { background:rgba(56,189,248,.12); color:var(--cyan); border:1px solid rgba(56,189,248,.35); }
-.entry { border-top:1px solid rgba(56,189,248,.08); padding:10px 0; }
+.small { font-size:11.5px; color:var(--mut); }
+.chip { display:inline-block; padding:1px 9px; border-radius:999px; font-size:10.5px; font-weight:600; margin-right:7px; }
+.chip.buy  { background:rgba(76,122,79,.13); color:var(--moss); border:1px solid rgba(76,122,79,.35); }
+.chip.sell { background:rgba(181,86,58,.12); color:var(--clay); border:1px solid rgba(181,86,58,.35); }
+.chip.hold { background:rgba(184,154,85,.16); color:#8a6f33; border:1px solid rgba(184,154,85,.4); }
+.chip.note { background:rgba(91,141,239,.11); color:#3f66b8; border:1px solid rgba(91,141,239,.3); }
+.entry { border-top:1px solid var(--rule); padding:8px 0; }
 .entry:first-of-type { border-top:none; padding-top:2px; }
-.entry .head { font-size:13px; color:var(--ink2); }
-details summary { cursor:pointer; color:var(--mut); font-size:12px; margin-top:4px; }
-details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
-  color:var(--ink2); background:rgba(4,7,15,.5); border-radius:8px; padding:10px; margin:8px 0 0; max-height:240px; overflow:auto; }
+.entry .head { font-size:12px; color:var(--ink2); }
+details summary { cursor:pointer; color:var(--mut); font-size:11px; margin-top:3px; }
+details pre, pre.raw { font:11.5px/1.5 "JetBrains Mono",Consolas,monospace; white-space:pre-wrap; word-break:break-word;
+  color:var(--ink2); background:var(--well); border:1px solid var(--rule); border-radius:8px;
+  box-shadow: 0 1px 2px rgba(31,27,22,.06) inset;
+  padding:8px 10px; margin:7px 0 0; max-height:150px; overflow:auto; }
 
-/* ---------- RAG-style data-flow graph (center) ---------- */
-.pipe path { fill:none; stroke:rgba(56,189,248,.35); stroke-width:1.6; }
-.pipe circle { fill:var(--cyan); filter:url(#ng); }
-.pipe.hot path { stroke:rgba(56,189,248,.7); }
-.pipe.hot circle { fill:#7dd3fc; }
-.pipe.dead path { stroke:rgba(91,113,136,.22); }
+/* ---------- agent map: each agent has its own color ---------- */
+#n-ticks, #p-ticks-brain, #p-ticks-guard { --c:var(--blue); }
+#n-scan,  #p-scan-brain  { --c:var(--ochre); }
+#n-news,  #p-news-brain  { --c:var(--moss); }
+#n-mem,   #p-mem-brain   { --c:var(--plum); }
+#n-brain, #p-brain-shield{ --c:var(--clay); }
+#n-shield,#p-shield-exch { --c:var(--moss); }
+#n-exch,  #p-exch-mem    { --c:var(--teal); }
+#n-guard, #p-guard-shield{ --c:var(--ember); }
+svg.map { width:100%; height:auto; max-height:56vh; display:block; margin:0 auto; }
+main > div.center { display:flex; flex-direction:column; }
+main > div.center > section { flex:1; }
+.pipe path { fill:none; stroke:color-mix(in srgb, var(--c) 38%, transparent); stroke-width:1.5; }
+.pipe circle { fill:var(--c); }
+.pipe.hot path { stroke:color-mix(in srgb, var(--c) 75%, transparent); stroke-width:2; }
+.pipe.hot circle { r:4; }
+.pipe.dead path { stroke:var(--rule2); stroke-dasharray:3 5; }
 .pipe.dead circle { display:none; }
-.nd rect { fill:url(#ndg); stroke:rgba(56,189,248,.35); stroke-width:1.4; }
-.nd .nm { fill:var(--ink); font:600 13px system-ui,sans-serif; text-anchor:middle; }
-.nd .nm.big { font-size:15px; }
-.nd .ns { fill:var(--mut); font:10.5px system-ui,sans-serif; text-anchor:middle; }
-.nd.on rect { stroke:var(--good); filter:url(#ng); }
+.nd rect { fill:#FFFDF6; stroke:color-mix(in srgb, var(--c) 55%, transparent); stroke-width:1.4;
+  filter:drop-shadow(0 1.5px 1.5px rgba(31,27,22,.12)); }
+.nd .nm { fill:var(--ink); font:600 13px "Inter Tight",sans-serif; text-anchor:middle; }
+.nd .nm.big { font:600 15.5px "Newsreader",Georgia,serif; fill:#FBF7EE; }
+.nd .ns { fill:var(--mut); font:10px "Inter Tight",sans-serif; text-anchor:middle; }
+.nd .dot { fill:var(--c); }
+.nd.on rect { stroke:var(--c); stroke-width:2; filter:drop-shadow(0 0 6px color-mix(in srgb, var(--c) 55%, transparent)); }
 .nd.on .ns { fill:var(--ink2); }
-.nd.off rect { stroke:rgba(255,93,93,.6); }
-.nd.brain .ring { fill:none; stroke:url(#ringy, #38bdf8); stroke:rgba(56,189,248,.5); stroke-width:1.6;
+.nd.off rect { stroke:var(--bad); stroke-width:2; filter:drop-shadow(0 0 6px rgba(181,68,47,.5)); }
+.nd.brain .ns { fill:#EDD9C8; }
+.nd.brain .ring { fill:none; stroke:color-mix(in srgb, var(--clay) 55%, transparent); stroke-width:1.6;
   stroke-dasharray:10 14; transform-origin:285px 197px; animation: spin 16s linear infinite; }
-.nd.brain.on circle:first-of-type { filter:url(#ng); }
+.nd.brain.on circle:first-of-type { filter:drop-shadow(0 0 10px rgba(181,86,58,.55)); }
 @keyframes spin { to { transform: rotate(360deg); } }
-/* legacy (unused) */
-.flow { display:flex; flex-direction:column; gap:0; padding:6px 4px; }
-.stage { position:relative; display:flex; align-items:center; gap:14px;
-  background: linear-gradient(135deg, rgba(18,48,85,.55), rgba(10,18,36,.75));
-  border:1px solid var(--line); border-radius:12px; padding:12px 16px; transition: all .35s; }
-.stage .ico { width:38px; height:38px; border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center;
-  font-size:19px; background: radial-gradient(circle at 35% 30%, rgba(56,189,248,.35), rgba(37,99,235,.12));
-  border:1px solid rgba(56,189,248,.3); }
-.stage .t b { display:block; font-size:14.5px; }
-.stage .t span { font-size:12.5px; color:var(--mut); }
-.stage .live { margin-left:auto; font-size:12px; color:var(--mut); text-align:right; max-width:46%; }
-.stage.active { border-color: var(--cyan); box-shadow: 0 0 18px rgba(56,189,248,.25), 0 0 40px rgba(37,99,235,.12);
-  background: linear-gradient(135deg, rgba(26,64,110,.7), rgba(12,24,48,.8)); }
-.stage.active .ico { animation: breathe 1.6s ease-in-out infinite; }
-.stage.flash { border-color: var(--good); box-shadow: 0 0 22px rgba(45,212,167,.35); }
-@keyframes breathe { 50% { transform: scale(1.12); filter: brightness(1.4);} }
-.conn { position:relative; height:26px; width:2px; margin-left:34px;
-  background: linear-gradient(180deg, rgba(56,189,248,.5), rgba(37,99,235,.2)); }
-.conn::after { content:""; position:absolute; left:-2.2px; width:6px; height:6px; border-radius:50%;
-  background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: drop 1.3s linear infinite; }
-.conn.dead { background: rgba(91,113,136,.25); } .conn.dead::after { display:none; }
-@keyframes drop { from { top:-4px; opacity:0; } 15% { opacity:1; } to { top:24px; opacity:0; } }
+.legend { font-size:11px; color:var(--mut); margin-top:6px; }
+.legend b { font-weight:600; }
 /* task feed */
-.feed { margin-top:4px; }
-.card { display:flex; gap:10px; align-items:baseline; padding:8px 12px; margin-bottom:6px; border-radius:10px;
-  background: rgba(10,18,36,.7); border:1px solid rgba(56,189,248,.1);
-  animation: slidein .45s ease; }
+.feed { margin-top:10px; }
+.card { display:flex; gap:9px; align-items:baseline; padding:6px 11px; margin-bottom:5px; border-radius:9px;
+  background:var(--well); border:1px solid var(--rule); animation: slidein .45s ease; }
 @keyframes slidein { from { transform: translateY(-8px); opacity:0; } }
-.card time { color:var(--mut); font-size:11.5px; font-variant-numeric:tabular-nums; flex:none; }
-.card .txt { font-size:13px; color:var(--ink2); }
-@media (prefers-reduced-motion: reduce){ .conn::after,.stage.active .ico,.card{ animation:none; } }
+.card time { color:var(--mut); font-size:10.5px; font-variant-numeric:tabular-nums; flex:none; font-family:"JetBrains Mono",monospace; }
+.card .txt { font-size:12px; color:var(--ink2); }
+@media (prefers-reduced-motion: reduce){ .card, .nd.brain .ring { animation:none; } }
 </style></head><body>
 <header>
-  <h1>Paper Desk · Live</h1>
+  <h1>Paper Desk <em>· Live</em></h1>
   <div class="stat"><span>Account value</span><b id="eq">—</b></div>
   <div class="stat"><span>Cash ready</span><b id="cash">—</b></div>
   <div class="stat"><span>Holdings</span><b id="npos">—</b></div>
@@ -105,7 +111,7 @@ details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-sp
 <main>
 <div><!-- left: state -->
   <section><h2>What it owns</h2><table id="book"></table></section>
-  <section><h2>Orders waiting at the exchange</h2><table id="orders"></table></section>
+  <section><h2>Orders waiting</h2><table id="orders"></table></section>
   <section><h2>Traps set <span class="sub">buys that fire the second their price prints</span></h2><table id="trig"></table></section>
   <section><h2>Track record</h2><div id="record" class="small">no completed trades yet</div></section>
   <section><h2>Under the hood <span class="sub">technical logs</span></h2>
@@ -113,17 +119,13 @@ details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-sp
     <details><summary>Session output (raw)</summary><pre class="raw" id="slog"></pre></details>
   </section>
 </div>
-<div><!-- center: the agent, animated -->
+<div class="center"><!-- center: the agent, animated -->
   <section>
     <h2>The agent at work <span class="sub" id="agentstate"></span></h2>
-    <svg viewBox="0 0 560 430" style="width:100%;height:auto;display:block" aria-label="Live data-flow map">
+    <svg class="map" viewBox="0 0 560 430" aria-label="Live data-flow map">
   <defs>
-    <linearGradient id="ndg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#16375f"/><stop offset="100%" stop-color="#0a1428"/></linearGradient>
     <radialGradient id="braing" cx="50%" cy="35%">
-      <stop offset="0%" stop-color="#2c5d9e"/><stop offset="100%" stop-color="#0d1b33"/></radialGradient>
-    <filter id="ng"><feGaussianBlur stdDeviation="3" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <stop offset="0%" stop-color="#C9714F"/><stop offset="100%" stop-color="#7E3520"/></radialGradient>
   </defs>
 
   <!-- edges (data pipes). Each has a path + particle group. -->
@@ -151,13 +153,17 @@ details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-sp
 
   <!-- source nodes -->
   <g class="nd" id="n-ticks"><rect x="8" y="46" width="110" height="46" rx="10"/>
-    <text class="nm" x="63" y="66">Price ticks</text><text class="ns" x="63" y="82" id="ns-ticks">—</text></g>
+    <circle class="dot" cx="22" cy="60" r="3.5"/>
+    <text class="nm" x="66" y="66">Price ticks</text><text class="ns" x="66" y="82" id="ns-ticks">—</text></g>
   <g class="nd" id="n-scan"><rect x="8" y="136" width="110" height="46" rx="10"/>
-    <text class="nm" x="63" y="156">Market scan</text><text class="ns" x="63" y="172" id="ns-scan">—</text></g>
+    <circle class="dot" cx="22" cy="150" r="3.5"/>
+    <text class="nm" x="66" y="156">Market scan</text><text class="ns" x="66" y="172" id="ns-scan">—</text></g>
   <g class="nd" id="n-news"><rect x="8" y="226" width="110" height="46" rx="10"/>
-    <text class="nm" x="63" y="246">News</text><text class="ns" x="63" y="262" id="ns-news">read-only</text></g>
+    <circle class="dot" cx="22" cy="240" r="3.5"/>
+    <text class="nm" x="66" y="246">News</text><text class="ns" x="66" y="262" id="ns-news">read-only</text></g>
   <g class="nd" id="n-mem"><rect x="8" y="316" width="110" height="52" rx="10"/>
-    <text class="nm" x="63" y="336">Memory</text><text class="ns" x="63" y="352" id="ns-mem">its rulebook</text></g>
+    <circle class="dot" cx="22" cy="330" r="3.5"/>
+    <text class="nm" x="66" y="336">Memory</text><text class="ns" x="66" y="352" id="ns-mem">its rulebook</text></g>
 
   <!-- brain -->
   <g class="nd brain" id="n-brain"><circle cx="285" cy="197" r="54" fill="url(#braing)"/>
@@ -166,26 +172,28 @@ details pre, pre.raw { font:12.5px/1.5 ui-monospace,Consolas,monospace; white-sp
 
   <!-- right column -->
   <g class="nd" id="n-shield"><rect x="415" y="108" width="112" height="52" rx="10"/>
+    <circle class="dot" cx="429" cy="122" r="3.5"/>
     <text class="nm" x="471" y="128">The Shield</text><text class="ns" x="471" y="146" id="ns-shield">every order checked</text></g>
   <g class="nd" id="n-exch"><rect x="415" y="232" width="112" height="52" rx="10"/>
+    <circle class="dot" cx="429" cy="246" r="3.5"/>
     <text class="nm" x="471" y="252">Exchange</text><text class="ns" x="471" y="270" id="ns-exch">—</text></g>
   <g class="nd" id="n-guard"><rect x="245" y="314" width="112" height="48" rx="10"/>
+    <circle class="dot" cx="259" cy="328" r="3.5"/>
     <text class="nm" x="301" y="334">Reflexes</text><text class="ns" x="301" y="350" id="ns-guard">—</text></g>
 </svg>
-<div class="small" style="margin-top:8px">
-  Dots are live data moving: prices and research stream into the <b style="color:var(--ink2)">Brain</b>, which also
-  re-reads its own <b style="color:var(--ink2)">Memory</b> before every decision. Decisions pass the
-  <b style="color:var(--ink2)">Shield</b> (never short · never borrowed) to the <b style="color:var(--ink2)">Exchange</b>,
-  and every outcome flows back into Memory — that loop is how it learns. <b style="color:var(--ink2)">Reflexes</b>
-  watch raw ticks and cut losers through the Shield in about a second.
+<div class="legend">
+  Dots are live data moving. Prices and research stream into the <b style="color:var(--clay)">Brain</b>, which re-reads its
+  <b style="color:var(--plum)">Memory</b> before every decision. Decisions pass the <b style="color:var(--moss)">Shield</b>
+  (never short, never borrowed) to the <b style="color:var(--teal)">Exchange</b>, and outcomes flow back into Memory.
+  <b style="color:var(--ember)">Reflexes</b> watch raw ticks and cut losers in about a second.
 </div>
-<div class="feed" id="feed" style="margin-top:14px"></div>
+<div class="feed" id="feed"></div>
   </section>
 </div>
 <div><!-- right: mind + research -->
   <section><h2>What it's thinking <span class="sub">newest first</span></h2><div id="journal"></div></section>
-  <section><h2>What's moving in the market <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
-  <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:260px"></pre></section>
+  <section><h2>What's moving <span class="sub" id="scants"></span></h2><table id="scan"></table></section>
+  <section><h2>The plan for Monday</h2><pre class="raw" id="wl" style="max-height:170px"></pre></section>
 </div>
 </main>
 <script>
@@ -198,7 +206,7 @@ const feedItems = [];
 function feed(txt, cls) {
   const now = new Date().toTimeString().slice(0,8);
   feedItems.unshift({ t: now, txt, cls: cls || "note" });
-  if (feedItems.length > 9) feedItems.pop();
+  if (feedItems.length > 8) feedItems.pop();
   $("feed").innerHTML = feedItems.map(f =>
     `<div class="card"><time>${f.t}</time><span class="chip ${f.cls}">event</span><span class="txt">${esc(f.txt)}</span></div>`).join("");
 }
@@ -217,11 +225,11 @@ function actionChip(body) {
   return ["note", "Note"];
 }
 function plainHead(h) {
-  return h.replace(/ CT - (continuous|intraday)/i, " — trading session")
-    .replace(/ CT - open/i, " — opening session").replace(/ CT - preclose/i, " — end-of-day wrap-up")
-    .replace(/ CT - weekly-review/i, " — weekly self-review").replace(/ CT - research/i, " — homework session")
-    .replace(/ CT - triggered/i, " — wake-up check").replace(/ CT - watcher/i, " — safety net acted")
-    .replace(/ CT - operator-note.*/i, " — note from the human");
+  return h.replace(/ CT - (continuous|intraday)/i, " · trading session")
+    .replace(/ CT - open/i, " · opening session").replace(/ CT - preclose/i, " · end-of-day wrap-up")
+    .replace(/ CT - weekly-review/i, " · weekly self-review").replace(/ CT - research/i, " · homework session")
+    .replace(/ CT - triggered/i, " · wake-up check").replace(/ CT - watcher/i, " · safety net acted")
+    .replace(/ CT - operator-note.*/i, " · note from the human");
 }
 
 async function refresh() {
@@ -233,7 +241,7 @@ async function refresh() {
   const nOrd = (s.broker.orders || []).length;
   $("nord").textContent = nOrd;
   const halted = s.agents.halted;
-  $("halt").textContent = halted ? "PULLED — stopped" : "armed";
+  $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
   const a = s.agents, lock = a.session_lock;
@@ -245,7 +253,7 @@ async function refresh() {
 
   $("agentstate").textContent = halted ? "stopped by kill switch" :
     thinking ? "a session is thinking right now" :
-    guardOn ? "between sessions — reflexes on duty" : "asleep — market closed";
+    guardOn ? "between sessions · reflexes on duty" : "asleep · market closed";
 
   // nodes
   node("n-ticks", streamOn ? "on" : "", streamOn ? "streaming live" : "market closed");
@@ -297,7 +305,7 @@ async function refresh() {
       return `<tr><td>${esc(p.symbol)}</td><td class=num>${esc(p.quantity)}</td>` +
         `<td class=num>${money(p.average_cost)}</td><td class=num>${money(p.current_price)}</td>` +
         `<td class="num ${pnl >= 0 ? "up" : "down"}">${money(pnl)}</td></tr>`;
-    }).join("") || "<tr><td class=small colspan=5>nothing right now — all cash</td></tr>");
+    }).join("") || "<tr><td class=small colspan=5>nothing right now · all cash</td></tr>");
 
   $("orders").innerHTML = "<tr><th>Stock</th><th>What</th><th class=num>Shares</th><th class=num>At</th></tr>" +
     ((s.broker.orders || []).map(o =>
