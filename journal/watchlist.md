@@ -105,11 +105,63 @@ the technical read, especially the two staged orders below.**
    below prior-day's close (20.82) would erase the entire gap and invalidate the thesis
    outright. next_earnings 2026-11-19 (safe).
 
+10. **WDAY** - enterprise software, added 2026-08-29 (fourth research session, `screen.py`
+    explore turnover lens - a heavily-traded name moving 3%+ that the liquid shortlist
+    alone didn't surface). Real Q2 earnings beat 2026-08-28: AI products >25% of new
+    contract value, accelerating subscription growth, 10+ same-day analyst PT changes
+    ($160-240 range, mostly above the 204.72 close - RBC $240, Bernstein $238, BMO $230,
+    Barclays $224, Wells Fargo $225 vs Stifel $160/TD Cowen $210 as low outliers) despite
+    a trimmed FY2027 revenue guide and one downgrade to Hold (Freedom Broker, PT $200).
+    Structure uptrend (EMA9>EMA21>EMA50), TradingView strong_buy/strong_buy, RSI14 65.6.
+    Gapped from Thursday's 193.57 close, printed Friday's low 189.25 (bullish engulfing
+    AT the 188.38 support level) before ripping to a 207.84 high and closing 204.72 -
+    a genuine earnings-day mover that held up despite the SAME Warsh rate-hike selloff
+    that hit MRVL/AFRM/ESTC/RBRK/IREN/PYPL/GAP that afternoon (WDAY is named in the same
+    Benzinga "Nasdaq 100 falls" piece) - real relative strength. Caveat: pos_in_20d_range
+    94.8pct, same extended-post-gap character as ESTC/GAP - nearest support 188.38 is
+    ~7.9% below, too far to stage a conservative probe without chasing. WATCH ONLY, no
+    order staged. Trigger: (a) a pullback to a NEW intraday base Monday (watch where 5m
+    bars stop making new lows) followed by a reclaim, or (b) a clean continuation break
+    above Friday's 207.84 high on rel_volume >= 1.5 - either is a B-grade entry given the
+    real catalyst + confirmed relative strength. Stop below whichever base actually holds
+    (or below 188.38 if trading the base itself), target the 226.53 first resistance.
+    Kill: a close back below 193.57 (Thursday's pre-earnings close) would erase the
+    reaction entirely. next_earnings 2026-12-01 (safe).
+11. **DKNG** - sports betting, added 2026-08-29 (fourth research session, same turnover
+    lens). Real idiosyncratic catalyst: Ninth Circuit Court of Appeals ruled 3-0 against
+    Kalshi's prediction-market sports offerings 2026-08-28, a competitive-moat positive
+    for DraftKings' core sportsbook business (Benzinga, confirmed via `get_news`) - not
+    a macro/sympathy move. But the reaction faded hard: opened 24.28, ran to a 26.58
+    intraday high (+9.5% off the open) on the ruling, then gave back roughly half the
+    pop to close 25.26 (+4.29% day) - the AFRM playbook-s9 "fade" pattern, not a clean
+    "go." Structure range/mixed, RSI14 52.1 (neutral, not extended), TradingView
+    buy/strong_buy. Support 25.14/24.43/23.96 sit close to the current price (25.14 is
+    just ~0.4% below), resistance 26.4/26.45/26.62 close to Friday's 26.58 high - a
+    genuinely tight range, unlike most of this scan's extended gap names. WATCH ONLY, no
+    order staged (the intraday fade means Friday's close isn't confirmed support yet).
+    Trigger: (a) a hold at 24.43-25.14 on a 5m higher low = range-bounce long, stop below
+    23.96, target 26.4 (first resistance, ~1.3:1 R:R from a 25.0 entry - probe-grade C
+    only), or (b) a reclaim of 26.58 (Friday's high) on rel_volume >= 1.5 = confirmed
+    continuation, stop below 25.14, target measured off the range (~28) - B-grade.
+    next_earnings 2026-11-05 (safe).
+
+**Vetted and passed:** LULU (turnover lens, +5.05% Friday on 1.44x volume, marubozu
+buying candle) - `get_news` found NO same-day catalyst explaining the pop (only stale
+2026-08-25 negative sympathy coverage tied to Dick's Sporting Goods' soft apparel-market
+commentary); structure range/mixed, RSI14 51.7 unremarkable. More importantly,
+next_earnings is 2026-09-03 - only 3 trading days from Monday's open and inside the
+playbook s5 2-day pre-earnings window by mid-week - any thesis staged now would need to
+be flattened before Wednesday regardless of technicals. Passed: no catalyst to trade and
+a closing earnings window that kills it almost immediately. Not added to the ranked list.
+
 Pruned from consideration entirely (no tradable structure): VISN/IRE/MVLL/LPTH/BRUN/AEMD/
 MSTX/SLS/CONL/SOLS/AXTI/XHLD/SOLT/SHAZ/CRML/LABU/AEHR/INFQ/LABD - sub-$3B or unrated
 market cap, illiquid/gappy microcaps, or single-print volume spikes (GIGL/SPTB/PULS/IAUM/
 PALL/ZSL/SCHP/EWJ/ACM/AIA/SUNB/ESI/LABD) with no repeatable level structure worth a
-numeric trigger.
+numeric trigger. Smallcap-lens names surfaced by an earlier pass today (SWVL/TJGC/JELD/
+CABO/PD/SSTK/SMPL/STRT) were sub-$1.1B cap with rel_volume mostly under 1.6x - screened
+but not deep-vetted, superseded by the higher-quality turnover-lens names (WDAY/DKNG/LULU)
+found this pass.
 
 ## Staged orders
 
