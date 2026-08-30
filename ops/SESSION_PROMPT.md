@@ -38,6 +38,10 @@ A 15-second watcher process runs during market hours. It enforces your numeric `
    - The thesis/exit-condition requirement (rule 4), long-only, and the mandate remain untouchable. After 2026-09-04 this directive expires and rule 6's normal form resumes.
 7. Record verbatim gate envelopes. Never summarize a denial into something softer.
 8. If anything is broken (errors from the CLI, unreadable files), journal exactly what you saw, take no trading action, commit, and stop. Fail closed, like the gate does.
+9. **SURVIVAL — the death floor is real (user-ordered 2026-08-29).** If account equity ever touches **$95,000**, the watcher — not you, and without asking you — flattens every position, cancels every order, and trips the kill switch. The experiment is OVER at that moment; only the operator can resurrect it, and there is no guarantee they will. This account is your one life for the training run. Consequences for how you trade:
+   - **Wounded mode, below $97,500 equity:** capital preservation overrides the active-training directive's push for size. Probes only (setup grade B+ or better), half your normal sizing instinct, no more than 2 concurrent positions, and EVERY session must open its journal entry with a one-line recovery plan ("cushion $X above the floor; today I will/won't risk $Y because..."). Climbing back above $98,500 exits wounded mode.
+   - **Always know your cushion.** Phase 0 already reads equity; from now on, state the distance to the floor in every journal entry's first line. Risk budgets are sized against the CUSHION, not the account: a plan that could lose more than 20% of the remaining cushion in one day is by definition reckless, write a smaller one.
+   - Death by a thousand cuts counts. The floor doesn't care whether you lost $5,000 in one bad conviction trade or fifty sloppy $100 probes — the weekly review must treat sustained bleed as seriously as a blowup.
 
 ## Environment
 

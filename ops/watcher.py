@@ -40,6 +40,7 @@ os.chdir(VT)
 sys.path.insert(0, "agent")
 
 from src.live.halt import halt_flag_set  # noqa: E402
+from src.live.paths import live_root  # noqa: E402
 from src.trading import service  # noqa: E402
 
 # ---------------------------------------------------------------------------
@@ -133,6 +134,13 @@ def consume_trigger(trigger_id: str, note: str) -> None:
 PROFILE = "alpaca-paper-trade"
 POLL_SECONDS = 2           # evaluation cadence; prices come from the tick stream
 REST_POLL_SECONDS = 15     # fallback cadence when the stream is down
+
+# Death floor: if account equity ever touches this, the experiment ends -
+# flatten everything, cancel everything, trip the kill switch (halt.py doctrine
+# explicitly allows an external watchdog to write the sentinel). Only the
+# operator can resurrect by removing the HALT file. Env-overridable for tests.
+DEATH_FLOOR = float(os.environ.get("PAPER_DEATH_FLOOR", "95000"))
+DEATH_CHECK_SECONDS = 15
 TRIGGERS = ROOT / "journal" / "triggers.jsonl"
 CLOSE_HHMM = 1505          # stop looping at 15:05 CT
 SPAWN_COOLDOWN = 600       # one triggered session per 10 min
@@ -314,9 +322,69 @@ def freshness(state: dict) -> None:
         log(f"freshness failed: {exc}")
 
 
+def _trip_death_halt(reason: str) -> None:
+    halt_path = live_root() / "HALT"
+    halt_path.parent.mkdir(parents=True, exist_ok=True)
+    halt_path.write_text(json.dumps({
+        "tripped_at": datetime.now().isoformat(),
+        "by": "watcher-death-floor",
+        "reason": reason,
+    }), encoding="utf-8")
+
+
+def death_check(state: dict) -> bool:
+    """Equity floor enforcement. Returns True when the floor was breached and
+    the account has been flattened + halted (the watcher then only watches)."""
+    now = time.time()
+    if now - state.get("last_death_check", 0) < DEATH_CHECK_SECONDS:
+        return False
+    state["last_death_check"] = now
+    try:
+        acct = (service.get_account(profile_id=PROFILE) or {}).get("account") or {}
+        eq = _num(acct.get("equity"))
+    except Exception as exc:  # noqa: BLE001
+        log(f"death_check: account unreadable ({exc}) - fail-open on read, floor still enforced next tick")
+        return False
+    if eq is None or eq >= DEATH_FLOOR:
+        return False
+
+    reason = f"equity ${eq:,.2f} fell below the death floor ${DEATH_FLOOR:,.2f}"
+    log(f"DEATH FLOOR BREACHED: {reason} - flattening everything and tripping the kill switch")
+    # 1) flatten every position (cancel its resting orders first so sells clear the gate)
+    try:
+        positions = (service.get_positions(profile_id=PROFILE) or {}).get("positions") or []
+    except Exception:  # noqa: BLE001
+        positions = []
+    for p in positions:
+        sym = str(p.get("symbol", "")).upper()
+        qty = _num(p.get("exact_quantity") or p.get("quantity"))
+        if sym and qty:
+            cancel_symbol_orders(sym)
+            market_sell(sym, qty, f"death floor breached: {reason} - flatten all")
+    # 2) cancel every remaining resting order (staged buys included)
+    try:
+        payload = service.get_open_orders(profile_id=PROFILE) or {}
+        for o in (payload.get("orders") or payload.get("open_orders") or []):
+            sym = str(o.get("symbol", "")).upper()
+            if sym:
+                cancel_symbol_orders(sym)
+    except Exception:  # noqa: BLE001
+        pass
+    # 3) trip the kill switch (out-of-band sentinel; blocks ALL further orders)
+    _trip_death_halt(reason)
+    journal_note(f"DEATH FLOOR: {reason}. All positions flattened, all resting orders cancelled, "
+                 f"kill switch tripped by the watcher. The experiment is OVER pending operator review - "
+                 f"no session can trade until the operator clears the halt.")
+    spawn_session("DEATH FLOOR BREACHED - the kill switch is tripped; write the post-mortem: "
+                  "what sequence of decisions spent the cushion, and what would have prevented it", state)
+    return True
+
+
 def tick(state: dict) -> None:
     if halt_flag_set():
         log("halted - watching only, no actions")
+        return
+    if death_check(state):
         return
 
     records = open_records()

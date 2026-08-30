@@ -138,6 +138,7 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
   <div class="stat"><span>Cash ready</span><b id="cash">—</b></div>
   <div class="stat"><span>Holdings</span><b id="npos">—</b></div>
   <div class="stat"><span>Orders waiting</span><b id="nord">—</b></div>
+  <div class="stat"><span>Life above death floor</span><b id="cushion">—</b></div>
   <div class="stat"><span>Kill switch</span><b id="halt">—</b></div>
   <div class="clock" id="clock"></div>
 </header>
@@ -503,8 +504,15 @@ async function refresh() {
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
-  // big P/L counters
+  // big P/L counters + death-floor cushion (watcher kills the experiment at $95k)
   const eqN = Number(s.broker.equity) || null;
+  const cu = $("cushion");
+  if (eqN) {
+    const c = eqN - 95000;
+    cu.textContent = money(c);
+    cu.className = c <= 0 ? "down" : c < 2500 ? "" : "up";
+    if (c > 0 && c < 2500) cu.style.color = "var(--clay)"; else cu.style.color = "";
+  } else { cu.textContent = "—"; cu.className = ""; }
   setPl("allpl", eqN ? eqN - 100000 : null, 100000);
   let dayBase = Number(s.broker.last_equity) || null;
   if (!dayBase && eqN) {
