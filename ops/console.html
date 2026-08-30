@@ -504,14 +504,17 @@ async function refresh() {
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
-  // big P/L counters + death-floor cushion (watcher kills the experiment at $95k)
+  // big P/L counters + death-floor cushion: floor trails 5% under the
+  // high-water mark, so profits raise the line
   const eqN = Number(s.broker.equity) || null;
   const cu = $("cushion");
   if (eqN) {
-    const c = eqN - 95000;
+    const hwm = Math.max(Number(s.agents.hwm) || 0, 100000, eqN);
+    const floor = hwm * 0.95, wound = hwm * 0.975;
+    const c = eqN - floor;
     cu.textContent = money(c);
-    cu.className = c <= 0 ? "down" : c < 2500 ? "" : "up";
-    if (c > 0 && c < 2500) cu.style.color = "var(--clay)"; else cu.style.color = "";
+    cu.className = c <= 0 ? "down" : eqN < wound ? "" : "up";
+    cu.style.color = (c > 0 && eqN < wound) ? "var(--clay)" : "";
   } else { cu.textContent = "—"; cu.className = ""; }
   setPl("allpl", eqN ? eqN - 100000 : null, 100000);
   let dayBase = Number(s.broker.last_equity) || null;

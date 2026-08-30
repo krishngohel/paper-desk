@@ -135,11 +135,16 @@ PROFILE = "alpaca-paper-trade"
 POLL_SECONDS = 2           # evaluation cadence; prices come from the tick stream
 REST_POLL_SECONDS = 15     # fallback cadence when the stream is down
 
-# Death floor: if account equity ever touches this, the experiment ends -
-# flatten everything, cancel everything, trip the kill switch (halt.py doctrine
-# explicitly allows an external watchdog to write the sentinel). Only the
-# operator can resurrect by removing the HALT file. Env-overridable for tests.
-DEATH_FLOOR = float(os.environ.get("PAPER_DEATH_FLOOR", "95000"))
+# Death floor: percentage drawdown from the account's HIGH-WATER MARK. If
+# equity ever falls DEATH_DD_PCT below the best equity ever seen, the
+# experiment ends - flatten everything, cancel everything, trip the kill
+# switch (halt.py doctrine explicitly allows an external watchdog to write
+# the sentinel). Only the operator can resurrect by removing the HALT file.
+# Trailing HWM means profits RAISE the floor: gains are protected, not spent.
+# PAPER_DEATH_FLOOR (absolute $) overrides the percentage math - tests only.
+DEATH_DD_PCT = float(os.environ.get("PAPER_DEATH_DD_PCT", "0.05"))
+DEATH_FLOOR_OVERRIDE = float(os.environ["PAPER_DEATH_FLOOR"]) if os.environ.get("PAPER_DEATH_FLOOR") else None
+HWM_SEED = 100_000.0       # starting paper capital; HWM never sits below this
 DEATH_CHECK_SECONDS = 15
 TRIGGERS = ROOT / "journal" / "triggers.jsonl"
 CLOSE_HHMM = 1505          # stop looping at 15:05 CT
@@ -345,10 +350,21 @@ def death_check(state: dict) -> bool:
     except Exception as exc:  # noqa: BLE001
         log(f"death_check: account unreadable ({exc}) - fail-open on read, floor still enforced next tick")
         return False
-    if eq is None or eq >= DEATH_FLOOR:
+    if eq is None:
+        return False
+    hwm = max(_num(state.get("hwm")) or HWM_SEED, HWM_SEED)
+    if eq > hwm:
+        hwm = eq
+        state["hwm"] = hwm
+        save_state(state)
+        log(f"new high-water mark ${hwm:,.2f} - death floor rises to ${hwm * (1 - DEATH_DD_PCT):,.2f}")
+    state.setdefault("hwm", hwm)
+    floor = DEATH_FLOOR_OVERRIDE if DEATH_FLOOR_OVERRIDE is not None else hwm * (1 - DEATH_DD_PCT)
+    if eq >= floor:
         return False
 
-    reason = f"equity ${eq:,.2f} fell below the death floor ${DEATH_FLOOR:,.2f}"
+    reason = (f"equity ${eq:,.2f} fell below the death floor ${floor:,.2f} "
+              f"({DEATH_DD_PCT:.0%} drawdown from high-water mark ${hwm:,.2f})")
     log(f"DEATH FLOOR BREACHED: {reason} - flattening everything and tripping the kill switch")
     # 1) flatten every position (cancel its resting orders first so sells clear the gate)
     try:

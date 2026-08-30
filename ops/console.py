@@ -101,6 +101,11 @@ def _agents() -> dict:
         lock["age"] = round(time.time() - lock.get("ts", 0))
     except Exception:  # noqa: BLE001
         lock = None
+    hwm = None
+    try:
+        hwm = json.loads((LOGS / "watcher_state.json").read_text()).get("hwm")
+    except Exception:  # noqa: BLE001
+        pass
     watcher_age = _log_age(LOGS / "watcher.log")
     stream_line = next((ln for ln in reversed(_tail(LOGS / "watcher.log", 200))
                         if "stream connected" in ln or "stream error" in ln), "")
@@ -109,6 +114,7 @@ def _agents() -> dict:
     perf = _jsonl(JOURNAL / "performance.jsonl", 5)
     return {
         "halted": halt_flag_set(),
+        "hwm": hwm,
         "session_lock": lock,
         "last_session_header": last_session,
         "watcher_alive": watcher_age is not None and watcher_age < 90,
