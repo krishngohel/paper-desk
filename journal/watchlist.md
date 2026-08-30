@@ -145,6 +145,40 @@ the technical read, especially the two staged orders below.**
     continuation, stop below 25.14, target measured off the range (~28) - B-grade.
     next_earnings 2026-11-05 (safe).
 
+12. **SOLS** (STAGED - see below) - Solstice Advanced Materials, added 2026-08-30 (Sunday
+    research session, `screen.py --mode relvol`/`--mode gainers` explore passes - a liquid
+    large-cap mover ($10.09B mkt cap, $1046.5M dollar volume) that Friday's initial pass had
+    bucketed into the generic "pruned, sub-$3B/no structure" list without individual
+    vetting - that prune was wrong for this name and is corrected here. +12.76% Friday on
+    11.95x 20d-avg volume, confirmed via `get_news`: (1) 2026-08-27 20:59 CT trading halt,
+    resumed on news SOLS and Element Solutions mutually terminated their pending merger
+    (removed merger-arb overhang), (2) same session, board authorized a $500M share
+    repurchase AND affirmed Q3/FY2026 guidance - real capital-return signal. TradingView
+    summary/moving_averages/oscillators all buy, RSI14 57.4 - NOT extended (the one name
+    in this whole scan without the ESTC/GAP/WDAY/PD extended-chase problem). Structure
+    range/mixed, EMA50 66.01 above price (recovering from a longer downtrend, not a fresh
+    high), sitting almost exactly at resistance 63.66/63.79/64.67 (Friday close 63.53) with
+    a clean support cluster at 60.01/59.77 (EMA21 59.7 confluence) below. Staged a
+    conservative probe buy-limit 50sh @ 60.10 GTC (order `4f6baa26-0ea9-4b97-a700-f4a334cc758a`),
+    stop 58.30, target 63.66 (R:R ~1.98:1), C-probe. Ledger `t-2026-08-30-001`. Caveat:
+    MACD still net-negative (-1.922, pre-catalyst downtrend momentum not yet confirmed
+    reversed) and the catalyst is only 2 trading days old - no confirmed base yet. Kill:
+    a close back below 56.20 (next support down) would suggest the catalyst pop is fully
+    round-tripping. next_earnings 2026-10-29 (safe).
+
+13. **PD** (PagerDuty) - vetted 2026-08-30 (Sunday research session), WATCH ONLY, no order
+    staged. Real Q2 catalyst 2026-08-27: EPS/sales beat, raised FY2027 guidance, BUT also
+    cut headcount ~15% same day (mixed signal) and Morgan Stanley maintained UNDERWEIGHT
+    (PT raised to only $10, below the 13.80 close) while Canaccord's Buy PT is $15 (~9%
+    upside only) - analyst targets cluster AT OR BELOW the current price despite
+    TradingView's strong_buy/strong_buy read, a real divergence worth flagging. RSI14 75.0,
+    pos_in_20d_range 100pct, zero resistance_above (broke through everything) - the exact
+    same extended-chase problem as ESTC/GAP/WDAY, and here it's compounded by analyst
+    skepticism rather than offset by it. Structure uptrend (EMA9>EMA21>EMA50). No level
+    close enough to stage a conservative probe without chasing. Trigger: a genuine pullback
+    to a new base (watch where 5m bars stop making new lows Monday) followed by a reclaim -
+    not a chase of Friday's highs. next_earnings 2026-11-24 (safe).
+
 **Vetted and passed:** LULU (turnover lens, +5.05% Friday on 1.44x volume, marubozu
 buying candle) - `get_news` found NO same-day catalyst explaining the pop (only stale
 2026-08-25 negative sympathy coverage tied to Dick's Sporting Goods' soft apparel-market
@@ -173,9 +207,13 @@ found this pass.
   (order `cc6fe7f6-edcc-401a-a501-3e579b29b6e9` cancelled via `trade_cli.py`; ledger
   `t-2026-08-28-003` marked `aborted`). Confirmed negative catalyst below.
 
+- **SOLS** buy-limit 50 sh @ 60.10 GTC (order `4f6baa26-0ea9-4b97-a700-f4a334cc758a`),
+  staged 2026-08-30 11:04 CT. Ledger: `t-2026-08-30-001` (pending_entry). Stop 58.30,
+  target 63.66, time_stop 2026-09-03.
+
 Monday's planning leg (phase 0-1 of the `open`/first `continuous` session): re-check
-`orders` for the MRVL fill, re-verify PCG stays cancelled (do not re-stage without a
-new thesis), and treat the catalyst notes below as current going into the open.
+`orders` for the MRVL and SOLS fills, re-verify PCG stays cancelled (do not re-stage
+without a new thesis), and treat the catalyst notes below as current going into the open.
 
 ## Macro calendar - CONFIRMED (2026-08-29 later research session, via web_search)
 
@@ -287,3 +325,45 @@ or levels. No new candidates found beyond the 9 already ranked; TENB/AFRM/PYPL/E
 IREN/GAP remain WATCH ONLY for the same reason stated twice already today (no level close
 enough to Friday's close to stage without chasing) - not re-litigating that call a third time
 without new information. No new orders staged this session.
+
+## 2026-08-30 (Sunday) research session
+
+Re-verified from a cold read: `status`/`account`/`positions`/`orders` unchanged since Friday -
+flat (0 positions), MRVL 10sh @ 211.50 GTC still `accepted`/unfilled, PCG stays cancelled.
+Equity $99,999.99, no drift. Regime unchanged (weekend, no new bars): SPY/QQQ range/mixed.
+
+Duty 1b (mandatory new-name hunt): forced `screen.py` through the two explore lenses not
+yet used this weekend (`relvol`, `gainers`) since `turnover` had already run twice Saturday.
+Both lenses mostly surfaced illiquid microcaps, bond/leveraged ETFs with ~$0 tracked market
+cap, and repeat noise - but **PD** (PagerDuty, gainers lens, also present in Friday's
+un-vetted smallcap-lens list) and **SOLS** (present in the main shortlist itself since
+Friday but swept into a generic bulk-prune without individual review) stood out as legitimate
+liquid names that had never gotten a real `ta.py` + `get_news` workup. Both deep-vetted this
+session - see ranked items #12 (SOLS, STAGED) and #13 (PD, WATCH ONLY, passed on extension +
+analyst-target skepticism) above. This corrects a process gap: Friday's bulk-prune list
+("sub-$3B or unrated market cap...") swept in SOLS despite its $10.09B cap and $1046.5M
+dollar volume - bulk-pruning without a per-name liquidity check risked discarding a real
+candidate; SOLS is exactly that candidate.
+
+Social sweep (`social.py`, full 13-name watchlist including PD/SOLS): nothing overrides the
+existing technical/catalyst reads. SOLS did not return a StockTwits sentiment sample (low
+message volume on the ticker, not a red flag - the get_news catalysts are already
+dated/verifiable). Reddit rank-climbers (NB, FA, SGOV, VT, EU, ES, ON, VTI, BE, LULU) - none
+carry a nameable level or fall inside the current watchlist; per doctrine (crowd hype is
+never a thesis, a rank-climber with no structure is a pass) none warranted a separate workup
+this pass.
+
+Earnings/event calendar: SOLS next_earnings 2026-10-29 (safe), PD next_earnings 2026-11-24
+(safe) - both clear of the playbook s5 window.
+
+Watchlist turnover note: names #3-11 (TENB/AFRM/PYPL/ESTC/RBRK/IREN/GAP/WDAY/DKNG) have now
+sat WATCH-only across three research sessions (Fri/Sat/Sun) with no fresh catalyst since
+Friday - but this is a market-closed weekend, not stagnation: none of their numeric triggers
+have had a live session to fire against yet. Deferring any prune decision to Monday's first
+session, which will have real intraday price action to judge whether each trigger is still
+live or has gone stale against fresh data - pruning now, before the market has even opened
+once against these levels, would be premature per the letter of the turnover rule but not
+its spirit (the rule targets names that went nowhere WITH live opportunity to move, not
+names still waiting for the open).
+
+No new information changes MRVL's staged order or the macro/catalyst sections above.
