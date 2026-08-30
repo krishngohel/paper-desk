@@ -504,13 +504,13 @@ async function refresh() {
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";
 
-  // big P/L counters + death-floor cushion: floor trails 5% under the
-  // high-water mark, so profits raise the line
+  // big P/L counters + death-floor cushion: floor trails 90% under the
+  // high-water mark (training-freedom setting), so profits raise the line
   const eqN = Number(s.broker.equity) || null;
   const cu = $("cushion");
   if (eqN) {
     const hwm = Math.max(Number(s.agents.hwm) || 0, 100000, eqN);
-    const floor = hwm * 0.95, wound = hwm * 0.975;
+    const floor = hwm * 0.10, wound = hwm * 0.55;
     const c = eqN - floor;
     cu.textContent = money(c);
     cu.className = c <= 0 ? "down" : eqN < wound ? "" : "up";

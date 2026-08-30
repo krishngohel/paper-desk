@@ -142,7 +142,7 @@ REST_POLL_SECONDS = 15     # fallback cadence when the stream is down
 # the sentinel). Only the operator can resurrect by removing the HALT file.
 # Trailing HWM means profits RAISE the floor: gains are protected, not spent.
 # PAPER_DEATH_FLOOR (absolute $) overrides the percentage math - tests only.
-DEATH_DD_PCT = float(os.environ.get("PAPER_DEATH_DD_PCT", "0.05"))
+DEATH_DD_PCT = float(os.environ.get("PAPER_DEATH_DD_PCT", "0.90"))
 DEATH_FLOOR_OVERRIDE = float(os.environ["PAPER_DEATH_FLOOR"]) if os.environ.get("PAPER_DEATH_FLOOR") else None
 HWM_SEED = 100_000.0       # starting paper capital; HWM never sits below this
 DEATH_CHECK_SECONDS = 15
