@@ -1,307 +1,132 @@
-# Watchlist - Monday battle plan
+# Watchlist - battle plan
 
 > **Maintenance rule:** this file is the CURRENT battle plan, not a log. Fold new
 > findings INTO the ranked entries above and delete what they supersede — never append
 > a dated addendum section. History belongs in `journal/YYYY-MM.md`.
 
-Maintained by `research` sessions (evenings/weekends). Each name: draft thesis, the
-EXACT numeric trigger that turns it into a trade, planned size/stop/target/grade, and
-the kill condition. Monday's pre-market planning leg reads this FIRST.
+Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric trigger
+that turns it into a trade, planned size/stop/target/grade, and the kill condition.
+The next planning leg reads this FIRST.
 
-Built 2026-08-28 18:45 CT (Friday research session). Regime: SPY range/mixed (769.28,
-+0.58% vs EMA21, RSI14 55.9), QQQ range/mixed (716.44, +0.34% vs EMA21, RSI14 51.4) - no
-broad tailwind, trade levels per playbook s1. Source: `journal/universe_scan.json`
-(17:53 CT shortlist, 1500 liquid names screened). **Caveat carried into every name
-below: alpaca-paper/vibe-research MCP tools (news, screeners, fundamentals) were
-unavailable this session (10+ consecutive sessions now) - every mover's CATALYST is
-unconfirmed. Monday's planning leg should get_news check anything here before trusting
-the technical read, especially the two staged orders below.**
+Rewritten 2026-08-31 21:30 CT (Monday evening research session, full rewrite - the prior
+version dated to Friday 2026-08-28 and had accumulated addenda through today's 17-leg
+continuous relay; folded forward and pruned per the file-size housekeeping rule).
+Regime: SPY range/mixed (767.05, +0.26% vs EMA21, RSI14 54.1), QQQ range/mixed (716.76,
++0.35% vs EMA21, RSI14 52.3) - unchanged posture from Friday, trade levels per playbook
+s1. Source: `journal/universe_scan.json` (15:35 CT close-of-day shortlist + turnover/gainers
+explore lenses, 1500 liquid names screened) and `journal/social.json` (16:27 CT).
 
 ## Ranked candidates
 
-1. **MRVL** (STAGED - see below) - semiconductor, -10.48% day on 1.95x volume, TradingView
-   sell/sell, but structure range/mixed (not downtrend) with support 211.13 tested 4x on
-   5m bars into the close and holding. Range-bounce probe staged below Friday's close
-   (216.55). Trigger already live via resting GTC limit at 211.50. If it does NOT fill:
-   watch for a reclaim above opening_range_low 220.20 on volume as an alternate,
-   stronger-confirmation entry (would upgrade grade). Kill: close below 202.00 (stop) or
-   below 201.83 support with no bounce - stand aside, downtrend confirmed. next_earnings
-   2026-12-01 (safe).
+1. **MRVL** (BOOK POSITION, 10 sh @ 211.472) - `t-2026-08-28-002`. Range/mixed structure
+   intact, testing support 211.10 into the close (bearish engulfing AT SUPPORT 21:05 UTC -
+   a rejection, not yet a breakdown; watch for a confirmed close below it). TradingView
+   flipped to sell/strong_sell/sell (was neutral). Stop 202.00 (watcher-enforced, well
+   clear), target 222.64 resting GTC across two orders (`9184e057...` 8sh + `7c26ff3e...`
+   2sh). next_earnings 2026-12-01 (safe). No action - fully bracketed, let it work.
 
-2. **PCG** (STAGED - see below) - utility, -7.54% day on 4.65x volume (real catalyst
-   likely, unconfirmed), TradingView strong_sell throughout, but a hammer reversal tell
-   AT support 16.53 printed at 19:55 CT after 3 prior tests held. Small conservative
-   range-bounce probe staged below Friday's close (16.61) at 16.45. Kill: close below
-   16.00 (stop) - if TradingView's bearish read is right and this is catalyst-driven,
-   expect a gap through the stop, not a clean stop-out; Monday's open print is the first
-   real test. next_earnings 2026-10-22 (safe).
+2. **CRWD** - cybersecurity, hit a NEW ALL-TIME HIGH today on FIVE separate same-day
+   catalysts confirmed via `get_news`: Fal.Con 2026 conference product news (drove the
+   ATH), Cognizant OT-cybersecurity partnership expansion, Snowflake Marketplace
+   collaboration, Falcon-on-Google-Cloud, and a fresh AI Partner Specialization
+   announcement (20:42 UTC, after today's own trigger trg-20260831-003 @ 234.00 was
+   cancelled mid-morning on a volume fade - the thesis outlasted that cancellation).
+   EMA9(211.00)>EMA21(206.37)>EMA50(195.13) uptrend, RSI14 63.0, rs_vs_spy_pp +5.38, no
+   resistance_above (price discovery). **STAGED**: buy-limit 23 sh @ 225.50 GTC (order
+   `760d71d9-ccef-4e66-bb39-474a5655cd52`), just above the defended opening_range_low
+   225.07 - a pullback-into-today's-range probe, not a chase. Stop 218.91 (~0.5xATR14
+   below the level), target 238.00 (~1xATR14), R:R 1.90:1. Ledger `t-2026-08-31-002`
+   (B-probe). Kill: a close back below prior-day close 218.40 would erase today's gap
+   entirely - cancel the resting order if that prints first. next_earnings 2026-12-01
+   (safe).
 
-3. **TENB** - cybersecurity, flat day but healthiest structure seen this scan: EMA9>EMA21>
-   EMA50 (uptrend), TradingView buy/strong_buy, THREE separate 5m hammers (buyers defended
-   37.98, 38.15, 37.24) despite one selling marubozu - repeated dip-buying all session.
-   No genuine support close enough to Friday's close (37.65) to stage conservatively
-   (nearest named support 34.62 is 8% away). WATCH, no order staged. Trigger: a pullback
-   to the 36.00-36.50 VWAP/EMA21 zone that holds with a 5m higher low, OR a clean break
-   above today's high 38.26 on rel_volume >= 1.5 - either would be a B-grade entry (real
-   structure, not a level bet). Planned stop ~35.50 (under the defended 37.24 print isn't
-   right for a fresh pullback entry - use whatever low actually holds, minus ~0.5xATR
-   1.1), target 39.30 (first resistance). Kill: close below 34.62 (structure breaks).
-   next_earnings 2026-10-28 (safe).
+3. **CRCL** - Circle (stablecoin issuer), +9.02% day on 1.34x volume, uptrend confirmed
+   (bullish engulfing AT SUPPORT 84.25 today), EMA9>EMA21>EMA50 stack, TradingView
+   strong_buy/strong_buy/buy. Today's own trigger (trg-20260831-004 @ 96.25) never fired
+   in regular hours but the after-hours tape printed 96.40 - through the level - before
+   fading to ~95.00, meaning the breakout is being actively contested, not rejected.
+   `get_news` found NO company-specific catalyst (only a generic whale-options-activity
+   mention) - this is a technical/momentum thesis, graded down accordingly (playbook
+   s11 - the chart earns the grade, not a story). **STAGED**: buy-limit 70 sh @ 90.00 GTC
+   (order `1562bf52-5664-4a07-909d-78acebc7e37f`), just above today's day_low/
+   opening_range_low 88.30 (held all session). Stop 87.90, target 96.40 (the after-hours
+   high this thesis is testing), R:R 3.05:1. Ledger `t-2026-08-31-003` (C-probe). Kill: a
+   close back below 84.25 (today's engulfing base) invalidates the uptrend read.
+   next_earnings 2026-11-11 (safe).
 
-4. **AFRM** - BNPL, gapped +11.1% then faded hard to flat (day high 90.36 -> close 77.76),
-   pos_in_20d_range 84.7%, repeated seller rejections AT resistance 78.69/80.65 in the
-   last hour (shooting stars, bearish engulfing, doji) - a failed gap-and-go, exactly the
-   playbook s9 "fade" pattern, not the "go" pattern. TradingView still strong_buy (lagging
-   the fade). WATCH, no order staged - no clean level close enough to Friday's close in
-   either direction to stage a probe without chasing or guessing the gap-fill depth.
-   Two possible Monday triggers: (a) reclaim above 78.69-80.65 resistance on volume =
-   gap-continuation long, stop below 74.51; or (b) a hold at support 74.51-72.97 on a
-   pullback = bounce long, stop below 71.75. Either is a C-grade probe given the failed
-   first attempt. next_earnings 2026-11-05 (safe).
+4. **ASND** (PENDING - see below) - Ascendis Pharma, +7.01% on a binding BioMarin patent
+   settlement (removed litigation overhang) plus five sell-side Buy reiterations (targets
+   15-30% above spot despite target trims). Ladder resting per below, unchanged thesis.
+   Ledger `t-2026-08-31-001` (B-probe). next_earnings: unconfirmed (`ta.py` returned null)
+   - flagged unknown-risk per playbook s5, not cleared.
 
-5. **PYPL** - fintech, -12.68% day (gap -12.52%), RSI14 35.1, pos_in_20d_range 0% (at the
-   day/range low), TradingView strong_sell, a 19:45 CT hammer+bullish-engulfing bounce
-   attempt was immediately killed by a bearish engulfing at 19:50 - sellers still in
-   firm control, no confirmed higher low. Classic falling-knife per playbook s2 (a watch
-   item, not a buy, until structure turns). WATCH ONLY, no order staged - nearest support
-   (43.74) is 18% below, far too deep to stage a probe against. Trigger: only a confirmed
-   HIGHER LOW on daily/5m bars above the 52.73 day-low, not a bounce off it intraday.
-   next_earnings 2026-10-27 (safe).
+5. **SOLS** (PENDING - see below) - Solstice Advanced Materials, merger-termination +
+   $500M buyback catalyst from last week still intact. Chopping right at resistance
+   63.68-64.74 (shooting stars AND a bullish engulfing both printed there today - genuinely
+   undecided, not yet resolved either way). Resting probe unchanged below. Ledger
+   `t-2026-08-30-001` (C-probe). next_earnings 2026-10-29 (safe).
 
-6. **ESTC** - already traded this week (t-2026-08-28-001, C-probe, closed flat/-0.26% on
-   its own time-stop). Now extremely extended: RSI14 77.3, pos_in_20d_range 100%, gap_pct
-   25.1% off Wednesday's close, zero resistance_above levels (broke through everything),
-   and the last hour of 5m bars turned distinctly bearish into the close (shooting stars
-   at 100.81/100.92, a marubozu sell, a bearish engulfing, four dojis) - momentum fading
-   after the gap. WATCH ONLY, no order staged - too extended to buy and no fresh base has
-   formed yet. Trigger: a genuine pullback to a NEW base (watch where 5m bars stop making
-   new lows Monday) followed by a reclaim, not a chase of Friday's highs. Per L5 (this
-   week's own lesson): if a ladder is used again here, weight whichever rung actually
-   fills, not the one hoped for. next_earnings 2026-11-19 (safe).
+## Vetted and passed (new names this session, playbook s2 - falling knives, no buy)
 
-7. **RBRK** - continued weakness, -13.11% day, closed AT the day low (93.02) after a week
-   of grinding down from a post-earnings spike. Only one bullish 5m print (a 19:05
-   marubozu) in an otherwise weak tape; TradingView mixed (moving_averages buy, oscillators
-   sell) - no clean read. WATCH ONLY. Trigger: a confirmed higher low above 93.02 with a
-   reclaim of 99.92 (first resistance) - until then this is a knife, not a bounce, per
-   playbook s2. next_earnings 2026-12-03 (safe).
+- **EIX / PCG** - California utility wildfire-liability crisis. Confirmed via `get_news`:
+  California lawmakers left investor-owned utilities on the hook for wildfire liability
+  (SB 492 failed to cap it) - Edison down 22.6% (worst day since 2001), PG&E down 19.3%,
+  a WAVE of same-day analyst downgrades (Wells Fargo, Mizuho, BMO all cutting PT
+  40-50%+: PG&E to $16-24, Edison to $70). RSI14 22/22, **no support_below levels at all**
+  from `ta.py` (broken through everything), still printing selling marubozu into the
+  close - a textbook falling knife, not a dip. PCG's prior staged probe (`t-2026-08-28-003`)
+  was correctly cancelled 2026-08-29 on the first sign of this catalyst and stays
+  cancelled. No trigger staged for either name - would need a confirmed higher low AFTER
+  the legal situation stabilizes, which given uncapped liability exposure could be weeks
+  away, not a same-week setup. SRE (Sempra) also named in the same downgrade wave but
+  didn't clear today's shortlist - watch if it appears on a future scan.
 
-8. **IREN** - bitcoin miner, -12.6% day, key_levels structure explicitly "downtrend
-   (lower highs + lower lows)" despite a late-session bullish attempt (bullish engulfing +
-   two buying marubozu 19:00-19:20 CT, then compression). TradingView strong_sell.
-   WATCH ONLY per playbook s2 (downtrend names are watch items until structure turns, no
-   counter-trend catch). Trigger: a confirmed higher low forming above 34.81 (today's
-   low) on a 5m/daily basis - not yet present. next_earnings 2026-11-05 (safe).
+- **HWM** (Howmet Aerospace) - -6.66% day, gap -6.2%, downtrend structure (lower highs +
+  lower lows), RSI14 28.3, repeated rejections at support 243.68 (shooting star + bearish
+  engulfing + two dojis, no confirmed hold). Two same-day catalysts found via `get_news`,
+  net mixed-to-negative: broad macro headwind (oil spiking near $90 on new Iran strikes,
+  10Y yield to a 19-month high, Dow -0.64%) PLUS a genuine competitive-threat headline -
+  "SpaceX is building gas-turbine parts in Texas as Elon Musk targets a casting
+  bottleneck" - i.e. Musk/SpaceX moving into the turbine-blade casting business that is
+  core to Howmet's own forge/casting franchise, not simply a bullish "HWM benefits from
+  AI power buildout" story as the headline framing first suggested. No earnings catalyst
+  (next_earnings 2026-11-05, not until then). WATCH ONLY - no confirmed higher low yet;
+  a reclaim of 249.28 (today's high) off a higher low above 243.68 would be the earliest
+  bounce signal worth a probe.
 
-9. **GAP** (Gap Inc.) - retailer, gapped +13.23% on 2.23x volume, EMA9>EMA21>EMA50 uptrend
-   stack, TradingView strong_buy/buy. Added 2026-08-29 (Saturday research session) - a
-   liquid mover missed by Friday's initial pass (dollar_volume $619.5M, mkt cap $8.45B,
-   both well above the liquidity bar). Extended like ESTC's setup: RSI14 71.5,
-   pos_in_20d_range 100%, zero resistance_above (broke through everything - price
-   discovery), and the last hour of 5m bars faded (buying marubozu + hammer defended
-   23.63 at 19:00-19:05, then two selling marubozu into the close at 19:30/19:40) -
-   momentum stalling after the gap, same as ESTC's late-session tell. Nearest support
-   21.09 is ~10% below Friday's close (23.48), too far to stage a conservative probe
-   without chasing. WATCH ONLY, no order staged. Trigger: a genuine pullback to a NEW
-   base (watch where 5m bars stop making new lows Monday) followed by a reclaim, OR a
-   clean continuation break above today's high 23.82 on rel_volume >= 1.5 - either is a
-   C/B-grade probe given the single-day move has no track record yet. Kill: a close back
-   below prior-day's close (20.82) would erase the entire gap and invalidate the thesis
-   outright. next_earnings 2026-11-19 (safe).
+## Pruned this session (no fresh catalyst today, absent from full-market/turnover/gainers
+scans; each already had a full workup and/or a live armed-and-cancelled trigger across
+Friday through today's 17-leg continuous relay - re-add only on new evidence)
 
-10. **WDAY** - enterprise software, added 2026-08-29 (fourth research session, `screen.py`
-    explore turnover lens - a heavily-traded name moving 3%+ that the liquid shortlist
-    alone didn't surface). Real Q2 earnings beat 2026-08-28: AI products >25% of new
-    contract value, accelerating subscription growth, 10+ same-day analyst PT changes
-    ($160-240 range, mostly above the 204.72 close - RBC $240, Bernstein $238, BMO $230,
-    Barclays $224, Wells Fargo $225 vs Stifel $160/TD Cowen $210 as low outliers) despite
-    a trimmed FY2027 revenue guide and one downgrade to Hold (Freedom Broker, PT $200).
-    Structure uptrend (EMA9>EMA21>EMA50), TradingView strong_buy/strong_buy, RSI14 65.6.
-    Gapped from Thursday's 193.57 close, printed Friday's low 189.25 (bullish engulfing
-    AT the 188.38 support level) before ripping to a 207.84 high and closing 204.72 -
-    a genuine earnings-day mover that held up despite the SAME Warsh rate-hike selloff
-    that hit MRVL/AFRM/ESTC/RBRK/IREN/PYPL/GAP that afternoon (WDAY is named in the same
-    Benzinga "Nasdaq 100 falls" piece) - real relative strength. Caveat: pos_in_20d_range
-    94.8pct, same extended-post-gap character as ESTC/GAP - nearest support 188.38 is
-    ~7.9% below, too far to stage a conservative probe without chasing. WATCH ONLY, no
-    order staged. Trigger: (a) a pullback to a NEW intraday base Monday (watch where 5m
-    bars stop making new lows) followed by a reclaim, or (b) a clean continuation break
-    above Friday's 207.84 high on rel_volume >= 1.5 - either is a B-grade entry given the
-    real catalyst + confirmed relative strength. Stop below whichever base actually holds
-    (or below 188.38 if trading the base itself), target the 226.53 first resistance.
-    Kill: a close back below 193.57 (Thursday's pre-earnings close) would erase the
-    reaction entirely. next_earnings 2026-12-01 (safe).
-11. **DKNG** - sports betting, added 2026-08-29 (fourth research session, same turnover
-    lens). Real idiosyncratic catalyst: Ninth Circuit Court of Appeals ruled 3-0 against
-    Kalshi's prediction-market sports offerings 2026-08-28, a competitive-moat positive
-    for DraftKings' core sportsbook business (Benzinga, confirmed via `get_news`) - not
-    a macro/sympathy move. But the reaction faded hard: opened 24.28, ran to a 26.58
-    intraday high (+9.5% off the open) on the ruling, then gave back roughly half the
-    pop to close 25.26 (+4.29% day) - the AFRM playbook-s9 "fade" pattern, not a clean
-    "go." Structure range/mixed, RSI14 52.1 (neutral, not extended), TradingView
-    buy/strong_buy. Support 25.14/24.43/23.96 sit close to the current price (25.14 is
-    just ~0.4% below), resistance 26.4/26.45/26.62 close to Friday's 26.58 high - a
-    genuinely tight range, unlike most of this scan's extended gap names. WATCH ONLY, no
-    order staged (the intraday fade means Friday's close isn't confirmed support yet).
-    Trigger: (a) a hold at 24.43-25.14 on a 5m higher low = range-bounce long, stop below
-    23.96, target 26.4 (first resistance, ~1.3:1 R:R from a 25.0 entry - probe-grade C
-    only), or (b) a reclaim of 26.58 (Friday's high) on rel_volume >= 1.5 = confirmed
-    continuation, stop below 25.14, target measured off the range (~28) - B-grade.
-    next_earnings 2026-11-05 (safe).
+TENB (index-inclusion thesis fizzled on collapsing volume, trg-20260831-001 cancelled),
+IREN (bounce rejected at highs on thin volume, trg-20260831-002 cancelled), AFRM, PYPL,
+ESTC, RBRK, GAP, WDAY, DKNG, PD - all quiet today, no new price action or catalyst to
+re-rank against the five live names above.
 
-12. **SOLS** (STAGED - see below) - Solstice Advanced Materials, added 2026-08-30 (Sunday
-    research session, `screen.py --mode relvol`/`--mode gainers` explore passes - a liquid
-    large-cap mover ($10.09B mkt cap, $1046.5M dollar volume) that Friday's initial pass had
-    bucketed into the generic "pruned, sub-$3B/no structure" list without individual
-    vetting - that prune was wrong for this name and is corrected here. +12.76% Friday on
-    11.95x 20d-avg volume, confirmed via `get_news`: (1) 2026-08-27 20:59 CT trading halt,
-    resumed on news SOLS and Element Solutions mutually terminated their pending merger
-    (removed merger-arb overhang), (2) same session, board authorized a $500M share
-    repurchase AND affirmed Q3/FY2026 guidance - real capital-return signal. TradingView
-    summary/moving_averages/oscillators all buy, RSI14 57.4 - NOT extended (the one name
-    in this whole scan without the ESTC/GAP/WDAY/PD extended-chase problem). Structure
-    range/mixed, EMA50 66.01 above price (recovering from a longer downtrend, not a fresh
-    high), sitting almost exactly at resistance 63.66/63.79/64.67 (Friday close 63.53) with
-    a clean support cluster at 60.01/59.77 (EMA21 59.7 confluence) below. Staged a
-    conservative probe buy-limit 50sh @ 60.10 GTC (order `4f6baa26-0ea9-4b97-a700-f4a334cc758a`),
-    stop 58.30, target 63.66 (R:R ~1.98:1), C-probe. Ledger `t-2026-08-30-001`. Caveat:
-    MACD still net-negative (-1.922, pre-catalyst downtrend momentum not yet confirmed
-    reversed) and the catalyst is only 2 trading days old - no confirmed base yet. Kill:
-    a close back below 56.20 (next support down) would suggest the catalyst pop is fully
-    round-tripping. next_earnings 2026-10-29 (safe).
+## Macro calendar (confirmed 2026-08-29 via web_search, still current)
 
-13. **PD** (PagerDuty) - vetted 2026-08-30 (Sunday research session), WATCH ONLY, no order
-    staged. Real Q2 catalyst 2026-08-27: EPS/sales beat, raised FY2027 guidance, BUT also
-    cut headcount ~15% same day (mixed signal) and Morgan Stanley maintained UNDERWEIGHT
-    (PT raised to only $10, below the 13.80 close) while Canaccord's Buy PT is $15 (~9%
-    upside only) - analyst targets cluster AT OR BELOW the current price despite
-    TradingView's strong_buy/strong_buy read, a real divergence worth flagging. RSI14 75.0,
-    pos_in_20d_range 100pct, zero resistance_above (broke through everything) - the exact
-    same extended-chase problem as ESTC/GAP/WDAY, and here it's compounded by analyst
-    skepticism rather than offset by it. Structure uptrend (EMA9>EMA21>EMA50). No level
-    close enough to stage a conservative probe without chasing. Trigger: a genuine pullback
-    to a new base (watch where 5m bars stop making new lows Monday) followed by a reclaim -
-    not a chase of Friday's highs. next_earnings 2026-11-24 (safe).
+- **2026-09-04 (Fri) 8:30am ET: NFP jobs report** - last trading day of the active-training
+  directive; elevated volatility risk for anything still open into that date.
+- **2026-09-11 (Fri): CPI report** and **2026-09-15/16: FOMC** - both after the training
+  window closes (2026-09-04), not an immediate concern for currently-staged probes.
+- No US market holiday before 2026-09-05 (Labor Day 2026-09-07 falls after window close).
+- New this session: oil near $90/bbl on fresh US-Iran strikes (2026-08-31) - a live macro
+  thread worth tracking for energy-sector spillover, separate from the utility-sector
+  wildfire-liability catalyst above.
 
-**Vetted and passed:** LULU (turnover lens, +5.05% Friday on 1.44x volume, marubozu
-buying candle) - `get_news` found NO same-day catalyst explaining the pop (only stale
-2026-08-25 negative sympathy coverage tied to Dick's Sporting Goods' soft apparel-market
-commentary); structure range/mixed, RSI14 51.7 unremarkable. More importantly,
-next_earnings is 2026-09-03 - only 3 trading days from Monday's open and inside the
-playbook s5 2-day pre-earnings window by mid-week - any thesis staged now would need to
-be flattened before Wednesday regardless of technicals. Passed: no catalyst to trade and
-a closing earnings window that kills it almost immediately. Not added to the ranked list.
+## Staged orders (live as of this session)
 
-Pruned from consideration entirely (no tradable structure): VISN/IRE/MVLL/LPTH/BRUN/AEMD/
-MSTX/SLS/CONL/SOLS/AXTI/XHLD/SOLT/SHAZ/CRML/LABU/AEHR/INFQ/LABD - sub-$3B or unrated
-market cap, illiquid/gappy microcaps, or single-print volume spikes (GIGL/SPTB/PULS/IAUM/
-PALL/ZSL/SCHP/EWJ/ACM/AIA/SUNB/ESI/LABD) with no repeatable level structure worth a
-numeric trigger. Smallcap-lens names surfaced by an earlier pass today (SWVL/TJGC/JELD/
-CABO/PD/SSTK/SMPL/STRT) were sub-$1.1B cap with rel_volume mostly under 1.6x - screened
-but not deep-vetted, superseded by the higher-quality turnover-lens names (WDAY/DKNG/LULU)
-found this pass.
+- **ASND** 2-rung ladder: 25 sh @ 262.05 GTC (`194afe49-73a9-430e-9a11-95819cd8b263`) +
+  15 sh @ 260.60 GTC (`6cdee89c-2d15-4a2c-95d9-98d5b0df3c77`). Stop 258.50, target 268.65,
+  time_stop 2026-09-02. Ledger `t-2026-08-31-001`.
+- **SOLS** 50 sh @ 60.10 GTC (`4f6baa26-0ea9-4b97-a700-f4a334cc758a`). Stop 58.30, target
+  63.66, time_stop 2026-09-03. Ledger `t-2026-08-30-001`.
+- **CRWD** 23 sh @ 225.50 GTC (`760d71d9-ccef-4e66-bb39-474a5655cd52`). Stop 218.91,
+  target 238.00, time_stop 2026-09-02. Ledger `t-2026-08-31-002`.
+- **CRCL** 70 sh @ 90.00 GTC (`1562bf52-5664-4a07-909d-78acebc7e37f`). Stop 87.90, target
+  96.40, time_stop 2026-09-02. Ledger `t-2026-08-31-003`.
 
-## Staged orders
-
-- **MRVL** buy-limit 10 sh @ 211.50 GTC (order `5d4f1e58-3616-4a04-a3ba-c24fd633d2e1`),
-  staged 2026-08-28 18:45 CT. Ledger: `t-2026-08-28-002` (pending_entry). Stop 202.00,
-  target 222.64, time_stop 2026-09-03. **Confirmed still resting as of the 2026-08-29
-  later research session; catalyst now resolved bullish - see below.**
-- ~~PCG buy-limit 100 sh @ 16.45 GTC~~ **CANCELLED 2026-08-29 later research session**
-  (order `cc6fe7f6-edcc-401a-a501-3e579b29b6e9` cancelled via `trade_cli.py`; ledger
-  `t-2026-08-28-003` marked `aborted`). Confirmed negative catalyst below.
-
-- **SOLS** buy-limit 50 sh @ 60.10 GTC (order `4f6baa26-0ea9-4b97-a700-f4a334cc758a`),
-  staged 2026-08-30 11:04 CT. Ledger: `t-2026-08-30-001` (pending_entry). Stop 58.30,
-  target 63.66, time_stop 2026-09-03.
-
-Monday's planning leg (phase 0-1 of the `open`/first `continuous` session): re-check
-`orders` for the MRVL and SOLS fills, re-verify PCG stays cancelled (do not re-stage
-without a new thesis), and treat the catalyst notes below as current going into the open.
-
-## Macro calendar - CONFIRMED (2026-08-29 later research session, via web_search)
-
-Resolves the "unverified, from memory" macro flag repeated in the two earlier sessions
-today. Confirmed via web search (financecalendar.com, tradersquant.com, polymarkettrader.com):
-- **2026-09-04 (Fri) 8:30am ET: NFP jobs report** (Employment Situation) - confirmed, as
-  flagged. This IS the last trading day of the active-training directive (SOP rule 6) and
-  MRVL's time_stop (2026-09-03) sits one session before it - expect elevated volatility
-  risk on 09-04 specifically for anything still open into that date.
-- **2026-09-11 (Fri) 8:30am ET: CPI report** - falls after the training window closes,
-  not an immediate concern for currently-staged probes but relevant to any position
-  carried past 2026-09-04.
-- **2026-09-15/16 (Tue/Wed): FOMC meeting**, decision 2:00pm ET on the 16th - ALSO after
-  the training window closes. Correction to the earlier flag: there is no FOMC date inside
-  the 2026-08-31 to 2026-09-04 window, only the NFP print on the 4th itself.
-- No US market holiday in the 2026-08-31 to 2026-09-05 window (confirmed previously;
-  Labor Day 2026-09-07 falls after training window close).
-Net: only ONE scheduled macro event (NFP, 09-04) falls inside the remaining training
-window, and it lands on the window's own last day - not a mid-week whipsaw risk, but
-worth treating 09-04 itself as reduced-size/manage-tighter per playbook s5 if anything
-is still open that morning.
-
-## Catalyst confirmation (2026-08-29 later session - alpaca-paper MCP finally restored)
-
-After 11+ consecutive sessions with `get_news` unavailable (root-caused and fixed by
-the operator 2026-08-29 11:35 CT per the operator-note in the journal - MCP servers
-were registered outside the session's config home), this session ran `get_news` on
-every mover with an unconfirmed catalyst. Major finding: nearly the ENTIRE Friday
-loser list (MRVL, AFRM, IREN, RBRK, ESTC) was swept down by ONE shared macro catalyst
-- Fed's Kevin Warsh reviving September rate-hike odds to 60%, hitting growth/tech
-broadly (Benzinga "Warsh Sparks Rate-Hike Bets... Nasdaq 100 Falls", 2026-08-28
-16:46-20:00 CT, explicitly naming AFRM/AMKR/ESTC/GAP/IREN/MRVL/PYPL/RBRK among others)
-- while several of these names had genuinely GOOD same-day company news getting
-overrun by the macro fear:
-- **MRVL**: -10.48% day was macro-driven, NOT fundamental - same-day news was strongly
-  bullish (Google AI chip deal called a "monster number" by the CEO, 5 separate analyst
-  price-target raises to $245-325, all 15-55% above the 211-216 zone the selloff left
-  it in). Upgrades confidence that 211.13 support holding Monday is a macro-dip-in-a-
-  strengthening-name, not a broken thesis. Staged probe left unchanged (already
-  conservative); Monday's live workup can decide whether to add on confirmation.
-- **PCG**: -7.54% day IS catalyst-driven and it's a genuine structural negative:
-  California lawmakers blocked Newsom's push to shield utilities from wildfire-liability
-  lawsuits (Benzinga, 2026-08-28 17:07-18:39 CT). This is exactly the "if catalyst-driven,
-  expect a gap through the stop" scenario the original thesis flagged as its own kill
-  condition - probe CANCELLED, not carried into Monday's gap risk.
-- **AFRM**: strong Q4 beat + raised FY2027 guidance, 35% GMV growth, Shopify expansion -
-  genuinely bullish (analyst targets $90-124 vs Friday's 77.76 close). The intraday fade
-  from +11% to flat was the same macro rate-fear hitting Nasdaq that afternoon, not a
-  failed gap-and-go on the fundamentals. Existing WATCH-only plan (triggers unchanged)
-  stands, with more confidence than a pure technical fade would warrant.
-- **RBRK**: also a Q2 beat + raised guidance with SIX analyst price-target raises to
-  $114-130 (vs ~93 close) - the stock's weakness is post-earnings-pop giveback compounded
-  by the macro selloff, not a broken story. Technicals still show no confirmed higher low
-  (closed at the day low) - WATCH-only plan unchanged, but the fundamental backdrop is
-  more supportive than the chart alone suggests.
-- **IREN**: also strongly positive same-day news (new multi-year AI cloud contract,
-  $2.8B in deals targeting $4B ARR, a $2.4B Blue Owl debt deal to buy Nvidia chips, 2026
-  capacity "sold out", BTIG reiterating Buy/$80 PT vs ~34.81 close) swept down by the
-  same macro selloff. WATCH-only plan unchanged (downtrend structure, no higher low yet
-  per playbook s2), but the fundamental catalyst is a genuine positive, not a red flag.
-- **PYPL**: the one name with a real, idiosyncratic NEGATIVE catalyst distinct from the
-  macro selloff - Stripe/Advent abandoned their takeover bid, pulling the rug out from
-  under a deal-premium David Einhorn had just bought into. This is a fundamental
-  de-rating, not tape noise - reinforces the existing "falling knife, watch only"
-  treatment; no reason to get more constructive here even if it bounces technically.
-- **GAP**: independently confirmed the +12.94% gap was a real earnings beat + raised
-  guidance (multiple analyst PT raises $23-42), not speculative - still extended
-  (RSI14 71.5, 100% of 20d range) with no fresh base, WATCH-only plan unchanged.
-
-Net effect: the regime read (SPY/QQQ range/mixed, no broad tailwind) stands, but the
-READ on individual names shifts from "several unconfirmed, possibly broken theses" to
-"one real macro wobble (rate-hike fear) sweeping over a batch of names with mostly-
-strong underlying fundamentals, plus two genuine idiosyncratic risks (PCG legal,
-PYPL deal-collapse) correctly separated out and treated with more caution."
-
-## 2026-08-31 08:40 CT - intraday (continuous, cycle 4 - live open update)
-
-Live open data (first ~10 min) updates several names above:
-
-- **SOLS** (#12) - the alternate "clean break above 63.66 on rel_volume >= 1.5" trigger has effectively FIRED: price is now 64.19 (day_high 64.86), through the original 63.66 target already, without ever pulling back to fill the resting 60.10 limit. Considered chasing a fresh breakout entry here and PASSED: the next resistance above is 88.29 (~37% away, not a usable near-term target) - there is no nearby level to size a sane R:R against post-breakout. The original 60.10 GTC probe stays resting unchanged (a genuine base/pullback thesis, not stale); this is a separate, no-trade decision on a fresh chase entry.
-- **DKNG** - demoted back to WATCH ONLY at 08:35 CT (see journal), and confirmed further bearish this update: day_change now -4.36pct (was -1.66pct gap), broke below Friday's 24.12 low to 24.09, today's forming daily candle is a marubozu (strong selling). The "hammer defended 24.70" read from ta.py's coarser aggregation is fully invalidated by the live 5m tape. No trigger; stays WATCH ONLY, structure deteriorating not basing.
-- **IREN** - ARMED (see `journal/triggers.jsonl` trg-20260831-002): structure flipped from Friday's explicit downtrend to range/mixed, a genuine 2-bar higher low confirmed (35.55 -> 35.93), rs_vs_spy_pp +2.12. Buy trigger 36.40, stop 35.45, target 38.04 (prior-day high), B-probe. Graded probe not full-size: only 2 confirming bars, TradingView still strong_sell/strong_sell (lagging).
-- **TENB** - ARMED (see `journal/triggers.jsonl` trg-20260831-001), upgraded from "WATCH, no order staged" to a live B-grade trigger on a CONFIRMED catalyst found via fresh `get_news` this cycle: Tenable replaces Leggett & Platt in the S&P SmallCap 600 effective prior to today's open (Benzinga, 2026-08-26 21:17 CT) - real index-fund buying demand. Clean EMA9>EMA21>EMA50 uptrend stack, RSI14 58.4 (not extended), day_high 38.34 right at resistance 38.36 / just above Friday's 38.26 high. Buy trigger 38.36, stop 38.00, target 39.30, R:R 2.61:1 - clears the full-size 2:1 floor, sized as a real (non-probe) B-grade position. Note: TENB's own `quote` showed a bad tick (bid 32.58/ask 37.73, ~14pct spread) - priced off ta.py's day_high/vwap instead, consistent with the known IEX opening-liquidity-lag pattern from the 2026-08-27 journal.
-- **WDAY** - checked, no change: gap -0.82pct, day_change -1.28pct (underperforming today, rs -0.89pp), tight range 201.27-203.35 right under resistance 202.46, no fresh base or reclaim of 207.84 yet. Stays WATCH ONLY.
-- **MRVL** (staged) - unchanged: price ~214-215, above the 211.50 resting limit; a 5m doji printed AT support 211.13 in the last hour, consistent with the existing thesis. No alternate-trigger reclaim yet (today's opening_range_high is 218.12, price hasn't cleared it).
-
-`journal/universe_scan.json`'s `screen.py` sweep returned 0 screened/shortlisted names twice this cycle (08:35 and re-run just now) - a data-source issue (TradingView full-market feed), not a market-closed condition (regime check and individual `ta.py`/`quote` calls work fine). Flagging as a tool-health issue for the next cycle to re-check rather than a rule-8 stop, since the primary screener source is only one of several candidate-discovery paths and today's candidates came from the pre-built stalk list + direct `ta.py`/`get_news` workups instead.
+Next session (planning leg, pre-market 2026-09-01 or the next `open`/`continuous` slot):
+re-check `orders` for fills on all four staged names against overnight news, re-verify
+MRVL's 211.10 support didn't break, and treat the EIX/PCG/HWM pass-reasoning above as
+current unless a new catalyst appears.
