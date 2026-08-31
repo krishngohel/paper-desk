@@ -93,6 +93,54 @@ Price moves on low volume revert; on high volume they continue. volume_vs_20d_av
 under ~0.7 = a quiet tape whose signals are weak. A level break on 2x volume is
 information; the same break on 0.5x is noise.
 
+**Scope: the 0.7 threshold gates CONTINUATION theses, not every setup.** Read the
+sentence above literally - it is about a *level break* being real. Volume is the
+evidence that buyers are committing, so it is mandatory for breakouts, gap-and-go,
+momentum, and any thesis whose logic is "this move keeps going."
+
+The mirror case is different. If the thesis is mean reversion - price is bouncing
+off a level it has defended repeatedly, and you expect it to revert INTO the
+range rather than break out of it - then low volume is not disqualifying. Quiet
+tapes are precisely where range trades live: the same 0.5x volume that makes a
+breakout a lie makes a range hold more likely. What such a trade still owes you
+is a level the tape has actually defended (two or more touches you can point to),
+a stop just beyond it, and smaller size, because a quiet tape also means thinner
+exits.
+
+Applying the 0.7 gate to every candidate turns any range-bound day into a
+mandatory no-trade day - on 2026-08-31 it passed eight of ten names in a
+range/mixed regime, several of which were bouncing off defended support. That is
+the rule misfiring, not the market being empty. State which kind of thesis you
+hold BEFORE citing volume, and apply the gate only to continuation setups.
+
+## 7b. Tradability is the SPREAD, never the market cap
+
+Small does not mean untradable. The question is only ever: can I get in and out
+at a sane price? You cross the bid-ask spread entering AND exiting, so the
+spread is a fixed toll you pay before any profit exists.
+
+`ta.py SYM` returns a `tradability` block with the measured spread and a verdict:
+
+- **TRADABLE** (spread <= 1%): normal cost, size normally.
+- **TRADABLE_TIGHT_SIZE** (1-2.5%): real toll. Size down and demand a target
+  that clears the spread with room to spare - a 2% scalp on a 2% spread is a
+  guaranteed loss.
+- **UNTRADABLE** (>2.5%, or no two-sided market): no trade exists here at any
+  size. A 20% spread means you are down 20% the instant you fill.
+
+**Never exclude a name as "microcap" or "small cap" as a category.** That is a
+guess standing in for a measurement, and on 2026-08-31 it cost a real
+opportunity: WETO/AEHL/NCRA were rightly passed (16-29% spreads) but YDDL was
+dismissed in the same breath while carrying a 0.89% spread and $68M of volume -
+a perfectly tradable name thrown out by association. If a mover clears the
+spread test and has real dollar volume, it earns a full workup regardless of
+how small the company is. Reject it on structure, extension, or catalyst if the
+evidence says so - but reject it on evidence, one name at a time.
+
+Two liquidity checks remain independent of spread: today's dollar volume (thin
+books slip on exit even when the quoted spread looks fine) and whether the name
+can absorb your intended size without you becoming the move.
+
 ## 8. Known failure modes (the review will look for these by name)
 
 - **Chasing**: buying AFTER the move, far from any level, because it is running.

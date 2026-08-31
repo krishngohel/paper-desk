@@ -252,6 +252,68 @@ def key_levels(daily: list[dict]) -> dict:
     return out
 
 
+def tradability(symbol: str, daily: list[dict]) -> dict:
+    """Can a long actually get IN and OUT of this name at a sane price?
+
+    Market cap does not answer that question - the bid-ask SPREAD does. A small
+    company with a 0.9% spread is tradable; a $10M shell with a 20% spread is
+    not, because you cross that spread twice and start every trade deep in the
+    hole. On 2026-08-31 the agent excluded a whole batch of movers as
+    "microcap-liquidity" - correct for WETO/AEHL/NCRA (16-20% spreads) but wrong
+    for YDDL, which had a 0.89% spread and $68M of real volume. This replaces
+    that guess with the measurement.
+    """
+    import requests
+
+    out: dict = {"spread_pct": None, "round_trip_cost_pct": None, "verdict": None, "why": None}
+    try:
+        cfg = sdk.load_config()
+        r = requests.get(f"{DATA}/v2/stocks/{symbol}/quotes/latest?feed={cfg.feed}",
+                         headers={"APCA-API-KEY-ID": cfg.api_key,
+                                  "APCA-API-SECRET-KEY": cfg.secret_key}, timeout=10)
+        r.raise_for_status()
+        q = (r.json() or {}).get("quote") or {}
+        bid, ask = q.get("bp"), q.get("ap")
+    except Exception as exc:  # noqa: BLE001 - fail soft, never block research
+        out["why"] = f"quote unavailable ({type(exc).__name__}) - check manually before trading"
+        return out
+
+    if not bid or not ask or bid <= 0 or ask <= 0:
+        out["verdict"] = "UNTRADABLE"
+        out["why"] = (f"no two-sided market (bid={bid}, ask={ask}) - nobody is offering "
+                      f"shares at any price; you cannot buy this")
+        return out
+
+    mid = (bid + ask) / 2
+    spread_pct = (ask - bid) / mid * 100
+    out["bid"], out["ask"] = bid, ask
+    out["spread_pct"] = round(spread_pct, 2)
+    out["round_trip_cost_pct"] = round(spread_pct, 2)  # cross it entering, cross it exiting
+
+    dv = None
+    if daily:
+        last = daily[-1]
+        dv = last.get("close", 0) * last.get("volume", 0) / 1e6
+
+    if spread_pct <= 1.0:
+        v = "TRADABLE"
+        why = f"{spread_pct:.2f}% spread - normal cost of entry"
+    elif spread_pct <= 2.5:
+        v = "TRADABLE_TIGHT_SIZE"
+        why = (f"{spread_pct:.2f}% spread - real but survivable; the move must clear "
+               f"it, so size down and demand a wider target")
+    else:
+        v = "UNTRADABLE"
+        why = (f"{spread_pct:.2f}% spread - you are down ~{spread_pct:.1f}% the instant "
+               f"you fill, and must recover that before any profit. No scalp exists here")
+    out["verdict"], out["why"] = v, why
+    if dv is not None:
+        out["dollar_volume_m_today"] = round(dv, 1)
+        if dv < 20:
+            out["why"] += f"; only ${dv:.1f}M traded today - thin book, fills will slip"
+    return out
+
+
 def next_earnings(symbol: str) -> str | None:
     """Next earnings date via yfinance - EVENT RISK; fail-soft to null."""
     try:
@@ -341,6 +403,7 @@ def main() -> int:
     lv = key_levels(daily)
     ind = local_indicators(symbol)
     out = {"symbol": symbol,
+           "tradability": tradability(symbol, daily),
            "indicators": ind,
            "key_levels": lv,
            "candles_daily": candle_tells(daily, lv, ind.get("atr14"), last_n=5),
