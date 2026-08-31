@@ -8,13 +8,11 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Rewritten 2026-08-31 21:30 CT (Monday evening research session, full rewrite - the prior
-version dated to Friday 2026-08-28 and had accumulated addenda through today's 17-leg
-continuous relay; folded forward and pruned per the file-size housekeeping rule).
-Regime: SPY range/mixed (767.05, +0.26% vs EMA21, RSI14 54.1), QQQ range/mixed (716.76,
-+0.35% vs EMA21, RSI14 52.3) - unchanged posture from Friday, trade levels per playbook
-s1. Source: `journal/universe_scan.json` (15:35 CT close-of-day shortlist + turnover/gainers
-explore lenses, 1500 liquid names screened) and `journal/social.json` (16:27 CT).
+Updated 2026-08-31 22:15 CT (second Monday-evening research leg, same session day - folded
+forward, no re-append). Regime unchanged: SPY range/mixed (767.05, +0.26% vs EMA21, RSI14
+54.1), QQQ range/mixed (716.76, +0.35% vs EMA21, RSI14 52.3), trade levels per playbook s1.
+Source: `journal/universe_scan.json` (17:02 CT relvol + gainers explore lenses, re-screened
+this leg) and `journal/social.json` (17:02 CT, re-screened this leg).
 
 ## Ranked candidates
 
@@ -66,7 +64,36 @@ explore lenses, 1500 liquid names screened) and `journal/social.json` (16:27 CT)
    undecided, not yet resolved either way). Resting probe unchanged below. Ledger
    `t-2026-08-30-001` (C-probe). next_earnings 2026-10-29 (safe).
 
-## Vetted and passed (new names this session, playbook s2 - falling knives, no buy)
+6. **STDN** (PENDING - see below) - new name this leg, surfaced via `screen.py --mode
+   gainers` explore lens (duty 1b hunt). +14.58% day_change, gap +5.74%, volume_vs_20d_avg
+   2.44x (real participation). Structure confirmed UPTREND, EMA9>EMA21, MACD +1.77, RSI14
+   66.6, TradingView strong_buy across the board, rs_vs_spy_pp +14.83 (strong outperform).
+   `get_news` found only two generic "stocks moving" roundup mentions - no company-specific
+   catalyst - graded C/probe per playbook s11 (chart earns the grade, not a story).
+   pos_in_20d_range_pct 100% (fully extended, real chase risk) and resistance_above is
+   empty (price discovery, no breakout level to size against). **STAGED**: buy-limit 100
+   sh @ 14.85 GTC (order `784b6a0f-ed2f-4877-931e-be0a6fb53a58`), at today's own tested
+   opening_range_low/day_low (14.85/14.83, held all session) - a pullback-into-range probe,
+   not a chase. Stop 14.20, target 16.22 (today's day_high), R:R 2.11:1. Ledger
+   `t-2026-08-31-005` (C-probe). Kill: a close back below 14.20 or fresh negative news.
+   next_earnings 2026-11-16 (safe).
+
+## Vetted this leg, no order placed
+
+- **TITN** (Titan Machinery) - +15.17% day_change, real defended support (5 dojis all AT
+  20.12 over the last hour, playbook s2b compression-at-a-level), TradingView strong_buy,
+  but no company-specific catalyst found (generic Benzinga roundup mention only). Attempted
+  a conservative probe (100 sh @ 20.12 GTC) - **REFUSED by the gate's PRICE_BAND fat-finger
+  guard**: `{"status": "blocked", "code": "PRICE_BAND", "detail": "buy limit 20.12 is 15.1%
+  through quote ref 17.48 (band 10.0%) - fat-finger guard"}`. Root cause: `trade_cli quote
+  TITN` showed bid 17.48/ask 0.00 - an invalid two-sided market, below the entire day's real
+  trading range (19.81-21.04 per bars), the same bad-tick/IEX-lag pattern flagged repeatedly
+  today for ASND/TENB/CRWD. Declined to chase the broken quote by lowering the limit toward
+  it (would violate the standing never-price-off-a-bad-tick discipline) - dropped, not
+  forced; recorded aborted in `trades.jsonl` (`t-2026-08-31-004`), not counted as a trade.
+  Re-examine next session once the broker quote refreshes past market reopen.
+
+## Vetted and passed (playbook s2 - falling knives, no buy)
 
 - **EIX / PCG** - California utility wildfire-liability crisis. Confirmed via `get_news`:
   California lawmakers left investor-owned utilities on the hook for wildfire liability
@@ -125,8 +152,14 @@ re-rank against the five live names above.
   target 238.00, time_stop 2026-09-02. Ledger `t-2026-08-31-002`.
 - **CRCL** 70 sh @ 90.00 GTC (`1562bf52-5664-4a07-909d-78acebc7e37f`). Stop 87.90, target
   96.40, time_stop 2026-09-02. Ledger `t-2026-08-31-003`.
+- **STDN** 100 sh @ 14.85 GTC (`784b6a0f-ed2f-4877-931e-be0a6fb53a58`). Stop 14.20, target
+  16.22, time_stop 2026-09-03. Ledger `t-2026-08-31-005`.
+
+Standing-order quota (binds `research` sessions too, SOP duty 3b): 6 live conditional
+entries across 5 distinct symbols (ASND x2, SOLS, CRWD, CRCL, STDN) - quota met.
 
 Next session (planning leg, pre-market 2026-09-01 or the next `open`/`continuous` slot):
-re-check `orders` for fills on all four staged names against overnight news, re-verify
-MRVL's 211.10 support didn't break, and treat the EIX/PCG/HWM pass-reasoning above as
-current unless a new catalyst appears.
+re-check `orders` for fills on all five staged names against overnight news, re-verify
+MRVL's 211.10 support didn't break, re-examine TITN once broker quotes refresh past market
+reopen (aborted this leg only on a broken bid, not on thesis), and treat the EIX/PCG/HWM
+pass-reasoning above as current unless a new catalyst appears.
