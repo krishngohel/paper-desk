@@ -1,5 +1,10 @@
 @echo off
 rem Headless trading session launcher. Arg 1 = open ^| intraday ^| preclose ^| weekly-review ^| triggered
+rem Run as the operator's Max-plan account (pranavjajapur). Without this the
+rem default config home (~/.claude) is used, which is signed in as a DIFFERENT
+rem account with its own, much smaller usage budget - the cause of the
+rem 2026-08-31 all-day usage lockout. Do not remove.
+set CLAUDE_CONFIG_DIR=C:\Users\awsom\.claude-work
 set TYPE=%1
 if "%TYPE%"=="" set TYPE=intraday
 cd /d C:\Users\awsom\Documents\Projects\trading-agent
