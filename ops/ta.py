@@ -23,6 +23,7 @@ from src.trading.connectors.alpaca import sdk  # noqa: E402
 
 PROFILE = "alpaca-paper-trade"
 DATA = "https://data.alpaca.markets"
+SIP_LAG_MIN = 20   # this account may query SIP only outside a ~15-min window
 
 
 def _fetch_bars(symbol: str, timeframe: str, days_back: int, limit: int) -> list[dict]:
@@ -32,15 +33,27 @@ def _fetch_bars(symbol: str, timeframe: str, days_back: int, limit: int) -> list
     from datetime import datetime, timedelta, timezone
 
     cfg = sdk.load_config()
-    start = (datetime.now(timezone.utc) - timedelta(days=days_back)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now = datetime.now(timezone.utc)
+    start = (now - timedelta(days=days_back)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # Prefer the CONSOLIDATED tape (sip). The account may not query *recent* SIP,
+    # but SIP ending ~20 min back is permitted - and it is the difference between
+    # seeing the market and seeing a sliver of it: on 2026-08-31 AEHL printed
+    # 45,074,347 shares on sip vs 120,130 on iex (0.3%), and its true daily high
+    # was 8.48 vs iex's 7.45. Indicators, levels and volume ratios computed on iex
+    # alone are measuring a rounding error. Falls back to the configured feed.
+    end = (now - timedelta(minutes=SIP_LAG_MIN)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    feed, end_q = ("sip", f"&end={end}")
     bars: list[dict] = []
     token = None
     for _ in range(4):
-        url = (f"{DATA}/v2/stocks/{symbol}/bars?timeframe={timeframe}&start={start}"
-               f"&limit={min(limit, 1000)}&feed={cfg.feed}&adjustment=split&sort=desc")
+        url = (f"{DATA}/v2/stocks/{symbol}/bars?timeframe={timeframe}&start={start}{end_q}"
+               f"&limit={min(limit, 1000)}&feed={feed}&adjustment=split&sort=desc")
         if token:
             url += f"&page_token={token}"
         r = requests.get(url, headers={"APCA-API-KEY-ID": cfg.api_key, "APCA-API-SECRET-KEY": cfg.secret_key}, timeout=10)
+        if r.status_code in (400, 403) and feed == "sip":
+            feed, end_q = cfg.feed, ""      # no SIP entitlement: fall back
+            continue
         r.raise_for_status()
         j = r.json()
         for b in j.get("bars") or []:
@@ -265,17 +278,36 @@ def tradability(symbol: str, daily: list[dict]) -> dict:
     """
     import requests
 
-    out: dict = {"spread_pct": None, "round_trip_cost_pct": None, "verdict": None, "why": None}
-    try:
-        cfg = sdk.load_config()
-        r = requests.get(f"{DATA}/v2/stocks/{symbol}/quotes/latest?feed={cfg.feed}",
-                         headers={"APCA-API-KEY-ID": cfg.api_key,
-                                  "APCA-API-SECRET-KEY": cfg.secret_key}, timeout=10)
-        r.raise_for_status()
-        q = (r.json() or {}).get("quote") or {}
-        bid, ask = q.get("bp"), q.get("ap")
-    except Exception as exc:  # noqa: BLE001 - fail soft, never block research
-        out["why"] = f"quote unavailable ({type(exc).__name__}) - check manually before trading"
+    out: dict = {"spread_pct": None, "round_trip_cost_pct": None, "verdict": None,
+                 "why": None, "source": None}
+    cfg = sdk.load_config()
+    hdr = {"APCA-API-KEY-ID": cfg.api_key, "APCA-API-SECRET-KEY": cfg.secret_key}
+    bid = ask = None
+    dv = None
+    # delayed_sip snapshot = the CONSOLIDATED quote and true daily volume. The
+    # iex quote is a sliver of the book and lies badly on thin names: on
+    # 2026-08-31 AEHL quoted 5.63/7.39 (27.0% spread) on iex while the real
+    # market was 6.50/6.52 (0.31%). Rejecting names on iex spreads discards
+    # perfectly tradable stock.
+    for feed in ("delayed_sip", cfg.feed):
+        try:
+            r = requests.get(f"{DATA}/v2/stocks/snapshots?symbols={symbol}&feed={feed}",
+                             headers=hdr, timeout=10)
+            if not r.ok:
+                continue
+            snap = ((r.json() or {}).get(symbol)) or {}
+            q = snap.get("latestQuote") or {}
+            if q.get("bp") and q.get("ap"):
+                bid, ask = q["bp"], q["ap"]
+                db = snap.get("dailyBar") or {}
+                if db.get("v") and db.get("vw"):
+                    dv = db["v"] * db["vw"] / 1e6
+                out["source"] = feed
+                break
+        except Exception:  # noqa: BLE001 - fail soft, never block research
+            continue
+    if bid is None:
+        out["why"] = "quote unavailable on any feed - check manually before trading"
         return out
 
     if not bid or not ask or bid <= 0 or ask <= 0:
@@ -290,8 +322,7 @@ def tradability(symbol: str, daily: list[dict]) -> dict:
     out["spread_pct"] = round(spread_pct, 2)
     out["round_trip_cost_pct"] = round(spread_pct, 2)  # cross it entering, cross it exiting
 
-    dv = None
-    if daily:
+    if dv is None and daily:
         last = daily[-1]
         dv = last.get("close", 0) * last.get("volume", 0) / 1e6
 
