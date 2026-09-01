@@ -8,158 +8,170 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-08-31 22:15 CT (second Monday-evening research leg, same session day - folded
-forward, no re-append). Regime unchanged: SPY range/mixed (767.05, +0.26% vs EMA21, RSI14
-54.1), QQQ range/mixed (716.76, +0.35% vs EMA21, RSI14 52.3), trade levels per playbook s1.
-Source: `journal/universe_scan.json` (17:02 CT relvol + gainers explore lenses, re-screened
-this leg) and `journal/social.json` (17:02 CT, re-screened this leg).
+Updated 2026-09-01 17:10 CT (evening research session, after a 14-leg continuous relay
++ 2 daily-reviews earlier today hit the loss budget at leg 10 and closed the book to
+3 filled positions). Regime: SPY range/mixed (761.78, -0.39% vs EMA21, RSI14 48.6), QQQ
+range/mixed (707.64, -0.85% vs EMA21, RSI14 46.6) - unchanged from every leg today.
+**New macro thread found this session:** a global bond-yield rout hit high-multiple
+tech/software today (10Y yield to a 19-month high, Fed rate-hike odds repriced to 68%
+on hawkish Warsh remarks) - CRWD, AXON, ALAB, LITE, TER, CRDO all fell 5-17% on this
+theme per `get_news`, largely NOT company-specific. Distinguish this from an idiosyncratic
+breakdown when grading dip-buys in these names over the next few sessions.
+Source: `journal/universe_scan.json` (17:01 CT relvol explore lens) and
+`journal/social.json` (17:02 CT) - both re-screened this leg per duty 1b.
 
-## Ranked candidates
+## Book positions (3, all bracketed, none touched this session per research-session rules)
 
-1. **MRVL** (BOOK POSITION, 10 sh @ 211.472) - `t-2026-08-28-002`. Range/mixed structure
-   intact, testing support 211.10 into the close (bearish engulfing AT SUPPORT 21:05 UTC -
-   a rejection, not yet a breakdown; watch for a confirmed close below it). TradingView
-   flipped to sell/strong_sell/sell (was neutral). Stop 202.00 (watcher-enforced, well
-   clear), target 222.64 resting GTC across two orders (`9184e057...` 8sh + `7c26ff3e...`
-   2sh). next_earnings 2026-12-01 (safe). No action - fully bracketed, let it work.
+- **CRK** 300 sh @ avg 15.67, closed 16.02 (+2.2% ROI). Stop 15.30, target 17.00 resting
+  GTC (`c118fa9e...`). RSI14 70.8, **fully extended (100% of 20d range), no
+  resistance_above** - real chase risk if adding here, so NOT adding despite the
+  strong TradingView strong_buy read. next_earnings 2026-11-02 (safe). Hold as-is.
+- **DUOL** 35 sh @ avg 156.41, closed 158.77 (+1.5% ROI). Stop 153.75, target 165.00
+  resting GTC (`6fa761f6...`). Also fully extended (100% of 20d range), no
+  resistance_above - same no-add reasoning as CRK. next_earnings 2026-11-04 (safe).
+  Hold as-is.
+- **MRVL** 10 sh @ avg 211.472, closed 210.39 (-0.5% ROI). Stop 202.00, target 222.64
+  resting GTC across 2 orders (`9184e057...` 8sh + `7c26ff3e...` 2sh). **Weakening
+  read: TradingView flipped to sell/strong_sell** (was neutral last week), RSI14 44.8,
+  pos_in_20d_range_pct only 4.3% (near the bottom of its range). Testing support
+  201.74 repeatedly today (2 shooting-star rejections above it, but no breakdown below
+  it either - contested, not resolved). Stop 202.00 sits right at this support, watcher
+  will enforce if it breaks. next_earnings 2026-12-01 (safe). Watch closely, no add.
 
-2. **CRWD** - cybersecurity, hit a NEW ALL-TIME HIGH today on FIVE separate same-day
-   catalysts confirmed via `get_news`: Fal.Con 2026 conference product news (drove the
-   ATH), Cognizant OT-cybersecurity partnership expansion, Snowflake Marketplace
-   collaboration, Falcon-on-Google-Cloud, and a fresh AI Partner Specialization
-   announcement (20:42 UTC, after today's own trigger trg-20260831-003 @ 234.00 was
-   cancelled mid-morning on a volume fade - the thesis outlasted that cancellation).
-   EMA9(211.00)>EMA21(206.37)>EMA50(195.13) uptrend, RSI14 63.0, rs_vs_spy_pp +5.38, no
-   resistance_above (price discovery). **STAGED**: buy-limit 23 sh @ 225.50 GTC (order
-   `760d71d9-ccef-4e66-bb39-474a5655cd52`), just above the defended opening_range_low
-   225.07 - a pullback-into-today's-range probe, not a chase. Stop 218.91 (~0.5xATR14
-   below the level), target 238.00 (~1xATR14), R:R 1.90:1. Ledger `t-2026-08-31-002`
-   (B-probe). Kill: a close back below prior-day close 218.40 would erase today's gap
-   entirely - cancel the resting order if that prints first. next_earnings 2026-12-01
-   (safe).
+## Staged / armed this session (live conditional entries)
 
-3. **CRCL** - Circle (stablecoin issuer), +9.02% day on 1.34x volume, uptrend confirmed
-   (bullish engulfing AT SUPPORT 84.25 today), EMA9>EMA21>EMA50 stack, TradingView
-   strong_buy/strong_buy/buy. Today's own trigger (trg-20260831-004 @ 96.25) never fired
-   in regular hours but the after-hours tape printed 96.40 - through the level - before
-   fading to ~95.00, meaning the breakout is being actively contested, not rejected.
-   `get_news` found NO company-specific catalyst (only a generic whale-options-activity
-   mention) - this is a technical/momentum thesis, graded down accordingly (playbook
-   s11 - the chart earns the grade, not a story). **STAGED**: buy-limit 70 sh @ 90.00 GTC
-   (order `1562bf52-5664-4a07-909d-78acebc7e37f`), just above today's day_low/
-   opening_range_low 88.30 (held all session). Stop 87.90, target 96.40 (the after-hours
-   high this thesis is testing), R:R 3.05:1. Ledger `t-2026-08-31-003` (C-probe). Kill: a
-   close back below 84.25 (today's engulfing base) invalidates the uptrend read.
-   next_earnings 2026-11-11 (safe).
+- **STDN** 100 sh @ 16.00 GTC (`1eff3a96-b6f6-41cc-8931-d3e739e42e2c`). Ledger
+  `t-2026-09-01-008` (C-probe). Restaged after the loss-budget cancellation of the
+  original 14.85 stage (`t-2026-08-31-005`) - price has moved up ~11% since, so the
+  level was rebuilt fresh (16.00, below today's 16.40 day-low, near yesterday's 16.11
+  close) rather than leaving a stale price resting. Structure confirmed uptrend,
+  volume 3.31x, but **100% of 20d range - fully extended, real chase risk**, no
+  resistance_above. Stop 14.65 (~1x ATR14), target 18.70, time_stop 2026-09-05. Kill:
+  a close back below 14.65 or the uptrend structure breaking (lower low).
+- **PURR** trigger `trg-20260901-004`, buy 200 sh >= 11.55 GTC-equivalent, expires
+  2026-09-02T15:00 CT. Re-armed after the loss-budget cancellation of
+  `trg-20260901-003` (thesis was intact at cancellation). Range/mixed, choppy last
+  hour (morning star then 2 sell marubozu then a hammer defend) - arming above the
+  vwap/opening-range reclaim rather than buying the contested low. Stop 11.00, target
+  12.60. Kill: cancel if a confirmed lower low prints before it fires.
+- **CRWD** trigger `trg-20260901-005`, buy 15 sh >= 217.60 GTC-equivalent, expires
+  2026-09-02T15:00 CT. **Fresh thesis, distinct from the stopped-out `t-2026-08-31-002`**
+  (-247.54, self-flagged untested level) - today's -7.57% drop to 215.07 is the
+  macro bond-rout theme (see header), not a company-specific break; EMA stack still
+  bullish, Monday's catalysts (Fal.Con, Cognizant, Snowflake, Google Cloud, AI Partner
+  Specialization) unaffected. Arming above the contested 217.5 resistance rather than
+  buying today's chop. Stop 211.00, target 226.00 (R:R only 1.27:1 - kept small/probe
+  for that reason despite the B-grade thesis). Kill: a continued macro slide (10Y
+  yield still climbing) that never lets it reclaim 217.60.
+- **MRNA** trigger `trg-20260901-006`, buy 10 sh >= 152.50 GTC-equivalent, expires
+  2026-09-02T15:00 CT. NEW name this session (duty 1b). +8.28% day on volume that
+  finally cleared the 0.7 continuation gate (0.83x, was 0.50x/0.62x earlier legs
+  today) - but the **final two 5m bars into the close were both selling marubozu**,
+  so buying the 154.27 close directly would risk chasing a fade. Arming above 152.50
+  (a vwap-area reclaim/hold, below today's high) to require tomorrow's buyers to
+  actually show up first. RSI14 67.5 and pos_in_20d_range_pct 83.3% both flag real
+  extension after an already-large multi-week run - graded C/probe, sized very small
+  (10 sh) for that reason. Stop 148.50, target 161.37. Kill: a confirmed break below
+  vwap 150.91 before it fires.
 
-4. **ASND** (PENDING - see below) - Ascendis Pharma, +7.01% on a binding BioMarin patent
-   settlement (removed litigation overhang) plus five sell-side Buy reiterations (targets
-   15-30% above spot despite target trims). Ladder resting per below, unchanged thesis.
-   Ledger `t-2026-08-31-001` (B-probe). next_earnings: unconfirmed (`ta.py` returned null)
-   - flagged unknown-risk per playbook s5, not cleared.
+**Standing-order quota (binds `research` sessions too, SOP duty 3b): 4 live conditional
+entries across 4 distinct symbols (STDN, PURR, CRWD, MRNA) - below the >=6/>=3 floor on
+raw count, meets the symbol-diversity floor. FAILED LEG on the raw-count clause; see
+"blocked/passed this session" below for exactly what stopped a fuller count** (broken
+post-close quotes on FRVO/ASND/SOLS/TDW, and no genuine non-extended entry on the three
+book names). Next session should retry FRVO/ASND/SOLS/TDW once quotes refresh past
+market reopen - all four theses are otherwise live, not killed.
 
-5. **SOLS** (PENDING - see below) - Solstice Advanced Materials, merger-termination +
-   $500M buyback catalyst from last week still intact. Chopping right at resistance
-   63.68-64.74 (shooting stars AND a bullish engulfing both printed there today - genuinely
-   undecided, not yet resolved either way). Resting probe unchanged below. Ledger
-   `t-2026-08-30-001` (C-probe). next_earnings 2026-10-29 (safe).
+## Blocked / passed this session (full workups, no order placed)
 
-6. **STDN** (PENDING - see below) - new name this leg, surfaced via `screen.py --mode
-   gainers` explore lens (duty 1b hunt). +14.58% day_change, gap +5.74%, volume_vs_20d_avg
-   2.44x (real participation). Structure confirmed UPTREND, EMA9>EMA21, MACD +1.77, RSI14
-   66.6, TradingView strong_buy across the board, rs_vs_spy_pp +14.83 (strong outperform).
-   `get_news` found only two generic "stocks moving" roundup mentions - no company-specific
-   catalyst - graded C/probe per playbook s11 (chart earns the grade, not a story).
-   pos_in_20d_range_pct 100% (fully extended, real chase risk) and resistance_above is
-   empty (price discovery, no breakout level to size against). **STAGED**: buy-limit 100
-   sh @ 14.85 GTC (order `784b6a0f-ed2f-4877-931e-be0a6fb53a58`), at today's own tested
-   opening_range_low/day_low (14.85/14.83, held all session) - a pullback-into-range probe,
-   not a chase. Stop 14.20, target 16.22 (today's day_high), R:R 2.11:1. Ledger
-   `t-2026-08-31-005` (C-probe). Kill: a close back below 14.20 or fresh negative news.
-   next_earnings 2026-11-16 (safe).
+- **FRVO** (Fervo Energy) - real, confirmed catalyst (396MW Google geothermal PPA,
+  Cape Station), +26.92% day, volume 9.44x, support 19.54 defended repeatedly. Gate
+  **rejected** a 19.45 GTC buy-limit: `{"status": "blocked", "code": "PRICE_BAND",
+  "detail": "buy limit 19.45 is 13.3% through quote ref 17.16 (band 10.0%) -
+  fat-finger guard"}`. Root cause: `trade_cli quote FRVO` returned bid 17.16/ask 0.00 -
+  an invalid one-sided post-close quote, the same recurring IEX-lag pattern seen
+  repeatedly today (ASND, TENB, CRWD, TITN). Declined to chase the broken quote down
+  to 17.x (would abandon the real 19.54 support level entirely) - dropped, not forced,
+  same precedent as TITN. Ledger `t-2026-09-01-007` marked `aborted`. **Re-attempt at
+  19.45/19.10 (2-rung, 70+50sh, stop 18.40/target 21.80) once quotes refresh past
+  market reopen** - the thesis is unchanged and still the strongest catalyst-backed
+  setup on the board.
+- **ASND** - spread 9.52% (bid 250/ask 275), the same broken post-close quote pattern -
+  UNTRADABLE right now regardless of thesis. Underlying setup (BioMarin settlement,
+  5 sell-side reiterations) unchanged; structure still range/mixed, bullish engulfing
+  AT SUPPORT 249.99 on 08-31. Re-check once quotes refresh; note this name already
+  stopped out once today (`t-2026-08-31-001`, -171.95) - any re-entry needs this fresh
+  reasoning, not a blind re-stage of the old ladder.
+- **SOLS** - spread 2.64% (bid 60.45/ask 62.07) - UNTRADABLE right now. Chopping in a
+  range (repeated rejections at resistance 62.52, one hammer defend at support 60.0,
+  net undecided) - even with a working quote this remains a "wait for resolution" name,
+  not yet a clean setup. Re-check spread + structure together at reopen.
+- **TDW** - spread 5.66% (bid 94.5/ask 100) - UNTRADABLE, same broken-quote pattern.
+  Volume 1.59x now clears the s7 gate and the tape has been genuinely defending
+  resistance 97.5 (bullish engulfing, hammer defends) - worth a same-day recheck once
+  quotes refresh at reopen, this is the closest "almost-there" name on the board.
+- **CRDO** (Credo Technology) - surfaced via duty 1b (11,621 StockTwits watchers +
+  Reddit rank-climber, +86 spots to rank 24 - genuine crowd-attention confluence, but
+  per playbook s11 the chart earns the grade, not the crowd). **next_earnings is
+  TODAY (2026-09-01)** - that IS the catalyst: -16.76% day, gapped down, downtrend
+  structure (lower highs+lower lows), TradingView strong_sell. Last-hour tape at
+  support 185.87 is genuinely mixed (2 hammer defends but also 2 bearish engulfings at
+  the same level) - unresolved, no confirmed higher low. PASS per playbook s2 (no
+  counter-trend knife-catch). Watch for a confirmed higher low before reconsidering.
+- **AXON** - surfaced via duty 1b, -8.41% day, downtrend structure, TradingView
+  strong_sell across the board. `get_news` confirms this is the SAME macro bond-rout
+  theme as CRWD (no AXON-specific catalyst; analyst PTs from Aug are all well above
+  spot: MS $640, Piper Sandler $732, UBS $600). Last-hour tape is pure compression
+  (4 dojis at support 516.15, no resolving break). PASS per playbook s2 - compression
+  is not direction; watch for the break.
+- **MRNA/PURR/CRWD** - see "staged/armed" above, all three converted to armed triggers
+  rather than outright passes.
+- **ENOV** - downtrend, bullish engulfing at resistance 22.23 immediately failed with a
+  shooting-star rejection the next hour. PASS (playbook s2, unconfirmed bounce).
+- **SN** - violent single-day reversal to the bottom of an otherwise-uptrend range
+  (pos_in_20d_range_pct 0%), one hammer defend at 174.43 against repeated selling
+  rejections. PASS (playbook s2, no higher low yet). Watch for a reclaim above 174.43.
+- **WETO** - bounce inside a severe multi-day crash (EMA50 41.98 vs last_close ~6),
+  shooting-star rejection at support intraday. PASS (playbook s2, falling-knife bounce).
+- **KORU** - volume 0.62x misses the s7 gate, no fundamentals data available (likely a
+  recent listing), pure compression in the last hour. PASS.
 
-## Vetted this leg, no order placed
+## Vetted and passed (playbook s2 - falling knives / broken quotes, no near-term buy)
 
-- **TITN** (Titan Machinery) - +15.17% day_change, real defended support (5 dojis all AT
-  20.12 over the last hour, playbook s2b compression-at-a-level), TradingView strong_buy,
-  but no company-specific catalyst found (generic Benzinga roundup mention only). Attempted
-  a conservative probe (100 sh @ 20.12 GTC) - **REFUSED by the gate's PRICE_BAND fat-finger
-  guard**: `{"status": "blocked", "code": "PRICE_BAND", "detail": "buy limit 20.12 is 15.1%
-  through quote ref 17.48 (band 10.0%) - fat-finger guard"}`. Root cause: `trade_cli quote
-  TITN` showed bid 17.48/ask 0.00 - an invalid two-sided market, below the entire day's real
-  trading range (19.81-21.04 per bars), the same bad-tick/IEX-lag pattern flagged repeatedly
-  today for ASND/TENB/CRWD. Declined to chase the broken quote by lowering the limit toward
-  it (would violate the standing never-price-off-a-bad-tick discipline) - dropped, not
-  forced; recorded aborted in `trades.jsonl` (`t-2026-08-31-004`), not counted as a trade.
-  Re-examine next session once the broker quote refreshes past market reopen.
+- **EIX / PCG** - California utility wildfire-liability crisis (SB 492 failed to cap
+  liability), Edison -22.6%/PG&E -19.3% on the catalyst day, wave of analyst PT cuts,
+  no support levels left on `ta.py`. Still a textbook falling knife - would need a
+  confirmed higher low AFTER the legal situation stabilizes (weeks away at best).
+  PCG's old probe (`t-2026-08-28-003`) stays cancelled. No new order.
+- **HWM** (Howmet) - downtrend, repeated rejections at support 243.68, mixed
+  macro/competitive catalysts (oil spike + SpaceX turbine-casting competitive threat).
+  WATCH ONLY - a reclaim of 249.28 off a higher low above 243.68 would be the earliest
+  bounce signal worth a probe. No new order.
+- **TITN** - gate PRICE_BAND-blocked on 08-31 by a broken quote (bid 17.48/ask 0.00);
+  real setup (defended support, TradingView strong_buy) but no company catalyst found.
+  Re-examine once broker quotes refresh past reopen - not re-checked this leg.
 
-## Vetted and passed (playbook s2 - falling knives, no buy)
+## Macro calendar (confirmed 2026-08-29 via web_search; bond-rout item new this session)
 
-- **EIX / PCG** - California utility wildfire-liability crisis. Confirmed via `get_news`:
-  California lawmakers left investor-owned utilities on the hook for wildfire liability
-  (SB 492 failed to cap it) - Edison down 22.6% (worst day since 2001), PG&E down 19.3%,
-  a WAVE of same-day analyst downgrades (Wells Fargo, Mizuho, BMO all cutting PT
-  40-50%+: PG&E to $16-24, Edison to $70). RSI14 22/22, **no support_below levels at all**
-  from `ta.py` (broken through everything), still printing selling marubozu into the
-  close - a textbook falling knife, not a dip. PCG's prior staged probe (`t-2026-08-28-003`)
-  was correctly cancelled 2026-08-29 on the first sign of this catalyst and stays
-  cancelled. No trigger staged for either name - would need a confirmed higher low AFTER
-  the legal situation stabilizes, which given uncapped liability exposure could be weeks
-  away, not a same-week setup. SRE (Sempra) also named in the same downgrade wave but
-  didn't clear today's shortlist - watch if it appears on a future scan.
-
-- **HWM** (Howmet Aerospace) - -6.66% day, gap -6.2%, downtrend structure (lower highs +
-  lower lows), RSI14 28.3, repeated rejections at support 243.68 (shooting star + bearish
-  engulfing + two dojis, no confirmed hold). Two same-day catalysts found via `get_news`,
-  net mixed-to-negative: broad macro headwind (oil spiking near $90 on new Iran strikes,
-  10Y yield to a 19-month high, Dow -0.64%) PLUS a genuine competitive-threat headline -
-  "SpaceX is building gas-turbine parts in Texas as Elon Musk targets a casting
-  bottleneck" - i.e. Musk/SpaceX moving into the turbine-blade casting business that is
-  core to Howmet's own forge/casting franchise, not simply a bullish "HWM benefits from
-  AI power buildout" story as the headline framing first suggested. No earnings catalyst
-  (next_earnings 2026-11-05, not until then). WATCH ONLY - no confirmed higher low yet;
-  a reclaim of 249.28 (today's high) off a higher low above 243.68 would be the earliest
-  bounce signal worth a probe.
-
-## Pruned this session (no fresh catalyst today, absent from full-market/turnover/gainers
-scans; each already had a full workup and/or a live armed-and-cancelled trigger across
-Friday through today's 17-leg continuous relay - re-add only on new evidence)
-
-TENB (index-inclusion thesis fizzled on collapsing volume, trg-20260831-001 cancelled),
-IREN (bounce rejected at highs on thin volume, trg-20260831-002 cancelled), AFRM, PYPL,
-ESTC, RBRK, GAP, WDAY, DKNG, PD - all quiet today, no new price action or catalyst to
-re-rank against the five live names above.
-
-## Macro calendar (confirmed 2026-08-29 via web_search, still current)
-
-- **2026-09-04 (Fri) 8:30am ET: NFP jobs report** - last trading day of the active-training
-  directive; elevated volatility risk for anything still open into that date.
-- **2026-09-11 (Fri): CPI report** and **2026-09-15/16: FOMC** - both after the training
-  window closes (2026-09-04), not an immediate concern for currently-staged probes.
+- **2026-09-01 (today): global bond-yield rout** - 10Y yield to a 19-month high, Fed
+  rate-hike odds repriced to 68% on hawkish Warsh remarks. Hit CRWD/AXON/ALAB/LITE/TER/
+  CRDO hardest (high-multiple software/growth). Watch whether this is a one-day
+  repricing or a multi-day theme before treating any of these dips as clean pullbacks.
+- **2026-09-04 (Fri) 8:30am ET: NFP jobs report** - last trading day of the
+  active-training directive; elevated volatility risk for anything still open.
+- **2026-09-11 (Fri): CPI report** and **2026-09-15/16: FOMC** - both after the
+  training window closes (2026-09-04), not an immediate concern for currently-staged
+  probes, but the FOMC decision is now more consequential given today's yield move.
 - No US market holiday before 2026-09-05 (Labor Day 2026-09-07 falls after window close).
-- New this session: oil near $90/bbl on fresh US-Iran strikes (2026-08-31) - a live macro
-  thread worth tracking for energy-sector spillover, separate from the utility-sector
-  wildfire-liability catalyst above.
 
-## Staged orders (live as of this session)
+## Pruned (no fresh catalyst/edge tonight, or already fully explained above)
 
-- **ASND** 2-rung ladder: 25 sh @ 262.05 GTC (`194afe49-73a9-430e-9a11-95819cd8b263`) +
-  15 sh @ 260.60 GTC (`6cdee89c-2d15-4a2c-95d9-98d5b0df3c77`). Stop 258.50, target 268.65,
-  time_stop 2026-09-02. Ledger `t-2026-08-31-001`.
-- **SOLS** 50 sh @ 60.10 GTC (`4f6baa26-0ea9-4b97-a700-f4a334cc758a`). Stop 58.30, target
-  63.66, time_stop 2026-09-03. Ledger `t-2026-08-30-001`.
-- **CRWD** 23 sh @ 225.50 GTC (`760d71d9-ccef-4e66-bb39-474a5655cd52`). Stop 218.91,
-  target 238.00, time_stop 2026-09-02. Ledger `t-2026-08-31-002`.
-- **CRCL** 70 sh @ 90.00 GTC (`1562bf52-5664-4a07-909d-78acebc7e37f`). Stop 87.90, target
-  96.40, time_stop 2026-09-02. Ledger `t-2026-08-31-003`.
-- **STDN** 100 sh @ 14.85 GTC (`784b6a0f-ed2f-4877-931e-be0a6fb53a58`). Stop 14.20, target
-  16.22, time_stop 2026-09-03. Ledger `t-2026-08-31-005`.
+TENB, IREN, AFRM, PYPL, ESTC, RBRK, GAP, WDAY, DKNG, PD, FROG, NTSK, FIGR, MMED, FSLY -
+quiet or no directional edge to trade tonight; re-add only on new evidence.
 
-Standing-order quota (binds `research` sessions too, SOP duty 3b): 6 live conditional
-entries across 5 distinct symbols (ASND x2, SOLS, CRWD, CRCL, STDN) - quota met.
-
-Next session (planning leg, pre-market 2026-09-01 or the next `open`/`continuous` slot):
-re-check `orders` for fills on all five staged names against overnight news, re-verify
-MRVL's 211.10 support didn't break, re-examine TITN once broker quotes refresh past market
-reopen (aborted this leg only on a broken bid, not on thesis), and treat the EIX/PCG/HWM
-pass-reasoning above as current unless a new catalyst appears.
+Next session (planning leg, pre-market 2026-09-02 or the next `open`/`continuous`
+slot): re-check `orders`/triggers for fills against overnight news, **retry FRVO/ASND/
+SOLS/TDW once quotes refresh past reopen** (all four blocked purely by broken
+post-close quotes tonight, not by thesis), re-verify MRVL's 201.74 support and the
+TradingView sell flip, and set a fresh daily loss budget per playbook s10 before
+resuming full hunting (today's budget was hit at leg 10, 3/3 stop-outs, -$629.49).
