@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parent.parent
 VT = ROOT / "Vibe-Trading"
 LOG = ROOT / "ops" / "logs" / "watcher.log"
 STATE = ROOT / "ops" / "logs" / "watcher_state.json"
+HEARTBEAT = ROOT / "ops" / "logs" / "watcher.heartbeat"
 
 os.chdir(VT)
 sys.path.insert(0, "agent")
@@ -168,6 +169,23 @@ def _num(v):
         return float(v)
     except (TypeError, ValueError):
         return None
+
+
+def pending_records() -> list[dict]:
+    """Staged-but-unfilled ledger records (pending_entry). Used to protect
+    positions from PARTIAL fills, whose records stay pending while real shares
+    sit in the book."""
+    path = ROOT / "journal" / "trades.jsonl"
+    out = []
+    if path.is_file():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                rec = json.loads(line)
+            except ValueError:
+                continue
+            if rec.get("pending_entry") and rec.get("closed_ts") is None and not rec.get("aborted"):
+                out.append(rec)
+    return out
 
 
 def load_state() -> dict:
@@ -411,6 +429,30 @@ def tick(state: dict) -> None:
         log(f"positions unreadable, skipping tick: {exc}")
         return
 
+    # A staged (pending_entry) order that PARTIALLY fills leaves real shares in
+    # the book while its ledger record still reads pending - so open_records()
+    # skips it and nothing enforces its stop. That happened 2026-09-01: CRK
+    # filled 300 of 740 staged shares and sat unprotected. Any pending record
+    # whose symbol is actually held is promoted here so its stop is enforced on
+    # the shares that exist.
+    covered = {str(r.get("symbol", "")).upper() for r in records}
+    for rec in pending_records():
+        sym = str(rec.get("symbol", "")).upper()
+        if sym in positions and sym not in covered and _num(rec.get("stop")) is not None:
+            promoted = dict(rec)
+            promoted["_promoted_partial_fill"] = True
+            records.append(promoted)
+            covered.add(sym)
+            log(f"protecting partially-filled {sym}: ledger record {rec.get('trade_id')} "
+                f"still pending_entry but {positions[sym].get('quantity')} shares are held "
+                f"- enforcing its stop {rec.get('stop')}")
+    # Held with no ledger stop at all: the watcher cannot protect it, so escalate.
+    for sym in positions:
+        if sym not in covered:
+            spawn_session(f"position {sym} is held but has NO ledger record with a stop - "
+                          f"reconcile the ledger and set a stop immediately", state)
+            break
+
     last_marks = state.setdefault("marks", {})
     for rec in records:
         symbol = str(rec.get("symbol", "")).upper()
@@ -607,6 +649,13 @@ def main() -> int:
                 fast_eval(state)
         except Exception as exc:  # noqa: BLE001 - the watcher must survive anything
             log(f"tick error: {exc}")
+        # Heartbeat every loop. watcher.log is silent for ~15 min at a time when
+        # nothing happens, so log mtime is NOT liveness - it made a healthy
+        # watcher read as dead on the console (2026-09-01, with 3 open positions).
+        try:
+            HEARTBEAT.write_text(str(int(time.time())), encoding="utf-8")
+        except OSError:
+            pass
         if once:
             return 0
         dt = datetime.now()

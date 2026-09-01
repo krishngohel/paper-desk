@@ -106,7 +106,13 @@ def _agents() -> dict:
         hwm = json.loads((LOGS / "watcher_state.json").read_text()).get("hwm")
     except Exception:  # noqa: BLE001
         pass
-    watcher_age = _log_age(LOGS / "watcher.log")
+    # Liveness comes from the heartbeat file (touched every loop, ~2s), NOT the
+    # log: watcher.log is silent for ~15 min at a time when nothing happens, so
+    # log mtime made a healthy watcher read as dead. Falls back to the log for
+    # a watcher started before heartbeats existed.
+    watcher_age = _log_age(LOGS / "watcher.heartbeat")
+    if watcher_age is None:
+        watcher_age = _log_age(LOGS / "watcher.log")
     stream_line = next((ln for ln in reversed(_tail(LOGS / "watcher.log", 200))
                         if "stream connected" in ln or "stream error" in ln), "")
     sess_lines = _tail(LOGS / "sessions.log", 400)
