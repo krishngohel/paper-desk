@@ -129,6 +129,63 @@ canvas.map { flex:none; width:100%; height:48vh; display:block; }
 .card time { color:var(--mut); font-size:10.5px; font-variant-numeric:tabular-nums; flex:none; font-family:"JetBrains Mono",monospace; }
 .card .txt { font-size:12px; color:var(--ink2); }
 @media (prefers-reduced-motion: reduce){ .card, .nd.brain .ring { animation:none; } }
+
+/* ---------- responsive ----------
+   Wide screens keep the locked-viewport, internally-scrolling layout. Below
+   that the columns stack and the PAGE scrolls vertically. Horizontal scroll is
+   never allowed anywhere: wide children (tables, logs) scroll inside their own
+   box instead of pushing the body sideways. */
+html, body { max-width:100%; overflow-x:hidden; }
+img, svg, canvas { max-width:100%; }
+
+/* 3 columns -> 2, research panel drops to a full-width row underneath */
+@media (max-width:1180px) {
+  main { grid-template-columns:300px minmax(0,1fr); grid-auto-rows:minmax(0,auto); }
+  main > div:last-child { grid-column:1 / -1; max-height:44vh; }
+}
+
+/* single column: unlock the page, let it scroll normally */
+@media (max-width:980px) {
+  /* height:100% pins the document to the viewport, which CLIPS overflow instead
+     of scrolling it. Stacked layout needs the page to grow. */
+  html, body { height:auto; min-height:100%; overflow:visible; }
+  body { overflow-x:hidden; }
+  main { grid-template-columns:minmax(0,1fr); height:auto; flex:none; padding:10px 12px 16px; }
+  main > div, main > div.left, main > div.center { overflow:visible; height:auto; min-height:0; }
+  main > div:last-child { max-height:none; }
+  main > div.left > section.dec-sec { flex:none; }
+  /* let panels take their natural height and scroll the PAGE, not each box */
+  .dec-sec #decisions { max-height:none; overflow:visible; }
+  main > div.center > section { flex:none; }
+  svg.map, canvas.map { height:42vh; min-height:260px; }
+  /* let the browser own vertical swipes (page scroll); we still get horizontal
+     drags for panning. touch-action:none here would trap the page. */
+  svg.map { touch-action:pan-y; }
+  .below { grid-template-columns:minmax(0,1fr); }
+  .below > div { max-height:none; overflow:visible; }
+  .below h3 { position:static; }
+  header { gap:14px; padding:8px 12px; }
+  .stat.big b { font-size:21px; }
+}
+
+/* phones */
+@media (max-width:640px) {
+  h1 { font-size:16px; width:100%; }
+  header { gap:10px 14px; padding:7px 11px; }
+  .clock { margin-left:0; }
+  .stat b { font-size:14.5px; }
+  .stat.big b { font-size:19px; }
+  .stat span { font-size:9px; letter-spacing:.06em; }
+  main { padding:8px 9px 14px; gap:9px; }
+  section { padding:9px 11px 10px; border-radius:10px; }
+  svg.map, canvas.map { height:38vh; min-height:230px; }
+  .legend { font-size:10.5px; }
+  /* tables can be wider than a phone: scroll them, never the page */
+  table { display:block; width:100%; overflow-x:auto; white-space:nowrap; }
+  .dhead { font-size:12.5px; }
+  .dsum { font-size:12px; }
+  details pre, pre.raw { font-size:10.5px; max-height:200px; }
+}
 </style></head><body>
 <header>
   <h1>Paper Desk <em>· Live</em></h1>
@@ -343,7 +400,9 @@ function drawThreads(now) {
   const W = cv.width, H = cv.height, dpr = window.devicePixelRatio || 1;
   ctx.clearRect(0, 0, W, H);
   ctx.globalCompositeOperation = "lighter";
-  const mX = 70 * dpr;
+  // narrow canvases (phones) can't carry per-node labels or a fat margin
+  const narrow = W / dpr < 720;
+  const mX = (narrow ? 34 : 70) * dpr;
   const colX = cols.map(col => mX + col.fx * (W - 2 * mX));
   const colCY = cols.map(col => H * (col.band[0] + col.band[1]) / 2);
   const pos = cols.map((col, k) => {
@@ -382,7 +441,7 @@ function drawThreads(now) {
     }
   }
   cols.forEach((col, k) => {
-    const showLbl = col.items.length <= 22;
+    const showLbl = col.items.length <= 22 && !narrow;
     pos[k].forEach(([x, y], i) => {
       const ts = THREADS.seen.get(col.name + "|" + col.items[i]) || 0;
       const fresh = ts > 0 && now - ts < 45000;
@@ -398,7 +457,9 @@ function drawThreads(now) {
       }
     });
     ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = cssVar("--mut"); ctx.font = `600 ${10.5 * dpr}px "Inter Tight",sans-serif`; ctx.textAlign = "center";
+    ctx.fillStyle = cssVar("--mut");
+    ctx.font = `600 ${(narrow ? 8 : 10.5) * dpr}px "Inter Tight",sans-serif`;
+    ctx.textAlign = "center";
     const ys = pos[k].map(p => p[1]);
     ctx.fillText(col.name.toUpperCase(), colX[k], Math.max(...ys) + 26 * dpr);
     ctx.globalCompositeOperation = "lighter";
