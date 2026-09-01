@@ -140,7 +140,9 @@ Commit everything: `git -C C:\Users\awsom\Documents\Projects\trading-agent add j
 3. Rebuild + republish the dashboard as in Phase 3 (if not already done this session).
 4. Commit.
 
-## Phase 5 — Weekly review extras (Friday session only)
+## Phase 5 — Review extras (Friday weekly review, and EVERY trading day during the active-training window)
+
+**Daily review (user-ordered 2026-09-01, while the training directive is in force):** a `weekly-review` session also runs after the close Mon-Thu. Its job is the same as Friday's but scoped to the day just traded: score every trade closed TODAY, and update `journal/lessons.md` if - and only if - the day's evidence actually supports a rule. Waiting a week to learn from a losing day means repeating it four more times first. Do not invent a lesson from a single trade; do name a pattern when two or more trades share it, and say plainly when the honest read is "not enough evidence yet."
 
 1. FIRST run `..\.venv\Scripts\python.exe ..\ops\compute_stats.py` and read the refreshed `journal/stats.json` - every scoring and lesson decision below cites these numbers. Then score every trade closed since the last review: set `review_verdict` (`right` = thesis played out; `wrong` = thesis was bad; `lucky` = won despite a bad thesis; `unlucky` = sound thesis, adverse outcome) and `review_notes`. Be harsh; `lucky` is not `right`.
 2. Update `journal/lessons.md`: add rules the evidence supports (cite trade_ids), amend or RETIRE rules the evidence contradicts (move to the Archive section with the reason). Rules must be operational ("do X when Y"), not platitudes.
