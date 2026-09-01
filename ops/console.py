@@ -17,12 +17,14 @@ from __future__ import annotations
 import json
 import os
 import re
+import secrets
 import sys
 import threading
 import time
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 VT = ROOT / "Vibe-Trading"
@@ -167,11 +169,51 @@ def state() -> dict:
     }
 
 
+def _token() -> str:
+    """Shared secret for REMOTE viewers (a tunnel makes this console public).
+
+    Local requests are exempt, but note the test cannot be the peer address:
+    cloudflared/ngrok run on this machine, so tunnelled requests also arrive
+    from 127.0.0.1. A forwarding header is the reliable tell that a request
+    came in from outside.
+    """
+    env = os.environ.get("PAPERDESK_TOKEN")
+    if env:
+        return env
+    path = LOGS / "console_token.txt"
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except OSError:
+        tok = secrets.token_urlsafe(18)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(tok, encoding="utf-8")
+        return tok
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *a):  # noqa: ANN002, D102
         pass
 
+    def _authorized(self) -> bool:
+        remote = bool(self.headers.get("X-Forwarded-For")
+                      or self.headers.get("Cf-Connecting-Ip"))
+        if not remote:
+            return True
+        tok = _token()
+        qs = parse_qs(urlparse(self.path).query)
+        if (qs.get("t") or [""])[0] == tok:
+            return True
+        cookie = self.headers.get("Cookie") or ""
+        return f"pd={tok}" in cookie
+
     def do_GET(self):  # noqa: N802, D102
+        if not self._authorized():
+            self.send_response(403)
+            self.send_header("content-type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"Paper Desk console: add ?t=<token> to the URL.\n"
+                             b"Token is in ops/logs/console_token.txt on the trading machine.")
+            return
         if self.path.startswith("/api/state"):
             body = json.dumps(state(), default=str).encode("utf-8")
             self.send_response(200)
@@ -184,6 +226,10 @@ class Handler(BaseHTTPRequestHandler):
                 body = b"console.html missing"
             self.send_response(200)
             self.send_header("content-type", "text/html; charset=utf-8")
+            qs = parse_qs(urlparse(self.path).query)
+            if (qs.get("t") or [""])[0] == _token():
+                self.send_header("set-cookie",
+                                 f"pd={_token()}; Path=/; Max-Age=604800; SameSite=Lax")
         self.send_header("content-length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
