@@ -33,7 +33,13 @@ if not errorlevel 1 (
   rem Minimum 15 min between LEG STARTS. Back-to-back legs burned a 5-hour
   rem usage window in 40 minutes on 2026-08-31. The watcher still reacts to
   rem price in ~1s between legs, so reflexes are unaffected.
-  C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\pace.py %LEGT0% 900 >> ops\logs\sessions.log 2>&1
+  rem NOTE: pace.py sleeps for up to 15 min. Its output must NOT be redirected
+  rem into sessions.log - the redirect holds an exclusive handle for the whole
+  rem sleep, and any other session (a review, a triggered leg) then fails with
+  rem "the process cannot access the file because it is being used by another
+  rem process". Its own file, and it appends a line to sessions.log after.
+  C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\pace.py %LEGT0% 900 > ops\logs\pace.log 2>&1
+  type ops\logs\pace.log >> ops\logs\sessions.log
 )
 goto loop
 :done
