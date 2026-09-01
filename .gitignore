@@ -10,3 +10,6 @@ ops/logs/
 .netlify
 site/index.html
 nautilus_trader/
+
+# tunnel binary (download, not source)
+ops/tools/
