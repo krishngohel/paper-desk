@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-02T14:58:48",
+ "computed_at": "2026-09-02T15:27:16",
  "overall": {
   "n": 10,
   "closed": 10,
@@ -185,21 +185,32 @@
  },
  "by_entry_mechanism": {
   "anticipatory_limit (inferred, pre-2026-09-02)": {
-   "n": 10,
-   "closed": 10,
-   "win_rate_pct": 20.0,
-   "total_pnl": -911.65,
+   "n": 9,
+   "closed": 9,
+   "win_rate_pct": 22.2,
+   "total_pnl": -836.52,
    "avg_win": 44.95,
-   "avg_loss": -125.19,
-   "expectancy_per_trade": -91.16,
+   "avg_loss": -132.35,
+   "expectancy_per_trade": -92.95,
    "largest_win": 81.94,
    "largest_loss": -247.54
+  },
+  "confirmation_trigger": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 0.0,
+   "total_pnl": -75.13,
+   "avg_win": null,
+   "avg_loss": -75.13,
+   "expectancy_per_trade": -75.13,
+   "largest_win": -75.13,
+   "largest_loss": -75.13
   }
  },
  "review_verdicts": {
   "lucky": 1,
-  "unlucky": 4,
-  "unscored": 5
+  "unlucky": 8,
+  "right": 1
  },
  "by_exit_reason": {
   "exit-condition-hit": {

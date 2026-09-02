@@ -54,6 +54,8 @@ below until a review promotes or discards them.
   loss was pure noise, not thesis failure. Single-trade evidence - revisit as
   more afternoon entries close.)
 
+- **L8 — A probe's fill level needs an actual multi-touch defense, not just a reversal candle or "buyers stepping in" narrative.** A level that has been tested and held 2+ times intraday (dojis/hammers/engulfings AT the same price, repeatedly) is real support; a level chosen because a reversal candle printed near it, with no repeated defense, is a weaker bet even when everything else about the setup (grade, sizing, catalyst check) is done honestly. Manage/size these the same as any C-probe, but do not expect them to outperform multi-touch setups. (Promoted 2026-09-02 daily review from watch pattern W1, now with 2 instances: t-2026-08-31-002 CRWD -$247.54, opening_range_low never tested by a live dip before staging; t-2026-09-01-008 STDN -$135.51, thesis's own words: "not a clean single-level defense." Contrast same-week probes on genuinely multi-touch levels - ASND, CRCL, MRVL (4 touches) - which, while not all winners, at least tested the mechanism as designed.)
+
 - **L7 — A trade is not bad until it is closed.** Unrealized drawdown inside the
   stop is the thesis still running, not evidence against it. Never exit early
   because a position is red: the levels you committed to in writing - stop,
@@ -77,13 +79,7 @@ promotes it to an Active lesson (evidence now sufficient), leaves it with the
 new count, or discards it with a reason. A pattern that survives here with no
 new instances for 15 trading days is discarded as noise.
 
-- **W1 — Probes staged at a level no live pullback has tested may be weaker than
-  multi-touch-tested levels.** Seen 1x. Evidence: t-2026-08-31-002 (CRWD,
-  -$247.54): the thesis itself flagged the fill level (opening_range_low) as
-  untested by a live dip before staging; it stopped out same-day. Contrast the
-  same day's ASND and CRCL, both staged at levels the tape had defended two or
-  more times. Promote to a lesson if a second closed trade repeats it; discard
-  if untested-level entries start winning. (Named by the 2026-09-01 daily review.)
+(none currently - W1 promoted to L8 in the 2026-09-02 daily review.)
 
 ## Archive
 
