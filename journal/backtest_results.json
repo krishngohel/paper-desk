@@ -1,0 +1,95 @@
+{
+ "config": {
+  "symbols": [
+   "AAPL",
+   "MSFT",
+   "NVDA",
+   "AMD",
+   "MRVL",
+   "CRWD",
+   "DUOL",
+   "CRK",
+   "ASND",
+   "CRCL",
+   "MRNA",
+   "GAP",
+   "PYPL",
+   "TENB",
+   "IREN",
+   "RBRK",
+   "ESTC",
+   "SOLS",
+   "DELL"
+  ],
+  "skipped": [
+   "STDN"
+  ],
+  "days": 400,
+  "timeframe": "1Day",
+  "max_hold_bars": 10,
+  "round_trip_bp": 10.0,
+  "slippage_bp": 2.0,
+  "intrabar_rule": "stop assumed to fill before target",
+  "gap_rule": "fills at the open when it gaps through a level"
+ },
+ "by_mechanism": {
+  "anticipatory_limit": {
+   "setups": 2555,
+   "filled": 1829,
+   "fill_rate_pct": 71.6,
+   "win_rate_pct": 33.2,
+   "expectancy_pct": 0.3395,
+   "total_pct": 621.01,
+   "avg_win_pct": 7.323,
+   "avg_loss_pct": -3.13,
+   "median_pct": -1.9135,
+   "avg_bars_held": 3.82,
+   "exit_reasons": {
+    "stop": 791,
+    "stop_gap": 444,
+    "target": 400,
+    "target_gap": 121,
+    "time_stop": 73
+   }
+  },
+  "confirmation_trigger": {
+   "setups": 2555,
+   "filled": 1480,
+   "fill_rate_pct": 57.9,
+   "win_rate_pct": 49.3,
+   "expectancy_pct": 0.2198,
+   "total_pct": 325.27,
+   "avg_win_pct": 5.1,
+   "avg_loss_pct": -4.531,
+   "median_pct": -0.1746,
+   "avg_bars_held": 5.39,
+   "exit_reasons": {
+    "stop": 500,
+    "stop_gap": 170,
+    "target": 518,
+    "target_gap": 182,
+    "time_stop": 110
+   }
+  },
+  "confirmation_fairstop": {
+   "setups": 2555,
+   "filled": 1480,
+   "fill_rate_pct": 57.9,
+   "win_rate_pct": 34.9,
+   "expectancy_pct": 0.3679,
+   "total_pct": 544.49,
+   "avg_win_pct": 6.964,
+   "avg_loss_pct": -3.163,
+   "median_pct": -1.8748,
+   "avg_bars_held": 5.22,
+   "exit_reasons": {
+    "stop": 607,
+    "stop_gap": 344,
+    "target": 340,
+    "target_gap": 97,
+    "time_stop": 92
+   }
+  }
+ },
+ "n_setups": 2555
+}

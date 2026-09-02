@@ -113,7 +113,7 @@ range/mixed regime, several of which were bouncing off defended support. That is
 the rule misfiring, not the market being empty. State which kind of thesis you
 hold BEFORE citing volume, and apply the gate only to continuation setups.
 
-## 7a. A resting dip-buy is adversely selected — buy the RECLAIM, not the dip
+## 7a. Entry mechanism: what the backtest actually proved
 
 A buy-limit resting below the market is a bet that a level holds. But you only
 ever learn it did NOT hold by getting filled: the fill IS the evidence against
@@ -127,20 +127,41 @@ level then ran +15%. The winners escaped; the losers filled. ASND is the whole
 pattern in one trade: the ladder sat unfilled while price ran to 268.20, then
 price reversed, filled us on the way down, and stopped us out for -$171.95.
 
-**Default entry is therefore CONFIRMATION, not anticipation.** Do not rest a
-blind buy-limit at support and hope. Instead arm a trigger that fires when price
-comes down to your level AND RECLAIMS it - a higher low, a reclaim of the level,
-buyers visibly stepping in. Mechanically this is an armed trigger with condition
-`>=` set just above the level, not a buy-limit `<=` below it. The watcher fires
-it within ~1s, so nothing is lost in speed - what changes is that you enter when
-the thesis is being CONFIRMED rather than only when it is failing.
+**CORRECTED 2026-09-02 by backtest (2,555 setups, 20 symbols, 400 days, each
+setup tested every way; costs 10bp round trip; stop assumed to fill before
+target; gaps fill at the open).** The intuition above is only half right, and
+the naive fix was WORSE than the disease:
 
-An anticipatory resting limit is still allowed, but it is now the exception and
-must justify itself in the ledger record: say why this level is worth buying
-without confirmation (a level defended 3+ times, a forced seller, a gap-fill
-you want regardless). Stamp every entry's `entry_mechanism` honestly - the
-review compares realized P&L by mechanism, and that comparison is how this
-rule gets kept or killed.
+| mechanism | fills | win rate | expectancy/trade |
+|---|---|---|---|
+| anticipatory limit | 1829 | 33.2% | +0.340% |
+| confirmation, same stop | 1480 | 49.3% | **+0.220%** |
+| confirmation, stop re-anchored to the fill | 1480 | 34.9% | **+0.368%** |
+
+Read those rows carefully, because they say three different things:
+
+1. **Confirmation really does raise the win rate** - 33% to 49%, a huge jump.
+   The adverse-selection intuition is REAL.
+2. **But winning more often is not the same as making more money.** Buying the
+   reclaim means buying higher; keeping the original stop then shrinks reward
+   and widens risk, and the naive version gives back more edge than the extra
+   wins are worth. Win rate is a vanity metric.
+3. **Re-anchoring the stop to the actual fill fixes it** - stop 0.5xATR below
+   your ENTRY, target 1.5xATR above your ENTRY, not below/above the original
+   level. Then confirmation is the best arm per trade.
+
+**Rules that follow.** If you take a confirmation entry, re-anchor stop AND
+target to your fill price; never inherit the levels you would have used had you
+bought the dip. And note the throughput trade-off: anticipatory limits filled
+1829 times vs 1480, so over a day they produce MORE total profit despite lower
+per-trade edge. Both are positive-expectancy; neither is banned. Choose per
+setup, state which you used in `entry_mechanism`, and re-run the backtest
+before anyone changes this rule again.
+
+**The most important number here is not in the table:** at a 33% win rate,
+losing 8 of 9 trades has a ~15% chance of happening by pure luck. The desk's
+first losing streak was NOT evidence of a broken strategy, and the review must
+not manufacture lessons from it.
 
 ## 7b. Tradability is the SPREAD, never the market cap
 

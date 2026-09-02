@@ -13,3 +13,4 @@ nautilus_trader/
 
 # tunnel binary (download, not source)
 ops/tools/
+ops/cache/
