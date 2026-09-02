@@ -54,6 +54,19 @@ below until a review promotes or discards them.
   loss was pure noise, not thesis failure. Single-trade evidence - revisit as
   more afternoon entries close.)
 
+- **L7 — A trade is not bad until it is closed.** Unrealized drawdown inside the
+  stop is the thesis still running, not evidence against it. Never exit early
+  because a position is red: the levels you committed to in writing - stop,
+  target, time_stop - ARE the decision, and overriding them because the mark
+  looks ugly is exactly the panic the ledger will score as a process failure.
+  The same cuts the other way: an open position in profit is not a win, must not
+  be counted as one, and must not justify extra risk elsewhere. Only CLOSED
+  trades are evidence - reviews score them, `stats.json` counts them, and watch
+  patterns are built from them; an open book, green or red, proves nothing and
+  may never be cited as evidence for or against a rule. When you do close, close
+  for a reason written in advance; "it was down" is not one. (Operator rule,
+  2026-09-02, at the user's direction.)
+
 ## Watch patterns (candidate lessons, not yet binding)
 
 Hypotheses a review named but could not yet support with enough evidence. These
