@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-02T10:47:54",
+ "computed_at": "2026-09-02T10:54:19",
  "overall": {
   "n": 6,
   "closed": 6,
@@ -137,6 +137,19 @@
    "expectancy_per_trade": -75.13,
    "largest_win": -75.13,
    "largest_loss": -75.13
+  }
+ },
+ "by_entry_mechanism": {
+  "anticipatory_limit (inferred, pre-2026-09-02)": {
+   "n": 6,
+   "closed": 6,
+   "win_rate_pct": 16.7,
+   "total_pnl": -704.46,
+   "avg_win": 7.96,
+   "avg_loss": -142.48,
+   "expectancy_per_trade": -117.41,
+   "largest_win": 7.96,
+   "largest_loss": -247.54
   }
  },
  "review_verdicts": {

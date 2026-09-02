@@ -62,6 +62,20 @@ def main() -> int:
     for t in closed:
         by_symbol[str(t.get("symbol"))].append(t)
 
+    # Entry mechanism is the head-to-head that decides playbook 7a: does buying a
+    # CONFIRMED reclaim beat resting a blind dip-buy limit? Records written before
+    # 2026-09-02 predate the field; infer them as anticipatory_limit, which is what
+    # they all were.
+    def mechanism(t: dict) -> str:
+        m = t.get("entry_mechanism")
+        if m in ("confirmation_trigger", "anticipatory_limit", "market"):
+            return m
+        return "anticipatory_limit (inferred, pre-2026-09-02)"
+
+    by_mechanism = defaultdict(list)
+    for t in closed:
+        by_mechanism[mechanism(t)].append(t)
+
     verdicts = defaultdict(int)
     for t in closed:
         verdicts[str(t.get("review_verdict") or "unscored")] += 1
@@ -74,6 +88,7 @@ def main() -> int:
         "by_probe": {"probe": bucket_stats([t for t in closed if t.get("probe")]),
                      "full_size": bucket_stats([t for t in closed if not t.get("probe")])},
         "by_symbol": {s: bucket_stats(ts) for s, ts in sorted(by_symbol.items())},
+        "by_entry_mechanism": {m: bucket_stats(ts) for m, ts in sorted(by_mechanism.items())},
         "review_verdicts": dict(verdicts),
         "by_exit_reason": {r: bucket_stats([t for t in closed if t.get("exit_reason") == r])
                            for r in sorted({str(t.get("exit_reason")) for t in closed})},

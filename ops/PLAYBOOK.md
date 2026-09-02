@@ -113,6 +113,35 @@ range/mixed regime, several of which were bouncing off defended support. That is
 the rule misfiring, not the market being empty. State which kind of thesis you
 hold BEFORE citing volume, and apply the gate only to continuation setups.
 
+## 7a. A resting dip-buy is adversely selected — buy the RECLAIM, not the dip
+
+A buy-limit resting below the market is a bet that a level holds. But you only
+ever learn it did NOT hold by getting filled: the fill IS the evidence against
+your thesis. When the level holds and the stock runs, you get nothing. So the
+mechanism systematically fills you on your losers and misses your winners.
+
+Measured on this desk's first 21 ledger records (2026-09-02): 10 anticipatory
+limits filled -> 5 of the 6 that closed were losses. Of the 9 that never filled,
+SOLS never traded within $0.56 of our level and ran +8%, and TITN dipped to our
+level then ran +15%. The winners escaped; the losers filled. ASND is the whole
+pattern in one trade: the ladder sat unfilled while price ran to 268.20, then
+price reversed, filled us on the way down, and stopped us out for -$171.95.
+
+**Default entry is therefore CONFIRMATION, not anticipation.** Do not rest a
+blind buy-limit at support and hope. Instead arm a trigger that fires when price
+comes down to your level AND RECLAIMS it - a higher low, a reclaim of the level,
+buyers visibly stepping in. Mechanically this is an armed trigger with condition
+`>=` set just above the level, not a buy-limit `<=` below it. The watcher fires
+it within ~1s, so nothing is lost in speed - what changes is that you enter when
+the thesis is being CONFIRMED rather than only when it is failing.
+
+An anticipatory resting limit is still allowed, but it is now the exception and
+must justify itself in the ledger record: say why this level is worth buying
+without confirmation (a level defended 3+ times, a forced seller, a gap-fill
+you want regardless). Stamp every entry's `entry_mechanism` honestly - the
+review compares realized P&L by mechanism, and that comparison is how this
+rule gets kept or killed.
+
 ## 7b. Tradability is the SPREAD, never the market cap
 
 Small does not mean untradable. The question is only ever: can I get in and out
