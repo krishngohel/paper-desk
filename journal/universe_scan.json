@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-02T13:12:34",
+ "ts": "2026-09-02T13:12:47",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -9,10 +9,10 @@
  "shortlist": [
   {
    "symbol": "BIAF",
-   "close": 10.31,
-   "change_pct": 56.45,
-   "dollar_volume_m": 416.1,
-   "rel_volume": 8.51,
+   "close": 10.32,
+   "change_pct": 56.6,
+   "dollar_volume_m": 416.8,
+   "rel_volume": 8.52,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -45,9 +45,9 @@
   },
   {
    "symbol": "FCEL",
-   "close": 14.21,
-   "change_pct": -16.81,
-   "dollar_volume_m": 150.8,
+   "close": 14.23,
+   "change_pct": -16.66,
+   "dollar_volume_m": 151.3,
    "rel_volume": 1.51,
    "market_cap_b": 1.14,
    "exchange": "NASDAQ"
@@ -72,11 +72,11 @@
   },
   {
    "symbol": "MDB",
-   "close": 377.95,
-   "change_pct": -12.96,
-   "dollar_volume_m": 2113.6,
+   "close": 379.13,
+   "change_pct": -12.68,
+   "dollar_volume_m": 2124.0,
    "rel_volume": 3.65,
-   "market_cap_b": 30.4,
+   "market_cap_b": 30.49,
    "exchange": "NASDAQ"
   },
   {
@@ -117,11 +117,11 @@
   },
   {
    "symbol": "PANW",
-   "close": 323.0,
-   "change_pct": -10.79,
-   "dollar_volume_m": 2799.0,
+   "close": 322.9,
+   "change_pct": -10.82,
+   "dollar_volume_m": 2798.9,
    "rel_volume": 1.42,
-   "market_cap_b": 263.25,
+   "market_cap_b": 263.16,
    "exchange": "NASDAQ"
   },
   {
@@ -144,8 +144,8 @@
   },
   {
    "symbol": "FMC",
-   "close": 13.06,
-   "change_pct": 9.97,
+   "close": 13.07,
+   "change_pct": 10.02,
    "dollar_volume_m": 38.2,
    "rel_volume": 1.08,
    "market_cap_b": 1.64,
@@ -170,6 +170,15 @@
    "exchange": "NASDAQ"
   },
   {
+   "symbol": "FRVO",
+   "close": 17.8,
+   "change_pct": -9.85,
+   "dollar_volume_m": 245.7,
+   "rel_volume": 1.97,
+   "market_cap_b": 5.25,
+   "exchange": "NASDAQ"
+  },
+  {
    "symbol": "UAMY",
    "close": 5.13,
    "change_pct": 9.72,
@@ -177,15 +186,6 @@
    "rel_volume": 0.73,
    "market_cap_b": 0.77,
    "exchange": "NYSE"
-  },
-  {
-   "symbol": "FRVO",
-   "close": 17.84,
-   "change_pct": -9.7,
-   "dollar_volume_m": 245.9,
-   "rel_volume": 1.97,
-   "market_cap_b": 5.26,
-   "exchange": "NASDAQ"
   },
   {
    "symbol": "MLYS",
@@ -197,6 +197,15 @@
    "exchange": "NASDAQ"
   },
   {
+   "symbol": "IRE",
+   "close": 8.56,
+   "change_pct": 8.91,
+   "dollar_volume_m": 63.3,
+   "rel_volume": 0.93,
+   "market_cap_b": 0.0,
+   "exchange": "AMEX"
+  },
+  {
    "symbol": "DELL",
    "close": 462.25,
    "change_pct": 8.76,
@@ -204,15 +213,6 @@
    "rel_volume": 3.91,
    "market_cap_b": 299.66,
    "exchange": "NYSE"
-  },
-  {
-   "symbol": "IRE",
-   "close": 8.54,
-   "change_pct": 8.72,
-   "dollar_volume_m": 63.0,
-   "rel_volume": 0.93,
-   "market_cap_b": 0.0,
-   "exchange": "AMEX"
   },
   {
    "symbol": "NOWL",
@@ -263,8 +263,8 @@
    "symbol": "GBTG",
    "close": 9.46,
    "change_pct": 0.05,
-   "dollar_volume_m": 113.6,
-   "rel_volume": 10.63,
+   "dollar_volume_m": 113.9,
+   "rel_volume": 10.65,
    "market_cap_b": 4.94,
    "exchange": "NYSE"
   },
@@ -297,19 +297,19 @@
   },
   {
    "symbol": "DAKT",
-   "close": 19.8,
-   "change_pct": 2.3,
-   "dollar_volume_m": 36.2,
+   "close": 19.9,
+   "change_pct": 2.8,
+   "dollar_volume_m": 36.4,
    "rel_volume": 3.75,
    "market_cap_b": 0.96,
    "exchange": "NASDAQ"
   },
   {
    "symbol": "EWU",
-   "close": 48.19,
-   "change_pct": 0.0,
-   "dollar_volume_m": 145.4,
-   "rel_volume": 3.69,
+   "close": 48.2,
+   "change_pct": 0.01,
+   "dollar_volume_m": 145.6,
+   "rel_volume": 3.7,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
   },
@@ -495,8 +495,8 @@
     "symbol": "GBTG",
     "close": 9.46,
     "change_pct": 0.05,
-    "dollar_volume_m": 113.6,
-    "rel_volume": 10.63,
+    "dollar_volume_m": 113.9,
+    "rel_volume": 10.65,
     "market_cap_b": 4.94,
     "found_by": "relvol"
    },
@@ -529,10 +529,10 @@
    },
    {
     "symbol": "BIAF",
-    "close": 10.31,
-    "change_pct": 56.45,
-    "dollar_volume_m": 416.1,
-    "rel_volume": 8.51,
+    "close": 10.32,
+    "change_pct": 56.6,
+    "dollar_volume_m": 416.8,
+    "rel_volume": 8.52,
     "market_cap_b": 0.0,
     "found_by": "relvol"
    },
@@ -610,11 +610,11 @@
    },
    {
     "symbol": "DELL",
-    "close": 461.85,
-    "change_pct": 8.67,
-    "dollar_volume_m": 10706.5,
+    "close": 462.25,
+    "change_pct": 8.76,
+    "dollar_volume_m": 10719.0,
     "rel_volume": 3.91,
-    "market_cap_b": 299.41,
+    "market_cap_b": 299.66,
     "found_by": "relvol"
    }
   ]
