@@ -76,6 +76,12 @@ def main() -> int:
 
     # Refresh the whole-market candidate scan alongside every freshness cycle.
     subprocess.run([sys.executable, str(ROOT / "ops" / "screen.py")], capture_output=True, timeout=60, check=False)
+    # Keep the measured record current for EVERY session, not just reviews.
+    # compute_stats.py used to run only inside phase 5, so intraday sessions read
+    # a stats.json up to a day old - they could not see the very trades they had
+    # just closed. This runs ~every 15 min with the freshness snapshot.
+    subprocess.run([sys.executable, str(ROOT / "ops" / "compute_stats.py")],
+                   capture_output=True, timeout=60, check=False)
     subprocess.run([sys.executable, str(ROOT / "ops" / "build_dashboard.py"), "--deploy"], check=True)
     subprocess.run(["git", "-C", str(ROOT), "add", "journal", "ops/dashboard.html"], check=True)
     subprocess.run(

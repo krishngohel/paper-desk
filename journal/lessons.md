@@ -2,8 +2,11 @@
 
 Binding rules for every trading session. A session may act against a rule only
 with a written justification in its journal entry naming the rule. Rules are
-added, amended, or retired ONLY by the Friday weekly review, citing trade_ids
-as evidence. Seed rules L1-L3 are discipline rules, present from day one.
+added, amended, or retired ONLY by a review session (the Friday weekly review,
+and the daily post-close review while the training directive is in force),
+citing trade_ids as evidence. Seed rules L1-L3 are discipline rules, present
+from day one. Candidate patterns that lack evidence live under "Watch patterns"
+below until a review promotes or discards them.
 
 ## Active
 
@@ -50,6 +53,24 @@ as evidence. Seed rules L1-L3 are discipline rules, present from day one.
   time-stop at 14:32 CT with neither the stop nor target ever touched - the
   loss was pure noise, not thesis failure. Single-trade evidence - revisit as
   more afternoon entries close.)
+
+## Watch patterns (candidate lessons, not yet binding)
+
+Hypotheses a review named but could not yet support with enough evidence. These
+are NOT rules and must never be cited as one - they exist so a pattern spotted
+once is still remembered when its second instance arrives. Every review reads
+this section, checks each entry against the trades closed since, and either
+promotes it to an Active lesson (evidence now sufficient), leaves it with the
+new count, or discards it with a reason. A pattern that survives here with no
+new instances for 15 trading days is discarded as noise.
+
+- **W1 — Probes staged at a level no live pullback has tested may be weaker than
+  multi-touch-tested levels.** Seen 1x. Evidence: t-2026-08-31-002 (CRWD,
+  -$247.54): the thesis itself flagged the fill level (opening_range_low) as
+  untested by a live dip before staging; it stopped out same-day. Contrast the
+  same day's ASND and CRCL, both staged at levels the tape had defended two or
+  more times. Promote to a lesson if a second closed trade repeats it; discard
+  if untested-level entries start winning. (Named by the 2026-09-01 daily review.)
 
 ## Archive
 
