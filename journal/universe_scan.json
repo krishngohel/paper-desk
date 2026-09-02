@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-02T13:42:59",
+ "ts": "2026-09-02T13:43:19",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -27,9 +27,9 @@
   },
   {
    "symbol": "CRDO",
-   "close": 164.33,
-   "change_pct": -20.47,
-   "dollar_volume_m": 3727.4,
+   "close": 164.31,
+   "change_pct": -20.48,
+   "dollar_volume_m": 3728.3,
    "rel_volume": 5.45,
    "market_cap_b": 30.88,
    "exchange": "NASDAQ"
@@ -62,6 +62,15 @@
    "exchange": "NASDAQ"
   },
   {
+   "symbol": "MDB",
+   "close": 377.47,
+   "change_pct": -13.07,
+   "dollar_volume_m": 2210.5,
+   "rel_volume": 3.82,
+   "market_cap_b": 30.36,
+   "exchange": "NASDAQ"
+  },
+  {
    "symbol": "TRAX",
    "close": 46.52,
    "change_pct": 12.99,
@@ -71,21 +80,12 @@
    "exchange": "NASDAQ"
   },
   {
-   "symbol": "MDB",
-   "close": 378.54,
-   "change_pct": -12.82,
-   "dollar_volume_m": 2213.9,
-   "rel_volume": 3.81,
-   "market_cap_b": 30.45,
-   "exchange": "NASDAQ"
-  },
-  {
    "symbol": "DELL",
-   "close": 478.81,
-   "change_pct": 12.66,
-   "dollar_volume_m": 12270.3,
+   "close": 478.7,
+   "change_pct": 12.64,
+   "dollar_volume_m": 12280.2,
    "rel_volume": 4.32,
-   "market_cap_b": 310.4,
+   "market_cap_b": 310.33,
    "exchange": "NYSE"
   },
   {
@@ -94,15 +94,6 @@
    "change_pct": 11.96,
    "dollar_volume_m": 53.8,
    "rel_volume": 1.08,
-   "market_cap_b": 0.0,
-   "exchange": "NASDAQ"
-  },
-  {
-   "symbol": "PTIR",
-   "close": 17.58,
-   "change_pct": -11.79,
-   "dollar_volume_m": 66.0,
-   "rel_volume": 1.12,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -121,6 +112,15 @@
    "change_pct": -11.76,
    "dollar_volume_m": 86.2,
    "rel_volume": 1.73,
+   "market_cap_b": 0.0,
+   "exchange": "NASDAQ"
+  },
+  {
+   "symbol": "PTIR",
+   "close": 17.59,
+   "change_pct": -11.74,
+   "dollar_volume_m": 66.1,
+   "rel_volume": 1.13,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -152,15 +152,6 @@
    "exchange": "NASDAQ"
   },
   {
-   "symbol": "TARS",
-   "close": 81.82,
-   "change_pct": 10.49,
-   "dollar_volume_m": 79.8,
-   "rel_volume": 1.55,
-   "market_cap_b": 3.59,
-   "exchange": "NASDAQ"
-  },
-  {
    "symbol": "PANW",
    "close": 324.65,
    "change_pct": -10.34,
@@ -171,12 +162,21 @@
   },
   {
    "symbol": "UAMY",
-   "close": 5.14,
-   "change_pct": 9.94,
-   "dollar_volume_m": 32.0,
+   "close": 5.16,
+   "change_pct": 10.21,
+   "dollar_volume_m": 32.1,
    "rel_volume": 0.83,
    "market_cap_b": 0.77,
    "exchange": "NYSE"
+  },
+  {
+   "symbol": "TARS",
+   "close": 81.59,
+   "change_pct": 10.18,
+   "dollar_volume_m": 80.7,
+   "rel_volume": 1.57,
+   "market_cap_b": 3.58,
+   "exchange": "NASDAQ"
   },
   {
    "symbol": "GTLB",
@@ -189,11 +189,11 @@
   },
   {
    "symbol": "GIII",
-   "close": 28.99,
-   "change_pct": -9.88,
-   "dollar_volume_m": 32.8,
+   "close": 29.04,
+   "change_pct": -9.75,
+   "dollar_volume_m": 33.0,
    "rel_volume": 2.44,
-   "market_cap_b": 1.22,
+   "market_cap_b": 1.23,
    "exchange": "NASDAQ"
   },
   {
@@ -289,8 +289,8 @@
   {
    "symbol": "DAKT",
    "close": 19.5,
-   "change_pct": 0.7,
-   "dollar_volume_m": 38.2,
+   "change_pct": 0.75,
+   "dollar_volume_m": 38.3,
    "rel_volume": 4.03,
    "market_cap_b": 0.94,
    "exchange": "NASDAQ"
@@ -315,8 +315,8 @@
   },
   {
    "symbol": "BLV",
-   "close": 65.6,
-   "change_pct": 0.03,
+   "close": 65.59,
+   "change_pct": 0.01,
    "dollar_volume_m": 102.9,
    "rel_volume": 3.36,
    "market_cap_b": 0.0,
@@ -619,9 +619,9 @@
    },
    {
     "symbol": "CRDO",
-    "close": 164.33,
-    "change_pct": -20.47,
-    "dollar_volume_m": 3727.4,
+    "close": 164.31,
+    "change_pct": -20.48,
+    "dollar_volume_m": 3728.3,
     "rel_volume": 5.45,
     "market_cap_b": 30.88,
     "found_by": "relvol"
