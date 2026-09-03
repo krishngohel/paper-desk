@@ -79,7 +79,14 @@ promotes it to an Active lesson (evidence now sufficient), leaves it with the
 new count, or discards it with a reason. A pattern that survives here with no
 new instances for 15 trading days is discarded as noise.
 
-(none currently - W1 promoted to L8 in the 2026-09-02 daily review.)
+- **W2 — a confirmation-breakout thesis whose sole analyst support is a single
+  Hold-rated note (not Buy) paired with a lagging daily downtrend may be a
+  weaker setup than volume alone suggests.** Volume/level confirmation
+  (playbook s7/s2b) was genuine, but the "catalyst" itself was thin - one
+  analyst, and even that one wasn't bullish. Seen 1x: CHPT (t-2026-09-03-004),
+  confirmation-trigger entry, stopped out -$96.00 (-2.98%) within ~42 minutes.
+  Added 2026-09-03 daily review. Revisit if a second instance of
+  single-weak-note-plus-lagging-structure closes.
 
 ## Archive
 
