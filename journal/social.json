@@ -1,570 +1,570 @@
 {
- "ts": "2026-09-02T17:03:13",
+ "ts": "2026-09-03T17:05:02",
  "doctrine": "idea source only - names here get ta.py + news vetting like any other candidate; crowd hype is never a thesis (PLAYBOOK s11)",
  "stocktwits_trending": [
   {
-   "symbol": "AVGO",
-   "title": "Broadcom Inc",
-   "watchlist_count": 73278
-  },
-  {
-   "symbol": "SNOW",
-   "title": "Snowflake Inc",
-   "watchlist_count": 58271
-  },
-  {
-   "symbol": "HPE",
-   "title": "Hewlett Packard Enterprise Co",
-   "watchlist_count": 13157
-  },
-  {
-   "symbol": "RARE",
-   "title": "Ultragenyx Pharmaceutical Inc",
-   "watchlist_count": 3318
-  },
-  {
-   "symbol": "AI",
-   "title": "C3.ai Inc",
-   "watchlist_count": 49803
-  },
-  {
-   "symbol": "NTAP",
-   "title": "Netapp Inc",
-   "watchlist_count": 4830
-  },
-  {
-   "symbol": "AVAV",
-   "title": "AeroVironment Inc.",
-   "watchlist_count": 13239
-  },
-  {
-   "symbol": "NLST",
-   "title": "Netlist Inc",
-   "watchlist_count": 27246
-  },
-  {
-   "symbol": "COST",
-   "title": "Costco Wholesale Corp",
-   "watchlist_count": 64802
-  },
-  {
-   "symbol": "NTSK",
-   "title": "Netskope Inc. - Ordinary Shares - Class A",
-   "watchlist_count": 1615
-  },
-  {
-   "symbol": "HOOD",
-   "title": "Robinhood Markets Inc",
-   "watchlist_count": 100224
-  },
-  {
-   "symbol": "FCEL",
-   "title": "Fuelcell Energy Inc",
-   "watchlist_count": 144204
-  },
-  {
-   "symbol": "DDOG",
-   "title": "Datadog Inc",
-   "watchlist_count": 25814
-  },
-  {
-   "symbol": "VKTX",
-   "title": "Viking Therapeutics Inc",
-   "watchlist_count": 38443
-  },
-  {
-   "symbol": "CASHCAT.X",
-   "title": "Cash Cat",
-   "watchlist_count": 476
-  },
-  {
-   "symbol": "ALMS",
-   "title": "Alumis Inc.",
-   "watchlist_count": 1251
-  },
-  {
-   "symbol": "DE",
-   "title": "Deere & Co",
-   "watchlist_count": 13544
-  },
-  {
-   "symbol": "JNJ",
-   "title": "Johnson & Johnson",
-   "watchlist_count": 49185
+   "symbol": "LULU",
+   "title": "Lululemon Athletica Inc",
+   "watchlist_count": 49766
   },
   {
    "symbol": "PATH",
    "title": "UiPath Inc",
-   "watchlist_count": 33144
+   "watchlist_count": 33299
   },
   {
-   "symbol": "ENA.X",
-   "title": "Ethena",
-   "watchlist_count": 1053
+   "symbol": "TSLA",
+   "title": "Tesla Inc",
+   "watchlist_count": 1064015
+  },
+  {
+   "symbol": "PL",
+   "title": "Planet Labs PBC",
+   "watchlist_count": 16055
+  },
+  {
+   "symbol": "ZS",
+   "title": "Zscaler Inc",
+   "watchlist_count": 23489
+  },
+  {
+   "symbol": "HOOD",
+   "title": "Robinhood Markets Inc",
+   "watchlist_count": 100532
+  },
+  {
+   "symbol": "AMBA",
+   "title": "Ambarella Inc",
+   "watchlist_count": 16802
+  },
+  {
+   "symbol": "DOCU",
+   "title": "DocuSign Inc",
+   "watchlist_count": 35812
+  },
+  {
+   "symbol": "CASHCAT.X",
+   "title": "Cash Cat",
+   "watchlist_count": 491
+  },
+  {
+   "symbol": "CIEN",
+   "title": "CIENA Corp.",
+   "watchlist_count": 7130
+  },
+  {
+   "symbol": "MSTR",
+   "title": "Strategy",
+   "watchlist_count": 82916
+  },
+  {
+   "symbol": "PSNY",
+   "title": "Polestar Automotive Holding UK PLC",
+   "watchlist_count": 12745
+  },
+  {
+   "symbol": "ZEC.X",
+   "title": "Zcash",
+   "watchlist_count": 11056
+  },
+  {
+   "symbol": "LTC.X",
+   "title": "Litecoin",
+   "watchlist_count": 109404
+  },
+  {
+   "symbol": "GLD.X",
+   "title": "GoldCoin",
+   "watchlist_count": 303
+  },
+  {
+   "symbol": "BA",
+   "title": "Boeing Co",
+   "watchlist_count": 197234
+  },
+  {
+   "symbol": "VSXY",
+   "title": "Victoria`s Secret & Co",
+   "watchlist_count": 2723
+  },
+  {
+   "symbol": "BTC.X",
+   "title": "Bitcoin",
+   "watchlist_count": 678727
+  },
+  {
+   "symbol": "LKNCY",
+   "title": "Luckin Coffee Inc - ADR",
+   "watchlist_count": 40122
+  },
+  {
+   "symbol": "TQQQ",
+   "title": "ProShares UltraPro QQQ",
+   "watchlist_count": 44316
   }
  ],
  "stocktwits_sentiment": [
   {
-   "symbol": "CRK",
+   "symbol": "CRWD",
    "messages_sampled": 30,
-   "bullish": 10,
-   "bearish": 1,
-   "unlabeled": 19
+   "bullish": 5,
+   "bearish": 2,
+   "unlabeled": 23
   },
   {
-   "symbol": "DUOL",
+   "symbol": "SMMT",
    "messages_sampled": 30,
-   "bullish": 14,
+   "bullish": 24,
    "bearish": 0,
-   "unlabeled": 16
+   "unlabeled": 6
   },
   {
-   "symbol": "MRVL",
+   "symbol": "TSLA",
    "messages_sampled": 30,
-   "bullish": 8,
-   "bearish": 6,
-   "unlabeled": 16
+   "bullish": 9,
+   "bearish": 7,
+   "unlabeled": 14
   },
   {
-   "symbol": "STDN",
+   "symbol": "MSTR",
    "messages_sampled": 30,
-   "bullish": 18,
-   "bearish": 1,
+   "bullish": 16,
+   "bearish": 4,
+   "unlabeled": 10
+  },
+  {
+   "symbol": "CIFR",
+   "messages_sampled": 30,
+   "bullish": 19,
+   "bearish": 0,
    "unlabeled": 11
   },
   {
-   "symbol": "CRWD",
+   "symbol": "HOOD",
    "messages_sampled": 30,
-   "bullish": 6,
+   "bullish": 11,
    "bearish": 2,
+   "unlabeled": 17
+  },
+  {
+   "symbol": "SNOW",
+   "messages_sampled": 30,
+   "bullish": 5,
+   "bearish": 3,
    "unlabeled": 22
   },
   {
-   "symbol": "MRNA",
+   "symbol": "COIN",
+   "messages_sampled": 30,
+   "bullish": 19,
+   "bearish": 5,
+   "unlabeled": 6
+  },
+  {
+   "symbol": "LULU",
+   "messages_sampled": 30,
+   "bullish": 2,
+   "bearish": 9,
+   "unlabeled": 19
+  },
+  {
+   "symbol": "PATH",
+   "messages_sampled": 30,
+   "bullish": 9,
+   "bearish": 2,
+   "unlabeled": 19
+  },
+  {
+   "symbol": "PL",
+   "messages_sampled": 30,
+   "bullish": 17,
+   "bearish": 2,
+   "unlabeled": 11
+  },
+  {
+   "symbol": "ZS",
+   "messages_sampled": 30,
+   "bullish": 8,
+   "bearish": 2,
+   "unlabeled": 20
+  },
+  {
+   "symbol": "AMBA",
+   "messages_sampled": 30,
+   "bullish": 5,
+   "bearish": 5,
+   "unlabeled": 20
+  },
+  {
+   "symbol": "DOCU",
    "messages_sampled": 30,
    "bullish": 7,
    "bearish": 4,
    "unlabeled": 19
-  },
-  {
-   "symbol": "GTLB",
-   "messages_sampled": 30,
-   "bullish": 8,
-   "bearish": 8,
-   "unlabeled": 14
-  },
-  {
-   "symbol": "MDB",
-   "messages_sampled": 30,
-   "bullish": 10,
-   "bearish": 1,
-   "unlabeled": 19
-  },
-  {
-   "symbol": "PANW",
-   "messages_sampled": 30,
-   "bullish": 6,
-   "bearish": 3,
-   "unlabeled": 21
-  },
-  {
-   "symbol": "AVGO",
-   "messages_sampled": 30,
-   "bullish": 8,
-   "bearish": 7,
-   "unlabeled": 15
-  },
-  {
-   "symbol": "SNOW",
-   "messages_sampled": 30,
-   "bullish": 10,
-   "bearish": 2,
-   "unlabeled": 18
-  },
-  {
-   "symbol": "HPE",
-   "messages_sampled": 30,
-   "bullish": 9,
-   "bearish": 1,
-   "unlabeled": 20
-  },
-  {
-   "symbol": "RARE",
-   "messages_sampled": 30,
-   "bullish": 4,
-   "bearish": 1,
-   "unlabeled": 25
-  },
-  {
-   "symbol": "AI",
-   "messages_sampled": 30,
-   "bullish": 10,
-   "bearish": 7,
-   "unlabeled": 13
   }
  ],
  "reddit_mentions": [
   {
-   "symbol": "AVGO",
-   "name": "Broadcom",
-   "mentions_24h": 593,
-   "upvotes": 2081,
-   "rank": 1,
-   "rank_24h_ago": 13,
-   "rank_change": 12
-  },
-  {
    "symbol": "SPY",
    "name": "SPDR S&P 500 ETF Trust",
-   "mentions_24h": 264,
-   "upvotes": 776,
-   "rank": 2,
+   "mentions_24h": 290,
+   "upvotes": 779,
+   "rank": 1,
    "rank_24h_ago": 1,
-   "rank_change": -1
+   "rank_change": 0
+  },
+  {
+   "symbol": "AVGO",
+   "name": "Broadcom",
+   "mentions_24h": 252,
+   "upvotes": 1064,
+   "rank": 2,
+   "rank_24h_ago": 3,
+   "rank_change": 1
+  },
+  {
+   "symbol": "LULU",
+   "name": "lululemon athletica",
+   "mentions_24h": 237,
+   "upvotes": 1737,
+   "rank": 3,
+   "rank_24h_ago": 173,
+   "rank_change": 170
   },
   {
    "symbol": "NVDA",
    "name": "NVIDIA",
-   "mentions_24h": 240,
-   "upvotes": 570,
-   "rank": 3,
-   "rank_24h_ago": 4,
-   "rank_change": 1
+   "mentions_24h": 172,
+   "upvotes": 1071,
+   "rank": 4,
+   "rank_24h_ago": 2,
+   "rank_change": -2
   },
   {
    "symbol": "MU",
    "name": "Micron Technology",
-   "mentions_24h": 142,
-   "upvotes": 297,
-   "rank": 4,
-   "rank_24h_ago": 3,
-   "rank_change": -1
-  },
-  {
-   "symbol": "DELL",
-   "name": "Dell",
-   "mentions_24h": 117,
-   "upvotes": 197,
+   "mentions_24h": 131,
+   "upvotes": 288,
    "rank": 5,
-   "rank_24h_ago": 27,
-   "rank_change": 22
-  },
-  {
-   "symbol": "HPE",
-   "name": "Hewlett Packard Enterprise",
-   "mentions_24h": 111,
-   "upvotes": 230,
-   "rank": 6,
-   "rank_24h_ago": 153,
-   "rank_change": 147
-  },
-  {
-   "symbol": "SNOW",
-   "name": "Snowflake",
-   "mentions_24h": 95,
-   "upvotes": 213,
-   "rank": 7,
-   "rank_24h_ago": 53,
-   "rank_change": 46
-  },
-  {
-   "symbol": "ASTS",
-   "name": "AST SpaceMobile",
-   "mentions_24h": 93,
-   "upvotes": 289,
-   "rank": 8,
-   "rank_24h_ago": 22,
-   "rank_change": 14
-  },
-  {
-   "symbol": "META",
-   "name": "Meta Platforms (Facebook)",
-   "mentions_24h": 71,
-   "upvotes": 106,
-   "rank": 9,
    "rank_24h_ago": 5,
-   "rank_change": -4
-  },
-  {
-   "symbol": "QQQ",
-   "name": "Invesco QQQ ETF",
-   "mentions_24h": 69,
-   "upvotes": 181,
-   "rank": 10,
-   "rank_24h_ago": 6,
-   "rank_change": -4
-  },
-  {
-   "symbol": "HTZ",
-   "name": "Hertz",
-   "mentions_24h": 64,
-   "upvotes": 102,
-   "rank": 11,
-   "rank_24h_ago": 20,
-   "rank_change": 9
-  },
-  {
-   "symbol": "AM",
-   "name": "Antero Midstream",
-   "mentions_24h": 63,
-   "upvotes": 109,
-   "rank": 12,
-   "rank_24h_ago": 35,
-   "rank_change": 23
-  },
-  {
-   "symbol": "CRDO",
-   "name": "Credo Technology",
-   "mentions_24h": 60,
-   "upvotes": 103,
-   "rank": 13,
-   "rank_24h_ago": 57,
-   "rank_change": 44
-  },
-  {
-   "symbol": "SNDK",
-   "name": "Sandisk",
-   "mentions_24h": 52,
-   "upvotes": 118,
-   "rank": 14,
-   "rank_24h_ago": 2,
-   "rank_change": -12
-  },
-  {
-   "symbol": "RDDT",
-   "name": "Reddit",
-   "mentions_24h": 48,
-   "upvotes": 268,
-   "rank": 15,
-   "rank_24h_ago": 12,
-   "rank_change": -3
-  },
-  {
-   "symbol": "PLTR",
-   "name": "Palantir",
-   "mentions_24h": 46,
-   "upvotes": 113,
-   "rank": 16,
-   "rank_24h_ago": 25,
-   "rank_change": 9
-  },
-  {
-   "symbol": "DTE",
-   "name": "DTE Energy",
-   "mentions_24h": 46,
-   "upvotes": 138,
-   "rank": 17,
-   "rank_24h_ago": 11,
-   "rank_change": -6
-  },
-  {
-   "symbol": "AAPL",
-   "name": "Apple",
-   "mentions_24h": 44,
-   "upvotes": 62,
-   "rank": 18,
-   "rank_24h_ago": 7,
-   "rank_change": -11
-  },
-  {
-   "symbol": "GOOGL",
-   "name": "Alphabet (Google)",
-   "mentions_24h": 43,
-   "upvotes": 443,
-   "rank": 19,
-   "rank_24h_ago": 10,
-   "rank_change": -9
-  },
-  {
-   "symbol": "RKLB",
-   "name": "Rocket Lab USA",
-   "mentions_24h": 39,
-   "upvotes": 252,
-   "rank": 20,
-   "rank_24h_ago": 45,
-   "rank_change": 25
-  },
-  {
-   "symbol": "SPCX",
-   "name": "SpaceX",
-   "mentions_24h": 39,
-   "upvotes": 707,
-   "rank": 21,
-   "rank_24h_ago": 23,
-   "rank_change": 2
-  },
-  {
-   "symbol": "MSFT",
-   "name": "Microsoft",
-   "mentions_24h": 37,
-   "upvotes": 48,
-   "rank": 22,
-   "rank_24h_ago": 24,
-   "rank_change": 2
-  },
-  {
-   "symbol": "GOOG",
-   "name": "Alphabet (Google)",
-   "mentions_24h": 36,
-   "upvotes": 795,
-   "rank": 23,
-   "rank_24h_ago": 18,
-   "rank_change": -5
-  },
-  {
-   "symbol": "USO",
-   "name": "United States Commodity Funds LLC - United States Oil Fund",
-   "mentions_24h": 35,
-   "upvotes": 275,
-   "rank": 24,
-   "rank_24h_ago": 40,
-   "rank_change": 16
+   "rank_change": 0
   },
   {
    "symbol": "TSLA",
    "name": "Tesla",
-   "mentions_24h": 34,
-   "upvotes": 50,
-   "rank": 25,
-   "rank_24h_ago": 8,
-   "rank_change": -17
-  },
-  {
-   "symbol": "VOO",
-   "name": "Vanguard S&P 500 ETF",
-   "mentions_24h": 33,
-   "upvotes": 70,
-   "rank": 26,
-   "rank_24h_ago": 14,
-   "rank_change": -12
-  },
-  {
-   "symbol": "NBIS",
-   "name": "Nebius Group",
-   "mentions_24h": 32,
-   "upvotes": 342,
-   "rank": 27,
-   "rank_24h_ago": 21,
-   "rank_change": -6
-  },
-  {
-   "symbol": "AMZN",
-   "name": "Amazon",
-   "mentions_24h": 32,
-   "upvotes": 430,
-   "rank": 28,
-   "rank_24h_ago": 9,
-   "rank_change": -19
-  },
-  {
-   "symbol": "AMD",
-   "name": "AMD",
-   "mentions_24h": 31,
-   "upvotes": 102,
-   "rank": 29,
-   "rank_24h_ago": 39,
-   "rank_change": 10
-  },
-  {
-   "symbol": "MRVL",
-   "name": "Marvell Technology Group",
-   "mentions_24h": 29,
-   "upvotes": 75,
-   "rank": 30,
-   "rank_24h_ago": 15,
-   "rank_change": -15
-  }
- ],
- "reddit_rank_climbers": [
-  {
-   "symbol": "HPE",
-   "name": "Hewlett Packard Enterprise",
-   "mentions_24h": 111,
-   "upvotes": 230,
+   "mentions_24h": 117,
+   "upvotes": 315,
    "rank": 6,
-   "rank_24h_ago": 153,
-   "rank_change": 147
+   "rank_24h_ago": 27,
+   "rank_change": 21
+  },
+  {
+   "symbol": "QQQ",
+   "name": "Invesco QQQ ETF",
+   "mentions_24h": 101,
+   "upvotes": 214,
+   "rank": 7,
+   "rank_24h_ago": 8,
+   "rank_change": 1
+  },
+  {
+   "symbol": "META",
+   "name": "Meta Platforms (Facebook)",
+   "mentions_24h": 72,
+   "upvotes": 130,
+   "rank": 8,
+   "rank_24h_ago": 9,
+   "rank_change": 1
+  },
+  {
+   "symbol": "SPCX",
+   "name": "SpaceX",
+   "mentions_24h": 62,
+   "upvotes": 116,
+   "rank": 9,
+   "rank_24h_ago": 23,
+   "rank_change": 14
+  },
+  {
+   "symbol": "ZS",
+   "name": "Zscaler",
+   "mentions_24h": 60,
+   "upvotes": 118,
+   "rank": 10,
+   "rank_24h_ago": 134,
+   "rank_change": 124
+  },
+  {
+   "symbol": "HOOD",
+   "name": "Robinhood",
+   "mentions_24h": 60,
+   "upvotes": 401,
+   "rank": 11,
+   "rank_24h_ago": 47,
+   "rank_change": 36
   },
   {
    "symbol": "SNOW",
    "name": "Snowflake",
-   "mentions_24h": 95,
-   "upvotes": 213,
-   "rank": 7,
-   "rank_24h_ago": 53,
-   "rank_change": 46
-  },
-  {
-   "symbol": "CRDO",
-   "name": "Credo Technology",
-   "mentions_24h": 60,
-   "upvotes": 103,
-   "rank": 13,
-   "rank_24h_ago": 57,
-   "rank_change": 44
-  },
-  {
-   "symbol": "RKLB",
-   "name": "Rocket Lab USA",
-   "mentions_24h": 39,
-   "upvotes": 252,
-   "rank": 20,
-   "rank_24h_ago": 45,
-   "rank_change": 25
-  },
-  {
-   "symbol": "AM",
-   "name": "Antero Midstream",
-   "mentions_24h": 63,
-   "upvotes": 109,
+   "mentions_24h": 57,
+   "upvotes": 159,
    "rank": 12,
-   "rank_24h_ago": 35,
-   "rank_change": 23
+   "rank_24h_ago": 38,
+   "rank_change": 26
+  },
+  {
+   "symbol": "DTE",
+   "name": "DTE Energy",
+   "mentions_24h": 55,
+   "upvotes": 157,
+   "rank": 13,
+   "rank_24h_ago": 16,
+   "rank_change": 3
+  },
+  {
+   "symbol": "HPE",
+   "name": "Hewlett Packard Enterprise",
+   "mentions_24h": 55,
+   "upvotes": 121,
+   "rank": 14,
+   "rank_24h_ago": 26,
+   "rank_change": 12
+  },
+  {
+   "symbol": "PL",
+   "name": "Planet Labs",
+   "mentions_24h": 54,
+   "upvotes": 92,
+   "rank": 15,
+   "rank_24h_ago": 71,
+   "rank_change": 56
+  },
+  {
+   "symbol": "PLTR",
+   "name": "Palantir",
+   "mentions_24h": 49,
+   "upvotes": 94,
+   "rank": 16,
+   "rank_24h_ago": 19,
+   "rank_change": 3
+  },
+  {
+   "symbol": "MSTR",
+   "name": "MicroStrategy",
+   "mentions_24h": 49,
+   "upvotes": 91,
+   "rank": 17,
+   "rank_24h_ago": 148,
+   "rank_change": 131
+  },
+  {
+   "symbol": "SNDK",
+   "name": "Sandisk",
+   "mentions_24h": 49,
+   "upvotes": 106,
+   "rank": 18,
+   "rank_24h_ago": 14,
+   "rank_change": -4
+  },
+  {
+   "symbol": "PATH",
+   "name": "UiPath",
+   "mentions_24h": 45,
+   "upvotes": 68,
+   "rank": 19,
+   "rank_24h_ago": 660,
+   "rank_change": 641
+  },
+  {
+   "symbol": "MSFT",
+   "name": "Microsoft",
+   "mentions_24h": 43,
+   "upvotes": 283,
+   "rank": 20,
+   "rank_24h_ago": 22,
+   "rank_change": 2
   },
   {
    "symbol": "DELL",
    "name": "Dell",
-   "mentions_24h": 117,
-   "upvotes": 197,
-   "rank": 5,
-   "rank_24h_ago": 27,
-   "rank_change": 22
+   "mentions_24h": 40,
+   "upvotes": 1013,
+   "rank": 21,
+   "rank_24h_ago": 4,
+   "rank_change": -17
   },
   {
-   "symbol": "USO",
-   "name": "United States Commodity Funds LLC - United States Oil Fund",
-   "mentions_24h": 35,
-   "upvotes": 275,
-   "rank": 24,
-   "rank_24h_ago": 40,
-   "rank_change": 16
+   "symbol": "RKLB",
+   "name": "Rocket Lab USA",
+   "mentions_24h": 32,
+   "upvotes": 88,
+   "rank": 22,
+   "rank_24h_ago": 20,
+   "rank_change": -2
   },
   {
-   "symbol": "ASTS",
-   "name": "AST SpaceMobile",
-   "mentions_24h": 93,
-   "upvotes": 289,
-   "rank": 8,
-   "rank_24h_ago": 22,
-   "rank_change": 14
-  },
-  {
-   "symbol": "AVGO",
-   "name": "Broadcom",
-   "mentions_24h": 593,
-   "upvotes": 2081,
-   "rank": 1,
-   "rank_24h_ago": 13,
-   "rank_change": 12
+   "symbol": "RDDT",
+   "name": "Reddit",
+   "mentions_24h": 32,
+   "upvotes": 52,
+   "rank": 23,
+   "rank_24h_ago": 17,
+   "rank_change": -6
   },
   {
    "symbol": "AMD",
    "name": "AMD",
    "mentions_24h": 31,
-   "upvotes": 102,
+   "upvotes": 89,
+   "rank": 24,
+   "rank_24h_ago": 28,
+   "rank_change": 4
+  },
+  {
+   "symbol": "AAPL",
+   "name": "Apple",
+   "mentions_24h": 30,
+   "upvotes": 54,
+   "rank": 25,
+   "rank_24h_ago": 15,
+   "rank_change": -10
+  },
+  {
+   "symbol": "VOO",
+   "name": "Vanguard S&P 500 ETF",
+   "mentions_24h": 29,
+   "upvotes": 85,
+   "rank": 26,
+   "rank_24h_ago": 18,
+   "rank_change": -8
+  },
+  {
+   "symbol": "SOXL",
+   "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+   "mentions_24h": 28,
+   "upvotes": 57,
+   "rank": 27,
+   "rank_24h_ago": 36,
+   "rank_change": 9
+  },
+  {
+   "symbol": "NKE",
+   "name": "Nike",
+   "mentions_24h": 26,
+   "upvotes": 75,
+   "rank": 28,
+   "rank_24h_ago": 44,
+   "rank_change": 16
+  },
+  {
+   "symbol": "BE",
+   "name": "Bloom Energy",
+   "mentions_24h": 26,
+   "upvotes": 74,
    "rank": 29,
-   "rank_24h_ago": 39,
-   "rank_change": 10
+   "rank_24h_ago": 33,
+   "rank_change": 4
+  },
+  {
+   "symbol": "GOOG",
+   "name": "Alphabet (Google)",
+   "mentions_24h": 25,
+   "upvotes": 46,
+   "rank": 30,
+   "rank_24h_ago": 21,
+   "rank_change": -9
+  }
+ ],
+ "reddit_rank_climbers": [
+  {
+   "symbol": "PATH",
+   "name": "UiPath",
+   "mentions_24h": 45,
+   "upvotes": 68,
+   "rank": 19,
+   "rank_24h_ago": 660,
+   "rank_change": 641
+  },
+  {
+   "symbol": "LULU",
+   "name": "lululemon athletica",
+   "mentions_24h": 237,
+   "upvotes": 1737,
+   "rank": 3,
+   "rank_24h_ago": 173,
+   "rank_change": 170
+  },
+  {
+   "symbol": "MSTR",
+   "name": "MicroStrategy",
+   "mentions_24h": 49,
+   "upvotes": 91,
+   "rank": 17,
+   "rank_24h_ago": 148,
+   "rank_change": 131
+  },
+  {
+   "symbol": "ZS",
+   "name": "Zscaler",
+   "mentions_24h": 60,
+   "upvotes": 118,
+   "rank": 10,
+   "rank_24h_ago": 134,
+   "rank_change": 124
+  },
+  {
+   "symbol": "PL",
+   "name": "Planet Labs",
+   "mentions_24h": 54,
+   "upvotes": 92,
+   "rank": 15,
+   "rank_24h_ago": 71,
+   "rank_change": 56
+  },
+  {
+   "symbol": "HOOD",
+   "name": "Robinhood",
+   "mentions_24h": 60,
+   "upvotes": 401,
+   "rank": 11,
+   "rank_24h_ago": 47,
+   "rank_change": 36
+  },
+  {
+   "symbol": "SNOW",
+   "name": "Snowflake",
+   "mentions_24h": 57,
+   "upvotes": 159,
+   "rank": 12,
+   "rank_24h_ago": 38,
+   "rank_change": 26
+  },
+  {
+   "symbol": "TSLA",
+   "name": "Tesla",
+   "mentions_24h": 117,
+   "upvotes": 315,
+   "rank": 6,
+   "rank_24h_ago": 27,
+   "rank_change": 21
+  },
+  {
+   "symbol": "NKE",
+   "name": "Nike",
+   "mentions_24h": 26,
+   "upvotes": 75,
+   "rank": 28,
+   "rank_24h_ago": 44,
+   "rank_change": 16
+  },
+  {
+   "symbol": "SPCX",
+   "name": "SpaceX",
+   "mentions_24h": 62,
+   "upvotes": 116,
+   "rank": 9,
+   "rank_24h_ago": 23,
+   "rank_change": 14
   }
  ]
 }
