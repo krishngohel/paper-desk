@@ -73,6 +73,24 @@ def touches_near(bars: list[dict], level: float, tol: float) -> int:
     return sum(1 for b in bars if b["l"] <= level + tol and b["l"] >= level - tol)
 
 
+
+def market_regime(timeframe: str = "1Day", days_back: int = 400) -> dict[str, bool]:
+    """date -> is the broad tape in an uptrend (SPY close above its 21-bar EMA)?
+
+    The 2026-09-03 sweep found the strategy's expectancy flips sign between time
+    periods (train mean -0.65%, test mean +1.61%) and that NO stop/target geometry
+    survives both. That is a regime dependency, not a parameter problem - so the
+    honest next question is whether trading only with the tape fixes it.
+    """
+    bars = load_bars("SPY", timeframe, days_back)
+    out: dict[str, bool] = {}
+    ema, k = None, 2 / (21 + 1)
+    for b in bars:
+        ema = b["c"] if ema is None else b["c"] * k + ema * (1 - k)
+        out[b["t"][:10]] = b["c"] > ema
+    return out
+
+
 # --- trade record -----------------------------------------------------------
 @dataclass
 class BTTrade:
@@ -94,7 +112,18 @@ class BTTrade:
 
 
 # --- the strategy under test ------------------------------------------------
-def find_setup(hist: list[dict], min_touches: int = 2) -> dict | None:
+def ema(vals: list[float], n: int) -> float | None:
+    if len(vals) < n:
+        return None
+    k, e = 2 / (n + 1), vals[0]
+    for v in vals[1:]:
+        e = v * k + e * (1 - k)
+    return e
+
+
+def find_setup(hist: list[dict], min_touches: int = 2,
+               stop_atr: float = 0.5, target_atr: float = 1.5,
+               require_uptrend: bool = False) -> dict | None:
     """The desk's actual idea: buy a tested support level in a name that is not
     in freefall. Reads ONLY `hist` (bars up to and including the decision bar).
     Returns level/stop/target, or None when no setup exists.
@@ -105,6 +134,13 @@ def find_setup(hist: list[dict], min_touches: int = 2) -> dict | None:
     if not a or a <= 0:
         return None
     last = hist[-1]["c"]
+    if require_uptrend:
+        # Playbook s2: "a downtrend stock at support is a watch item, not a buy."
+        # The desk has always ASSERTED this; it has never been measured.
+        closes = [b["c"] for b in hist]
+        e21, e50 = ema(closes[-60:], 21), ema(closes[-120:], 50)
+        if e21 is None or e50 is None or not (last > e21 > e50):
+            return None
     lows = swing_lows(hist[-40:], wing=2)
     if not lows:
         return None
@@ -122,8 +158,10 @@ def find_setup(hist: list[dict], min_touches: int = 2) -> dict | None:
     touches = touches_near(hist[-40:], level, tol=0.35 * a)
     if touches < min_touches:
         return None
-    return {"level": level, "stop": level - 0.5 * a, "target": level + 1.5 * a,
-            "atr": a, "touches": touches}
+    return {"level": level, "stop": level - stop_atr * a,
+            "target": level + target_atr * a,
+            "atr": a, "touches": touches,
+            "stop_atr": stop_atr, "target_atr": target_atr}
 
 
 # --- fill simulation --------------------------------------------------------
@@ -176,8 +214,8 @@ def simulate(bars: list[dict], i: int, setup: dict, mechanism: str,
                         # absolute stop silently hands the limit a better R:R, so
                         # this variant re-anchors stop/target to the actual fill.
                         # Now the ONLY difference between arms is entry timing.
-                        t.stop = t.entry_price - 0.5 * setup["atr"]
-                        t.target = t.entry_price + 1.5 * setup["atr"]
+                        t.stop = t.entry_price - setup.get("stop_atr", 0.5) * setup["atr"]
+                        t.target = t.entry_price + setup.get("target_atr", 1.5) * setup["atr"]
                 else:
                     continue
             # entry resolved on this bar; exits are checked from the NEXT bar so
@@ -214,9 +252,12 @@ def simulate(bars: list[dict], i: int, setup: dict, mechanism: str,
 
 # --- runner -----------------------------------------------------------------
 def run(symbols: list[str], days: int, timeframe: str = "1Day",
-        max_hold: int = 10) -> dict:
+        max_hold: int = 10, min_touches: int = 2, stop_atr: float = 0.5,
+        target_atr: float = 1.5, frac: tuple[float, float] = (0.0, 1.0),
+        regime_filter: bool = False, require_uptrend: bool = False) -> dict:
     trades: list[BTTrade] = []
     used, skipped = [], []
+    regime = market_regime(timeframe, days) if regime_filter else {}
     for sym in symbols:
         bars = load_bars(sym, timeframe, days)
         if len(bars) < 60:
@@ -224,8 +265,13 @@ def run(symbols: list[str], days: int, timeframe: str = "1Day",
             continue
         used.append(sym)
         # leave max_hold bars of runway so every setup can actually resolve
-        for i in range(40, len(bars) - max_hold - 1):
-            setup = find_setup(bars[: i + 1])
+        lo_i = max(40, int(frac[0] * len(bars)))
+        hi_i = min(len(bars) - max_hold - 1, int(frac[1] * len(bars)))
+        for i in range(lo_i, hi_i):
+            if regime_filter and not regime.get(bars[i]["t"][:10], False):
+                continue          # tape is below its EMA21: stand down
+            setup = find_setup(bars[: i + 1], min_touches, stop_atr, target_atr,
+                               require_uptrend)
             if not setup:
                 continue
             for mech in MECHANISMS:

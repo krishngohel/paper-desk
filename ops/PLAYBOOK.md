@@ -28,6 +28,45 @@ indicators confirm, they do not decide. Classic longs:
 Do not counter-trend "knife-catch": a downtrend stock at support is a watch item,
 not a buy, until structure turns (a higher low forms).
 
+### 2a. MEASURED 2026-09-03 - this is the single highest-value rule on the desk
+
+This section was an assertion for a week. It has now been tested on 400 days x
+25 symbols, and it is the difference between a losing strategy and a winning one.
+Buying a tested support level with NO trend requirement, versus the same setups
+filtered to stocks whose own structure is up (close > EMA21 > EMA50):
+
+| period | filter | trades | win rate | expectancy/trade |
+|---|---|---|---|---|
+| older 60% | none | 1496 | 28.6% | **-0.224%** |
+| older 60% | stock uptrend | 342 | 41.5% | **+0.707%** |
+| newer 40% | none | 877 | 38.4% | +0.819% |
+| newer 40% | stock uptrend | 279 | 40.1% | +0.815% |
+
+Unfiltered, the strategy's expectancy FLIPS SIGN between periods - it made money
+in one market and lost it in another, and no stop/target geometry fixed that (a
+27-config sweep produced train mean -0.65% vs test mean +1.61%; a SPY-above-EMA21
+market filter made both periods worse). The stock's OWN trend is what fixed it:
+positive expectancy in both halves, across both entry mechanisms and both
+geometries tested - 8 of 8 combinations profitable.
+
+**Rules, binding:**
+1. **No long entry in a stock trading below its own EMA21, or whose EMA21 is
+   below its EMA50.** Range/mixed structure does NOT qualify - the measured edge
+   requires an actual uptrend. A support level in a non-uptrend name is a WATCH
+   item; say so and move on.
+2. **Expect to trade far less.** The filter cut trade count by ~4x (1496 -> 342).
+   That is the mechanism working, not a failure to find setups, and it overrides
+   any activity target: L4's floor is satisfied by an honest hunt, never by
+   taking a setup this rule forbids.
+3. **Prefer a 1.0xATR stop and 2.5xATR target** over the old 0.5/1.5. Measured
+   better in both periods with the filter on (train +0.81%, test +1.29%).
+
+**Corroboration from the live book:** of the desk's first 12 closed trades, 10
+were entered in names its own thesis described as "range", "range/mixed", or
+"downtrend" - i.e. this rule would have forbidden them. Those 10 are where
+essentially all the losses came from. The rule was in the playbook the whole
+time; nothing enforced it at setup selection.
+
 ## 2b. Candle tells - anatomy at a level is information
 
 `ta.py` detects candle patterns mechanically (`candles_daily`, `candles_5m_last_hour`):
