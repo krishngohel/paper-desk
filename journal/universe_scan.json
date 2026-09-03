@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-03T08:38:38",
+ "ts": "2026-09-03T08:40:21",
  "source": "tradingview_full_market",
  "screened_liquid_names": 0,
  "filters": {
@@ -10,7 +10,27 @@
  "explore": {
   "mode": "gainers",
   "desc": "biggest % gainers today (looser liquidity floor)",
-  "new_names_not_on_shortlist": [],
-  "all": []
+  "new_names_not_on_shortlist": [
+   {
+    "symbol": "QCOM",
+    "close": 169.04,
+    "change_pct": -0.54,
+    "dollar_volume_m": 10.0,
+    "rel_volume": 0.01,
+    "market_cap_b": 177.53,
+    "found_by": "gainers"
+   }
+  ],
+  "all": [
+   {
+    "symbol": "QCOM",
+    "close": 169.04,
+    "change_pct": -0.54,
+    "dollar_volume_m": 10.0,
+    "rel_volume": 0.01,
+    "market_cap_b": 177.53,
+    "found_by": "gainers"
+   }
+  ]
  }
 }
