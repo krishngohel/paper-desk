@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-03T17:09:44",
+ "ts": "2026-09-03T17:35:18",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -11,8 +11,8 @@
    "symbol": "CHPT",
    "close": 9.08,
    "change_pct": 74.95,
-   "dollar_volume_m": 397.4,
-   "rel_volume": 90.0,
+   "dollar_volume_m": 398.1,
+   "rel_volume": 90.15,
    "market_cap_b": 0.24,
    "exchange": "NYSE"
   },
@@ -20,8 +20,8 @@
    "symbol": "RARE",
    "close": 14.85,
    "change_pct": -44.03,
-   "dollar_volume_m": 402.0,
-   "rel_volume": 10.03,
+   "dollar_volume_m": 402.2,
+   "rel_volume": 10.04,
    "market_cap_b": 1.46,
    "exchange": "NASDAQ"
   },
@@ -38,7 +38,7 @@
    "symbol": "MSTX",
    "close": 17.33,
    "change_pct": 34.97,
-   "dollar_volume_m": 223.5,
+   "dollar_volume_m": 224.3,
    "rel_volume": 1.18,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -47,8 +47,8 @@
    "symbol": "CRCG",
    "close": 19.83,
    "change_pct": 32.91,
-   "dollar_volume_m": 109.2,
-   "rel_volume": 1.37,
+   "dollar_volume_m": 109.4,
+   "rel_volume": 1.38,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -56,7 +56,7 @@
    "symbol": "CRCA",
    "close": 29.3,
    "change_pct": 32.88,
-   "dollar_volume_m": 59.4,
+   "dollar_volume_m": 59.5,
    "rel_volume": 1.99,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
@@ -65,7 +65,7 @@
    "symbol": "BIAF",
    "close": 12.78,
    "change_pct": 31.08,
-   "dollar_volume_m": 245.1,
+   "dollar_volume_m": 245.3,
    "rel_volume": 2.06,
    "market_cap_b": 0.01,
    "exchange": "NASDAQ"
@@ -74,7 +74,7 @@
    "symbol": "CONL",
    "close": 6.48,
    "change_pct": 20.22,
-   "dollar_volume_m": 183.8,
+   "dollar_volume_m": 184.3,
    "rel_volume": 1.13,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -83,7 +83,7 @@
    "symbol": "MSTR",
    "close": 144.82,
    "change_pct": 17.56,
-   "dollar_volume_m": 6489.6,
+   "dollar_volume_m": 6502.4,
    "rel_volume": 1.4,
    "market_cap_b": 55.64,
    "exchange": "NASDAQ"
@@ -92,7 +92,7 @@
    "symbol": "SMMT",
    "close": 17.13,
    "change_pct": 17.33,
-   "dollar_volume_m": 254.9,
+   "dollar_volume_m": 255.1,
    "rel_volume": 2.54,
    "market_cap_b": 13.67,
    "exchange": "NASDAQ"
@@ -101,8 +101,8 @@
    "symbol": "USDE",
    "close": 8.77,
    "change_pct": 16.87,
-   "dollar_volume_m": 59.3,
-   "rel_volume": 0.39,
+   "dollar_volume_m": 59.5,
+   "rel_volume": 0.4,
    "market_cap_b": 0.24,
    "exchange": "NASDAQ"
   },
@@ -110,7 +110,7 @@
    "symbol": "HOOD",
    "close": 124.72,
    "change_pct": 16.57,
-   "dollar_volume_m": 6407.6,
+   "dollar_volume_m": 6412.4,
    "rel_volume": 2.32,
    "market_cap_b": 112.13,
    "exchange": "NASDAQ"
@@ -119,7 +119,7 @@
    "symbol": "SNOW",
    "close": 356.47,
    "change_pct": 16.55,
-   "dollar_volume_m": 7770.4,
+   "dollar_volume_m": 7775.3,
    "rel_volume": 4.84,
    "market_cap_b": 123.55,
    "exchange": "NYSE"
@@ -128,7 +128,7 @@
    "symbol": "CRCL",
    "close": 103.23,
    "change_pct": 16.46,
-   "dollar_volume_m": 2538.7,
+   "dollar_volume_m": 2541.7,
    "rel_volume": 1.45,
    "market_cap_b": 26.21,
    "exchange": "NYSE"
@@ -137,8 +137,8 @@
    "symbol": "TLYS",
    "close": 4.4,
    "change_pct": 15.49,
-   "dollar_volume_m": 59.0,
-   "rel_volume": 23.78,
+   "dollar_volume_m": 59.1,
+   "rel_volume": 23.81,
    "market_cap_b": 0.13,
    "exchange": "NYSE"
   },
@@ -146,7 +146,7 @@
    "symbol": "PTIR",
    "close": 20.32,
    "change_pct": 15.39,
-   "dollar_volume_m": 88.0,
+   "dollar_volume_m": 88.1,
    "rel_volume": 1.29,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -164,8 +164,8 @@
    "symbol": "PLTZ",
    "close": 8.54,
    "change_pct": -15.28,
-   "dollar_volume_m": 84.3,
-   "rel_volume": 1.95,
+   "dollar_volume_m": 84.6,
+   "rel_volume": 1.96,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -173,7 +173,7 @@
    "symbol": "BMNR",
    "close": 26.45,
    "change_pct": 14.7,
-   "dollar_volume_m": 1762.3,
+   "dollar_volume_m": 1764.2,
    "rel_volume": 1.32,
    "market_cap_b": 15.96,
    "exchange": "NYSE"
@@ -182,7 +182,7 @@
    "symbol": "CIFR",
    "close": 17.37,
    "change_pct": 14.43,
-   "dollar_volume_m": 645.0,
+   "dollar_volume_m": 645.1,
    "rel_volume": 1.21,
    "market_cap_b": 7.21,
    "exchange": "NASDAQ"
@@ -191,7 +191,7 @@
    "symbol": "RIOT",
    "close": 21.14,
    "change_pct": 13.44,
-   "dollar_volume_m": 494.2,
+   "dollar_volume_m": 494.4,
    "rel_volume": 1.43,
    "market_cap_b": 7.93,
    "exchange": "NASDAQ"
@@ -200,7 +200,7 @@
    "symbol": "VSXY",
    "close": 73.64,
    "change_pct": -13.17,
-   "dollar_volume_m": 570.4,
+   "dollar_volume_m": 570.5,
    "rel_volume": 5.42,
    "market_cap_b": 5.85,
    "exchange": "NYSE"
@@ -209,7 +209,7 @@
    "symbol": "PURR",
    "close": 12.77,
    "change_pct": 12.81,
-   "dollar_volume_m": 462.4,
+   "dollar_volume_m": 462.7,
    "rel_volume": 1.12,
    "market_cap_b": 2.53,
    "exchange": "NASDAQ"
@@ -308,7 +308,7 @@
    "symbol": "AVL",
    "close": 37.62,
    "change_pct": -5.71,
-   "dollar_volume_m": 194.4,
+   "dollar_volume_m": 194.5,
    "rel_volume": 6.05,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -317,8 +317,8 @@
    "symbol": "PL",
    "close": 18.35,
    "change_pct": -8.2,
-   "dollar_volume_m": 579.7,
-   "rel_volume": 5.8,
+   "dollar_volume_m": 581.3,
+   "rel_volume": 5.82,
    "market_cap_b": 6.54,
    "exchange": "NYSE"
   },
@@ -335,7 +335,7 @@
    "symbol": "CIEN",
    "close": 317.46,
    "change_pct": -10.36,
-   "dollar_volume_m": 2387.9,
+   "dollar_volume_m": 2388.7,
    "rel_volume": 4.6,
    "market_cap_b": 44.94,
    "exchange": "NYSE"
@@ -353,8 +353,8 @@
    "symbol": "AVGX",
    "close": 39.51,
    "change_pct": -5.91,
-   "dollar_volume_m": 135.1,
-   "rel_volume": 4.07,
+   "dollar_volume_m": 135.2,
+   "rel_volume": 4.08,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -404,7 +404,7 @@
     "close": 4.46,
     "change_pct": 23.2,
     "dollar_volume_m": 14.8,
-    "rel_volume": 66.06,
+    "rel_volume": 66.11,
     "market_cap_b": 0.17,
     "found_by": "relvol"
    },
@@ -467,7 +467,7 @@
     "close": 3.63,
     "change_pct": -18.79,
     "dollar_volume_m": 11.7,
-    "rel_volume": 20.61,
+    "rel_volume": 20.66,
     "market_cap_b": 0.0,
     "found_by": "relvol"
    },
@@ -475,8 +475,8 @@
     "symbol": "LULG",
     "close": 6.58,
     "change_pct": 3.19,
-    "dollar_volume_m": 24.1,
-    "rel_volume": 19.17,
+    "dollar_volume_m": 24.5,
+    "rel_volume": 19.49,
     "market_cap_b": 0.0,
     "found_by": "relvol"
    },
@@ -533,15 +533,6 @@
     "rel_volume": 12.64,
     "market_cap_b": 0.0,
     "found_by": "relvol"
-   },
-   {
-    "symbol": "AWAY",
-    "close": 18.99,
-    "change_pct": -1.12,
-    "dollar_volume_m": 14.2,
-    "rel_volume": 10.04,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
    }
   ],
   "all": [
@@ -585,8 +576,8 @@
     "symbol": "CHPT",
     "close": 9.08,
     "change_pct": 74.95,
-    "dollar_volume_m": 397.4,
-    "rel_volume": 90.0,
+    "dollar_volume_m": 398.1,
+    "rel_volume": 90.15,
     "market_cap_b": 0.24,
     "found_by": "relvol"
    },
@@ -595,7 +586,7 @@
     "close": 4.46,
     "change_pct": 23.2,
     "dollar_volume_m": 14.8,
-    "rel_volume": 66.06,
+    "rel_volume": 66.11,
     "market_cap_b": 0.17,
     "found_by": "relvol"
    },
@@ -648,8 +639,8 @@
     "symbol": "TLYS",
     "close": 4.4,
     "change_pct": 15.49,
-    "dollar_volume_m": 59.0,
-    "rel_volume": 23.78,
+    "dollar_volume_m": 59.1,
+    "rel_volume": 23.81,
     "market_cap_b": 0.13,
     "found_by": "relvol"
    },
@@ -676,7 +667,7 @@
     "close": 3.63,
     "change_pct": -18.79,
     "dollar_volume_m": 11.7,
-    "rel_volume": 20.61,
+    "rel_volume": 20.66,
     "market_cap_b": 0.0,
     "found_by": "relvol"
    },
@@ -684,8 +675,8 @@
     "symbol": "LULG",
     "close": 6.58,
     "change_pct": 3.19,
-    "dollar_volume_m": 24.1,
-    "rel_volume": 19.17,
+    "dollar_volume_m": 24.5,
+    "rel_volume": 19.49,
     "market_cap_b": 0.0,
     "found_by": "relvol"
    },
@@ -762,12 +753,12 @@
     "found_by": "relvol"
    },
    {
-    "symbol": "AWAY",
-    "close": 18.99,
-    "change_pct": -1.12,
-    "dollar_volume_m": 14.2,
+    "symbol": "RARE",
+    "close": 14.85,
+    "change_pct": -44.03,
+    "dollar_volume_m": 402.2,
     "rel_volume": 10.04,
-    "market_cap_b": 0.0,
+    "market_cap_b": 1.46,
     "found_by": "relvol"
    }
   ]
