@@ -86,7 +86,10 @@ new instances for 15 trading days is discarded as noise.
   analyst, and even that one wasn't bullish. Seen 1x: CHPT (t-2026-09-03-004),
   confirmation-trigger entry, stopped out -$96.00 (-2.98%) within ~42 minutes.
   Added 2026-09-03 daily review. Revisit if a second instance of
-  single-weak-note-plus-lagging-structure closes.
+  single-weak-note-plus-lagging-structure closes. Checked 2026-09-04 daily
+  review against the day's only closes (TSLA x2, t-2026-09-03-006/008) - not
+  a match (multi-catalyst B-grade thesis, not a single weak note), still
+  n=1, no change.
 
 ## Archive
 
