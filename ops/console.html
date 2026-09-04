@@ -27,6 +27,11 @@ h1 em { color:var(--clay); font-style:normal; }
 .stat.big b { font-size:25px; letter-spacing:-.01em; }
 .stat.big span { color:var(--clay); }
 .up { color:var(--good); } .down { color:var(--bad); }
+#gatebanner { flex:none; padding:10px 18px; background:rgba(248,113,113,.16);
+  border-bottom:2px solid var(--bad); color:#FFD9D4; font-size:13.5px; font-weight:600;
+  animation: gatepulse 1.6s ease-in-out infinite; }
+#gatebanner b { color:#fff; }
+@keyframes gatepulse { 50% { background:rgba(248,113,113,.30); } }
 .clock { color:var(--mut); font-size:11.5px; margin-left:auto; font-family:"JetBrains Mono",monospace; }
 main { flex:1; min-height:0; display:grid; grid-template-columns:340px minmax(0,1fr) 300px;
   gap:12px; padding:10px 16px 12px; }
@@ -200,6 +205,7 @@ img, svg, canvas { max-width:100%; }
   <div class="stat"><span>Kill switch</span><b id="halt">—</b></div>
   <div class="clock" id="clock"></div>
 </header>
+<div id="gatebanner" style="display:none"></div>
 <main>
 <div class="left"><!-- left: state + decisions -->
   <section><h2>What it owns</h2><table id="book"></table></section>
@@ -526,7 +532,10 @@ function buildDecisions(trades) {
       head: `Backed out of the ${r.symbol} buy before it filled`,
       why: jargon(String(r.abort_reason).replace(/^CANCELLED [^,]*, order [0-9a-f-]+ successfully cancelled via trade_cli\.py\.?\s*/i, "")),
       plan: "", note: "" });
-    if (r.closed_ts) {
+    // A cancelled/aborted order that never filled still gets a closed_ts stamped.
+    // Rendering those as "Sold ... made $0.00 (null%)" invented eight fake sales
+    // on 2026-09-04. A sale requires an actual fill AND a realized number.
+    if (r.closed_ts && !r.aborted && r.entry_price != null && r.realized_pnl != null) {
       const win = Number(r.realized_pnl) >= 0;
       out.push({ ts: r.closed_ts, chip: ["sell", "Sold"], sym: r.symbol, win,
         head: `Sold ${r.entry_qty} ${r.symbol} at ${money(r.exit_price)} — ${win ? "made" : "lost"} ${money(Math.abs(r.realized_pnl))} (${r.realized_pnl_pct}%)`,
@@ -562,6 +571,17 @@ async function refresh() {
   $("npos").textContent = (s.broker.positions || []).length;
   const nOrd = (s.broker.orders || []).length;
   $("nord").textContent = nOrd;
+  // Order-gate health: a stuck pending_action blocks EVERY order including stops
+  const g = s.agents.gate || {};
+  const gb = $("gatebanner");
+  if (g.stuck) {
+    gb.style.display = "block";
+    gb.innerHTML = `⚠ <b>ORDER GATE WEDGED for ${Math.floor(g.age_min/60)}h ${g.age_min%60}m</b> — ` +
+      `a stuck <code>${esc(g.phase)}</code> action (${esc(g.what)}) is blocking EVERY order, stops included. ` +
+      `The agent cannot clear this itself. Verify the order never reached the broker, then clear ` +
+      `<code>pending_action.json</code> via <code>clear_pending_action()</code>.`;
+  } else { gb.style.display = "none"; }
+
   const halted = s.agents.halted;
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
   $("halt").className = halted ? "down" : "up";

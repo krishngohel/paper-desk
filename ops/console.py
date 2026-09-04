@@ -76,8 +76,15 @@ def _jsonl(path: Path, n: int = 200) -> list[dict]:
 
 
 def _journal_entries(n: int = 14) -> list[dict]:
+    """Newest entries first, across month files.
+
+    The month files must be walked OLDEST-first before taking the tail: reading
+    newest-first appended September entries and then August ones, so `out[-n:]`
+    kept August and threw September away - the console showed 4-day-old thinking
+    while the desk was mid-session (seen 2026-09-04).
+    """
     out = []
-    files = sorted(JOURNAL.glob("2*.md"), reverse=True)[:2]
+    files = sorted(JOURNAL.glob("2*.md"))[-2:]          # oldest -> newest
     for f in files:
         parts = re.split(r"^## ", f.read_text(encoding="utf-8", errors="replace"), flags=re.M)
         for chunk in parts[1:]:
@@ -112,6 +119,24 @@ def _agents() -> dict:
     # log: watcher.log is silent for ~15 min at a time when nothing happens, so
     # log mtime made a healthy watcher read as dead. Falls back to the log for
     # a watcher started before heartbeats existed.
+    # Gate health. A stuck pending_action makes the enforcement layer refuse
+    # EVERY order, stops included, and the agent cannot clear it (Absolute rule 2
+    # forbids writing to ~/.vibe-trading). It has wedged three times; the last one
+    # ran 25 hours unnoticed while a position sat below its stop. Surface it.
+    gate = {"stuck": False}
+    try:
+        from src.live.paths import live_root as _lr
+        pa = _lr() / "alpaca" / "pending_action.json"
+        if pa.is_file():
+            d = json.loads(pa.read_text(encoding="utf-8"))
+            age_min = round((time.time() - pa.stat().st_mtime) / 60)
+            req = d.get("request") or {}
+            gate = {"stuck": True, "age_min": age_min, "phase": d.get("phase"),
+                    "action_id": d.get("action_id"),
+                    "what": f"{req.get('side')} {req.get('quantity')} {req.get('symbol')}",
+                    "broker_order_id": d.get("broker_order_id")}
+    except Exception:  # noqa: BLE001
+        pass
     watcher_age = _log_age(LOGS / "watcher.heartbeat")
     if watcher_age is None:
         watcher_age = _log_age(LOGS / "watcher.log")
@@ -122,6 +147,7 @@ def _agents() -> dict:
     perf = _jsonl(JOURNAL / "performance.jsonl", 5)
     return {
         "halted": halt_flag_set(),
+        "gate": gate,
         "hwm": hwm,
         "session_lock": lock,
         "last_session_header": last_session,
