@@ -49,6 +49,40 @@ market filter made both periods worse). The stock's OWN trend is what fixed it:
 positive expectancy in both halves, across both entry mechanisms and both
 geometries tested - 8 of 8 combinations profitable.
 
+### Statistical status - added 2026-09-04, and it downgrades the claim above
+
+The table was reported as settled. It is not. Running the proper tests:
+
+| slice | trades | mean/trade | t | p | verdict |
+|---|---|---|---|---|---|
+| older 60%, gate OFF | 1489 | -0.42% | -2.3 | 0.02 | losing, real |
+| older 60%, gate ON | 335 | +0.77% | 2.02 | 0.044 | **not significant** |
+| newer 40%, gate ON | 283 | +1.34% | 2.84 | 0.005 | **not significant** |
+
+Per-trade standard deviation is 7-9%, which is enormous next to a ~0.8% mean.
+And the configuration was chosen after searching 81 combinations, so the honest
+bar is the Sidak-corrected one: **p < 6.3e-04**, not 0.05. Neither gate-ON
+result clears it. Bootstrap agrees (P(edge<=0) = 2.2% train, 0.13% test) - the
+sign is probably right, the magnitude is not established.
+
+**What would settle it: about 959 trades** at the observed mean and variance;
+we have 335. That is ~3x more history or symbols, and it is the reason to widen
+the backtest universe rather than to trade harder.
+
+**So treat 2a as a well-motivated prior, not a proven edge.** Keep it - it
+agrees with s2's long-standing craft argument, it flips the sign of a
+significantly-losing configuration, and its cost when wrong is trading less.
+But do NOT size as though the edge is known.
+
+**Sizing follows from that.** Kelly on the point estimate says risk ~10% of
+equity per trade (b=2.16, p=0.456). That number is a trap: Kelly assumes the
+edge is measured exactly, and ours has a 95% CI whose lower bound is ~0.03%/trade
+- indistinguishable from zero. When the CI includes ~zero, the growth-optimal
+bet also rounds to ~zero. Size like an unproven edge: probe-scale, and let the
+sample accumulate. Overbetting an edge that turns out to be noise is the fastest
+way to hit the death floor, and the penalty for overbetting is mathematically
+far worse than for underbetting.
+
 **Rules, binding:**
 1. **No long entry in a stock trading below its own EMA21, or whose EMA21 is
    below its EMA50.** Range/mixed structure does NOT qualify - the measured edge
@@ -151,6 +185,31 @@ mandatory no-trade day - on 2026-08-31 it passed eight of ten names in a
 range/mixed regime, several of which were bouncing off defended support. That is
 the rule misfiring, not the market being empty. State which kind of thesis you
 hold BEFORE citing volume, and apply the gate only to continuation setups.
+
+## 6b. Evidence standards - what may be called an edge
+
+Adopted 2026-09-04 after a measured "improvement" failed its own significance
+test. These are the rules for believing a number, and they bind reviews as much
+as entries.
+
+- **A point estimate is not a finding.** Report n, standard deviation, and a
+  confidence interval with any expectancy claim. Trade P&L is fat-tailed and
+  skewed, so prefer the bootstrap interval over the normal one.
+- **Correct for the search.** If k configurations were compared, the bar is
+  Sidak: p < 1-(1-0.05)^(1/k). Searching 81 configs at p<0.05 finds a false
+  "winner" ~98% of the time. The best of many is a biased estimate by
+  construction.
+- **Out-of-sample or it did not happen.** Fit on one time slice, verify on
+  another. An effect that inverts between slices (as stop/target geometry did
+  here) is a regime, not an edge.
+- **Say the sample size that would settle it.** "n>=959 at this variance" is a
+  plan; "we need more data" is a shrug.
+- **Size from the CI, never the point estimate.** Kelly is exact only when the
+  edge is known exactly. With an interval straddling zero, the growth-optimal
+  bet is ~zero. Half-Kelly on a lower-bound edge, never full Kelly on a mean.
+- **Absence of significance is not proof of absence.** A sensible prior with a
+  cheap failure mode (like s2a) may be kept as policy while its evidence
+  accumulates - but it must be LABELLED unproven, and never sized as if proven.
 
 ## 7a. Entry mechanism: what the backtest actually proved
 

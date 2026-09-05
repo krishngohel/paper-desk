@@ -307,7 +307,11 @@ def summarize(trades: list[BTTrade], used: list[str], skipped: list[str],
     by_mech = {}
     for mech in MECHANISMS:
         by_mech[mech] = _stats([t for t in trades if t.mechanism == mech])
+    returns = {m: [x.pnl_pct for x in trades
+                   if x.mechanism == m and x.filled and x.pnl_pct is not None]
+               for m in MECHANISMS}
     return {
+        "_returns": returns,          # per-trade P&L for significance testing
         "config": {"symbols": used, "skipped": skipped, "days": days,
                    "timeframe": timeframe, "max_hold_bars": max_hold,
                    "round_trip_bp": ROUND_TRIP_BP, "slippage_bp": SLIPPAGE_BP,
@@ -339,7 +343,8 @@ def main() -> int:
         return 2
 
     res = run(symbols, days, tf, hold)
-    OUT.write_text(json.dumps(res, indent=1), encoding="utf-8")
+    OUT.write_text(json.dumps({k: v for k, v in res.items() if k != "_returns"},
+                              indent=1), encoding="utf-8")
     c, m = res["config"], res["by_mechanism"]
     print(f"\nBACKTEST  {len(c['symbols'])} symbols, {c['days']}d {c['timeframe']}, "
           f"hold<={c['max_hold_bars']} bars, costs {c['round_trip_bp']}bp round trip")
