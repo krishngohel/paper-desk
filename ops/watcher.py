@@ -290,6 +290,101 @@ def sell_succeeded(out: dict) -> bool:
     return isinstance(out, dict) and out.get("status") == "ok"
 
 
+GATE_WEDGE_MARKER = "exact broker evidence is missing or contradictory"
+
+
+def _broker_headers():
+    from src.trading.connectors.alpaca import sdk as _sdk
+    cfg = _sdk.load_config()
+    return {"APCA-API-KEY-ID": cfg.api_key, "APCA-API-SECRET-KEY": cfg.secret_key}
+
+
+def unwedge_gate_if_phantom() -> bool:
+    """Clear a pending_action ONLY when the broker proves the order never existed.
+
+    The gate fails closed on an unresolved pending action, which blocks EVERY
+    order including stop-losses. It has wedged three times (2026-08-28 ~5h,
+    09-02 ~2h, 09-03 ~25h); the last left a position below its stop through 21
+    refused sell attempts. The agent cannot fix it (Absolute rule 2 bars it from
+    ~/.vibe-trading), so without this it needs a human every time.
+
+    Deliberately paranoid - it clears only when ALL of these hold:
+      * the marker is older than MIN_AGE_S (never race a write in flight)
+      * it carries no broker_order_id
+      * the client_order_id 404s at the broker
+      * the broker shows NO order for that symbol since the marker was created
+      * the live position still equals pre_position_qty (nothing executed)
+    Any error, any ambiguity, any mismatch -> leave it alone and escalate.
+    """
+    import requests
+    from src.live.pending_action import load_pending_action, clear_pending_action
+    from src.live.paths import live_root
+
+    MIN_AGE_S = 300
+    try:
+        action = load_pending_action("alpaca")
+    except Exception as exc:  # noqa: BLE001
+        log(f"unwedge: cannot read pending action ({exc}) - leaving it alone")
+        return False
+    if action is None:
+        return False
+
+    path = live_root() / "alpaca" / "pending_action.json"
+    try:
+        age = time.time() - path.stat().st_mtime
+    except OSError:
+        return False
+    if age < MIN_AGE_S:
+        return False
+    if action.broker_order_id:
+        log(f"unwedge: action {action.action_id} HAS a broker_order_id - not phantom, human needed")
+        return False
+
+    req, sym = action.request, str(action.request.symbol).upper()
+    try:
+        hdr = _broker_headers()
+        r = requests.get("https://paper-api.alpaca.markets/v2/orders:by_client_order_id"
+                         f"?client_order_id={action.client_order_id}", headers=hdr, timeout=15)
+        if r.status_code != 404:
+            log(f"unwedge: order {action.client_order_id} may exist at broker ({r.status_code}) - human needed")
+            return False
+        since = str(action.created_at)[:19] + "Z" if action.created_at else None
+        url = f"https://paper-api.alpaca.markets/v2/orders?status=all&symbols={sym}&limit=50"
+        if since:
+            url += f"&after={since}"
+        r2 = requests.get(url, headers=hdr, timeout=15)
+        if not r2.ok:
+            log("unwedge: order history unreadable - leaving the marker alone")
+            return False
+        if r2.json():
+            log(f"unwedge: broker HAS {len(r2.json())} {sym} order(s) since the marker - human needed")
+            return False
+        held = (CACHE.get("qty") or {}).get(sym)
+        expected = _num(action.pre_position_qty)
+        if expected is not None and held is not None and abs(held - expected) > 1e-9:
+            log(f"unwedge: {sym} position {held} != pre_position_qty {expected} - something executed, human needed")
+            return False
+    except Exception as exc:  # noqa: BLE001
+        log(f"unwedge: verification failed ({exc}) - leaving the marker alone")
+        return False
+
+    try:
+        import shutil
+        shutil.copy2(path, path.with_suffix(f".json.phantom-{int(time.time())}.bak"))
+        clear_pending_action("alpaca", action.action_id)
+    except Exception as exc:  # noqa: BLE001
+        log(f"unwedge: clear FAILED ({exc}) - human needed")
+        return False
+
+    msg = (f"GATE UNWEDGED: pending action {action.action_id} ({req.side} {req.quantity} {sym}, "
+           f"phase {action.phase}, {age/3600:.1f}h old) was PROVEN phantom - 404 at the broker, no "
+           f"{sym} orders since it was created, position unchanged at {action.pre_position_qty}. "
+           f"Marker backed up and cleared; orders (including stops) can execute again.")
+    log(msg)
+    journal_note(msg)
+    return True
+
+
 def exit_blocked(rec: dict, state: dict, out: dict) -> None:
     """A triggered exit could not execute. Back off this trade and summon judgment
     instead of hammering the gate every 45s and spamming the journal."""
@@ -300,6 +395,12 @@ def exit_blocked(rec: dict, state: dict, out: dict) -> None:
     save_state(state)
     reason = str((out or {}).get("reason", "unknown"))[:200]
     log(f"exit BLOCKED for {trade_id} (attempt {fails[trade_id]}): {reason} - backing off 15 min")
+    # A wedged gate blocks stops themselves, so try to clear it before anything
+    # else. Only ever clears a marker the broker proves never existed.
+    if GATE_WEDGE_MARKER in reason and unwedge_gate_if_phantom():
+        state.get("exit_backoff", {}).pop(trade_id, None)   # retry immediately
+        save_state(state)
+        return
     if fails[trade_id] <= 2 or fails[trade_id] % 4 == 0:
         journal_note(f"EXIT BLOCKED on {rec.get('symbol')} ({trade_id}): gate/broker refused the "
                      f"triggered exit - {reason}. Backing off 15 min. Ledger record kept OPEN.")

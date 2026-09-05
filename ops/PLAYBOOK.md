@@ -139,6 +139,30 @@ to justify them. Repeated failures at VWAP from below = exit longs, don't add.
   shares = risk_dollars / (entry - stop). Record this math in the sizing rationale.
   Tighter stop -> larger size is a trap when the stop is inside the noise band.
 
+**SLIPPAGE HAIRCUT (measured 2026-09-04, mandatory).** `entry - stop` is what you
+INTEND to lose, not what you lose. Measured across the desk's own closed losers
+(gate-wedge trades excluded): actual loss / planned risk ran median 1.05x, mean
+1.07x, p90 **1.70x**, worst **1.75x**. A stop is an instruction to sell at market
+once a level trades, not a guaranteed fill - gaps, spread, and one-bar slides all
+land on your side of it.
+
+So compute size with a haircut, not the nominal stop:
+
+    effective_risk_per_share = (entry - stop) * 1.7        # p90, not the median
+    shares = risk_dollars / effective_risk_per_share
+
+Sizing to the p90 rather than the median is deliberate: risk budgets exist to
+survive the bad tail, and a budget that is only right half the time is not a
+budget. In practice this means **~40% fewer shares** for the same stated risk.
+State both numbers in the sizing rationale ("planned risk $100; at the 1.7x
+measured slippage factor, worst-case ~$170; sized to keep THAT inside budget").
+
+Two loss sources this does NOT cover, and which must be sized for separately:
+event gaps (playbook s5 - an earnings print can gap 8-10% straight through any
+stop) and infrastructure failure (a wedged order gate turned a $55 planned risk
+into a $239 loss on 2026-09-03; the watcher now auto-clears provably-phantom
+markers, but assume some exposure remains).
+
 ## 5. Events are gap risk that stops cannot protect
 
 Stops execute only while the market trades. An earnings print gaps straight through
