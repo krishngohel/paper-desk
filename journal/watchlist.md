@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-06 14:03 CT (research session, market closed - Sunday afternoon,
-4th research leg this weekend).
+Updated 2026-09-06 17:10 CT (research session, market closed - Sunday evening,
+5th research leg this weekend).
 Regime unchanged from Friday's close (no new bars possible over the weekend): SPY
 uptrend (770.19, +0.55% vs EMA21, RSI14 55.7), QQQ range/mixed (718.96, +0.66% vs
 EMA21, RSI14 53.6). Friday's tape: a hot August jobs report (+106k beat) pushed
@@ -57,7 +57,7 @@ Thursday 2026-09-10 - renewal (`ops/commit_paper_mandate.py`, human-run only) is
 needed before Thursday's close or before Thursday's session if trading past 16:11 CT
 is wanted that day.
 
-**Standing-order quota status (this session): 7 live conditional buy entries staged
+**Standing-order quota status (re-confirmed this session, unchanged): 7 live conditional buy entries staged
 across 4 distinct symbols (COIN x2, IOT x2, HOOD x2, MSTR x1) - quota (>=6 across
 >=3 symbols) met.** All 7 are conservative GTC buy-limits BELOW Friday's close at
 named support levels (never chase-priced, per research duty 4), sized as probes
@@ -185,6 +185,32 @@ carries more gap risk than a normal overnight fill.
   pos_in_20d_range 100% (fully extended) even if the spread were fine. Rejected on
   a measured number, not a size guess; removed from the stale Pruned-list mention
   below since this is now a specific, current rejection reason.
+- **AMC** - NEW name (duty 1b, Sunday evening re-hunt, relvol lens). Technically
+  PASSES the EMA trend gate (close 2.65 > EMA21 2.57 > EMA50 2.42, TradingView
+  strong_buy) but key_levels structure reads "range/mixed" with repeated
+  rejections at resistance (shooting star at 2.67 on 08-31, bearish engulfing AT
+  2.67 on 09-03, doji AT 2.76 on 09-04) - chop at a ceiling, not a confirmed
+  breakout. `get_news` shows the catalyst is a CEO-vs-Robinhood tokenization
+  feud, not a fundamental driver, and one Benzinga piece flags the real story is
+  892M diluted shares (up from 100M) - textbook crowd/meme risk (playbook s11:
+  the crowd is often the exit liquidity, ticker-prior bias warning literally
+  about names like this). Watch only; would need a confirmed close above 2.76
+  on real volume before this is anything but chop.
+- **EFX** (Equifax) - NEW name (duty 1b, Sunday evening re-hunt, relvol lens).
+  -6.37% Friday on 2.7x volume. **Fails trend gate: close 177.05 < EMA21 185.33
+  < ... EMA50 177.42**, structure "downtrend (lower highs + lower lows)",
+  TradingView strong_sell/sell corroborating. Also **UNTRADABLE: 2.82% spread**
+  (bid 175/ask 180) - fails both tests independently. Clean pass.
+- **NX** - NEW name (duty 1b, Sunday evening re-hunt, relvol lens). +22.23% on
+  6.99x volume, EMA stack technically passes (22.93 > EMA21 19.9 > EMA50 18.94)
+  despite key_levels mislabeling structure "downtrend" (lagging pivot read) -
+  but **UNTRADABLE: 19.83% spread** (bid 22.21/ask 27.10) kills it regardless of
+  structure. $42.9M dollar volume is real but the quoted market is not tradable
+  at any size.
+- **PL** (Planet Labs) - NEW name (duty 1b, Sunday evening re-hunt, relvol
+  lens). -1.25% on 3.92x volume, $585M dollar volume. **Fails trend gate hard:
+  close 18.12 < EMA21 21.15 < EMA50 23.58**, RSI14 28.0, TradingView
+  strong_sell/strong_sell. Not close.
 - **BE** (Bloom Energy) - NEW name (duty 1b, Sunday re-hunt, turnover lens).
   +7.35% Friday on $4.06B dollar volume, TradingView strong_buy, StockTwits 9
   bull/1 bear, Reddit rank 12 (mentions 13). Real, dated catalyst: confirmed
@@ -231,13 +257,16 @@ rungs) and SMMT hit time_stop 2026-09-05, elapsed over the closed weekend; write
 fresh hold justification or close at the open. (1) check every one of the 7 staged
 rungs above against the weekend's news before trusting any fill - a 3-day-weekend
 fill carries more gap risk than a normal overnight one. (2) AMD/NBIS (added
-2026-09-05 evening), INTC/BE (added 2026-09-06 morning), and AMBA/TITN (added
-2026-09-06 afternoon) all fail either the trend gate or tradability - NBIS closest
-to an EMA flip, BE most extended (100% of 20d range) even if it flips, AMBA in a
-clean confirmed downtrend (not close), TITN passes the gate but is UNTRADABLE on an
-8.76% spread. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all
-still fail trend gate) - re-check again Tuesday for a possible flip, especially
-MU/ALAB given the building DRAM-shortage catalyst. (3) Mandate confirmed
-2026-09-06: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal
-before Thursday. (4) Reset the daily loss budget per playbook s10 fresh for the
-day.
+2026-09-05 evening), INTC/BE (added 2026-09-06 morning), AMBA/TITN (added
+2026-09-06 afternoon), and AMC/EFX/NX/PL (added 2026-09-06 evening) all fail
+either the trend gate or tradability - NBIS closest to an EMA flip, BE most
+extended (100% of 20d range) even if it flips, AMBA in a clean confirmed
+downtrend (not close), TITN passes the gate but is UNTRADABLE on an 8.76%
+spread, AMC passes the EMA gate on paper but is chop at resistance with a
+meme/dilution catalyst (not a real thesis), NX passes the gate but is
+UNTRADABLE at 19.83% spread. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh
+2026-09-05 (all still fail trend gate) - re-check again Tuesday for a possible
+flip, especially MU/ALAB given the building DRAM-shortage catalyst. (3) Mandate
+confirmed 2026-09-06: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag
+for renewal before Thursday. (4) Reset the daily loss budget per playbook s10
+fresh for the day.
