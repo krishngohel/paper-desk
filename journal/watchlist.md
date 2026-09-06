@@ -8,7 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-06 morning (research session, market closed - Sunday).
+Updated 2026-09-06 14:03 CT (research session, market closed - Sunday afternoon,
+4th research leg this weekend).
 Regime unchanged from Friday's close (no new bars possible over the weekend): SPY
 uptrend (770.19, +0.55% vs EMA21, RSI14 55.7), QQQ range/mixed (718.96, +0.66% vs
 EMA21, RSI14 53.6). Friday's tape: a hot August jobs report (+106k beat) pushed
@@ -168,6 +169,22 @@ carries more gap risk than a normal overnight fill.
   close 95.8 > EMA21 - same lagging-EMA50 pattern as SNDK/MU/ALAB. Spread 0.01%
   (TRADABLE). Watch only; the thin/negative catalyst (a PT cut) makes this a lower
   priority re-check than the memory names even if the gate flips.
+- **AMBA** (Ambarella) - NEW name (duty 1b, Sunday afternoon re-hunt, top-40
+  shortlist by dollar volume $327.5M/rel volume 4.43x). **Fails trend gate hard:
+  close 62.89 < EMA21 71.21 < EMA50 71.85**, structure explicit "downtrend (lower
+  highs + lower lows)", TradingView strong_sell/strong_sell corroborating (not just
+  the gate). RSI14 32.4 (oversold but no reversal candle at the 59.35 support doji
+  has been confirmed yet). Spread 0.22% (TRADABLE) - liquidity is fine, structure is
+  not. Watch only; needs a confirmed base + EMA flip before reconsidering, not close
+  to qualifying.
+- **TITN** (Titan Machinery) - NEW name (duty 1b, Sunday afternoon re-hunt,
+  smallcap explore lens). Actually PASSES the trend gate (26.22 > EMA9 21.75 >
+  EMA21 20.29 > EMA50 19.73, TradingView strong_buy) but **UNTRADABLE on spread:
+  bid 24.00/ask 26.20 = 8.76% spread** (playbook s7b) - down ~8.8% the instant you
+  fill, no scalp survives that toll regardless of setup quality. Also RSI14 74.7 and
+  pos_in_20d_range 100% (fully extended) even if the spread were fine. Rejected on
+  a measured number, not a size guess; removed from the stale Pruned-list mention
+  below since this is now a specific, current rejection reason.
 - **BE** (Bloom Energy) - NEW name (duty 1b, Sunday re-hunt, turnover lens).
   +7.35% Friday on $4.06B dollar volume, TradingView strong_buy, StockTwits 9
   bull/1 bear, Reddit rank 12 (mentions 13). Real, dated catalyst: confirmed
@@ -205,7 +222,7 @@ DUOL (closed +306.70, target hit, scored "right"), CHPT (closed -96.00, scored
 unlucky, see lessons.md W2), TSLA (closed -402.25 combined across 2 rungs, scored
 unlucky both - see 2026-09-04 daily review, gate-outage attribution), VRNS/TLYS/
 TENB/IREN/AFRM/PYPL/ESTC/RBRK/GAP/WDAY/DKNG/PD/FROG/NTSK/FIGR/MMED/FSLY/CRDO/AXON/
-ENOV/SN/WETO/KORU/EIX/PCG/HWM/TITN/FRVO/MRVL/MDB/PANW/STDN/MRNA/PURR - quiet or no
+ENOV/SN/WETO/KORU/EIX/PCG/HWM/FRVO/MRVL/MDB/PANW/STDN/MRNA/PURR - quiet or no
 directional edge; re-add only on new evidence.
 
 Next session (Tuesday's PLANNING leg, pre-market 2026-09-08, first session after the
@@ -214,10 +231,13 @@ rungs) and SMMT hit time_stop 2026-09-05, elapsed over the closed weekend; write
 fresh hold justification or close at the open. (1) check every one of the 7 staged
 rungs above against the weekend's news before trusting any fill - a 3-day-weekend
 fill carries more gap risk than a normal overnight one. (2) AMD/NBIS (added
-2026-09-05 evening) and INTC/BE (added 2026-09-06) all fail trend gate - NBIS
-closest to flipping, BE most extended (100% of 20d range) even if it flips.
-SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all still fail
-trend gate) - re-check again Tuesday for a possible flip, especially MU/ALAB given
-the building DRAM-shortage catalyst. (3) Mandate confirmed 2026-09-06: expires
-2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal before Thursday.
-(4) Reset the daily loss budget per playbook s10 fresh for the day.
+2026-09-05 evening), INTC/BE (added 2026-09-06 morning), and AMBA/TITN (added
+2026-09-06 afternoon) all fail either the trend gate or tradability - NBIS closest
+to an EMA flip, BE most extended (100% of 20d range) even if it flips, AMBA in a
+clean confirmed downtrend (not close), TITN passes the gate but is UNTRADABLE on an
+8.76% spread. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all
+still fail trend gate) - re-check again Tuesday for a possible flip, especially
+MU/ALAB given the building DRAM-shortage catalyst. (3) Mandate confirmed
+2026-09-06: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal
+before Thursday. (4) Reset the daily loss budget per playbook s10 fresh for the
+day.
