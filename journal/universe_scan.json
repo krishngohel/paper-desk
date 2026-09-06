@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-05T11:06:56",
+ "ts": "2026-09-05T19:34:28",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -137,7 +137,7 @@
    "symbol": "KORU",
    "close": 23.47,
    "change_pct": 13.44,
-   "dollar_volume_m": 607.8,
+   "dollar_volume_m": 607.9,
    "rel_volume": 1.36,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
@@ -200,7 +200,7 @@
    "symbol": "TSLL",
    "close": 9.15,
    "change_pct": -11.85,
-   "dollar_volume_m": 1244.7,
+   "dollar_volume_m": 1244.8,
    "rel_volume": 1.34,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -227,7 +227,7 @@
    "symbol": "MUU",
    "close": 34.25,
    "change_pct": 11.6,
-   "dollar_volume_m": 1144.0,
+   "dollar_volume_m": 1144.1,
    "rel_volume": 1.56,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"

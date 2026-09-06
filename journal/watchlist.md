@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-05 late morning (research session, market closed - Saturday).
+Updated 2026-09-05 evening (research session, market closed - Saturday).
 Regime unchanged from Friday's close: SPY uptrend (770.19, +0.55% vs EMA21, RSI14
 55.7), QQQ range/mixed (718.96, +0.66% vs EMA21, RSI14 53.6). Friday's tape: a hot
 August jobs report (+106k beat) pushed September Fed-hike odds from 49.4% to 60.2%,
@@ -131,6 +131,20 @@ carries more gap risk than a normal overnight fill.
   StockTwits) and a real theme (crypto rally) do not override the gate. Last-hour 5m
   shows a morning-star reversal at support 17.44 - watch for the flip, re-check
   Tuesday.
+- **AMD** - NEW name (duty 1b, evening re-hunt). screen.py explore/turnover lens:
+  +4.69% Friday, $9.3B dollar volume, TradingView buy/strong_buy. News: same
+  sector-wide AI-chip-capacity story (TSM "scrambles to feed the AI boom",
+  Benzinga 2026-09-04), no AMD-specific catalyst. **Fails trend gate: EMA21 475.63
+  < EMA50 496.22** despite close 477.57 barely above EMA21; structure "range/mixed".
+  Spread 0.05% (TRADABLE). Watch only; re-check Tuesday.
+- **NBIS** (Nebius) - NEW name (duty 1b, evening re-hunt). +7.48% Friday on
+  $3.3B dollar volume, TradingView buy/strong_buy, StockTwits 16 bull/3 bear
+  (best sentiment ratio of tonight's candidates). Daily candles show a genuine
+  multi-touch defense of 201.89 (2 dojis + bullish engulfing, then a marubozu buy
+  bar) - real level, would be L8-qualified if the gate passed. **Fails trend gate:
+  EMA21 216.36 < EMA50 219.46**, structure "range/mixed". Spread 0.12% (TRADABLE).
+  Watch only; re-check Tuesday for the EMA flip - closest of tonight's misses to
+  qualifying.
 - **SNOW** - faded hard off Wednesday's highs (spiked 384.56, closed ~355-356, well
   below VWAP). Never re-verified against a live session since 09-03. Stale; needs a
   confirmed reclaim of VWAP/range before treating as tradeable again.
@@ -162,7 +176,8 @@ directional edge; re-add only on new evidence.
 Next session (Tuesday's PLANNING leg, pre-market 2026-09-08, first session after the
 Labor Day weekend): check every one of the 7 staged rungs above against the weekend's
 news before trusting any fill - a 3-day-weekend fill carries more gap risk than a
-normal overnight one. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05
+normal overnight one. AMD/NBIS added tonight (2026-09-05 evening) - both fail trend
+gate, NBIS closest to flipping. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05
 (all still fail trend gate) - re-check again Tuesday for a possible flip, especially
 MU/ALAB given the building DRAM-shortage catalyst. Mandate confirmed 2026-09-05:
 expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal before Thursday.
