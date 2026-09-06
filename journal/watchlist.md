@@ -8,15 +8,30 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-05 evening (research session, market closed - Saturday).
-Regime unchanged from Friday's close: SPY uptrend (770.19, +0.55% vs EMA21, RSI14
-55.7), QQQ range/mixed (718.96, +0.66% vs EMA21, RSI14 53.6). Friday's tape: a hot
-August jobs report (+106k beat) pushed September Fed-hike odds from 49.4% to 60.2%,
-sending Bitcoin below $80k and dragging every BTC-proxy (COIN, MSTR, gold miners)
-and several richly-valued growth names (LULU -17.4%, FICO -16.7%, PATH -16.6%, GWRE
--19.9%) down hard - a real, identified macro catalyst, not noise. Idiosyncratic
-winners existed alongside the selloff: SNDK +11.9% and IOT +3.7% both moved on their
-own news, independent of the crypto/rate-hike story.
+Updated 2026-09-06 morning (research session, market closed - Sunday).
+Regime unchanged from Friday's close (no new bars possible over the weekend): SPY
+uptrend (770.19, +0.55% vs EMA21, RSI14 55.7), QQQ range/mixed (718.96, +0.66% vs
+EMA21, RSI14 53.6). Friday's tape: a hot August jobs report (+106k beat) pushed
+September Fed-hike odds from 49.4% to 60.2%, sending Bitcoin below $80k and
+dragging every BTC-proxy (COIN, MSTR, gold miners) and several richly-valued
+growth names (LULU -17.4%, FICO -16.7%, PATH -16.6%, GWRE -19.9%) down hard - a
+real, identified macro catalyst, not noise. Idiosyncratic winners existed
+alongside the selloff: SNDK +11.9% and IOT +3.7% both moved on their own news,
+independent of the crypto/rate-hike story.
+
+**TIME_STOP FLAG for Tuesday's planning leg (surfaced this session):** all 3 open
+book records (CRWD rungs t-2026-09-03-003/005, SMMT t-2026-09-03-007) carry
+`time_stop: 2026-09-05` with exit_condition "...or by 2026-09-05 review, whichever
+comes first" - that date has now elapsed (today is Sunday 2026-09-06) with the
+market closed the entire time, so it was never actionable. This is NOT a stop/
+target breach (both positions remain healthy, well inside their bands - see Book
+below) but the WRITTEN exit condition's time leg has technically passed. Research
+sessions place no market orders and weekend quotes are stale/broken (CRWD bid
+201.87/ask 0.00 as of the last check - unusable). **Tuesday's planning leg must
+make this the FIRST decision on the book: either write a fresh justification to
+extend the time_stop (per L3 - a held position needs a current thesis, not just
+an old one that hasn't been stopped out) or close at the open.** Do not let this
+elapse silently a second time.
 
 **New this session: SNDK's move is not idiosyncratic - it's the leading edge of a
 sector-wide AI memory/DRAM shortage story.** `get_news` confirms a TechInsights
@@ -145,6 +160,26 @@ carries more gap risk than a normal overnight fill.
   EMA21 216.36 < EMA50 219.46**, structure "range/mixed". Spread 0.12% (TRADABLE).
   Watch only; re-check Tuesday for the EMA flip - closest of tonight's misses to
   qualifying.
+- **INTC** - NEW name (duty 1b, Sunday re-hunt, turnover/gainers lens). +4.51%
+  Friday, $9.25B dollar volume, TradingView buy/strong_buy, StockTwits 13 bull/0
+  bear. No real catalyst though - Mizuho reiterated Neutral and CUT its PT to $92
+  the same day (below spot), part of the broad chip-sector jobs-report move, not
+  an Intel-specific story. **Fails trend gate: EMA21 93.59 < EMA50 102.28** despite
+  close 95.8 > EMA21 - same lagging-EMA50 pattern as SNDK/MU/ALAB. Spread 0.01%
+  (TRADABLE). Watch only; the thin/negative catalyst (a PT cut) makes this a lower
+  priority re-check than the memory names even if the gate flips.
+- **BE** (Bloom Energy) - NEW name (duty 1b, Sunday re-hunt, turnover lens).
+  +7.35% Friday on $4.06B dollar volume, TradingView strong_buy, StockTwits 9
+  bull/1 bear, Reddit rank 12 (mentions 13). Real, dated catalyst: confirmed
+  S&P 500 index-inclusion news (Benzinga 2026-09-04, "Bloom Energy... Set to
+  Join S&P 500") plus falling Treasury yields - inclusion is a genuine forced-flow
+  catalyst, not sentiment. Daily candles: bullish engulfing at support 197.5
+  (2026-09-01), marubozu momentum bar (2026-09-04). **Fails trend gate: EMA21
+  220.82 < EMA50 235.07** despite close 252.87 well above both; pos_in_20d_range
+  100% (fully extended, at highs - even if the gate flipped, chasing a new high
+  with no pullback would need a fresh, tighter thesis). Spread 0.13% (TRADABLE).
+  Watch only; re-check Tuesday for the EMA flip AND a pullback entry, not a
+  chase at the current extension.
 - **SNOW** - faded hard off Wednesday's highs (spiked 384.56, closed ~355-356, well
   below VWAP). Never re-verified against a live session since 09-03. Stale; needs a
   confirmed reclaim of VWAP/range before treating as tradeable again.
@@ -174,11 +209,15 @@ ENOV/SN/WETO/KORU/EIX/PCG/HWM/TITN/FRVO/MRVL/MDB/PANW/STDN/MRNA/PURR - quiet or 
 directional edge; re-add only on new evidence.
 
 Next session (Tuesday's PLANNING leg, pre-market 2026-09-08, first session after the
-Labor Day weekend): check every one of the 7 staged rungs above against the weekend's
-news before trusting any fill - a 3-day-weekend fill carries more gap risk than a
-normal overnight one. AMD/NBIS added tonight (2026-09-05 evening) - both fail trend
-gate, NBIS closest to flipping. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05
-(all still fail trend gate) - re-check again Tuesday for a possible flip, especially
-MU/ALAB given the building DRAM-shortage catalyst. Mandate confirmed 2026-09-05:
-expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal before Thursday.
-Reset the daily loss budget per playbook s10 fresh for the day.
+Labor Day weekend): **(0) resolve the TIME_STOP FLAG above FIRST** - CRWD (both
+rungs) and SMMT hit time_stop 2026-09-05, elapsed over the closed weekend; write a
+fresh hold justification or close at the open. (1) check every one of the 7 staged
+rungs above against the weekend's news before trusting any fill - a 3-day-weekend
+fill carries more gap risk than a normal overnight one. (2) AMD/NBIS (added
+2026-09-05 evening) and INTC/BE (added 2026-09-06) all fail trend gate - NBIS
+closest to flipping, BE most extended (100% of 20d range) even if it flips.
+SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all still fail
+trend gate) - re-check again Tuesday for a possible flip, especially MU/ALAB given
+the building DRAM-shortage catalyst. (3) Mandate confirmed 2026-09-06: expires
+2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag for renewal before Thursday.
+(4) Reset the daily loss budget per playbook s10 fresh for the day.
