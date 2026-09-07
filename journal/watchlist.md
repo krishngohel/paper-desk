@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-06 19:34 CT (research session, market closed - Sunday evening,
-6th research leg this weekend).
+Updated 2026-09-07 22:10 CT (research session, market closed - Labor Day evening,
+7th research leg this weekend).
 Regime unchanged from Friday's close (no new bars possible over the weekend): SPY
 uptrend (770.19, +0.55% vs EMA21, RSI14 55.7), QQQ range/mixed (718.96, +0.66% vs
 EMA21, RSI14 53.6). Friday's tape: a hot August jobs report (+106k beat) pushed
@@ -196,6 +196,31 @@ carries more gap risk than a normal overnight fill.
   the crowd is often the exit liquidity, ticker-prior bias warning literally
   about names like this). Watch only; would need a confirmed close above 2.76
   on real volume before this is anything but chop.
+- **GWRE** (Guidewire) - NEW name (duty 1b, Labor Day evening re-hunt, main
+  shortlist - -19.93% Friday on 3.93x volume, $758M dollar volume, never checked
+  despite three research legs passing over it). Post-drop bull case is real:
+  Oppenheimer reiterated Outperform PT $210 and Wells Fargo Overweight PT $195
+  (both 2026-09-04, both well above spot 162.42) - analysts see value here. But
+  structure says otherwise: **close 162.42 is below EMA21 183.41** (fails the
+  gate's first leg outright, not just EMA21/50 ordering), `structure` "range/
+  mixed", `pos_in_20d_range_pct` 0% (sitting at the 20-day low), TradingView
+  sell/sell/sell. A shooting star (09-01, rejected 205.27) preceded the crash -
+  sellers were already in control before the drop. This is a falling-knife
+  post-earnings-gap, not a defended level (playbook s2: "a downtrend stock at
+  support is a watch item, not a buy, until structure turns"). Watch only;
+  needs an actual EMA flip and a confirmed higher low, not just analyst PTs,
+  before this is tradeable. next_earnings 2026-12-03.
+- **ASAN** (Asana) - NEW name (duty 1b, Labor Day evening re-hunt, main
+  shortlist - -12.69% Friday on 3.71x volume, $152M dollar volume). Beat Q2
+  estimates and raised full-year revenue guidance but gave a soft Q3 EPS
+  outlook (Benzinga 2026-09-04) - a guide-down disguised as a beat, and
+  multiple desks raised PTs anyway (DA Davidson $9, Baird $10, both still
+  below/near spot 8.81, weaker support than GWRE's analyst gap). **Fails trend
+  gate outright: close 8.81 < EMA9 9.65 < ... and `structure` explicit
+  "downtrend (lower highs + lower lows)"**, TradingView sell/sell,
+  `pos_in_20d_range_pct` 0%. StockTwits 9 bull/4 bear - mild crowd optimism,
+  not a thesis (playbook s11). Watch only; needs a confirmed base before
+  reconsidering. next_earnings 2026-12-02.
 - **EFX** (Equifax) - NEW name (duty 1b, Sunday evening re-hunt, relvol lens).
   -6.37% Friday on 2.7x volume. **Fails trend gate: close 177.05 < EMA21 185.33
   < ... EMA50 177.42**, structure "downtrend (lower highs + lower lows)",
@@ -290,4 +315,8 @@ MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all still fail trend gate)
 building DRAM-shortage catalyst. (3) Mandate re-confirmed 2026-09-06 19:34 CT
 by reading the file directly: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday)
 - flag for renewal before Thursday. (4) Reset the daily loss budget per
-playbook s10 fresh for the day.
+playbook s10 fresh for the day. (5) GWRE and ASAN (added 2026-09-07 evening,
+duty 1b) both checked and rejected - GWRE fails trend gate on close<EMA21
+despite two analyst PT raises above spot, ASAN is in a confirmed downtrend
+despite a Q2 beat; neither worth a re-check until their EMA stacks actually
+turn.
