@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-06 17:10 CT (research session, market closed - Sunday evening,
-5th research leg this weekend).
+Updated 2026-09-06 19:34 CT (research session, market closed - Sunday evening,
+6th research leg this weekend).
 Regime unchanged from Friday's close (no new bars possible over the weekend): SPY
 uptrend (770.19, +0.55% vs EMA21, RSI14 55.7), QQQ range/mixed (718.96, +0.66% vs
 EMA21, RSI14 53.6). Friday's tape: a hot August jobs report (+106k beat) pushed
@@ -211,6 +211,25 @@ carries more gap risk than a normal overnight fill.
   lens). -1.25% on 3.92x volume, $585M dollar volume. **Fails trend gate hard:
   close 18.12 < EMA21 21.15 < EMA50 23.58**, RSI14 28.0, TradingView
   strong_sell/strong_sell. Not close.
+- **AOUT** (American Outdoor Brands) - NEW name (duty 1b, 6th weekend pass,
+  gainers lens). +44.66% Friday on 65.46x rel volume, $64.2M dollar volume.
+  Real catalyst: Q1 earnings beat + Roth Capital reiterated Buy, PT raised to
+  $17 (Benzinga 2026-09-04). **Fails trend gate: EMA21 11.46 < EMA50 11.89**
+  (close 14.48 is a fresh earnings gap the EMAs haven't caught up to yet - same
+  lagging-EMA50 pattern as SNDK/MU/ALAB/INTC). Also RSI14 70.3 and
+  pos_in_20d_range 100% - fully extended into 14.80/14.97 resistance, no
+  pullback room even if the gate passed. StockTwits 6 bull/3 bear (thin
+  sample). Spread 0.48% (TRADABLE). Watch only; re-check Tuesday for the EMA
+  flip, lower priority given the extension.
+- **AEHR** (Aehr Test Systems) - NEW name (duty 1b, 6th weekend pass, gainers
+  lens). +13.1% Friday, $390M dollar volume, hammer-defended 74.23 on 09-01
+  then a marubozu buy bar 09-04 - genuine multi-touch structure. Same
+  semiconductor-test-equipment space as the building AI-memory story (SNDK/MU/
+  ALAB). **Fails trend gate: close 86.26 < EMA21 92.85** (fails the gate's
+  first leg, not just the EMA21/50 ordering), structure "range/mixed",
+  TradingView neutral (moving_averages sell, oscillators buy - mixed signal).
+  StockTwits 11 bull/1 bear (best ratio of tonight's set). Spread 0.58%
+  (TRADABLE). Watch only; needs to reclaim EMA21 before qualifying.
 - **BE** (Bloom Energy) - NEW name (duty 1b, Sunday re-hunt, turnover lens).
   +7.35% Friday on $4.06B dollar volume, TradingView strong_buy, StockTwits 9
   bull/1 bear, Reddit rank 12 (mentions 13). Real, dated catalyst: confirmed
@@ -258,15 +277,17 @@ fresh hold justification or close at the open. (1) check every one of the 7 stag
 rungs above against the weekend's news before trusting any fill - a 3-day-weekend
 fill carries more gap risk than a normal overnight one. (2) AMD/NBIS (added
 2026-09-05 evening), INTC/BE (added 2026-09-06 morning), AMBA/TITN (added
-2026-09-06 afternoon), and AMC/EFX/NX/PL (added 2026-09-06 evening) all fail
-either the trend gate or tradability - NBIS closest to an EMA flip, BE most
-extended (100% of 20d range) even if it flips, AMBA in a clean confirmed
-downtrend (not close), TITN passes the gate but is UNTRADABLE on an 8.76%
-spread, AMC passes the EMA gate on paper but is chop at resistance with a
-meme/dilution catalyst (not a real thesis), NX passes the gate but is
-UNTRADABLE at 19.83% spread. SNDK/CIFR/MU/ALAB/WDC EMA stacks re-verified fresh
-2026-09-05 (all still fail trend gate) - re-check again Tuesday for a possible
-flip, especially MU/ALAB given the building DRAM-shortage catalyst. (3) Mandate
-confirmed 2026-09-06: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday) - flag
-for renewal before Thursday. (4) Reset the daily loss budget per playbook s10
-fresh for the day.
+2026-09-06 afternoon), AMC/EFX/NX/PL (added 2026-09-06 evening), and AOUT/AEHR
+(added 2026-09-06 late evening) all fail either the trend gate or tradability -
+NBIS closest to an EMA flip, BE most extended (100% of 20d range) even if it
+flips, AMBA in a clean confirmed downtrend (not close), TITN passes the gate but
+is UNTRADABLE on an 8.76% spread, AMC passes the EMA gate on paper but is chop
+at resistance with a meme/dilution catalyst (not a real thesis), NX passes the
+gate but is UNTRADABLE at 19.83% spread, AOUT is a fresh earnings gap with EMAs
+still lagging (extended, low priority), AEHR needs to reclaim EMA21. SNDK/CIFR/
+MU/ALAB/WDC EMA stacks re-verified fresh 2026-09-05 (all still fail trend gate)
+- re-check again Tuesday for a possible flip, especially MU/ALAB given the
+building DRAM-shortage catalyst. (3) Mandate re-confirmed 2026-09-06 19:34 CT
+by reading the file directly: expires 2026-09-10T21:11:52Z (~16:11 CT Thursday)
+- flag for renewal before Thursday. (4) Reset the daily loss budget per
+playbook s10 fresh for the day.
