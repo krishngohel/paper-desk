@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-08T08:34:42",
+ "ts": "2026-09-08T08:36:22",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1,
  "filters": {
@@ -11,7 +11,7 @@
    "symbol": "WDC",
    "close": 467.31,
    "change_pct": -0.03,
-   "dollar_volume_m": 51.3,
+   "dollar_volume_m": 51.6,
    "rel_volume": 0.02,
    "market_cap_b": 168.48,
    "exchange": "NASDAQ"
@@ -26,7 +26,7 @@
     "symbol": "WDC",
     "close": 467.31,
     "change_pct": -0.03,
-    "dollar_volume_m": 51.3,
+    "dollar_volume_m": 51.6,
     "rel_volume": 0.02,
     "market_cap_b": 168.48,
     "found_by": "gainers"
