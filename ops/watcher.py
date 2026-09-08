@@ -28,7 +28,7 @@ import os
 import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -348,22 +348,43 @@ def unwedge_gate_if_phantom() -> bool:
         if r.status_code != 404:
             log(f"unwedge: order {action.client_order_id} may exist at broker ({r.status_code}) - human needed")
             return False
-        since = str(action.created_at)[:19] + "Z" if action.created_at else None
-        url = f"https://paper-api.alpaca.markets/v2/orders?status=all&symbols={sym}&limit=50"
-        if since:
-            url += f"&after={since}"
+        # created_at is a datetime: format it explicitly. str()[:19] produces a
+        # SPACE separator, which the API rejects - that silently disabled this
+        # whole check on 2026-09-08 ("order history unreadable").
+        created = action.created_at
+        if hasattr(created, "strftime"):
+            since = created.strftime("%Y-%m-%dT%H:%M:%SZ")
+            look_back = (created - timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        else:
+            since = str(created).replace(" ", "T")[:19] + "Z"
+            look_back = since
+        url = (f"https://paper-api.alpaca.markets/v2/orders?status=all&symbols={sym}"
+               f"&limit=50&after={look_back}")
         r2 = requests.get(url, headers=hdr, timeout=15)
         if not r2.ok:
             log("unwedge: order history unreadable - leaving the marker alone")
             return False
-        if r2.json():
-            log(f"unwedge: broker HAS {len(r2.json())} {sym} order(s) since the marker - human needed")
+        orders = r2.json()
+        # Anything submitted AT or AFTER the marker is unexplained -> refuse.
+        after_marker = [o for o in orders if str(o.get("submitted_at", "")) >= since]
+        if after_marker:
+            log(f"unwedge: broker has {len(after_marker)} {sym} order(s) at/after the marker - human needed")
             return False
+        # Orders that filled just BEFORE it are legitimate and explain position
+        # drift: on 2026-09-08 a 15-share sell filled 4s before a phantom 30-share
+        # marker was written, so pre_position_qty was already stale on arrival.
+        drift = 0.0
+        for o in orders:
+            fq = _num(o.get("filled_qty")) or 0.0
+            drift += -fq if str(o.get("side")).lower() == "sell" else fq
         held = (CACHE.get("qty") or {}).get(sym)
         expected = _num(action.pre_position_qty)
-        if expected is not None and held is not None and abs(held - expected) > 1e-9:
-            log(f"unwedge: {sym} position {held} != pre_position_qty {expected} - something executed, human needed")
-            return False
+        if expected is not None and held is not None:
+            reconciled = expected + drift
+            if abs(held - reconciled) > 1e-9:
+                log(f"unwedge: {sym} held {held} != {expected} pre + {drift} from other fills "
+                    f"= {reconciled} - unexplained, human needed")
+                return False
     except Exception as exc:  # noqa: BLE001
         log(f"unwedge: verification failed ({exc}) - leaving the marker alone")
         return False
@@ -521,6 +542,16 @@ def tick(state: dict) -> None:
         return
     if death_check(state):
         return
+
+    # Check the gate EVERY tick, not only when an exit is refused. A wedge with
+    # no stop breached blocks all new orders silently: on 2026-09-08 one sat for
+    # 7h10m because nothing needed to exit, so nothing ever called this.
+    if time.time() - state.get("last_gate_check", 0) >= 60:
+        state["last_gate_check"] = time.time()
+        try:
+            unwedge_gate_if_phantom()
+        except Exception as exc:  # noqa: BLE001 - never let this kill the watcher
+            log(f"gate check failed: {exc}")
 
     records = open_records()
     try:
