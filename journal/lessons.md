@@ -89,7 +89,12 @@ new instances for 15 trading days is discarded as noise.
   single-weak-note-plus-lagging-structure closes. Checked 2026-09-04 daily
   review against the day's only closes (TSLA x2, t-2026-09-03-006/008) - not
   a match (multi-catalyst B-grade thesis, not a single weak note), still
-  n=1, no change.
+  n=1, no change. Checked again 2026-09-08 weekly review against the only
+  trade closed since (CRWD rung1, t-2026-09-03-003, confirmation-trigger
+  breakout that failed to continue past resistance) - not a match (real
+  multi-headline catalyst cluster at entry, closed on a time-stop/structure
+  downgrade, not a single-weak-note setup), still n=1, ~5 of 15 trading days
+  elapsed, no promotion/discard.
 
 ## Archive
 
