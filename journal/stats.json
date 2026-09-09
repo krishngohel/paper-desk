@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-09T14:59:11",
+ "computed_at": "2026-09-09T15:26:46",
  "overall": {
   "n": 16,
   "closed": 16,
@@ -11,7 +11,7 @@
   "largest_win": 306.7,
   "largest_loss": -247.54
  },
- "open_positions": 3,
+ "open_positions": 4,
  "by_grade": {
   "B": {
    "n": 7,
@@ -254,8 +254,7 @@
  "review_verdicts": {
   "lucky": 1,
   "unlucky": 11,
-  "right": 3,
-  "unscored": 1
+  "right": 4
  },
  "by_exit_reason": {
   "exit-condition-hit": {

@@ -94,7 +94,10 @@ new instances for 15 trading days is discarded as noise.
   breakout that failed to continue past resistance) - not a match (real
   multi-headline catalyst cluster at entry, closed on a time-stop/structure
   downgrade, not a single-weak-note setup), still n=1, ~5 of 15 trading days
-  elapsed, no promotion/discard.
+  elapsed, no promotion/discard. Checked again 2026-09-09 daily review against
+  the only trade closed since (CRWD rung2, t-2026-09-03-005 - the second rung
+  of the same ladder, closed on the identical decision) - not a match for the
+  same reason, still n=1, ~6 of 15 trading days elapsed, no promotion/discard.
 
 ## Archive
 
