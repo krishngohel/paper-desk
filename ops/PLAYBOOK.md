@@ -210,6 +210,47 @@ range/mixed regime, several of which were bouncing off defended support. That is
 the rule misfiring, not the market being empty. State which kind of thesis you
 hold BEFORE citing volume, and apply the gate only to continuation setups.
 
+## 6a. THE PRIMARY SETUP - momentum continuation (the only measured edge)
+
+Added 2026-09-10. Everything else in this playbook is craft or prior. This is the
+one archetype that has cleared a properly corrected significance test, so it gets
+first call on capital and attention.
+
+**The setup, exactly:**
+- **Entry:** the last **3 daily closes strictly rising**, AND `close > EMA9 > EMA21`.
+  Enter at the next open. Never buy a down day - "any downward motion, don't buy".
+- **Stop:** under the low of the launch bars (the entry bar and the one before it).
+- **Exit:** **two CONSECUTIVE lower closes**, then sell. Not one.
+- **Hold:** days, not minutes. Let it run until the exit rule fires.
+
+**Measured** (14 symbols, 400 days, 287 trades, costs 10bp round trip, stop
+assumed to fill before target, gaps at the open):
+
+| exit rule | trades | win rate | net/trade | t |
+|---|---|---|---|---|
+| first down close | 287 | 45.6% | +0.93% | 2.22 |
+| break of prior low | 287 | 40.8% | +1.03% | 2.27 |
+| **two down closes** | **287** | **36.9%** | **+1.96%** | **2.85** |
+
+p = 4.3e-03 against a Sidak bar of 8.5e-03 for the 6 configurations searched -
+**significant**. Average win **+12.1%** against average loss -3.98%.
+
+**Why two down closes, not one.** This is the counter-intuitive part and the
+whole edge: exiting on the FIRST down day halves expectancy (+0.93% vs +1.96%)
+because average win collapses from 12.1% to 6.1%. Ordinary pullbacks inside a
+real uptrend read as reversals. You must sit through one down day.
+
+**Why this must NOT be run intraday.** The identical rules on 5-minute bars lose
+-0.12%/trade with t = -13.5 across 3,337 trades - reliably, significantly
+negative. Win rate collapses to 18.7% because entering after 2-3 rising bars buys
+a local high and exiting on the first turn sells a local low. The edge lives in
+the HOLDING PERIOD: a fixed ~0.10% round-trip cost is rounding error on a 12%
+move and fatal on a 0.3% one. Scalping this idea is not a smaller version of it,
+it is the inverse of it.
+
+**Expect roughly one trade every other day per 14 symbols.** More volume comes
+from widening the symbol universe, never from shortening the timeframe.
+
 ## 6b. Evidence standards - what may be called an edge
 
 Adopted 2026-09-04 after a measured "improvement" failed its own significance

@@ -260,7 +260,31 @@ def good_quote(symbol: str) -> tuple[float, float] | None:
     return None
 
 
+def wait_until_released(symbol: str, timeout: float = 12.0) -> bool:
+    """Block until the broker frees shares that a just-cancelled order was holding.
+
+    Cancellation is ASYNCHRONOUS. On 2026-09-10 the watcher cancelled LITE's
+    resting target and market-sold 2s later; the broker still reported
+    available=0, existing_qty=4, held_for_orders and refused with code 40310000.
+    The stop was 981.00 and the position finally exited at 959.51 - a ~2.2%
+    overrun caused purely by not waiting.
+    """
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            payload = service.get_open_orders(profile_id=PROFILE) or {}
+            orders = payload.get("orders") or payload.get("open_orders") or []
+            if not any(str(o.get("symbol", "")).upper() == symbol.upper() for o in orders):
+                return True
+        except Exception:  # noqa: BLE001
+            pass
+        time.sleep(0.75)
+    log(f"{symbol}: resting orders still showing after {timeout:.0f}s - selling anyway")
+    return False
+
+
 def cancel_symbol_orders(symbol: str) -> None:
+    cancelled_any = False
     try:
         payload = service.get_open_orders(profile_id=PROFILE) or {}
         orders = payload.get("orders") or payload.get("open_orders") or []
@@ -273,8 +297,11 @@ def cancel_symbol_orders(symbol: str) -> None:
                 try:
                     service.cancel_order(str(oid), profile_id=PROFILE, symbol=symbol, session_id="watcher")
                     log(f"cancelled resting order {oid} on {symbol}")
+                    cancelled_any = True
                 except Exception as exc:  # noqa: BLE001
                     log(f"cancel failed on {symbol}: {exc}")
+    if cancelled_any:
+        wait_until_released(symbol)
 
 
 def market_sell(symbol: str, qty: float, why: str) -> dict:
