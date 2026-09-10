@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-10T08:39:21",
+ "ts": "2026-09-10T08:40:18",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1,
  "filters": {
@@ -11,7 +11,7 @@
    "symbol": "NVDA",
    "close": 223.42,
    "change_pct": -0.11,
-   "dollar_volume_m": 1079.3,
+   "dollar_volume_m": 1082.1,
    "rel_volume": 0.03,
    "market_cap_b": 5384.42,
    "exchange": "NASDAQ"
@@ -26,7 +26,7 @@
     "symbol": "NVDA",
     "close": 223.42,
     "change_pct": -0.11,
-    "dollar_volume_m": 1079.3,
+    "dollar_volume_m": 1082.1,
     "rel_volume": 0.03,
     "market_cap_b": 5384.42,
     "found_by": "gainers"
