@@ -400,9 +400,28 @@ def unwedge_gate_if_phantom() -> bool:
         # Orders that filled just BEFORE it are legitimate and explain position
         # drift: on 2026-09-08 a 15-share sell filled 4s before a phantom 30-share
         # marker was written, so pre_position_qty was already stale on arrival.
+        # Only count fills inside a short race window immediately before the
+        # marker, though - a fill minutes earlier already landed well before
+        # pre_position_qty was read, so it's already baked into pre_position_qty;
+        # re-adding it here double-counts and produces a false "unexplained"
+        # mismatch (2026-09-14: a ZS buy that filled 3 minutes before an unrelated
+        # phantom ZS marker made a genuinely phantom order look unresolvable).
+        RACE_WINDOW_S = 15
+        since_dt = datetime.strptime(since, "%Y-%m-%dT%H:%M:%SZ")
         drift = 0.0
         for o in orders:
             fq = _num(o.get("filled_qty")) or 0.0
+            if fq <= 0:
+                continue
+            filled_at = o.get("filled_at")
+            if not filled_at:
+                continue
+            try:
+                filled_dt = datetime.strptime(str(filled_at)[:19], "%Y-%m-%dT%H:%M:%S")
+            except ValueError:
+                continue
+            if (since_dt - filled_dt).total_seconds() > RACE_WINDOW_S:
+                continue
             drift += -fq if str(o.get("side")).lower() == "sell" else fq
         held = (CACHE.get("qty") or {}).get(sym)
         expected = _num(action.pre_position_qty)
