@@ -196,6 +196,7 @@ img, svg, canvas { max-width:100%; }
   <h1>Paper Desk <em>· Live</em></h1>
   <div class="stat big"><span>Today's P/L</span><b id="daypl">—</b></div>
   <div class="stat big"><span>All-time P/L</span><b id="allpl">—</b></div>
+  <div class="stat big"><span>Realized P/L</span><b id="realpl">—</b></div>
   <div class="stat"><span>Account value</span><b id="eq">—</b></div>
   <div class="stat"><span>Cash ready</span><b id="cash">—</b></div>
   <div class="stat"><span>Holdings</span><b id="npos">—</b></div>
@@ -606,6 +607,10 @@ async function refresh() {
     dayBase = prior.length ? Number(prior[prior.length - 1].equity) : null;
   }
   setPl("daypl", eqN && dayBase ? eqN - dayBase : null, dayBase);
+  // closed-trade ledger P/L only - diverges from all-time P/L (account equity vs
+  // $100k start) whenever open positions carry unrealized gain/loss
+  const realized = s.stats && typeof s.stats.total_pnl === "number" ? s.stats.total_pnl : null;
+  setPl("realpl", realized, 100000);
 
   const a = s.agents, lock = a.session_lock;
   const thinking = lock && lock.age < 1500;
