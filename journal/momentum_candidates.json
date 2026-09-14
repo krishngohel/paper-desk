@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-14T13:58:09",
+ "ts": "2026-09-14T14:12:57",
  "screened": 51,
  "candidates": [
   {
@@ -159,20 +159,6 @@
    "risk_pct": 16.48
   },
   {
-   "symbol": "SAIL",
-   "close": 19.96,
-   "ema9": 18.52,
-   "ema21": 18.46,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 133.6,
-   "pct_up_3d": 13.54,
-   "suggested_stop": 16.62,
-   "risk_per_share": 3.34,
-   "risk_pct": 16.73
-  },
-  {
    "symbol": "ZS",
    "close": 190.81,
    "ema9": 173.64,
@@ -185,6 +171,20 @@
    "suggested_stop": 160.75,
    "risk_per_share": 30.06,
    "risk_pct": 15.75
+  },
+  {
+   "symbol": "SAIL",
+   "close": 19.96,
+   "ema9": 18.52,
+   "ema21": 18.46,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 133.6,
+   "pct_up_3d": 13.54,
+   "suggested_stop": 16.62,
+   "risk_per_share": 3.34,
+   "risk_pct": 16.73
   },
   {
    "symbol": "TYRA",
@@ -201,20 +201,6 @@
    "risk_pct": 14.0
   },
   {
-   "symbol": "CRWD",
-   "close": 238.16,
-   "ema9": 215.23,
-   "ema21": 210.91,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 4607.1,
-   "pct_up_3d": 14.61,
-   "suggested_stop": 204.44,
-   "risk_per_share": 33.72,
-   "risk_pct": 14.16
-  },
-  {
    "symbol": "KORU",
    "close": 19.58,
    "ema9": 21.61,
@@ -227,6 +213,20 @@
    "suggested_stop": 18.35,
    "risk_per_share": 1.23,
    "risk_pct": 6.27
+  },
+  {
+   "symbol": "CRWD",
+   "close": 238.16,
+   "ema9": 215.23,
+   "ema21": 210.91,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 4607.1,
+   "pct_up_3d": 14.61,
+   "suggested_stop": 204.44,
+   "risk_per_share": 33.72,
+   "risk_pct": 14.16
   },
   {
    "symbol": "NOWL",
@@ -257,20 +257,6 @@
    "risk_pct": 13.73
   },
   {
-   "symbol": "TENB",
-   "close": 34.37,
-   "ema9": 33.53,
-   "ema21": 34.39,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 262.3,
-   "pct_up_3d": 2.06,
-   "suggested_stop": 29.97,
-   "risk_per_share": 4.4,
-   "risk_pct": 12.79
-  },
-  {
    "symbol": "SOXS",
    "close": 50.65,
    "ema9": 47.26,
@@ -283,6 +269,20 @@
    "suggested_stop": 43.12,
    "risk_per_share": 7.53,
    "risk_pct": 14.87
+  },
+  {
+   "symbol": "TENB",
+   "close": 34.37,
+   "ema9": 33.53,
+   "ema21": 34.39,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 262.3,
+   "pct_up_3d": 2.06,
+   "suggested_stop": 29.97,
+   "risk_per_share": 4.4,
+   "risk_pct": 12.79
   },
   {
    "symbol": "PANW",
@@ -313,20 +313,6 @@
    "risk_pct": 2.87
   },
   {
-   "symbol": "SOXL",
-   "close": 104.15,
-   "ema9": 115.37,
-   "ema21": 120.26,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 7781.6,
-   "pct_up_3d": -17.25,
-   "suggested_stop": 99.87,
-   "risk_per_share": 4.28,
-   "risk_pct": 4.11
-  },
-  {
    "symbol": "SKDD",
    "close": 7.92,
    "ema9": 8.11,
@@ -339,6 +325,20 @@
    "suggested_stop": 6.75,
    "risk_per_share": 1.17,
    "risk_pct": 14.82
+  },
+  {
+   "symbol": "SOXL",
+   "close": 104.15,
+   "ema9": 115.37,
+   "ema21": 120.26,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 7781.6,
+   "pct_up_3d": -17.25,
+   "suggested_stop": 99.87,
+   "risk_per_share": 4.28,
+   "risk_pct": 4.11
   },
   {
    "symbol": "SMCX",
