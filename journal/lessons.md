@@ -98,6 +98,15 @@ new instances for 15 trading days is discarded as noise.
   the only trade closed since (CRWD rung2, t-2026-09-03-005 - the second rung
   of the same ladder, closed on the identical decision) - not a match for the
   same reason, still n=1, ~6 of 15 trading days elapsed, no promotion/discard.
+  Checked again 2026-09-14 weekly review against all 4 trades closed since
+  (COIN t-2026-09-04-001, LITE t-2026-09-09-trg-08-001, META
+  t-2026-09-10-trg-10-001, SMMT t-2026-09-03-007) - none match: COIN was an
+  L8 support-pullback (not a confirmation-breakout), LITE and SMMT both had
+  genuine multi-source/dated catalysts (Corning-Verizon deal + DB Buy init;
+  Akeso Phase 3 readout) with bullish trend structure (not a lagging
+  downtrend), META's catalyst (Meta Muse launch) likewise paired with a
+  clean uptrend stack. Still n=1, ~9 of 15 trading days elapsed, no
+  promotion/discard.
 
 ## Archive
 

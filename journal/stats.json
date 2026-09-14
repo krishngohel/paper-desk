@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-14T15:58:49",
+ "computed_at": "2026-09-14T16:29:56",
  "overall": {
   "n": 20,
   "closed": 20,
@@ -297,9 +297,8 @@
  },
  "review_verdicts": {
   "lucky": 1,
-  "unlucky": 11,
-  "right": 4,
-  "unscored": 4
+  "unlucky": 14,
+  "right": 5
  },
  "by_exit_reason": {
   "exit-condition-hit": {
