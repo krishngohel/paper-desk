@@ -23,14 +23,6 @@ below until a review promotes or discards them.
   cannot be written in two honest sentences, the trade does not exist. Hold is
   a position. (Seed rule.)
 
-- **L4 — Activity is data (training window).** Through 2026-09-04: an entry-less
-  market-hours session is a failed session absent a hard blocker (halt/expiry/
-  closed market/broken data). Selectivity is expressed through setup GRADES and
-  probe sizing, never through abstaining - a C-grade probe that loses teaches
-  more than a hold that proves nothing. The weekly review scores grade-vs-outcome
-  to determine empirically where the bar belongs. (Operator seed rule,
-  2026-08-28, at the user's direction.)
-
 - **L5 — A ladder rung that fills is the thesis that actually happened, not the
   one written.** When a laddered entry fills only its highest/most-extended
   rung while the lower pullback-confirmation rungs go unfilled, the base-hold
@@ -106,8 +98,26 @@ new instances for 15 trading days is discarded as noise.
   Akeso Phase 3 readout) with bullish trend structure (not a lagging
   downtrend), META's catalyst (Meta Muse launch) likewise paired with a
   clean uptrend stack. Still n=1, ~9 of 15 trading days elapsed, no
-  promotion/discard.
+  promotion/discard. Checked again 2026-09-15 weekly review: zero trades
+  closed since the 2026-09-14 review (nothing to compare), still n=1, ~10 of
+  15 trading days elapsed, no promotion/discard.
 
 ## Archive
 
 (Retired rules move here with the retirement reason and evidence.)
+
+- **L4 — Activity is data (training window).** RETIRED 2026-09-15 weekly
+  review. Original text: "Through 2026-09-04: an entry-less market-hours
+  session is a failed session absent a hard blocker... The weekly review
+  scores grade-vs-outcome to determine empirically where the bar belongs."
+  (Operator seed rule, 2026-08-28.) The rule's own window closed 2026-09-04
+  and SOP rule 6 says explicitly "After 2026-09-04 this directive expires and
+  rule 6's normal form resumes" - no review formally closed it out until now,
+  11 trading days late. Process note, not a trade-level finding: at least one
+  ledger sizing_rationale since the window closed (t-2026-09-14-001 BWIN)
+  still invoked "active-training directive: size on conviction, no
+  floor/ceiling" - the sizing latitude itself is likely still valid under L1
+  (mandate v4 removed the size caps permanently, not on a training-window
+  timer), but citing an expired directive by name is sloppy and worth
+  sessions catching themselves. Not reopening or rescoring any past trade
+  over this - each was graded on its own merits above.
