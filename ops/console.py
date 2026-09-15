@@ -21,7 +21,7 @@ import secrets
 import sys
 import threading
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -137,6 +137,23 @@ def _agents() -> dict:
                     "broker_order_id": d.get("broker_order_id")}
     except Exception:  # noqa: BLE001
         pass
+    # Mandate expiry. sdk_order_gate denies every order once consent.expires_at
+    # passes, but nothing warned ahead of time - it lapsed silently on 2026-09-10
+    # and several sessions ran read-only on 09-14 before a human caught it. Surface
+    # the countdown so a lapse (or a close call) is visible here, not discovered
+    # after the fact in the journal.
+    mandate = {}
+    try:
+        from src.live.paths import live_root as _lr2
+        mp = _lr2() / "alpaca" / "mandate.json"
+        d = json.loads(mp.read_text(encoding="utf-8"))
+        exp_raw = ((d.get("consent") or {}).get("expires_at") or "")
+        exp_dt = datetime.fromisoformat(exp_raw.replace("Z", "+00:00"))
+        hours_left = (exp_dt - datetime.now(timezone.utc)).total_seconds() / 3600
+        mandate = {"expires_at": exp_raw, "hours_left": round(hours_left, 1),
+                   "expired": hours_left <= 0}
+    except Exception:  # noqa: BLE001
+        pass
     watcher_age = _log_age(LOGS / "watcher.heartbeat")
     if watcher_age is None:
         watcher_age = _log_age(LOGS / "watcher.log")
@@ -148,6 +165,7 @@ def _agents() -> dict:
     return {
         "halted": halt_flag_set(),
         "gate": gate,
+        "mandate": mandate,
         "hwm": hwm,
         "session_lock": lock,
         "last_session_header": last_session,

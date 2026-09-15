@@ -27,10 +27,13 @@ h1 em { color:var(--clay); font-style:normal; }
 .stat.big b { font-size:25px; letter-spacing:-.01em; }
 .stat.big span { color:var(--clay); }
 .up { color:var(--good); } .down { color:var(--bad); }
-#gatebanner { flex:none; padding:10px 18px; background:rgba(248,113,113,.16);
+#gatebanner, #mandatebanner { flex:none; padding:10px 18px; background:rgba(248,113,113,.16);
   border-bottom:2px solid var(--bad); color:#FFD9D4; font-size:13.5px; font-weight:600;
   animation: gatepulse 1.6s ease-in-out infinite; }
-#gatebanner b { color:#fff; }
+#gatebanner b, #mandatebanner b { color:#fff; }
+#mandatebanner.warn { background:rgba(251,191,36,.16); border-bottom-color:#FBBF24; color:#FEF3C7;
+  animation:none; }
+#mandatebanner.warn b { color:#fff; }
 @keyframes gatepulse { 50% { background:rgba(248,113,113,.30); } }
 .clock { color:var(--mut); font-size:11.5px; margin-left:auto; font-family:"JetBrains Mono",monospace; }
 main { flex:1; min-height:0; display:grid; grid-template-columns:340px minmax(0,1fr) 300px;
@@ -203,10 +206,12 @@ img, svg, canvas { max-width:100%; }
   <div class="stat"><span>Orders waiting</span><b id="nord">—</b></div>
   <div class="stat"><span>Standing orders</span><b id="standing">—</b></div>
   <div class="stat"><span>Life above death floor</span><b id="cushion">—</b></div>
+  <div class="stat"><span>Mandate</span><b id="mandate">—</b></div>
   <div class="stat"><span>Kill switch</span><b id="halt">—</b></div>
   <div class="clock" id="clock"></div>
 </header>
 <div id="gatebanner" style="display:none"></div>
+<div id="mandatebanner" style="display:none"></div>
 <main>
 <div class="left"><!-- left: state + decisions -->
   <section><h2>What it owns</h2><table id="book"></table></section>
@@ -582,6 +587,33 @@ async function refresh() {
       `The agent cannot clear this itself. Verify the order never reached the broker, then clear ` +
       `<code>pending_action.json</code> via <code>clear_pending_action()</code>.`;
   } else { gb.style.display = "none"; }
+
+  // Mandate expiry: sdk_order_gate denies every order once consent.expires_at
+  // passes, but nothing warned ahead of time until now - it lapsed silently on
+  // 2026-09-10 and ran several sessions read-only on 09-14 before anyone caught it.
+  const m = s.agents.mandate || {};
+  const mb = $("mandatebanner");
+  const mEl = $("mandate");
+  if (typeof m.hours_left === "number") {
+    const h = m.hours_left;
+    const ah = Math.abs(h);
+    const dd = Math.floor(ah / 24), hh = Math.floor(ah % 24);
+    const span = dd > 0 ? `${dd}d ${hh}h` : `${hh}h`;
+    if (m.expired) {
+      mEl.textContent = `EXPIRED ${span} ago`; mEl.className = "down";
+      mb.className = ""; mb.style.display = "block";
+      mb.innerHTML = `⚠ <b>MANDATE EXPIRED ${span} ago</b> — every order is being denied at the gate, ` +
+        `stops included. Renew with <code>ops/commit_paper_mandate.py</code>.`;
+    } else if (h < 24) {
+      mEl.textContent = `${span} left`; mEl.className = "down";
+      mb.className = "warn"; mb.style.display = "block";
+      mb.innerHTML = `⚠ <b>Mandate expires in ${span}</b> — renew with ` +
+        `<code>ops/commit_paper_mandate.py</code> before it lapses, or trading silently stops.`;
+    } else {
+      mEl.textContent = `${span} left`; mEl.className = "";
+      mb.style.display = "none";
+    }
+  } else { mEl.textContent = "—"; mEl.className = ""; mb.style.display = "none"; }
 
   const halted = s.agents.halted;
   $("halt").textContent = halted ? "PULLED · stopped" : "armed";
