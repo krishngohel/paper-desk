@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-14T17:35:18",
+ "ts": "2026-09-15T07:35:27",
  "source": "tradingview_full_market",
  "screened_liquid_names": 1500,
  "filters": {
@@ -11,17 +11,26 @@
    "symbol": "FTFT",
    "close": 8.04,
    "change_pct": 179.17,
-   "dollar_volume_m": 1011.4,
-   "rel_volume": 7.58,
-   "market_cap_b": 0.02,
+   "dollar_volume_m": 1019.2,
+   "rel_volume": 7.64,
+   "market_cap_b": 0.06,
    "exchange": "NASDAQ"
   },
   {
    "symbol": "BMGL",
    "close": 7.14,
    "change_pct": 55.9,
-   "dollar_volume_m": 227.3,
-   "rel_volume": 1107.61,
+   "dollar_volume_m": 227.8,
+   "rel_volume": 1110.17,
+   "market_cap_b": 0.01,
+   "exchange": "NASDAQ"
+  },
+  {
+   "symbol": "VEEA",
+   "close": 2.29,
+   "change_pct": 46.79,
+   "dollar_volume_m": 65.9,
+   "rel_volume": 277.15,
    "market_cap_b": 0.01,
    "exchange": "NASDAQ"
   },
@@ -29,8 +38,8 @@
    "symbol": "ELMT",
    "close": 21.5,
    "change_pct": 32.8,
-   "dollar_volume_m": 300.6,
-   "rel_volume": 57.24,
+   "dollar_volume_m": 301.4,
+   "rel_volume": 57.4,
    "market_cap_b": 0.65,
    "exchange": "NASDAQ"
   },
@@ -38,8 +47,8 @@
    "symbol": "CRWL",
    "close": 84.37,
    "change_pct": 27.71,
-   "dollar_volume_m": 84.6,
-   "rel_volume": 5.07,
+   "dollar_volume_m": 84.8,
+   "rel_volume": 5.08,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -47,8 +56,8 @@
    "symbol": "KORU",
    "close": 18.57,
    "change_pct": -19.51,
-   "dollar_volume_m": 713.0,
-   "rel_volume": 1.93,
+   "dollar_volume_m": 728.4,
+   "rel_volume": 1.97,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
   },
@@ -56,8 +65,8 @@
    "symbol": "CONL",
    "close": 6.29,
    "change_pct": 18.23,
-   "dollar_volume_m": 215.6,
-   "rel_volume": 1.91,
+   "dollar_volume_m": 216.9,
+   "rel_volume": 1.93,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -65,8 +74,8 @@
    "symbol": "SOXS",
    "close": 51.73,
    "change_pct": 17.2,
-   "dollar_volume_m": 3214.4,
-   "rel_volume": 1.24,
+   "dollar_volume_m": 3233.6,
+   "rel_volume": 1.25,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
   },
@@ -74,8 +83,8 @@
    "symbol": "SOXL",
    "close": 101.13,
    "change_pct": -16.98,
-   "dollar_volume_m": 10154.0,
-   "rel_volume": 1.91,
+   "dollar_volume_m": 10227.9,
+   "rel_volume": 1.92,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
   },
@@ -83,7 +92,7 @@
    "symbol": "ZS",
    "close": 191.73,
    "change_pct": 16.52,
-   "dollar_volume_m": 1447.3,
+   "dollar_volume_m": 1449.3,
    "rel_volume": 1.99,
    "market_cap_b": 31.26,
    "exchange": "NASDAQ"
@@ -92,7 +101,7 @@
    "symbol": "TENB",
    "close": 35.08,
    "change_pct": 16.51,
-   "dollar_volume_m": 418.3,
+   "dollar_volume_m": 418.4,
    "rel_volume": 1.7,
    "market_cap_b": 3.86,
    "exchange": "NASDAQ"
@@ -101,7 +110,7 @@
    "symbol": "NTSK",
    "close": 17.0,
    "change_pct": 15.65,
-   "dollar_volume_m": 232.7,
+   "dollar_volume_m": 232.9,
    "rel_volume": 2.13,
    "market_cap_b": 6.95,
    "exchange": "NASDAQ"
@@ -110,7 +119,7 @@
    "symbol": "RBRK",
    "close": 100.2,
    "change_pct": 15.64,
-   "dollar_volume_m": 545.7,
+   "dollar_volume_m": 546.2,
    "rel_volume": 1.43,
    "market_cap_b": 20.77,
    "exchange": "NYSE"
@@ -128,8 +137,8 @@
    "symbol": "SKUU",
    "close": 26.07,
    "change_pct": -15.25,
-   "dollar_volume_m": 75.6,
-   "rel_volume": 1.3,
+   "dollar_volume_m": 76.8,
+   "rel_volume": 1.32,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -137,8 +146,8 @@
    "symbol": "SKDD",
    "close": 8.02,
    "change_pct": 15.23,
-   "dollar_volume_m": 69.0,
-   "rel_volume": 1.33,
+   "dollar_volume_m": 69.6,
+   "rel_volume": 1.34,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -152,11 +161,20 @@
    "exchange": "NASDAQ"
   },
   {
+   "symbol": "CRCG",
+   "close": 17.38,
+   "change_pct": 14.72,
+   "dollar_volume_m": 61.8,
+   "rel_volume": 1.26,
+   "market_cap_b": 0.0,
+   "exchange": "NASDAQ"
+  },
+  {
    "symbol": "MVLL",
    "close": 25.04,
    "change_pct": -14.6,
-   "dollar_volume_m": 65.4,
-   "rel_volume": 0.64,
+   "dollar_volume_m": 65.9,
+   "rel_volume": 0.65,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
   },
@@ -164,7 +182,7 @@
    "symbol": "S",
    "close": 22.61,
    "change_pct": 14.48,
-   "dollar_volume_m": 369.5,
+   "dollar_volume_m": 369.8,
    "rel_volume": 1.85,
    "market_cap_b": 7.87,
    "exchange": "NYSE"
@@ -173,8 +191,8 @@
    "symbol": "INIO",
    "close": 17.45,
    "change_pct": -14.25,
-   "dollar_volume_m": 95.7,
-   "rel_volume": 1.37,
+   "dollar_volume_m": 95.9,
+   "rel_volume": 1.38,
    "market_cap_b": 13.09,
    "exchange": "NASDAQ"
   },
@@ -191,7 +209,7 @@
    "symbol": "CRWD",
    "close": 235.38,
    "change_pct": 13.85,
-   "dollar_volume_m": 5965.6,
+   "dollar_volume_m": 5974.3,
    "rel_volume": 2.37,
    "market_cap_b": 241.01,
    "exchange": "NASDAQ"
@@ -200,8 +218,8 @@
    "symbol": "GLW",
    "close": 143.6,
    "change_pct": -13.7,
-   "dollar_volume_m": 2543.0,
-   "rel_volume": 2.1,
+   "dollar_volume_m": 2549.9,
+   "rel_volume": 2.11,
    "market_cap_b": 123.7,
    "exchange": "NYSE"
   },
@@ -209,27 +227,9 @@
    "symbol": "TER",
    "close": 329.2,
    "change_pct": -13.3,
-   "dollar_volume_m": 1608.7,
+   "dollar_volume_m": 1609.7,
    "rel_volume": 2.18,
    "market_cap_b": 51.47,
-   "exchange": "NASDAQ"
-  },
-  {
-   "symbol": "MXL",
-   "close": 64.79,
-   "change_pct": -13.12,
-   "dollar_volume_m": 198.8,
-   "rel_volume": 1.32,
-   "market_cap_b": 5.88,
-   "exchange": "NASDAQ"
-  },
-  {
-   "symbol": "PANW",
-   "close": 373.94,
-   "change_pct": 13.09,
-   "dollar_volume_m": 4492.5,
-   "rel_volume": 1.73,
-   "market_cap_b": 305.88,
    "exchange": "NASDAQ"
   },
   {
@@ -291,7 +291,7 @@
    "close": 52.89,
    "change_pct": 0.02,
    "dollar_volume_m": 93.6,
-   "rel_volume": 10.46,
+   "rel_volume": 10.47,
    "market_cap_b": 0.0,
    "exchange": "AMEX"
   },
@@ -299,8 +299,8 @@
    "symbol": "CRBP",
    "close": 8.08,
    "change_pct": -0.49,
-   "dollar_volume_m": 67.7,
-   "rel_volume": 10.18,
+   "dollar_volume_m": 67.8,
+   "rel_volume": 10.2,
    "market_cap_b": 0.16,
    "exchange": "NASDAQ"
   },
@@ -335,8 +335,8 @@
    "symbol": "RUM",
    "close": 8.0,
    "change_pct": 11.58,
-   "dollar_volume_m": 206.7,
-   "rel_volume": 7.53,
+   "dollar_volume_m": 207.2,
+   "rel_volume": 7.54,
    "market_cap_b": 3.97,
    "exchange": "NASDAQ"
   },
@@ -369,379 +369,415 @@
   }
  ],
  "explore": {
-  "mode": "relvol",
-  "desc": "most unusual volume vs 10d norm - something is happening",
+  "mode": "turnover",
+  "desc": "heavily-traded names ALSO moving 3%+ today",
   "new_names_not_on_shortlist": [
    {
-    "symbol": "EMEM",
-    "close": 25.81,
-    "change_pct": -2.24,
-    "dollar_volume_m": 27.5,
-    "rel_volume": 294.18,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "GOOG",
+    "close": 345.71,
+    "change_pct": 3.06,
+    "dollar_volume_m": 7773.1,
+    "rel_volume": 1.39,
+    "market_cap_b": 4252.7,
+    "found_by": "turnover"
    },
    {
-    "symbol": "VEEA",
-    "close": 2.29,
-    "change_pct": 46.79,
-    "dollar_volume_m": 54.6,
-    "rel_volume": 229.62,
-    "market_cap_b": 0.01,
-    "found_by": "relvol"
+    "symbol": "PLTR",
+    "close": 173.31,
+    "change_pct": 3.64,
+    "dollar_volume_m": 5051.9,
+    "rel_volume": 1.11,
+    "market_cap_b": 416.47,
+    "found_by": "turnover"
    },
    {
-    "symbol": "EMSC",
-    "close": 25.33,
-    "change_pct": -1.77,
-    "dollar_volume_m": 14.1,
-    "rel_volume": 109.0,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "PANW",
+    "close": 373.94,
+    "change_pct": 13.09,
+    "dollar_volume_m": 4497.5,
+    "rel_volume": 1.73,
+    "market_cap_b": 305.88,
+    "found_by": "turnover"
    },
    {
-    "symbol": "PRSD",
-    "close": 24.79,
-    "change_pct": -0.1,
-    "dollar_volume_m": 24.0,
-    "rel_volume": 103.61,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "CRM",
+    "close": 259.43,
+    "change_pct": 4.73,
+    "dollar_volume_m": 3363.8,
+    "rel_volume": 0.79,
+    "market_cap_b": 213.51,
+    "found_by": "turnover"
    },
    {
-    "symbol": "ARMP",
-    "close": 5.55,
-    "change_pct": 3.16,
-    "dollar_volume_m": 26.2,
-    "rel_volume": 87.66,
-    "market_cap_b": 0.21,
-    "found_by": "relvol"
+    "symbol": "MSTR",
+    "close": 136.94,
+    "change_pct": 4.56,
+    "dollar_volume_m": 2562.5,
+    "rel_volume": 0.79,
+    "market_cap_b": 52.62,
+    "found_by": "turnover"
    },
    {
-    "symbol": "PQUS",
-    "close": 28.31,
-    "change_pct": -0.49,
-    "dollar_volume_m": 54.6,
-    "rel_volume": 74.88,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "COIN",
+    "close": 191.45,
+    "change_pct": 9.24,
+    "dollar_volume_m": 2536.8,
+    "rel_volume": 1.64,
+    "market_cap_b": 50.51,
+    "found_by": "turnover"
    },
    {
-    "symbol": "BUFM",
-    "close": 40.92,
-    "change_pct": -0.25,
-    "dollar_volume_m": 22.8,
-    "rel_volume": 45.94,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "NOW",
+    "close": 142.35,
+    "change_pct": 7.41,
+    "dollar_volume_m": 2491.4,
+    "rel_volume": 1.05,
+    "market_cap_b": 147.19,
+    "found_by": "turnover"
    },
    {
-    "symbol": "NSLR",
-    "close": 7.86,
-    "change_pct": -18.21,
-    "dollar_volume_m": 33.8,
-    "rel_volume": 28.67,
-    "market_cap_b": 0.21,
-    "found_by": "relvol"
+    "symbol": "NFLX",
+    "close": 80.32,
+    "change_pct": 3.77,
+    "dollar_volume_m": 2485.5,
+    "rel_volume": 1.16,
+    "market_cap_b": 334.45,
+    "found_by": "turnover"
    },
    {
-    "symbol": "BUFC",
-    "close": 43.17,
-    "change_pct": -0.25,
-    "dollar_volume_m": 22.8,
-    "rel_volume": 23.53,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "APP",
+    "close": 334.24,
+    "change_pct": 3.17,
+    "dollar_volume_m": 1692.5,
+    "rel_volume": 1.15,
+    "market_cap_b": 111.85,
+    "found_by": "turnover"
    },
    {
-    "symbol": "VNCE",
-    "close": 7.65,
-    "change_pct": 45.99,
-    "dollar_volume_m": 28.2,
-    "rel_volume": 18.78,
-    "market_cap_b": 0.1,
-    "found_by": "relvol"
+    "symbol": "CRCL",
+    "close": 97.42,
+    "change_pct": 7.53,
+    "dollar_volume_m": 1651.8,
+    "rel_volume": 1.24,
+    "market_cap_b": 24.73,
+    "found_by": "turnover"
    },
    {
-    "symbol": "IXG",
-    "close": 133.92,
-    "change_pct": -0.23,
-    "dollar_volume_m": 39.4,
-    "rel_volume": 12.88,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "ADBE",
+    "close": 265.6,
+    "change_pct": 5.3,
+    "dollar_volume_m": 1520.1,
+    "rel_volume": 0.98,
+    "market_cap_b": 105.58,
+    "found_by": "turnover"
    },
    {
-    "symbol": "QTRX",
-    "close": 2.5,
-    "change_pct": -2.34,
-    "dollar_volume_m": 15.2,
-    "rel_volume": 12.35,
-    "market_cap_b": 0.12,
-    "found_by": "relvol"
+    "symbol": "NET",
+    "close": 330.36,
+    "change_pct": 7.77,
+    "dollar_volume_m": 1455.2,
+    "rel_volume": 1.46,
+    "market_cap_b": 117.63,
+    "found_by": "turnover"
    },
    {
-    "symbol": "TUSB",
-    "close": 50.44,
-    "change_pct": 0.03,
-    "dollar_volume_m": 15.4,
-    "rel_volume": 11.89,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "OKTA",
+    "close": 186.45,
+    "change_pct": 11.98,
+    "dollar_volume_m": 1244.6,
+    "rel_volume": 1.85,
+    "market_cap_b": 32.6,
+    "found_by": "turnover"
    },
    {
-    "symbol": "SAC",
-    "close": 10.11,
-    "change_pct": 0.0,
-    "dollar_volume_m": 11.4,
-    "rel_volume": 11.83,
-    "market_cap_b": 0.32,
-    "found_by": "relvol"
+    "symbol": "INTU",
+    "close": 339.15,
+    "change_pct": 5.47,
+    "dollar_volume_m": 1232.2,
+    "rel_volume": 1.13,
+    "market_cap_b": 90.63,
+    "found_by": "turnover"
    },
    {
-    "symbol": "JSML",
-    "close": 86.67,
-    "change_pct": -0.1,
-    "dollar_volume_m": 16.9,
-    "rel_volume": 11.73,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "AZO",
+    "close": 2965.52,
+    "change_pct": 3.09,
+    "dollar_volume_m": 1204.6,
+    "rel_volume": 1.22,
+    "market_cap_b": 48.41,
+    "found_by": "turnover"
    },
    {
-    "symbol": "THD",
-    "close": 73.41,
-    "change_pct": -0.94,
-    "dollar_volume_m": 52.7,
-    "rel_volume": 11.32,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "ACN",
+    "close": 195.0,
+    "change_pct": 6.04,
+    "dollar_volume_m": 1038.3,
+    "rel_volume": 1.24,
+    "market_cap_b": 119.33,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "SHOP",
+    "close": 133.89,
+    "change_pct": 3.96,
+    "dollar_volume_m": 1023.1,
+    "rel_volume": 0.84,
+    "market_cap_b": 172.27,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "FTNT",
+    "close": 170.18,
+    "change_pct": 9.04,
+    "dollar_volume_m": 1009.7,
+    "rel_volume": 1.45,
+    "market_cap_b": 124.86,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "SPOT",
+    "close": 556.31,
+    "change_pct": 5.81,
+    "dollar_volume_m": 960.5,
+    "rel_volume": 1.24,
+    "market_cap_b": 114.53,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "RBLX",
+    "close": 51.29,
+    "change_pct": 12.73,
+    "dollar_volume_m": 955.7,
+    "rel_volume": 1.93,
+    "market_cap_b": 36.64,
+    "found_by": "turnover"
    }
   ],
   "all": [
    {
-    "symbol": "ABI",
-    "close": 24.55,
-    "change_pct": -0.02,
-    "dollar_volume_m": 406.7,
-    "rel_volume": 3138.32,
+    "symbol": "GOOG",
+    "close": 345.71,
+    "change_pct": 3.06,
+    "dollar_volume_m": 7773.1,
+    "rel_volume": 1.39,
+    "market_cap_b": 4252.7,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "CRWD",
+    "close": 235.38,
+    "change_pct": 13.85,
+    "dollar_volume_m": 5974.3,
+    "rel_volume": 2.37,
+    "market_cap_b": 241.01,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "PLTR",
+    "close": 173.31,
+    "change_pct": 3.64,
+    "dollar_volume_m": 5051.9,
+    "rel_volume": 1.11,
+    "market_cap_b": 416.47,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "PANW",
+    "close": 373.94,
+    "change_pct": 13.09,
+    "dollar_volume_m": 4497.5,
+    "rel_volume": 1.73,
+    "market_cap_b": 305.88,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "CRM",
+    "close": 259.43,
+    "change_pct": 4.73,
+    "dollar_volume_m": 3363.8,
+    "rel_volume": 0.79,
+    "market_cap_b": 213.51,
+    "found_by": "turnover"
+   },
+   {
+    "symbol": "SOXS",
+    "close": 51.73,
+    "change_pct": 17.2,
+    "dollar_volume_m": 3233.6,
+    "rel_volume": 1.25,
     "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "found_by": "turnover"
    },
    {
-    "symbol": "BMGL",
-    "close": 7.14,
-    "change_pct": 55.9,
-    "dollar_volume_m": 227.3,
-    "rel_volume": 1107.61,
-    "market_cap_b": 0.01,
-    "found_by": "relvol"
+    "symbol": "MSTR",
+    "close": 136.94,
+    "change_pct": 4.56,
+    "dollar_volume_m": 2562.5,
+    "rel_volume": 0.79,
+    "market_cap_b": 52.62,
+    "found_by": "turnover"
    },
    {
-    "symbol": "EMEM",
-    "close": 25.81,
-    "change_pct": -2.24,
-    "dollar_volume_m": 27.5,
-    "rel_volume": 294.18,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "COIN",
+    "close": 191.45,
+    "change_pct": 9.24,
+    "dollar_volume_m": 2536.8,
+    "rel_volume": 1.64,
+    "market_cap_b": 50.51,
+    "found_by": "turnover"
    },
    {
-    "symbol": "VEEA",
-    "close": 2.29,
-    "change_pct": 46.79,
-    "dollar_volume_m": 54.6,
-    "rel_volume": 229.62,
-    "market_cap_b": 0.01,
-    "found_by": "relvol"
+    "symbol": "NOW",
+    "close": 142.35,
+    "change_pct": 7.41,
+    "dollar_volume_m": 2491.4,
+    "rel_volume": 1.05,
+    "market_cap_b": 147.19,
+    "found_by": "turnover"
    },
    {
-    "symbol": "EMSC",
-    "close": 25.33,
-    "change_pct": -1.77,
-    "dollar_volume_m": 14.1,
-    "rel_volume": 109.0,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "NFLX",
+    "close": 80.32,
+    "change_pct": 3.77,
+    "dollar_volume_m": 2485.5,
+    "rel_volume": 1.16,
+    "market_cap_b": 334.45,
+    "found_by": "turnover"
    },
    {
-    "symbol": "PRSD",
-    "close": 24.79,
-    "change_pct": -0.1,
-    "dollar_volume_m": 24.0,
-    "rel_volume": 103.61,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "APP",
+    "close": 334.24,
+    "change_pct": 3.17,
+    "dollar_volume_m": 1692.5,
+    "rel_volume": 1.15,
+    "market_cap_b": 111.85,
+    "found_by": "turnover"
    },
    {
-    "symbol": "ARMP",
-    "close": 5.55,
-    "change_pct": 3.16,
-    "dollar_volume_m": 26.2,
-    "rel_volume": 87.66,
-    "market_cap_b": 0.21,
-    "found_by": "relvol"
+    "symbol": "CRCL",
+    "close": 97.42,
+    "change_pct": 7.53,
+    "dollar_volume_m": 1651.8,
+    "rel_volume": 1.24,
+    "market_cap_b": 24.73,
+    "found_by": "turnover"
    },
    {
-    "symbol": "PQUS",
-    "close": 28.31,
-    "change_pct": -0.49,
-    "dollar_volume_m": 54.6,
-    "rel_volume": 74.88,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "ADBE",
+    "close": 265.6,
+    "change_pct": 5.3,
+    "dollar_volume_m": 1520.1,
+    "rel_volume": 0.98,
+    "market_cap_b": 105.58,
+    "found_by": "turnover"
    },
    {
-    "symbol": "SMTH",
-    "close": 25.02,
-    "change_pct": -0.04,
-    "dollar_volume_m": 506.1,
-    "rel_volume": 58.46,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "NET",
+    "close": 330.36,
+    "change_pct": 7.77,
+    "dollar_volume_m": 1455.2,
+    "rel_volume": 1.46,
+    "market_cap_b": 117.63,
+    "found_by": "turnover"
    },
    {
-    "symbol": "ELMT",
-    "close": 21.5,
-    "change_pct": 32.8,
-    "dollar_volume_m": 300.6,
-    "rel_volume": 57.24,
-    "market_cap_b": 0.65,
-    "found_by": "relvol"
+    "symbol": "ZS",
+    "close": 191.73,
+    "change_pct": 16.52,
+    "dollar_volume_m": 1449.3,
+    "rel_volume": 1.99,
+    "market_cap_b": 31.26,
+    "found_by": "turnover"
    },
    {
-    "symbol": "UYLD",
-    "close": 50.92,
-    "change_pct": -0.14,
-    "dollar_volume_m": 525.3,
-    "rel_volume": 55.17,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "OKTA",
+    "close": 186.45,
+    "change_pct": 11.98,
+    "dollar_volume_m": 1244.6,
+    "rel_volume": 1.85,
+    "market_cap_b": 32.6,
+    "found_by": "turnover"
    },
    {
-    "symbol": "BUFM",
-    "close": 40.92,
-    "change_pct": -0.25,
-    "dollar_volume_m": 22.8,
-    "rel_volume": 45.94,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "INTU",
+    "close": 339.15,
+    "change_pct": 5.47,
+    "dollar_volume_m": 1232.2,
+    "rel_volume": 1.13,
+    "market_cap_b": 90.63,
+    "found_by": "turnover"
    },
    {
-    "symbol": "LST",
-    "close": 47.58,
-    "change_pct": -0.71,
-    "dollar_volume_m": 62.6,
-    "rel_volume": 42.47,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "AZO",
+    "close": 2965.52,
+    "change_pct": 3.09,
+    "dollar_volume_m": 1204.6,
+    "rel_volume": 1.22,
+    "market_cap_b": 48.41,
+    "found_by": "turnover"
    },
    {
-    "symbol": "NSLR",
-    "close": 7.86,
-    "change_pct": -18.21,
-    "dollar_volume_m": 33.8,
-    "rel_volume": 28.67,
-    "market_cap_b": 0.21,
-    "found_by": "relvol"
+    "symbol": "ACN",
+    "close": 195.0,
+    "change_pct": 6.04,
+    "dollar_volume_m": 1038.3,
+    "rel_volume": 1.24,
+    "market_cap_b": 119.33,
+    "found_by": "turnover"
    },
    {
-    "symbol": "BUFC",
-    "close": 43.17,
-    "change_pct": -0.25,
-    "dollar_volume_m": 22.8,
-    "rel_volume": 23.53,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "SHOP",
+    "close": 133.89,
+    "change_pct": 3.96,
+    "dollar_volume_m": 1023.1,
+    "rel_volume": 0.84,
+    "market_cap_b": 172.27,
+    "found_by": "turnover"
    },
    {
-    "symbol": "BWIN",
-    "close": 32.0,
-    "change_pct": 7.93,
-    "dollar_volume_m": 725.5,
-    "rel_volume": 22.82,
-    "market_cap_b": 4.46,
-    "found_by": "relvol"
+    "symbol": "FTFT",
+    "close": 8.04,
+    "change_pct": 179.17,
+    "dollar_volume_m": 1019.2,
+    "rel_volume": 7.64,
+    "market_cap_b": 0.06,
+    "found_by": "turnover"
    },
    {
-    "symbol": "VNCE",
-    "close": 7.65,
-    "change_pct": 45.99,
-    "dollar_volume_m": 28.2,
-    "rel_volume": 18.78,
-    "market_cap_b": 0.1,
-    "found_by": "relvol"
+    "symbol": "FTNT",
+    "close": 170.18,
+    "change_pct": 9.04,
+    "dollar_volume_m": 1009.7,
+    "rel_volume": 1.45,
+    "market_cap_b": 124.86,
+    "found_by": "turnover"
    },
    {
-    "symbol": "IXG",
-    "close": 133.92,
-    "change_pct": -0.23,
-    "dollar_volume_m": 39.4,
-    "rel_volume": 12.88,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "SPOT",
+    "close": 556.31,
+    "change_pct": 5.81,
+    "dollar_volume_m": 960.5,
+    "rel_volume": 1.24,
+    "market_cap_b": 114.53,
+    "found_by": "turnover"
    },
    {
-    "symbol": "QTRX",
-    "close": 2.5,
-    "change_pct": -2.34,
-    "dollar_volume_m": 15.2,
-    "rel_volume": 12.35,
-    "market_cap_b": 0.12,
-    "found_by": "relvol"
+    "symbol": "RBLX",
+    "close": 51.29,
+    "change_pct": 12.73,
+    "dollar_volume_m": 955.7,
+    "rel_volume": 1.93,
+    "market_cap_b": 36.64,
+    "found_by": "turnover"
    },
    {
-    "symbol": "TUSB",
-    "close": 50.44,
-    "change_pct": 0.03,
-    "dollar_volume_m": 15.4,
-    "rel_volume": 11.89,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
-   },
-   {
-    "symbol": "SAC",
-    "close": 10.11,
-    "change_pct": 0.0,
-    "dollar_volume_m": 11.4,
-    "rel_volume": 11.83,
-    "market_cap_b": 0.32,
-    "found_by": "relvol"
-   },
-   {
-    "symbol": "JSML",
-    "close": 86.67,
-    "change_pct": -0.1,
-    "dollar_volume_m": 16.9,
-    "rel_volume": 11.73,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
-   },
-   {
-    "symbol": "THD",
-    "close": 73.41,
-    "change_pct": -0.94,
-    "dollar_volume_m": 52.7,
-    "rel_volume": 11.32,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
-   },
-   {
-    "symbol": "DV",
-    "close": 13.52,
-    "change_pct": 0.82,
-    "dollar_volume_m": 316.2,
-    "rel_volume": 10.59,
-    "market_cap_b": 2.1,
-    "found_by": "relvol"
-   },
-   {
-    "symbol": "CLOI",
-    "close": 52.89,
-    "change_pct": 0.02,
-    "dollar_volume_m": 93.6,
-    "rel_volume": 10.46,
-    "market_cap_b": 0.0,
-    "found_by": "relvol"
+    "symbol": "BSX",
+    "close": 45.05,
+    "change_pct": 4.82,
+    "dollar_volume_m": 924.5,
+    "rel_volume": 1.04,
+    "market_cap_b": 65.29,
+    "found_by": "turnover"
    }
   ]
  }
