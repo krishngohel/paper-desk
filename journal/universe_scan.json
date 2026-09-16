@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-16T08:33:18",
+ "ts": "2026-09-16T08:40:17",
  "source": "tradingview_full_market",
  "screened_liquid_names": 0,
  "filters": {
@@ -10,7 +10,27 @@
  "explore": {
   "mode": "gainers",
   "desc": "biggest % gainers today (looser liquidity floor)",
-  "new_names_not_on_shortlist": [],
-  "all": []
+  "new_names_not_on_shortlist": [
+   {
+    "symbol": "QQQI",
+    "close": 53.26,
+    "change_pct": -1.18,
+    "dollar_volume_m": 10.2,
+    "rel_volume": 0.05,
+    "market_cap_b": 0.0,
+    "found_by": "gainers"
+   }
+  ],
+  "all": [
+   {
+    "symbol": "QQQI",
+    "close": 53.26,
+    "change_pct": -1.18,
+    "dollar_volume_m": 10.2,
+    "rel_volume": 0.05,
+    "market_cap_b": 0.0,
+    "found_by": "gainers"
+   }
+  ]
  }
 }
