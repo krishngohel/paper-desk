@@ -100,7 +100,30 @@ new instances for 15 trading days is discarded as noise.
   clean uptrend stack. Still n=1, ~9 of 15 trading days elapsed, no
   promotion/discard. Checked again 2026-09-15 weekly review: zero trades
   closed since the 2026-09-14 review (nothing to compare), still n=1, ~10 of
-  15 trading days elapsed, no promotion/discard.
+  15 trading days elapsed, no promotion/discard. Checked again 2026-09-16
+  weekly review against the 2 trades closed since (APA t-2026-09-15-003, HOOD
+  t-2026-09-04-003) - neither matches: APA is a momentum-continuation entry
+  (s6a archetype, not a confirmation-breakout with an analyst-note catalyst)
+  stopped out on a broad macro gap; HOOD is an anticipatory_limit
+  support-pullback stopped out on a stock-specific negative news catalyst
+  (DOJ charges), not a breakout thesis at all. Still n=1, ~11 of 15 trading
+  days elapsed, no promotion/discard.
+
+- **W3 — a momentum-continuation entry (s6a) whose own thesis discloses thin
+  relative volume (well under 1.0x 20d avg) as a confirmation weakness may be
+  more fragile to a violent gap reversal than a volume-confirmed instance of
+  the same archetype.** Seen 1x: APA (t-2026-09-15-003) - structure gate
+  passed cleanly and day 1 even confirmed with an up-close, but
+  volume_vs_20d_avg was only 0.48x at entry (flagged honestly in the thesis
+  itself, the same flag noted for TXG's B-grade). Overnight the position
+  gapped straight through its mechanical stop on a broad risk-off shock (10Y
+  yield >5%, Benzinga 2026-09-15) that overwhelmed even a sector-positive
+  tailwind (oil >$105 same day). Scored "unlucky" not "wrong" precisely
+  because the disclosed volume weakness cannot yet be shown to have CAUSED
+  the gap - but the co-occurrence of thin-volume entry + fast, hard reversal
+  is worth tracking. Added 2026-09-16 weekly review. Revisit if a second
+  thin-volume (<1.0x) momentum entry closes, especially via a
+  gap-through-stop rather than an orderly close-based exit.
 
 ## Archive
 
