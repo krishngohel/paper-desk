@@ -107,7 +107,17 @@ new instances for 15 trading days is discarded as noise.
   stopped out on a broad macro gap; HOOD is an anticipatory_limit
   support-pullback stopped out on a stock-specific negative news catalyst
   (DOJ charges), not a breakout thesis at all. Still n=1, ~11 of 15 trading
-  days elapsed, no promotion/discard.
+  days elapsed, no promotion/discard. Checked again 2026-09-18 weekly review
+  against the 4 trades closed since (IOT t-2026-09-04-002, ANGX
+  t-2026-09-10-trg-10-002, BWIN t-2026-09-14-001, SMTC-split
+  t-2026-09-18-002) - none match: IOT is an anticipatory_limit trailed-stop
+  exit with no breakout/catalyst framing; ANGX was a clean multi-touch
+  breakout stopped via a watcher infra miss on the STOP (not a catalyst or
+  thesis problem); BWIN is an s6a momentum entry, not a confirmation-breakout
+  with an analyst note; SMTC-split's parent thesis was explicitly
+  catalyst-agnostic (day_change alone, no analyst note at all, not even a
+  weak one). Still n=1, ~13 of 15 trading days elapsed - close to the 15-day
+  discard window with no second instance yet.
 
 - **W3 — a momentum-continuation entry (s6a) whose own thesis discloses thin
   relative volume (well under 1.0x 20d avg) as a confirmation weakness may be
@@ -123,7 +133,12 @@ new instances for 15 trading days is discarded as noise.
   the gap - but the co-occurrence of thin-volume entry + fast, hard reversal
   is worth tracking. Added 2026-09-16 weekly review. Revisit if a second
   thin-volume (<1.0x) momentum entry closes, especially via a
-  gap-through-stop rather than an orderly close-based exit.
+  gap-through-stop rather than an orderly close-based exit. Checked again
+  2026-09-18 weekly review against the only s6a momentum-continuation entry
+  closed since (BWIN t-2026-09-14-001) - not a match: BWIN's own thesis
+  disclosed volume_vs_20d_avg 17.68x at entry, the opposite of thin, and it
+  exited cleanly on the governing close-pattern rule rather than a
+  gap-through-stop. Still n=1, no promotion/discard.
 
 ## Archive
 
