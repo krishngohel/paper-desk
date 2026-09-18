@@ -1,26 +1,26 @@
 {
- "computed_at": "2026-09-18T09:25:37",
+ "computed_at": "2026-09-18T09:38:55",
  "overall": {
-  "n": 23,
-  "closed": 23,
-  "win_rate_pct": 17.4,
-  "total_pnl": -1325.86,
-  "avg_win": 173.75,
+  "n": 24,
+  "closed": 24,
+  "win_rate_pct": 20.8,
+  "total_pnl": -1320.61,
+  "avg_win": 140.05,
   "avg_loss": -106.36,
-  "expectancy_per_trade": -57.65,
+  "expectancy_per_trade": -55.03,
   "largest_win": 306.7,
   "largest_loss": -247.54
  },
- "open_positions": 8,
+ "open_positions": 7,
  "by_grade": {
   "B": {
-   "n": 12,
-   "closed": 12,
-   "win_rate_pct": 25.0,
-   "total_pnl": -654.62,
-   "avg_win": 229.01,
+   "n": 13,
+   "closed": 13,
+   "win_rate_pct": 30.8,
+   "total_pnl": -649.37,
+   "avg_win": 173.07,
    "avg_loss": -149.07,
-   "expectancy_per_trade": -54.55,
+   "expectancy_per_trade": -49.95,
    "largest_win": 306.7,
    "largest_loss": -247.54
   },
@@ -49,13 +49,13 @@
  },
  "by_probe": {
   "probe": {
-   "n": 20,
-   "closed": 20,
-   "win_rate_pct": 10.0,
-   "total_pnl": -1544.52,
-   "avg_win": 190.16,
+   "n": 21,
+   "closed": 21,
+   "win_rate_pct": 14.3,
+   "total_pnl": -1539.27,
+   "avg_win": 128.52,
    "avg_loss": -106.94,
-   "expectancy_per_trade": -77.23,
+   "expectancy_per_trade": -73.3,
    "largest_win": 298.38,
    "largest_loss": -247.54
   },
@@ -115,6 +115,17 @@
    "expectancy_per_trade": -171.95,
    "largest_win": -171.95,
    "largest_loss": -171.95
+  },
+  "BWIN": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 100.0,
+   "total_pnl": 5.25,
+   "avg_win": 5.25,
+   "avg_loss": null,
+   "expectancy_per_trade": 5.25,
+   "largest_win": 5.25,
+   "largest_loss": 5.25
   },
   "CHPT": {
    "n": 1,
@@ -326,23 +337,34 @@
    "expectancy_per_trade": -5.12,
    "largest_win": 298.38,
    "largest_loss": -96.0
+  },
+  "market": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 100.0,
+   "total_pnl": 5.25,
+   "avg_win": 5.25,
+   "avg_loss": null,
+   "expectancy_per_trade": 5.25,
+   "largest_win": 5.25,
+   "largest_loss": 5.25
   }
  },
  "review_verdicts": {
   "lucky": 1,
   "unlucky": 16,
   "right": 5,
-  "unscored": 1
+  "unscored": 2
  },
  "by_exit_reason": {
   "exit-condition-hit": {
-   "n": 21,
-   "closed": 21,
-   "win_rate_pct": 19.0,
-   "total_pnl": -1088.74,
-   "avg_win": 173.75,
+   "n": 22,
+   "closed": 22,
+   "win_rate_pct": 22.7,
+   "total_pnl": -1083.49,
+   "avg_win": 140.05,
    "avg_loss": -104.92,
-   "expectancy_per_trade": -51.84,
+   "expectancy_per_trade": -49.25,
    "largest_win": 306.7,
    "largest_loss": -247.54
   },
