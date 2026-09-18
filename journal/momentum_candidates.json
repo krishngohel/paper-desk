@@ -1,6 +1,6 @@
 {
- "ts": "2026-09-18T11:30:09",
- "screened": 59,
+ "ts": "2026-09-18T11:41:56",
+ "screened": 60,
  "candidates": [
   {
    "symbol": "SOLT",
@@ -15,6 +15,20 @@
    "suggested_stop": 54.7,
    "risk_per_share": 10.28,
    "risk_pct": 15.83
+  },
+  {
+   "symbol": "RIOT",
+   "close": 22.8,
+   "ema9": 21.27,
+   "ema21": 20.88,
+   "three_rising_closes": true,
+   "stacked_emas": true,
+   "qualifies": true,
+   "dollar_volume_m": 139.6,
+   "pct_up_3d": 15.71,
+   "suggested_stop": 20.65,
+   "risk_per_share": 2.15,
+   "risk_pct": 9.41
   },
   {
    "symbol": "BSOL",
@@ -61,20 +75,6 @@
    "risk_pct": 74.96
   },
   {
-   "symbol": "TNMG",
-   "close": 4.39,
-   "ema9": 3.38,
-   "ema21": 3.45,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 125.4,
-   "pct_up_3d": 62.78,
-   "suggested_stop": 2.62,
-   "risk_per_share": 1.77,
-   "risk_pct": 40.39
-  },
-  {
    "symbol": "SSM",
    "close": 2.56,
    "ema9": 2.2,
@@ -87,6 +87,20 @@
    "suggested_stop": 1.41,
    "risk_per_share": 1.15,
    "risk_pct": 44.92
+  },
+  {
+   "symbol": "TNMG",
+   "close": 4.39,
+   "ema9": 3.38,
+   "ema21": 3.45,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 125.4,
+   "pct_up_3d": 62.78,
+   "suggested_stop": 2.62,
+   "risk_per_share": 1.77,
+   "risk_pct": 40.39
   },
   {
    "symbol": "XENE",
@@ -159,18 +173,18 @@
    "risk_pct": 13.89
   },
   {
-   "symbol": "CYPH",
-   "close": 3.07,
-   "ema9": 2.44,
-   "ema21": 2.03,
+   "symbol": "BIAF",
+   "close": 8.75,
+   "ema9": 7.97,
+   "ema21": 8.0,
    "three_rising_closes": false,
-   "stacked_emas": true,
+   "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 81.6,
-   "pct_up_3d": 18.99,
-   "suggested_stop": 2.3,
-   "risk_per_share": 0.77,
-   "risk_pct": 25.08
+   "dollar_volume_m": 222.3,
+   "pct_up_3d": 10.34,
+   "suggested_stop": 5.11,
+   "risk_per_share": 3.64,
+   "risk_pct": 41.6
   },
   {
    "symbol": "SOLT",
@@ -187,46 +201,18 @@
    "risk_pct": 15.83
   },
   {
-   "symbol": "BIAF",
-   "close": 8.75,
-   "ema9": 7.97,
-   "ema21": 8.0,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 222.3,
-   "pct_up_3d": 10.34,
-   "suggested_stop": 5.11,
-   "risk_per_share": 3.64,
-   "risk_pct": 41.6
-  },
-  {
-   "symbol": "USDE",
-   "close": 7.71,
-   "ema9": 7.06,
-   "ema21": 6.47,
+   "symbol": "CYPH",
+   "close": 3.07,
+   "ema9": 2.44,
+   "ema21": 2.03,
    "three_rising_closes": false,
    "stacked_emas": true,
    "qualifies": false,
-   "dollar_volume_m": 110.0,
-   "pct_up_3d": 3.63,
-   "suggested_stop": 5.87,
-   "risk_per_share": 1.84,
-   "risk_pct": 23.87
-  },
-  {
-   "symbol": "BNC",
-   "close": 6.12,
-   "ema9": 4.99,
-   "ema21": 4.22,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 21.1,
-   "pct_up_3d": 24.64,
-   "suggested_stop": 4.96,
-   "risk_per_share": 1.16,
-   "risk_pct": 18.95
+   "dollar_volume_m": 81.6,
+   "pct_up_3d": 18.99,
+   "suggested_stop": 2.3,
+   "risk_per_share": 0.77,
+   "risk_pct": 25.08
   },
   {
    "symbol": "CRCG",
@@ -243,74 +229,18 @@
    "risk_pct": 18.63
   },
   {
-   "symbol": "SECZ",
-   "close": 9.72,
-   "ema9": 8.36,
-   "ema21": 7.74,
+   "symbol": "BNC",
+   "close": 6.12,
+   "ema9": 4.99,
+   "ema21": 4.22,
    "three_rising_closes": false,
    "stacked_emas": true,
    "qualifies": false,
-   "dollar_volume_m": 23.7,
-   "pct_up_3d": 22.02,
-   "suggested_stop": 8.21,
-   "risk_per_share": 1.51,
-   "risk_pct": 15.58
-  },
-  {
-   "symbol": "MSTR",
-   "close": 143.92,
-   "ema9": 133.58,
-   "ema21": 127.52,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 1166.7,
-   "pct_up_3d": 11.05,
-   "suggested_stop": 127.79,
-   "risk_per_share": 16.13,
-   "risk_pct": 11.21
-  },
-  {
-   "symbol": "RKLX",
-   "close": 16.57,
-   "ema9": 15.19,
-   "ema21": 16.41,
-   "three_rising_closes": true,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 61.9,
-   "pct_up_3d": 16.85,
-   "suggested_stop": 13.78,
-   "risk_per_share": 2.79,
-   "risk_pct": 16.84
-  },
-  {
-   "symbol": "SBIT",
-   "close": 33.52,
-   "ema9": 36.14,
-   "ema21": 38.82,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 25.4,
-   "pct_up_3d": -10.61,
-   "suggested_stop": 33.17,
-   "risk_per_share": 0.35,
-   "risk_pct": 1.03
-  },
-  {
-   "symbol": "BITU",
-   "close": 14.15,
-   "ema9": 13.37,
-   "ema21": 12.93,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 30.0,
-   "pct_up_3d": 10.81,
-   "suggested_stop": 12.68,
-   "risk_per_share": 1.47,
-   "risk_pct": 10.39
+   "dollar_volume_m": 21.1,
+   "pct_up_3d": 24.64,
+   "suggested_stop": 4.96,
+   "risk_per_share": 1.16,
+   "risk_pct": 18.95
   },
   {
    "symbol": "DFDV",
@@ -327,6 +257,62 @@
    "risk_pct": 15.48
   },
   {
+   "symbol": "USDE",
+   "close": 7.71,
+   "ema9": 7.06,
+   "ema21": 6.47,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 110.0,
+   "pct_up_3d": 3.63,
+   "suggested_stop": 5.87,
+   "risk_per_share": 1.84,
+   "risk_pct": 23.87
+  },
+  {
+   "symbol": "MSTR",
+   "close": 143.92,
+   "ema9": 133.58,
+   "ema21": 127.52,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 1166.7,
+   "pct_up_3d": 11.05,
+   "suggested_stop": 127.79,
+   "risk_per_share": 16.13,
+   "risk_pct": 11.21
+  },
+  {
+   "symbol": "SBIT",
+   "close": 33.52,
+   "ema9": 36.14,
+   "ema21": 38.82,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 25.4,
+   "pct_up_3d": -10.61,
+   "suggested_stop": 33.17,
+   "risk_per_share": 0.35,
+   "risk_pct": 1.03
+  },
+  {
+   "symbol": "SECZ",
+   "close": 9.72,
+   "ema9": 8.36,
+   "ema21": 7.74,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 23.7,
+   "pct_up_3d": 22.02,
+   "suggested_stop": 8.21,
+   "risk_per_share": 1.51,
+   "risk_pct": 15.58
+  },
+  {
    "symbol": "SBET",
    "close": 8.88,
    "ema9": 8.52,
@@ -341,32 +327,18 @@
    "risk_pct": 8.84
   },
   {
-   "symbol": "COIN",
-   "close": 185.7,
-   "ema9": 177.55,
-   "ema21": 175.39,
+   "symbol": "BITU",
+   "close": 14.15,
+   "ema9": 13.37,
+   "ema21": 12.93,
    "three_rising_closes": false,
    "stacked_emas": true,
    "qualifies": false,
-   "dollar_volume_m": 775.1,
-   "pct_up_3d": 7.9,
-   "suggested_stop": 165.73,
-   "risk_per_share": 19.97,
-   "risk_pct": 10.75
-  },
-  {
-   "symbol": "SMCX",
-   "close": 13.46,
-   "ema9": 12.23,
-   "ema21": 11.95,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 99.0,
-   "pct_up_3d": 19.01,
-   "suggested_stop": 10.44,
-   "risk_per_share": 3.02,
-   "risk_pct": 22.44
+   "dollar_volume_m": 30.0,
+   "pct_up_3d": 10.81,
+   "suggested_stop": 12.68,
+   "risk_per_share": 1.47,
+   "risk_pct": 10.39
   },
   {
    "symbol": "AKAN",
@@ -383,6 +355,34 @@
    "risk_pct": 3.75
   },
   {
+   "symbol": "RKLX",
+   "close": 16.57,
+   "ema9": 15.19,
+   "ema21": 16.41,
+   "three_rising_closes": true,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 61.9,
+   "pct_up_3d": 16.85,
+   "suggested_stop": 13.78,
+   "risk_per_share": 2.79,
+   "risk_pct": 16.84
+  },
+  {
+   "symbol": "COIN",
+   "close": 185.7,
+   "ema9": 177.55,
+   "ema21": 175.39,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 775.1,
+   "pct_up_3d": 7.9,
+   "suggested_stop": 165.73,
+   "risk_per_share": 19.97,
+   "risk_pct": 10.75
+  },
+  {
    "symbol": "BSOL",
    "close": 14.98,
    "ema9": 14.02,
@@ -395,6 +395,20 @@
    "suggested_stop": 13.69,
    "risk_per_share": 1.29,
    "risk_pct": 8.64
+  },
+  {
+   "symbol": "MARA",
+   "close": 12.56,
+   "ema9": 11.64,
+   "ema21": 11.36,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 128.7,
+   "pct_up_3d": 11.74,
+   "suggested_stop": 10.86,
+   "risk_per_share": 1.71,
+   "risk_pct": 13.57
   },
   {
    "symbol": "CPOP",
@@ -425,6 +439,20 @@
    "risk_pct": 0.0
   },
   {
+   "symbol": "IEUR",
+   "close": 74.86,
+   "ema9": 75.69,
+   "ema21": 76.39,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 98.0,
+   "pct_up_3d": -0.48,
+   "suggested_stop": 74.65,
+   "risk_per_share": 0.21,
+   "risk_pct": 0.28
+  },
+  {
    "symbol": "NCI",
    "close": 13.86,
    "ema9": 13.24,
@@ -453,20 +481,6 @@
    "risk_pct": 6.36
   },
   {
-   "symbol": "IEUR",
-   "close": 74.86,
-   "ema9": 75.69,
-   "ema21": 76.39,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 98.0,
-   "pct_up_3d": -0.48,
-   "suggested_stop": 74.65,
-   "risk_per_share": 0.21,
-   "risk_pct": 0.28
-  },
-  {
    "symbol": "HALO",
    "close": 110.06,
    "ema9": 108.46,
@@ -481,20 +495,6 @@
    "risk_pct": 2.94
   },
   {
-   "symbol": "NFXL",
-   "close": 14.92,
-   "ema9": 17.01,
-   "ema21": 17.57,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 28.9,
-   "pct_up_3d": -15.48,
-   "suggested_stop": 14.2,
-   "risk_per_share": 0.72,
-   "risk_pct": 4.81
-  },
-  {
    "symbol": "IWC",
    "close": 187.85,
    "ema9": 190.13,
@@ -507,6 +507,20 @@
    "suggested_stop": 187.56,
    "risk_per_share": 0.29,
    "risk_pct": 0.15
+  },
+  {
+   "symbol": "NFXL",
+   "close": 14.92,
+   "ema9": 17.01,
+   "ema21": 17.57,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 28.9,
+   "pct_up_3d": -15.48,
+   "suggested_stop": 14.2,
+   "risk_per_share": 0.72,
+   "risk_pct": 4.81
   },
   {
    "symbol": "GSY",
@@ -621,6 +635,20 @@
    "risk_pct": 7.97
   },
   {
+   "symbol": "SOXL",
+   "close": 117.91,
+   "ema9": 112.75,
+   "ema21": 116.89,
+   "three_rising_closes": true,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 2625.4,
+   "pct_up_3d": 15.24,
+   "suggested_stop": 112.01,
+   "risk_per_share": 5.9,
+   "risk_pct": 5.0
+  },
+  {
    "symbol": "IBIT",
    "close": 45.69,
    "ema9": 44.09,
@@ -689,6 +717,20 @@
    "suggested_stop": 783.01,
    "risk_per_share": 49.85,
    "risk_pct": 5.99
+  },
+  {
+   "symbol": "WDC",
+   "close": 437.27,
+   "ema9": 436.83,
+   "ema21": 451.36,
+   "three_rising_closes": true,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 1112.9,
+   "pct_up_3d": 6.14,
+   "suggested_stop": 416.31,
+   "risk_per_share": 20.96,
+   "risk_pct": 4.79
   },
   {
    "symbol": "COHR",
@@ -761,32 +803,32 @@
    "risk_pct": 5.62
   },
   {
-   "symbol": "MUU",
-   "close": 32.15,
-   "ema9": 30.71,
-   "ema21": 30.69,
-   "three_rising_closes": false,
-   "stacked_emas": true,
+   "symbol": "AAOI",
+   "close": 100.47,
+   "ema9": 100.87,
+   "ema21": 106.38,
+   "three_rising_closes": true,
+   "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 334.3,
-   "pct_up_3d": 13.62,
-   "suggested_stop": 29.9,
-   "risk_per_share": 2.25,
-   "risk_pct": 7.01
+   "dollar_volume_m": 339.8,
+   "pct_up_3d": 5.44,
+   "suggested_stop": 96.36,
+   "risk_per_share": 4.11,
+   "risk_pct": 4.1
   },
   {
-   "symbol": "MARA",
-   "close": 12.56,
-   "ema9": 11.64,
-   "ema21": 11.36,
-   "three_rising_closes": false,
-   "stacked_emas": true,
+   "symbol": "CIFR",
+   "close": 17.62,
+   "ema9": 16.67,
+   "ema21": 16.82,
+   "three_rising_closes": true,
+   "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 128.7,
-   "pct_up_3d": 11.74,
-   "suggested_stop": 10.86,
-   "risk_per_share": 1.71,
-   "risk_pct": 13.57
+   "dollar_volume_m": 104.5,
+   "pct_up_3d": 16.77,
+   "suggested_stop": 16.57,
+   "risk_per_share": 1.05,
+   "risk_pct": 5.96
   },
   {
    "symbol": "PURR",
@@ -845,32 +887,18 @@
    "risk_pct": 5.63
   },
   {
-   "symbol": "MTZ",
-   "close": 214.61,
-   "ema9": 225.41,
-   "ema21": 240.67,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 130.6,
-   "pct_up_3d": -3.63,
-   "suggested_stop": 206.5,
-   "risk_per_share": 8.11,
-   "risk_pct": 3.78
-  },
-  {
-   "symbol": "GBTC",
-   "close": 62.05,
-   "ema9": 60.14,
-   "ema21": 58.87,
-   "three_rising_closes": false,
+   "symbol": "RIOT",
+   "close": 22.8,
+   "ema9": 21.27,
+   "ema21": 20.88,
+   "three_rising_closes": true,
    "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 86.3,
-   "pct_up_3d": 5.46,
-   "suggested_stop": 58.68,
-   "risk_per_share": 3.37,
-   "risk_pct": 5.43
+   "qualifies": true,
+   "dollar_volume_m": 139.6,
+   "pct_up_3d": 15.71,
+   "suggested_stop": 20.65,
+   "risk_per_share": 2.15,
+   "risk_pct": 9.41
   }
  ]
 }
