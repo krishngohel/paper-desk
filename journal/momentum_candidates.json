@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-21T13:32:52",
+ "ts": "2026-09-21T13:42:29",
  "screened": 46,
  "candidates": [
   {
@@ -271,18 +271,18 @@
    "risk_pct": 22.18
   },
   {
-   "symbol": "LINT",
-   "close": 166,
-   "ema9": 129.61,
-   "ema21": 119.53,
+   "symbol": "METU",
+   "close": 32.88,
+   "ema9": 27.13,
+   "ema21": 24.64,
    "three_rising_closes": false,
    "stacked_emas": true,
    "qualifies": false,
-   "dollar_volume_m": 32.0,
-   "pct_up_3d": 41.75,
-   "suggested_stop": 128.79,
-   "risk_per_share": 37.21,
-   "risk_pct": 22.42
+   "dollar_volume_m": 295.3,
+   "pct_up_3d": 21.53,
+   "suggested_stop": 26.06,
+   "risk_per_share": 6.82,
+   "risk_pct": 20.73
   },
   {
    "symbol": "FBL",
@@ -299,18 +299,18 @@
    "risk_pct": 20.74
   },
   {
-   "symbol": "METU",
-   "close": 32.88,
-   "ema9": 27.13,
-   "ema21": 24.64,
+   "symbol": "LINT",
+   "close": 166,
+   "ema9": 129.61,
+   "ema21": 119.53,
    "three_rising_closes": false,
    "stacked_emas": true,
    "qualifies": false,
-   "dollar_volume_m": 295.3,
-   "pct_up_3d": 21.53,
-   "suggested_stop": 26.06,
-   "risk_per_share": 6.82,
-   "risk_pct": 20.73
+   "dollar_volume_m": 32.0,
+   "pct_up_3d": 41.75,
+   "suggested_stop": 128.79,
+   "risk_per_share": 37.21,
+   "risk_pct": 22.42
   },
   {
    "symbol": "AMDL",
@@ -341,18 +341,18 @@
    "risk_pct": 3.06
   },
   {
-   "symbol": "RKLX",
-   "close": 17.26,
-   "ema9": 15.57,
-   "ema21": 16.37,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 58.6,
-   "pct_up_3d": 17.41,
-   "suggested_stop": 14.6,
-   "risk_per_share": 2.66,
-   "risk_pct": 15.41
+   "symbol": "MSTX",
+   "close": 21.7,
+   "ema9": 16.35,
+   "ema21": 14.59,
+   "three_rising_closes": true,
+   "stacked_emas": true,
+   "qualifies": true,
+   "dollar_volume_m": 202.6,
+   "pct_up_3d": 67.57,
+   "suggested_stop": 14.96,
+   "risk_per_share": 6.74,
+   "risk_pct": 31.06
   },
   {
    "symbol": "SMST",
@@ -369,18 +369,18 @@
    "risk_pct": 4.89
   },
   {
-   "symbol": "MSTX",
-   "close": 21.7,
-   "ema9": 16.35,
-   "ema21": 14.59,
-   "three_rising_closes": true,
-   "stacked_emas": true,
-   "qualifies": true,
-   "dollar_volume_m": 202.6,
-   "pct_up_3d": 67.57,
-   "suggested_stop": 14.96,
-   "risk_per_share": 6.74,
-   "risk_pct": 31.06
+   "symbol": "RKLX",
+   "close": 17.26,
+   "ema9": 15.57,
+   "ema21": 16.37,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 58.6,
+   "pct_up_3d": 17.41,
+   "suggested_stop": 14.6,
+   "risk_per_share": 2.66,
+   "risk_pct": 15.41
   },
   {
    "symbol": "PBLS",
@@ -397,34 +397,6 @@
    "risk_pct": 4.1
   },
   {
-   "symbol": "MRNA",
-   "close": 175.48,
-   "ema9": 153.18,
-   "ema21": 139.82,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 2717.5,
-   "pct_up_3d": 20.51,
-   "suggested_stop": 150.26,
-   "risk_per_share": 25.22,
-   "risk_pct": 14.37
-  },
-  {
-   "symbol": "FSLY",
-   "close": 27.19,
-   "ema9": 24.3,
-   "ema21": 23.73,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 183.7,
-   "pct_up_3d": 15.51,
-   "suggested_stop": 23.06,
-   "risk_per_share": 4.13,
-   "risk_pct": 15.19
-  },
-  {
    "symbol": "APPX",
    "close": 14.14,
    "ema9": 13.49,
@@ -439,6 +411,20 @@
    "risk_pct": 13.51
   },
   {
+   "symbol": "MRNA",
+   "close": 175.48,
+   "ema9": 153.18,
+   "ema21": 139.82,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 2717.5,
+   "pct_up_3d": 20.51,
+   "suggested_stop": 150.26,
+   "risk_per_share": 25.22,
+   "risk_pct": 14.37
+  },
+  {
    "symbol": "SOXL",
    "close": 140.74,
    "ema9": 119.27,
@@ -451,6 +437,20 @@
    "suggested_stop": 116.68,
    "risk_per_share": 24.06,
    "risk_pct": 17.1
+  },
+  {
+   "symbol": "SOXS",
+   "close": 35.7,
+   "ema9": 44.41,
+   "ema21": 46.05,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 2397.1,
+   "pct_up_3d": -28.77,
+   "suggested_stop": 35.62,
+   "risk_per_share": 0.08,
+   "risk_pct": 0.21
   },
   {
    "symbol": "SGVA",
