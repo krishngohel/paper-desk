@@ -8,147 +8,143 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-18 ~18:10 CT (research session, market closed - Friday evening,
-post-close homework after today's full trading day: 6 continuous/preclose/weekly-review
-legs). Full rewrite - BWIN's exit (closed this morning +$5.25 on the s6a two-down-close
-rule) and today's SMTC partial-fill split are resolved and folded in; the 09-17
-version's Priority-1 BWIN item is gone.
+Updated 2026-09-22 ~16:15 CT (research session, market closed - Tuesday evening,
+post-close homework after a 37-leg continuous trading day). Full rewrite - the
+09-18 version described a book that no longer exists (ECO/RBRK/SMTC/ZS as held
+positions); all four have since closed (RBRK/SMTC on 09-21 via targets, ECO on
+09-22 via its s6a governing exit, ZS on 09-22 via target). Current book is
+ARTY/CRWD/TXG.
 
-**Regime (`ta.py --market`, fresh this session):** SPY 761.69, -0.15% vs EMA21,
-RSI14 49.5, structure **downtrend (lower highs + lower lows)**. QQQ 721.45, +1.11%
-vs EMA21, RSI14 55.9, **range/mixed**. Weak/mixed tape, no reason to chase size.
-Real macro driver this week: the Fed hiked 25bp again under new chair Warsh, 10Y
-yield hit 5.04% (2007 highs), record diesel prices - explains SPY's downtrend and
-broad materials/industrials weakness. Separately, a genuine crypto-equity rally is
-live (Bitcoin >$80k on a CFTC regulatory proposal; COIN/MSTR/HOOD/BMNR/GLXY all
-named together in Friday's Benzinga sweep) - checked COIN against rule 3c tonight
-(see Watch-only below), still fails on structure despite the real catalyst.
+**Regime (`ta.py --market`, fresh this session):** SPY 773.38, +1.13% vs EMA21,
+RSI14 58.5, structure **range/mixed**. QQQ 747.46, +3.96% vs EMA21, RSI14 67.8,
+**uptrend (higher highs + higher lows)**. Same read as the last continuous leg -
+QQQ carrying the tape, SPY chopping. No reason to chase size.
 
 ## Mandate & quota status
 
-**Mandate renewed 2026-09-14, `consent.expires_at` 2026-09-28T17:58:50Z - 10 days
-runway, no urgency.** Not halted, not expired - verified fresh this session both via
-`status` and a direct read of `~/.vibe-trading/live/alpaca/mandate.json`.
+**Mandate renewed 2026-09-14, `consent.expires_at` 2026-09-28T17:58:50Z - 6 days
+runway.** Not halted, not expired - verified fresh this session via `status`/
+`account` and cross-checked against the last continuous leg's own fresh read
+(same day, ~90 min earlier).
 
-**Standing-order quota: MET this session - 6 live conditional entries across 6
-distinct symbols**, unchanged from the last review: resting buy-limits ECO 61.90,
-SMTC 146.91, ZS 160.75, RBRK 90.15, CRWD 232.00, TXG 58.70. No armed triggers live
-(`triggers.jsonl`: 52 total, all cancelled/fired/consumed). Nothing added or
-cancelled tonight - the duty-1b hunt (TJGC/DFDV/TMS) and the duty-1 sector
-follow-up (COIN) all missed on structure and/or tradability, so no fresh name
-earned a resting order and no existing thesis died.
+**Standing-order quota: MET this session - 6 live resting buy-limit entries
+across 5 distinct symbols**, comfortably clearing both the >=6-entry and
+>=3-distinct-symbol floors: CRWD 204.30 (new tonight, `a1d8b66a`), CRWD 232.00
+remainder (`4bab1e47`), TXG 58.70 (`7f98e743`), SMTC 146.91 (`41354f13`), ZS
+160.75 (`4b0ad29d`), RBRK 90.15 (`4e8ee047`). TWLO trigger (`trg-20260922-002`,
+>=286.20) expired unfired tonight at 15:00 CT, confirmed via full-session 5m
+bars (high 286.05, never touched 286.20) - retired in `triggers.jsonl`, not a
+watcher miss.
 
-## Book (5 positions, within the 3-6 target)
+## Book (3 positions, book target 3-6 — at the floor)
 
-- **ECO** 10 sh @ avg 82.92, now 85.2573 (+2.82% ROI). Stop 74.38 (12.76% clear,
-  s6a mechanical backstop), no target (s6a-governed hold, time_stop 2026-10-15).
-  **1 confirmed down close (09-18) - Monday's close is day 2; a second lower close
-  is an immediate exit.** Deep add-rung 61.90/27sh still resting. next_earnings
-  2026-11-11 (safe).
-- **RBRK** 48 sh blended avg 100.9827 (2 rungs, both targets resting: 109.12/29sh
-  `1d465b46`, 110.52/19sh `6f618ba8`), now ~106.76 (+5.72% ROI). Structure clean
-  uptrend. 3rd-rung add 15sh@90.15 GTC still unfilled (order `4e8ee047`).
-  **time_stop 2026-09-19 (this weekend) on both filled rungs - Monday's planning
-  leg must decide extend-vs-close if targets haven't filled.** next_earnings
-  2026-12-03 (safe).
-- **SMTC** 3 sh @ avg 168.28 (post-09-18 partial-fill split: original 12sh target
-  order filled 9 of 12 at 185.36 intraday, remaining 3sh still open), now
-  ~186.92 (+11.08% ROI). Stop 162.59 (13.02% clear), target 185.35 resting
-  (`15d59c27`) for the remaining 3sh - **last mark already sits above 185.35 yet
-  the order shows unfilled; confirm at Monday's open whether it filled over the
-  weekend gap or needs re-resting.** Deep add-rung 146.91/6sh still resting
-  (order `41354f13`). time_stop 2026-09-19. next_earnings 2026-11-23 (safe).
-- **TXG** 15 sh @ avg 75.64, now 76.80 (+1.53% ROI). Stop 64.73 (15.72% clear,
-  mechanical backstop), no target (s6a-governed, time_stop 2026-10-15). **1
-  confirmed down close (09-18) - same Monday-close check as ECO.** Deep add-rung
-  58.70/15sh still resting. next_earnings 2026-11-05 (safe).
-- **ZS** 17 sh @ avg 193.12, now 198.20 (+2.63% ROI). Stop 188.15 (tightest
-  clearance in the book, 5.07% clear). Target 208.03 resting (`489b3ab4`, 4.94%
-  away). Deep add-rung 160.75/21sh still resting. time_stop 2026-09-19.
-  next_earnings 2026-11-24 (safe).
+- **ARTY** (AI-infra thematic ETF) 47 sh @ avg 79.67, now 79.81 (+0.18% ROI).
+  s6a-governed (momentum continuation, no price target), mechanical stop 77.05
+  (3.5% clear). Entered 2026-09-22 - first close in the books tonight (79.90 vs
+  entry, an up day), governing 2-down-close exit not yet evaluable. No earnings
+  (ETF). time_stop 2026-10-22 (outer backstop only).
+- **CRWD** 3 sh @ avg 231.22, now 249.69 (+7.99% ROI). Target 264.13 resting
+  (`9bfc5894`, 5.79% away), stop 219.15 (12.2% clear), time_stop 2026-10-03.
+  Remaining 3sh of the original 6sh order still resting at 232.00 (`4bab1e47`).
+  Fresh deep-pullback probe rung added tonight at 204.30 (`a1d8b66a`, 14sh,
+  stop 199.50, target 213.90, C/probe) - explicitly NOT a same-thesis add (that
+  level sits below the existing position's own stop, so it would only fill after
+  the original position had already stopped out; see ledger t-2026-09-22-004 for
+  the full bear-case disclosure). next_earnings 2026-12-01 (safe).
+- **TXG** 15 sh @ avg 75.64, now 80.70 (+6.69% ROI). s6a-governed (no price
+  target), mechanical stop 64.73 (19.8% clear), time_stop 2026-10-15. Closed UP
+  today (80.75 vs prior close 79.10) - governing 2-down-close exit not
+  triggered, stays open. Deep add-rung 58.70/15sh still resting (`7f98e743`).
+  next_earnings 2026-11-05 (safe).
 
 ## Staged / armed for next session - ranked
 
-- **CRWD** - resting GTC buy-limit 232.00 (order `4bab1e47`), unfilled since
-  09-14. Structure clean uptrend, TV buy/strong_buy - thesis intact, not dead.
-  Real support now sits much lower (~204-210 per recent `ta.py` reads) - a
-  candidate for a second, deeper rung if the book ever wants more CRWD exposure;
-  not added given existing cybersecurity-cluster concentration (RBRK/ZS/CRWD).
-  next_earnings 2026-12-01 (safe).
-- No armed (above-market) triggers remain live tonight. Next trading session
-  should arm a fresh confirmation trigger if a genuine rule-3c-passing name
-  appears; tonight's hunt (4 names: TJGC/DFDV/TMS/COIN) found none.
+1. **MDB (MongoDB) - PRIORITY, s6a signal CONFIRMED tonight.** momentum_scan's
+   stalked setup completed: today's close 427.69 decisively cleared the 407.30
+   confirmation level (prior close), with close > EMA9 (395.48) > EMA21 (394.05)
+   > EMA50 (378.24) - full trend-gate pass, structure explicit uptrend. **Enter
+   at tomorrow's (09-23) regular open, NOT intraday** (per the standing plan and
+   because research sessions place no market orders) - stop under the 09-18
+   session low (~379-381, verify the exact bar low at the open), probe size,
+   hold for days, exit on 2 consecutive lower closes (s6a governing rule). TV
+   strong_buy/strong_buy/buy. next_earnings 2026-12-01 (safe).
+2. **RBRK** - resting GTC buy-limit 90.15 (`4e8ee047`), unfilled since 09-16.
+   Deep pullback add to the closed-out original position's old cluster; no
+   current RBRK holding. next_earnings 2026-12-03 (safe).
+3. **ZS** - resting GTC buy-limit 160.75 (`4b0ad29d`), unfilled since 09-16.
+   Same deep-pullback logic as RBRK; the shallower ZS position that carried this
+   symbol closed today at target (+$254.32). next_earnings 2026-11-24 (safe).
+4. **SMTC** - resting GTC buy-limit 146.91 (`41354f13`), unfilled since 09-17.
+   next_earnings 2026-11-23 (safe).
+5. No armed (above-market) confirmation triggers remain live tonight (TWLO
+   expired unfired). Next trading session should arm a fresh one if a genuine
+   rule-3c-passing name appears intraday - research sessions stage only
+   below-market GTC limits per duty 4.
 
 ## Watch only (fails trend gate, tradability, or lacks a fresh catalyst tonight)
 
-**Fresh names hunted tonight (duty 1b, screen.py smallcap-explore lens, 3 full
-`ta.py` workups; plus duty-1 sector follow-up), none qualify:**
-- **TJGC** ($39.6M dvol, day +59.58%, gap 24.11%) - RSI14 91.0, pos_in_20d_range
-  100%, structure explicit "range/mixed" despite a bullish EMA stack/TV
-  strong_buy - verified via daily candles (two dojis + an inside bar AT support
-  10.6 right before today's gap, i.e. a fresh breakout attempt, not an
-  established trend). Rejected on rule 3c. Spread 1.20% (TRADABLE_TIGHT_SIZE)
-  would have allowed a probe had structure passed. next_earnings: none found
-  (ta.py flags possible delisted-adjacent ticker).
-- **DFDV** ($51.9M dvol, day +21.0%) - structure also "range/mixed" (would fail
-  3c regardless); moot anyway, spread 3.49% -> UNTRADABLE (playbook s7b).
-  next_earnings 2026-11-11.
-- **TMS** ($16.0M dvol, day +7.97%) - structure tagged "uptrend" with a
-  confirmed morning-star at support 7.01, but literal EMA order fails (EMA21
-  7.07 < EMA50 7.13) - the literal 3c test overrides the tag. Also spread 3.70%
-  -> UNTRADABLE independently. Double-disqualified. next_earnings 2026-11-12.
-- **COIN** (crypto-equity rally follow-up, +11.66% day) - close 194.25 > EMA9
-  179.26 > EMA21 176.18 > EMA50 167.57 numerically passes, but structure tagged
-  "range/mixed" - verified via `get_stock_bars 1Day 15` rather than trusting the
-  tag: closes swung 191.45(09-14)->172.11->164.51->173.97->194.25(09-18), a ~15%
-  two-day drop THIS WEEK before today's gap. Rejected on rule 3c - one gap day
-  inside an established chop range is not a confirmed uptrend, regardless of the
-  genuine BTC>$80k/CFTC catalyst (playbook s11: don't let a known story override
-  the chart). Revisit only if COIN/MSTR/HOOD print a real multi-day uptrend, not
-  another single gap.
+**Fresh names hunted tonight (duty 1b, screen.py gainers-explore lens, full
+`ta.py` workups on the two biggest liquid movers not already on the watchlist):**
+- **VKTX** (Viking Therapeutics, $1.6B dollar volume today, day +37.6%, gap
+  +28.3% - huge one-day biopharma gap) - RSI14 70.9, pos_in_20d_range 100%,
+  TV strong_buy, but `key_levels.structure` explicit **"downtrend (lower highs +
+  lower lows)"** - a single gap day inside an established downtrend, not a
+  confirmed uptrend (same rejection logic as COIN's 09-18 gap, playbook s11:
+  don't let a real story override the chart). Rejected on rule 3c. StockTwits
+  trending (#3, 39.1k watchers) - crowd hype noted, not a thesis. Revisit only
+  if a second up day confirms the reversal, not another single gap.
+- **INOD** (Innodata, AI data-labeling, $369M dollar volume, day +15.84%) -
+  fails rule 3c on BOTH tests: `structure` tagged "range/mixed" AND the literal
+  EMA order inverted (EMA21 58.41 < EMA50 61.07 despite EMA9>EMA21). 5m tape
+  shows a hammer defending 70.37 at resistance 71.68 but no resolved breakout.
+  Rejected. next_earnings 2026-11-05 if ever revisited.
+- **BB** (BlackBerry, Reddit rank-climber #14, up 83 ranks 24h) - structure
+  "range/mixed", **next_earnings 2026-09-24 (2 days out - inside the 2-day
+  event-risk window regardless of structure)**. Rejected on both counts.
+- **SOFI** (Reddit rank-climber #27, up 77 ranks 24h) - structure "range/mixed",
+  TradingView **strong_sell** on moving averages, RSI14 45.8 (no momentum).
+  Textbook rank-climber-with-no-structure pass (playbook s11: crowd hype is
+  never a thesis) - rejected cleanly, no fresh catalyst or chart to support it.
+- Other reddit_rank_climbers checked narratively, not individually worked up
+  (AMZN/MRVL/VOO/GOOGL/TSLA/IQ/ASTS/SOXL) - all mega-cap or broad-ETF names
+  riding general market chatter, not fresh single-name setups; none flagged a
+  dated catalyst in the trending feed worth a dedicated `ta.py` pull tonight.
 
-**Repeat rejects, unchanged reasons (not re-run fresh tonight):** RIOT, WDC,
-AAOI, CLSK, HOOD, MARA, BMNR, ALMR, BIAF, NCI, GEMI, SOLT/BSOL/HALO/BTDR,
-SNDK/MUU/AVGO/LRCX/STX/COHR/AMAT/MTSI/NVDA/INTC/CIFR cluster, CYPH/HUT/PSIX/ADPT,
-DSP/ABTC/WOLF/GLOO/AKAN, MSTR/CRCL/XENE, IREN/FPS (verified range-bound/EMA-fail
-2026-09-18), FWDI/FTCI/SGML/BKKT/BTGO/MGN/CCXI/SOC/ZTG/ALMU/FEAM/NOK/ETHA/BITO/
-IBIT/VRT/ETN. XENE tonight specifically: -30.69% on a real news catalyst (FDA
-application filed, but enrollment in depression trials voluntarily paused) -
-clinical-risk gap-down, not a buyable dip, long-only rules it out as a short
-candidate anyway.
+**Repeat rejects, unchanged reasons (not re-run fresh tonight):** the full
+09-18 rejected list (RIOT, WDC, AAOI, CLSK, HOOD, MARA, BMNR, ALMR, BIAF, NCI,
+GEMI, SOLT/BSOL/HALO/BTDR, SNDK/MUU/AVGO/LRCX/STX/COHR/AMAT/MTSI/NVDA/INTC/
+CIFR cluster, CYPH/HUT/PSIX/ADPT, DSP/ABTC/WOLF/GLOO/AKAN, MSTR/CRCL/XENE,
+IREN/FPS) carries forward unchanged - no fresh catalyst surfaced for any of
+them tonight.
 
 ## Macro calendar
 
-- No book or staged-name earnings fall within the next 30 days (ECO 11-11, RBRK
-  12-03, SMTC 11-23, TXG 11-05, ZS 11-24, CRWD 12-01) - duty-2 earnings sweep
-  tonight found no near-term conflicts.
-- No fresh macro event flagged for Monday beyond the already-priced-in Fed
-  hike/10Y-yield move (5.04%, 2007 highs) - the dominant driver behind SPY's
-  downtrend read above.
+- No book or staged-name earnings fall within the next 30 days except the
+  BB event-risk flag above (BB is not held or staged, informational only):
+  ARTY none (ETF), CRWD 12-01, TXG 11-05, RBRK 12-03, ZS 11-24, SMTC 11-23,
+  MDB 12-01 (all clear of the 2-day window if entered tomorrow).
+- No fresh macro event flagged for tomorrow beyond the ongoing regime backdrop
+  (SPY range/mixed, QQQ uptrend).
 
 ## Pruned (no fresh catalyst/edge, or fully explained above)
 
-BWIN (closed 2026-09-18 08:38 CT on the confirmed s6a two-down-close exit,
-+$5.25/+0.22%, scored "right" - not re-added without a fresh catalyst). ANGX
-(stopped out 2026-09-17, watcher-missed mechanical stop, scored "unlucky").
-HOOD/APA (closed 2026-09-16, scored "unlucky"). COIN/MSTR/LITE/SMMT (closed
-prior to 09-14, already scored - COIN re-checked fresh tonight per the crypto
-catalyst, still fails 3c, see Watch-only above). CYPH/HUT (repeated watcher
-silent-misses, no fresh setup on last check). BHVN/RARE (crowd hype/trend-gate
-fail, 2026-09-17). IREN/FPS (verified range-bound/EMA-fail via bars, 2026-09-18).
+ECO (closed 2026-09-22, s6a governing exit on the 2nd lower close, -$48.60,
+scored pending review). ZS-original-cluster-position (closed 2026-09-22 at
+target, +$254.32). FIVN (entered 2026-09-22 on a confirmation-trigger
+watcher-miss fire, stopped out same day -$28.70, scored pending review). RBRK/
+SMTC-original-cluster-positions (closed 2026-09-21 at target, +$267.15/+$170.05/
++$57.68). BWIN/ANGX/HOOD/APA/COIN/MSTR/LITE/SMMT/CYPH/HUT/BHVN/RARE (all
+pre-09-21, already scored, no change).
 
-Next session (Monday 2026-09-21, the open/planning leg):
-**(1) Read the CONFIRMED Monday close for TXG/ECO FIRST - both already carry one
-down close from 09-18; a second consecutive lower close is an immediate s6a exit
-on either name, before any hunting.** **(2) Confirm whether SMTC's remaining
-3sh target (185.35) filled over the weekend gap or needs re-resting.** **(3)
-Decide extend-vs-close on RBRK/ZS's 2026-09-19 time_stops if their targets
-haven't filled by then.** **(4) Standing-order quota is 6/6 - no immediate
-action needed, but arm a fresh confirmation trigger if a genuine rule-3c-passing
-name turns up; tonight's hunt found none.** **(5) ZS remains tightest stop
-clearance (5.07%) - continue manual bar-verification given the ongoing watcher
-reliability issue (memory: project_watcher_silent_miss).** **(6) Regime
-unchanged (SPY downtrend on a real Fed/yield driver, QQQ range) - no reason to
-chase size; a live crypto-equity rally (COIN/MSTR/HOOD) sits outside the book's
-structure gate and is worth a fresh look only if it stops being a single gap
-day.**
+Next session (Wednesday 2026-09-23, the open/planning leg):
+**(1) MDB is the day's PRIORITY - execute or re-verify the momentum entry at
+the open per the plan above, stop under the actual 09-18 session low.** **(2)
+Re-check ARTY's and TXG's s6a governing exit against tomorrow's close (both
+currently on up-closes, no risk of the 2-down-close trigger yet, but confirm
+fresh).** **(3) Standing-order quota is 6/6 across 5 distinct symbols after
+tonight's CRWD add - no immediate action needed, but keep hunting for genuine
+rule-3c passes to diversify beyond the CRWD/TXG/RBRK/ZS/SMTC cluster.** **(4)
+Continue manual bar-verification of every stop/trigger given the ongoing
+watcher reliability issue (memory: project_watcher_silent_miss) - today logged
+its 5th confirmed silent-miss instance (FIVN) of the training run.** **(5)
+Regime: SPY range/mixed, QQQ uptrend - no reason to chase size.**
