@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-22T08:40:23",
+ "ts": "2026-09-22T08:41:17",
  "source": "tradingview_full_market",
  "screened_liquid_names": 2,
  "filters": {
@@ -11,7 +11,7 @@
    "symbol": "TSLL",
    "close": 10.12,
    "change_pct": -0.69,
-   "dollar_volume_m": 28.9,
+   "dollar_volume_m": 29.4,
    "rel_volume": 0.05,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -20,7 +20,7 @@
    "symbol": "MUU",
    "close": 35.36,
    "change_pct": -0.57,
-   "dollar_volume_m": 50.7,
+   "dollar_volume_m": 51.9,
    "rel_volume": 0.07,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -34,7 +34,7 @@
     "symbol": "AMZU",
     "close": 36.75,
     "change_pct": -0.52,
-    "dollar_volume_m": 12.2,
+    "dollar_volume_m": 12.5,
     "rel_volume": 0.2,
     "market_cap_b": 0.0,
     "found_by": "gainers"
@@ -43,7 +43,7 @@
     "symbol": "METU",
     "close": 32.25,
     "change_pct": -0.53,
-    "dollar_volume_m": 16.1,
+    "dollar_volume_m": 16.2,
     "rel_volume": 0.08,
     "market_cap_b": 0.0,
     "found_by": "gainers"
@@ -54,7 +54,7 @@
     "symbol": "AMZU",
     "close": 36.75,
     "change_pct": -0.52,
-    "dollar_volume_m": 12.2,
+    "dollar_volume_m": 12.5,
     "rel_volume": 0.2,
     "market_cap_b": 0.0,
     "found_by": "gainers"
@@ -63,7 +63,7 @@
     "symbol": "METU",
     "close": 32.25,
     "change_pct": -0.53,
-    "dollar_volume_m": 16.1,
+    "dollar_volume_m": 16.2,
     "rel_volume": 0.08,
     "market_cap_b": 0.0,
     "found_by": "gainers"
@@ -72,7 +72,7 @@
     "symbol": "MUU",
     "close": 35.36,
     "change_pct": -0.57,
-    "dollar_volume_m": 50.7,
+    "dollar_volume_m": 51.9,
     "rel_volume": 0.07,
     "market_cap_b": 0.0,
     "found_by": "gainers"
@@ -81,7 +81,7 @@
     "symbol": "TSLL",
     "close": 10.12,
     "change_pct": -0.69,
-    "dollar_volume_m": 28.9,
+    "dollar_volume_m": 29.4,
     "rel_volume": 0.05,
     "market_cap_b": 0.0,
     "found_by": "gainers"
