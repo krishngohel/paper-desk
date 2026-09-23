@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-23T10:56:35",
+ "ts": "2026-09-23T11:11:07",
  "screened": 54,
  "candidates": [
   {
@@ -257,20 +257,6 @@
    "risk_pct": 10.82
   },
   {
-   "symbol": "IONZ",
-   "close": 22.2,
-   "ema9": 25.95,
-   "ema21": 27.73,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 22.0,
-   "pct_up_3d": -15.56,
-   "suggested_stop": 18,
-   "risk_per_share": 4.2,
-   "risk_pct": 18.92
-  },
-  {
    "symbol": "APPX",
    "close": 12.18,
    "ema9": 13.29,
@@ -299,18 +285,32 @@
    "risk_pct": 12.74
   },
   {
-   "symbol": "KIDZ",
-   "close": 2.63,
-   "ema9": 3.07,
-   "ema21": 3.65,
+   "symbol": "IONX",
+   "close": 25.98,
+   "ema9": 23.17,
+   "ema21": 23.5,
+   "three_rising_closes": true,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 52.7,
+   "pct_up_3d": 17.48,
+   "suggested_stop": 22.89,
+   "risk_per_share": 3.09,
+   "risk_pct": 11.88
+  },
+  {
+   "symbol": "IONZ",
+   "close": 22.2,
+   "ema9": 25.95,
+   "ema21": 27.73,
    "three_rising_closes": false,
    "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 23.8,
-   "pct_up_3d": -11.45,
-   "suggested_stop": 2.54,
-   "risk_per_share": 0.09,
-   "risk_pct": 3.42
+   "dollar_volume_m": 22.0,
+   "pct_up_3d": -15.56,
+   "suggested_stop": 18,
+   "risk_per_share": 4.2,
+   "risk_pct": 18.92
   },
   {
    "symbol": "PGY",
@@ -327,18 +327,18 @@
    "risk_pct": 1.07
   },
   {
-   "symbol": "IONX",
-   "close": 25.98,
-   "ema9": 23.17,
-   "ema21": 23.5,
-   "three_rising_closes": true,
+   "symbol": "KIDZ",
+   "close": 2.63,
+   "ema9": 3.07,
+   "ema21": 3.65,
+   "three_rising_closes": false,
    "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 52.7,
-   "pct_up_3d": 17.48,
-   "suggested_stop": 22.89,
-   "risk_per_share": 3.09,
-   "risk_pct": 11.88
+   "dollar_volume_m": 23.8,
+   "pct_up_3d": -11.45,
+   "suggested_stop": 2.54,
+   "risk_per_share": 0.09,
+   "risk_pct": 3.42
   },
   {
    "symbol": "EOSE",
@@ -355,20 +355,6 @@
    "risk_pct": 0.67
   },
   {
-   "symbol": "AUGO",
-   "close": 85,
-   "ema9": 87.66,
-   "ema21": 85.31,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 64.4,
-   "pct_up_3d": -3.68,
-   "suggested_stop": 83.69,
-   "risk_per_share": 1.31,
-   "risk_pct": 1.54
-  },
-  {
    "symbol": "IMVT",
    "close": 33.84,
    "ema9": 36.83,
@@ -381,6 +367,20 @@
    "suggested_stop": 33.78,
    "risk_per_share": 0.06,
    "risk_pct": 0.18
+  },
+  {
+   "symbol": "AUGO",
+   "close": 85,
+   "ema9": 87.66,
+   "ema21": 85.31,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 64.4,
+   "pct_up_3d": -3.68,
+   "suggested_stop": 83.69,
+   "risk_per_share": 1.31,
+   "risk_pct": 1.54
   },
   {
    "symbol": "FTXN",
@@ -439,20 +439,6 @@
    "risk_pct": 0.05
   },
   {
-   "symbol": "IBTH",
-   "close": 22.3,
-   "ema9": 22.3,
-   "ema21": 22.32,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 27.8,
-   "pct_up_3d": -0.02,
-   "suggested_stop": 22.29,
-   "risk_per_share": 0.01,
-   "risk_pct": 0.02
-  },
-  {
    "symbol": "LTPZ",
    "close": 46.73,
    "ema9": 47.28,
@@ -465,6 +451,20 @@
    "suggested_stop": 46.71,
    "risk_per_share": 0.02,
    "risk_pct": 0.04
+  },
+  {
+   "symbol": "IBTH",
+   "close": 22.3,
+   "ema9": 22.3,
+   "ema21": 22.32,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 27.8,
+   "pct_up_3d": -0.02,
+   "suggested_stop": 22.29,
+   "risk_per_share": 0.01,
+   "risk_pct": 0.02
   },
   {
    "symbol": "IGLB",
@@ -747,20 +747,6 @@
    "risk_pct": 8.11
   },
   {
-   "symbol": "KOS",
-   "close": 2.64,
-   "ema9": 2.75,
-   "ema21": 2.78,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 8.3,
-   "pct_up_3d": -3.3,
-   "suggested_stop": 2.52,
-   "risk_per_share": 0.12,
-   "risk_pct": 4.55
-  },
-  {
    "symbol": "AMPL",
    "close": 13.65,
    "ema9": 13.35,
@@ -773,6 +759,20 @@
    "suggested_stop": 12.79,
    "risk_per_share": 0.85,
    "risk_pct": 6.26
+  },
+  {
+   "symbol": "KOS",
+   "close": 2.64,
+   "ema9": 2.75,
+   "ema21": 2.78,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 8.3,
+   "pct_up_3d": -3.3,
+   "suggested_stop": 2.52,
+   "risk_per_share": 0.12,
+   "risk_pct": 4.55
   },
   {
    "symbol": "PD",
