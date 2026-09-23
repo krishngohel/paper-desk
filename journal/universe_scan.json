@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-23T09:33:19",
+ "ts": "2026-09-23T09:40:15",
  "source": "tradingview_full_market",
  "screened_liquid_names": 3,
  "filters": {
@@ -11,7 +11,7 @@
    "symbol": "SQQQ",
    "close": 33.3,
    "change_pct": -1.4,
-   "dollar_volume_m": 137.9,
+   "dollar_volume_m": 139.3,
    "rel_volume": 0.09,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -20,7 +20,7 @@
    "symbol": "TQQQ",
    "close": 80.67,
    "change_pct": -0.19,
-   "dollar_volume_m": 298.4,
+   "dollar_volume_m": 307.1,
    "rel_volume": 0.08,
    "market_cap_b": 0.0,
    "exchange": "NASDAQ"
@@ -29,7 +29,7 @@
    "symbol": "LRCX",
    "close": 310.63,
    "change_pct": -0.11,
-   "dollar_volume_m": 26.6,
+   "dollar_volume_m": 27.0,
    "rel_volume": 0.01,
    "market_cap_b": 388.7,
    "exchange": "NASDAQ"
@@ -44,7 +44,7 @@
     "symbol": "SQQQ",
     "close": 33.3,
     "change_pct": -1.4,
-    "dollar_volume_m": 137.9,
+    "dollar_volume_m": 139.3,
     "rel_volume": 0.09,
     "market_cap_b": 0.0,
     "found_by": "relvol"
@@ -53,7 +53,7 @@
     "symbol": "TQQQ",
     "close": 80.67,
     "change_pct": -0.19,
-    "dollar_volume_m": 298.4,
+    "dollar_volume_m": 307.1,
     "rel_volume": 0.08,
     "market_cap_b": 0.0,
     "found_by": "relvol"
@@ -62,7 +62,7 @@
     "symbol": "LRCX",
     "close": 310.63,
     "change_pct": -0.11,
-    "dollar_volume_m": 26.6,
+    "dollar_volume_m": 27.0,
     "rel_volume": 0.01,
     "market_cap_b": 388.7,
     "found_by": "relvol"
