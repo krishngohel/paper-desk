@@ -61,6 +61,30 @@ below until a review promotes or discards them.
   for a reason written in advance; "it was down" is not one. (Operator rule,
   2026-09-02, at the user's direction.)
 
+- **L9 — Do not buy a name that has already outrun SPY by 10+ points over 20
+  days unless the thesis names, in writing, why this one is different.** The
+  measured record: `by_rel_strength_20d.leader_10pp+` is 0 wins in 16 closed
+  trades (rest of book 11 of 16 = 68.8%), total -$1,688.53, Fisher p = 0.00007
+  vs the Sidak threshold 0.0019 (27 tests) - the only bucket to clear the
+  corrected line. The same conditions read from the other side: 0-10pp
+  outperformers 5/7 wins (+$807.20, p 0.032, suggestive) and names lagging SPY
+  6/9 (+$419.21, p 0.035, suggestive) - so rank candidates by preferring
+  in-line-to-modest relative strength over the biggest 20d runner. `ops/
+  trade_context.py --check SYM PRICE` prints this bucket (SOP 4c); if it says
+  `leader_10pp+`, the thesis must cite "L9" and give a concrete reason (dated
+  catalyst not yet in the 20d move, base reset, etc.) - "momentum" or "sector
+  rotation" alone is the reason the bucket lost. Caveats, stated plainly:
+  correlation over a small overlapping sample (16 trades include same-symbol
+  ladders - CRWD x3, TSLA x2 - so the effective n is lower and p is overstated
+  in absolute terms, though it clears the line by ~27x), heavily clustered in
+  the 08-28 to 09-15 trades, and NOT proven causal. It also sits in tension
+  with the s6a momentum archetype, which by construction selects recent leaders
+  - that tension is unresolved; s6a entries in this bucket must carry the
+  written exception. Re-check as the sample grows; retire if the bucket's p
+  drifts back above 0.2. (Added 2026-09-23 daily review. Evidence: the 16
+  closed trades in stats.json `trend_signals.significant`; latest instances
+  t-2026-09-15-004 ECO rs +34.22pp, t-2026-09-22-001 FIVN rs +11.99pp.)
+
 ## Watch patterns (candidate lessons, not yet binding)
 
 Hypotheses a review named but could not yet support with enough evidence. These
@@ -70,54 +94,6 @@ this section, checks each entry against the trades closed since, and either
 promotes it to an Active lesson (evidence now sufficient), leaves it with the
 new count, or discards it with a reason. A pattern that survives here with no
 new instances for 15 trading days is discarded as noise.
-
-- **W2 — a confirmation-breakout thesis whose sole analyst support is a single
-  Hold-rated note (not Buy) paired with a lagging daily downtrend may be a
-  weaker setup than volume alone suggests.** Volume/level confirmation
-  (playbook s7/s2b) was genuine, but the "catalyst" itself was thin - one
-  analyst, and even that one wasn't bullish. Seen 1x: CHPT (t-2026-09-03-004),
-  confirmation-trigger entry, stopped out -$96.00 (-2.98%) within ~42 minutes.
-  Added 2026-09-03 daily review. Revisit if a second instance of
-  single-weak-note-plus-lagging-structure closes. Checked 2026-09-04 daily
-  review against the day's only closes (TSLA x2, t-2026-09-03-006/008) - not
-  a match (multi-catalyst B-grade thesis, not a single weak note), still
-  n=1, no change. Checked again 2026-09-08 weekly review against the only
-  trade closed since (CRWD rung1, t-2026-09-03-003, confirmation-trigger
-  breakout that failed to continue past resistance) - not a match (real
-  multi-headline catalyst cluster at entry, closed on a time-stop/structure
-  downgrade, not a single-weak-note setup), still n=1, ~5 of 15 trading days
-  elapsed, no promotion/discard. Checked again 2026-09-09 daily review against
-  the only trade closed since (CRWD rung2, t-2026-09-03-005 - the second rung
-  of the same ladder, closed on the identical decision) - not a match for the
-  same reason, still n=1, ~6 of 15 trading days elapsed, no promotion/discard.
-  Checked again 2026-09-14 weekly review against all 4 trades closed since
-  (COIN t-2026-09-04-001, LITE t-2026-09-09-trg-08-001, META
-  t-2026-09-10-trg-10-001, SMMT t-2026-09-03-007) - none match: COIN was an
-  L8 support-pullback (not a confirmation-breakout), LITE and SMMT both had
-  genuine multi-source/dated catalysts (Corning-Verizon deal + DB Buy init;
-  Akeso Phase 3 readout) with bullish trend structure (not a lagging
-  downtrend), META's catalyst (Meta Muse launch) likewise paired with a
-  clean uptrend stack. Still n=1, ~9 of 15 trading days elapsed, no
-  promotion/discard. Checked again 2026-09-15 weekly review: zero trades
-  closed since the 2026-09-14 review (nothing to compare), still n=1, ~10 of
-  15 trading days elapsed, no promotion/discard. Checked again 2026-09-16
-  weekly review against the 2 trades closed since (APA t-2026-09-15-003, HOOD
-  t-2026-09-04-003) - neither matches: APA is a momentum-continuation entry
-  (s6a archetype, not a confirmation-breakout with an analyst-note catalyst)
-  stopped out on a broad macro gap; HOOD is an anticipatory_limit
-  support-pullback stopped out on a stock-specific negative news catalyst
-  (DOJ charges), not a breakout thesis at all. Still n=1, ~11 of 15 trading
-  days elapsed, no promotion/discard. Checked again 2026-09-18 weekly review
-  against the 4 trades closed since (IOT t-2026-09-04-002, ANGX
-  t-2026-09-10-trg-10-002, BWIN t-2026-09-14-001, SMTC-split
-  t-2026-09-18-002) - none match: IOT is an anticipatory_limit trailed-stop
-  exit with no breakout/catalyst framing; ANGX was a clean multi-touch
-  breakout stopped via a watcher infra miss on the STOP (not a catalyst or
-  thesis problem); BWIN is an s6a momentum entry, not a confirmation-breakout
-  with an analyst note; SMTC-split's parent thesis was explicitly
-  catalyst-agnostic (day_change alone, no analyst note at all, not even a
-  weak one). Still n=1, ~13 of 15 trading days elapsed - close to the 15-day
-  discard window with no second instance yet.
 
 - **W3 — a momentum-continuation entry (s6a) whose own thesis discloses thin
   relative volume (well under 1.0x 20d avg) as a confirmation weakness may be
@@ -140,6 +116,26 @@ new instances for 15 trading days is discarded as noise.
   exited cleanly on the governing close-pattern rule rather than a
   gap-through-stop. Still n=1, no promotion/discard.
 
+  Checked again 2026-09-23 daily review against the 6 trades scored
+  today: SMTC (t-2026-09-16-001) entered at 0.21x volume - the disclosed thin
+  volume - and WON +11.43% (mfe_atr 2.2), a direct counter-instance; ECO
+  (0.83x) lost but by the orderly s6a two-lower-closes exit, not a gap. APA
+  (t-2026-09-15-003) was re-audited from unlucky to wrong (mfe_atr 0.12).
+  Tally: thin-volume entries 1 gap-reversal loss vs 1 clean win - the pattern
+  is contradicted as often as supported. Still n=1 support; ~6 of 15 trading
+  days elapsed. Leaning discard if no thin-volume gap reversal by ~2026-10-07.
+
+- **W4 - RSI14 at entry: 60-70 has lost every time; 45-60 has carried the
+  book.** `by_rsi14_at_entry.strong_60-70`: 0 wins in 9 closed trades,
+  -$994.07 (win rate vs rest of book 0% vs 47.8%, Fisher p 0.013);
+  `neutral_45-60`: 10 of 19 wins (52.6% vs 7.7% for the rest, p 0.011,
+  +$616.85). Both are suggestive only (p above the 0.0019 Sidak line, 27
+  tests) and heavily entangled with L9 (leaders tend to have RSI 60-70; not
+  independent evidence). Seen 1x (first recorded 2026-09-23 daily review).
+  Promote if it crosses the Sidak line or if it still separates winners from
+  losers after excluding `leader_10pp+` names; discard if p drifts above 0.2
+  or after 15 trading days without support.
+
 ## Archive
 
 (Retired rules move here with the retirement reason and evidence.)
@@ -159,3 +155,11 @@ new instances for 15 trading days is discarded as noise.
   timer), but citing an expired directive by name is sloppy and worth
   sessions catching themselves. Not reopening or rescoring any past trade
   over this - each was graded on its own merits above.
+
+- **W2 (watch pattern) - single Hold-rated analyst note plus lagging daily
+  downtrend as a weak confirmation-breakout catalyst.** DISCARDED 2026-09-23
+  daily review: n=1 (CHPT t-2026-09-03-004, -$96.00) for ~14 trading days
+  through checks on 2026-09-04, 09-08, 09-09, 09-14, 09-15, 09-16, 09-18, and
+  today (ZS, RBRK x2, ECO, SMTC, FIVN - none is a single-weak-note-plus-
+  lagging-structure case), a second instance never arrived. Reason: 15-day
+  no-new-instance rule.

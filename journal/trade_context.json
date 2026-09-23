@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-23T11:17:59",
+ "computed_at": "2026-09-23T15:21:31",
  "trades": {
   "t-2026-08-26-001": {
    "v": 2,
@@ -763,12 +763,12 @@
    "gap_pct": -2.54,
    "run_from_open_pct": -0.17,
    "spy_intraday_at_entry_pct": 0.68,
-   "mfe_pct": 13.22,
+   "mfe_pct": 13.83,
    "mae_pct": -0.16,
-   "mfe_atr": 2.38,
+   "mfe_atr": 2.49,
    "mae_atr": 0.03,
-   "target_progress": 0.93,
-   "spy_ret_hold_pct": 0.31,
+   "target_progress": 0.97,
+   "spy_ret_hold_pct": 0.18,
    "closed": false
   },
   "t-2026-09-14-003": {
@@ -856,7 +856,7 @@
    "mae_pct": -5.55,
    "mfe_atr": 2.05,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 1.26,
+   "spy_ret_hold_pct": 1.14,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
@@ -1063,10 +1063,10 @@
    "run_from_open_pct": 1.48,
    "spy_intraday_at_entry_pct": -0.03,
    "mfe_pct": 0.41,
-   "mae_pct": -1.59,
+   "mae_pct": -1.64,
    "mfe_atr": 0.17,
-   "mae_atr": 0.67,
-   "spy_ret_hold_pct": -0.63,
+   "mae_atr": 0.69,
+   "spy_ret_hold_pct": -0.76,
    "closed": false
   },
   "t-2026-09-23-001": {
@@ -1092,7 +1092,7 @@
    "mae_pct": -1.7,
    "mfe_atr": 0.3,
    "mae_atr": 0.33,
-   "spy_ret_hold_pct": -0.54,
+   "spy_ret_hold_pct": -0.67,
    "closed": false
   }
  }
