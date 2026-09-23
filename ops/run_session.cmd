@@ -9,6 +9,13 @@ set TYPE=%1
 if "%TYPE%"=="" set TYPE=intraday
 cd /d C:\Users\awsom\Documents\Projects\trading-agent
 if not exist ops\logs mkdir ops\logs
+rem One post-close review per day. The continuous loop chains it at the close
+rem and the scheduled review tasks are fallbacks; whichever gets here second
+rem sees today's stamp and skips (ops\review_due.py explains why).
+if not "%TYPE%"=="weekly-review" goto locked
+C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\review_due.py >> ops\logs\sessions.log 2>&1
+if errorlevel 1 exit /b 0
+:locked
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py acquire >> ops\logs\sessions.log 2>&1
 if errorlevel 1 exit /b 0
 rem Every session type runs on Sonnet (user decision 2026-08-31). Never leave
@@ -17,5 +24,9 @@ rem (Opus/Fable), which burns the subscription budget many times faster.
 set MODELFLAG=--model sonnet
 echo ==== %DATE% %TIME% %TYPE% ==== >> ops\logs\sessions.log
 call claude -p "Read C:\Users\awsom\Documents\Projects\trading-agent\ops\SESSION_PROMPT.md and follow it exactly. Session type: %TYPE%." %MODELFLAG% --max-turns 160 >> ops\logs\sessions.log 2>&1
-echo ---- exit %ERRORLEVEL% ---- >> ops\logs\sessions.log
+set RC=%ERRORLEVEL%
+echo ---- exit %RC% ---- >> ops\logs\sessions.log
+rem Stamp only a review that finished cleanly; a crashed or limit-killed one
+rem leaves the day due so a fallback task retries it.
+if "%TYPE%"=="weekly-review" if "%RC%"=="0" C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\review_due.py --mark
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py release >> ops\logs\sessions.log 2>&1

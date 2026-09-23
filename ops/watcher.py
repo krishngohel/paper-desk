@@ -226,7 +226,7 @@ def close_record(trade_id: str, exit_price: float | None, order_id: str | None, 
         except ValueError:
             continue
         if rec.get("trade_id") == trade_id:
-            rec["closed_ts"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+            rec["closed_ts"] = datetime.now().astimezone().isoformat(timespec="seconds")
             rec["exit_order_id"] = order_id
             rec["exit_price"] = exit_price
             rec["exit_reason"] = reason
@@ -732,12 +732,15 @@ def fire_trigger(trg: dict, px: float, state: dict) -> None:
     if ok:
         oid = out.get("order_id")
         rec = {"trade_id": f"t-{datetime.now().strftime('%Y-%m-%d')}-trg-{trg['trigger_id'][-6:]}",
-               "symbol": symbol, "opened_ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+               # Offset-aware: the laptop's zone has flipped between CT and ET,
+               # and a naive stamp silently shifts the entry by an hour.
+               "symbol": symbol, "opened_ts": datetime.now().astimezone().isoformat(timespec="seconds"),
                "entry_order_id": str(oid), "entry_qty": qty, "entry_price": px,
                "entry_notional": round(px * qty, 2),
                "thesis": trg.get("thesis", ""), "lesson_refs": trg.get("lesson_refs", []),
                "exit_condition": trg.get("exit_condition", ""),
                "setup_grade": trg.get("setup_grade"), "probe": trg.get("probe", False),
+               "entry_buckets": trg.get("entry_buckets", []),
                "stop": trg.get("stop"), "target": trg.get("target"),
                "time_stop": trg.get("time_stop"), "target_order_id": None,
                "closed_ts": None, "exit_order_id": None, "exit_price": None,
