@@ -14,7 +14,9 @@ C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\ses
 if errorlevel 1 exit /b 0
 echo ==== %DATE% %TIME% CONTINUOUS LOOP START ==== >> ops\logs\sessions.log
 :loop
-for /f %%t in ('powershell -NoProfile -Command "Get-Date -Format HHmm"') do set NOW=%%t
+rem Central time regardless of the system zone - the laptop has flipped to ET,
+rem which ended the loop an hour early (14:56 ET = 13:56 CT).
+for /f %%t in ('C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\review_due.py --ct') do set NOW=%%t
 if %NOW% GEQ 1456 goto done
 rem Refresh the lock so it never goes stale while the loop lives.
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py acquire continuous >> ops\logs\sessions.log 2>&1
@@ -45,3 +47,10 @@ goto loop
 :done
 echo ==== %DATE% %TIME% CONTINUOUS LOOP END ==== >> ops\logs\sessions.log
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py release >> ops\logs\sessions.log 2>&1
+rem Post-close review, chained here so it no longer depends on a wall-clock
+rem task landing after the loop: the zone flips moved that task into the loop's
+rem lock and it was skipped (no review 2026-09-21/22). Wait out the 15:00 CT
+rem close so the day's last exits are in the ledger. run_session.cmd skips it
+rem if a fallback task already reviewed today.
+C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe -c "import time; time.sleep(900)"
+call C:\Users\awsom\Documents\Projects\trading-agent\ops\run_session.cmd weekly-review
