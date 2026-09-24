@@ -17,7 +17,7 @@ profile_by_id() resolves an explicit profile_id straight from the built-in
 profile registry -- no ~/.vibe-trading/trading-connections.json selection file
 is required when profile_id is passed explicitly, which this CLI always does.
 
-Usage (from VT root, venv active):
+Usage (from any directory - the script moves itself into the VT root):
     python ..\\ops\\trade_cli.py status | account | positions | orders
     python ..\\ops\\trade_cli.py quote SYM
     python ..\\ops\\trade_cli.py bars SYM [period] [limit]   (periods: 1m 5m 15m 1h 1d)
@@ -27,8 +27,13 @@ Usage (from VT root, venv active):
     python ..\\ops\\trade_cli.py audit [N]
 """
 import json
+import os
 import sys
+from pathlib import Path
 
+# the agent package resolves imports relative to the VT root, so run from there
+# whatever the caller's cwd (sessions call this by absolute path, no cd)
+os.chdir(Path(__file__).resolve().parent.parent / "Vibe-Trading")
 sys.path.insert(0, "agent")
 
 PROFILE = "alpaca-paper-trade"
