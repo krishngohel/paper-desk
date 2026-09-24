@@ -61,8 +61,12 @@ below until a review promotes or discards them.
   for a reason written in advance; "it was down" is not one. (Operator rule,
   2026-09-02, at the user's direction.)
 
-- **L9 — Do not buy a name that has already outrun SPY by 10+ points over 20
-  days unless the thesis names, in writing, why this one is different.** The
+- **L9 — A name that has already outrun SPY by 10+ points over 20 days is still
+  a candidate, but the thesis must cite L9 and say, in writing, why this one is
+  different; size it knowing the bucket's record.** Amended 2026-09-24 by operator
+  rule "nothing is screened out": L9 was being read as a ban and kept META (+38%
+  in a month) out of view. It is a disclosure and sizing rule, never an
+  exclusion - a leader is worked up like any other name. The
   measured record: `by_rel_strength_20d.leader_10pp+` is 0 wins in 16 closed
   trades (rest of book 11 of 16 = 68.8%), total -$1,688.53, Fisher p = 0.00007
   vs the Sidak threshold 0.0019 (27 tests) - the only bucket to clear the

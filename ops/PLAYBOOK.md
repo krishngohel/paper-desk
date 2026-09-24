@@ -350,6 +350,19 @@ spread test and has real dollar volume, it earns a full workup regardless of
 how small the company is. Reject it on structure, extension, or catalyst if the
 evidence says so - but reject it on evidence, one name at a time.
 
+**The same holds in every direction - NOTHING is excluded by category
+(operator rule 2026-09-24).** Every publicly traded US stock, ETF, and ADR the
+broker can execute is a candidate: mega-caps and micro-caps, any share price,
+any exchange (OTC included), any sector, names that have already run, names you
+first heard about on Reddit or StockTwits. On 2026-09-23 META (+38% in a month,
+$27B traded a day, 0.01% spread) was waved off as "large/mega-cap names already
+well outside this desk's small-cap" focus - there was never such a focus, and
+the name ran another +4.5% the next day. "Mega-cap", "outside our focus",
+"crowd chatter", "too expensive per share", "already moved" and "not our kind
+of name" are category guesses, the same failure as "microcap". A pass is
+legitimate only when it cites a number measured for THAT symbol (spread,
+structure, RSI/extension, level, event date).
+
 Two liquidity checks remain independent of spread: today's dollar volume (thin
 books slip on exit even when the quoted spread looks fine) and whether the name
 can absorb your intended size without you becoming the move.

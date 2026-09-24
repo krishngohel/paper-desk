@@ -7,7 +7,8 @@ instead of a rule it has to hand-check symbol by symbol.
 Screens for exactly the tested entry:
   * the last 3 daily closes STRICTLY rising
   * close > EMA9 > EMA21
-  * plus liquidity/tradability sanity (dollar volume, and the spread test from §7b)
+  * no liquidity floor (operator rule 2026-09-24: nothing is screened out) -
+    dollar volume is reported; the per-symbol spread test (§7b, ta.py) judges it
 
 Output: journal/momentum_candidates.json, and a table on stdout. Research only -
 places no orders, and never decides size.
@@ -27,7 +28,6 @@ sys.path.insert(0, str(ROOT / "ops"))
 from bt_data import load_bars  # noqa: E402
 
 OUT = ROOT / "journal" / "momentum_candidates.json"
-MIN_DOLLAR_VOL_M = 20.0
 
 
 def ema(vals: list[float], n: int) -> float | None:
@@ -59,7 +59,7 @@ def evaluate(symbol: str) -> dict | None:
         "ema21": round(e21, 2),
         "three_rising_closes": rising,
         "stacked_emas": stacked,
-        "qualifies": bool(rising and stacked and dv >= MIN_DOLLAR_VOL_M),
+        "qualifies": bool(rising and stacked),
         "dollar_volume_m": round(dv, 1),
         "pct_up_3d": round(100 * (last / closes[-4] - 1), 2) if len(closes) > 4 else None,
         "suggested_stop": round(launch_low, 2),
