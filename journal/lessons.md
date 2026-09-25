@@ -88,6 +88,10 @@ below until a review promotes or discards them.
   drifts back above 0.2. (Added 2026-09-23 daily review. Evidence: the 16
   closed trades in stats.json `trend_signals.significant`; latest instances
   t-2026-09-15-004 ECO rs +34.22pp, t-2026-09-22-001 FIVN rs +11.99pp.)
+  Re-checked 2026-09-25 daily review (34 closed): bucket unchanged at 0 wins
+  in 16 (-$1,688.53), Fisher p 0.00013 vs Sidak 0.0019; the two trades
+  closed since 09-23 (ARTY rs +4.91pp, MDB rs +4.91pp) were both outside
+  the bucket. Still binding; not retired.
 
 ## Watch patterns (candidate lessons, not yet binding)
 
@@ -129,6 +133,12 @@ new instances for 15 trading days is discarded as noise.
   is contradicted as often as supported. Still n=1 support; ~6 of 15 trading
   days elapsed. Leaning discard if no thin-volume gap reversal by ~2026-10-07.
 
+  Checked again 2026-09-25 daily review against ARTY (t-2026-09-22-003,
+  0.97x volume) and MDB (t-2026-09-23-001, 1.06x): neither is thin (<1.0x
+  in the W3 sense is borderline for ARTY at 0.97x) and both exited by the
+  orderly two-lower-closes rule, not a gap-through-stop. No new instance.
+  Still n=1 support / 1 counter (SMTC). ~8 of 15 trading days elapsed.
+
 - **W4 - RSI14 at entry: 60-70 has lost every time; 45-60 has carried the
   book.** `by_rsi14_at_entry.strong_60-70`: 0 wins in 9 closed trades,
   -$994.07 (win rate vs rest of book 0% vs 47.8%, Fisher p 0.013);
@@ -139,6 +149,36 @@ new instances for 15 trading days is discarded as noise.
   Promote if it crosses the Sidak line or if it still separates winners from
   losers after excluding `leader_10pp+` names; discard if p drifts above 0.2
   or after 15 trading days without support.
+  Updated 2026-09-25 daily review (34 closed): still 0 wins in the
+  `strong_60-70` bucket, now 10 trades / -$1,003.94 (Fisher p 0.0135), with
+  ARTY (t-2026-09-22-003, RSI 62.2, rs +4.91pp, -$9.87) the newest loss.
+  Independence test run (trade_context.json, closed trades with 20d rs
+  under +10pp, i.e. not `leader_10pp+`): n=18; RSI 45-60 = 10 of 14 wins
+  (+$1,372.64), RSI 60-70 = 0 of 2 (ASND -$171.95, ARTY -$9.87). Direction
+  agrees, but n=2 outside the leader bucket is far too small to call the
+  effect independent of L9. Seen 2x outside L9 names; still not promoted.
+
+- **W5 - resting limit buys that fill AT the open have lost every time.**
+  `by_entry_time.open_resting_fill`: 0 wins in 5 closed trades, -$715.10
+  (expectancy -$143.02, vs -$15.05 book-wide); Fisher p not under 0.05, so
+  this is anecdote-grade. It overlaps playbook s7a (resting dip-buys fill
+  when the thesis is failing) and the `anticipatory_limit` scoreboard
+  (5 post-09-02 trades, 20% wins, -$495.95), so it is probably the same
+  effect seen through the time-of-day lens, not independent evidence.
+  Seen 5x (first recorded 2026-09-25 daily review). Promote if it crosses
+  p 0.05 with n>=8, or fold into s7a's mechanism finding; discard after 15
+  trading days with no new instance or if a resting fill at the open wins.
+
+- **W6 - C-grade probes are the losing half of the book.** `by_grade`: C =
+  14 closed, 2 wins (14.3%), -$545.10, expectancy -$38.94; B = 19 closed,
+  8 wins (42.1%), +$25.37, expectancy +$1.34. Rough Fisher on C vs the rest
+  is about p 0.06 (not under 0.05, not near the 0.0019 Sidak line), and C
+  probes are mostly resting-limit rungs from research sessions, so it
+  entangles with W5 and s7a. Seen once as a measured split (first recorded
+  2026-09-25 daily review). Practical read for sizing only: a C-grade
+  rung has no measured edge on this desk, so its size should reflect that.
+  Promote if p crosses 0.05 with n>=20 C trades; discard if C's win rate
+  converges to B's or after 15 trading days with no new C closes.
 
 ## Archive
 

@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-23T15:21:31",
+ "computed_at": "2026-09-25T15:15:52",
  "trades": {
   "t-2026-08-26-001": {
    "v": 2,
@@ -763,12 +763,12 @@
    "gap_pct": -2.54,
    "run_from_open_pct": -0.17,
    "spy_intraday_at_entry_pct": 0.68,
-   "mfe_pct": 13.83,
+   "mfe_pct": 14.12,
    "mae_pct": -0.16,
-   "mfe_atr": 2.49,
+   "mfe_atr": 2.54,
    "mae_atr": 0.03,
-   "target_progress": 0.97,
-   "spy_ret_hold_pct": 0.18,
+   "target_progress": 0.99,
+   "spy_ret_hold_pct": 0.69,
    "closed": false
   },
   "t-2026-09-14-003": {
@@ -852,11 +852,11 @@
    "gap_pct": 0.03,
    "run_from_open_pct": 7.86,
    "spy_intraday_at_entry_pct": -0.38,
-   "mfe_pct": 10.26,
+   "mfe_pct": 15.02,
    "mae_pct": -5.55,
-   "mfe_atr": 2.05,
+   "mfe_atr": 3.0,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 1.14,
+   "spy_ret_hold_pct": 1.65,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
@@ -1063,11 +1063,15 @@
    "run_from_open_pct": 1.48,
    "spy_intraday_at_entry_pct": -0.03,
    "mfe_pct": 0.41,
-   "mae_pct": -1.64,
+   "mae_pct": -2.86,
    "mfe_atr": 0.17,
-   "mae_atr": 0.69,
-   "spy_ret_hold_pct": -0.76,
-   "closed": false
+   "mae_atr": 1.2,
+   "spy_ret_hold_pct": -0.45,
+   "ret_pct": -0.26,
+   "excess_vs_spy_pct": 0.19,
+   "hold_days": 3.0,
+   "exit_ts_approx": false,
+   "closed": true
   },
   "t-2026-09-23-001": {
    "v": 2,
@@ -1089,10 +1093,40 @@
    "run_from_open_pct": 0.5,
    "spy_intraday_at_entry_pct": -0.19,
    "mfe_pct": 1.57,
-   "mae_pct": -1.7,
+   "mae_pct": -4.62,
    "mfe_atr": 0.3,
-   "mae_atr": 0.33,
-   "spy_ret_hold_pct": -0.67,
+   "mae_atr": 0.88,
+   "spy_ret_hold_pct": -0.31,
+   "ret_pct": -4.61,
+   "excess_vs_spy_pct": -4.3,
+   "hold_days": 2.3,
+   "exit_ts_approx": false,
+   "closed": true
+  },
+  "t-2026-09-25-001": {
+   "v": 2,
+   "symbol": "PLTR",
+   "entry_utc": "2026-09-25T13:58:03+00:00",
+   "entry_ts_approx": false,
+   "entry_bucket": "first_hour",
+   "spy_trend": "up",
+   "spy_ret_5d": 0.6,
+   "spy_ret_20d": 0.14,
+   "sym_trend": "up",
+   "sym_ret_20d": 8.5,
+   "rel_strength_20d": 8.36,
+   "rsi14": 67.4,
+   "atr_pct": 3.65,
+   "ext_ema20_atr": 2.06,
+   "below_20d_high_atr": 0.32,
+   "gap_pct": 0.06,
+   "run_from_open_pct": -0.15,
+   "spy_intraday_at_entry_pct": 0.33,
+   "mfe_pct": 0.05,
+   "mae_pct": -1.47,
+   "mfe_atr": 0.01,
+   "mae_atr": 0.4,
+   "spy_ret_hold_pct": 0.24,
    "closed": false
   }
  }

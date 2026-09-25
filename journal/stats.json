@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-25T14:52:13",
+ "computed_at": "2026-09-25T15:18:04",
  "overall": {
   "n": 34,
   "closed": 34,
@@ -440,15 +440,11 @@
  },
  "review_verdicts": {
   "lucky": 1,
-  "wrong": 10,
+  "wrong": 12,
   "unlucky": 9,
-  "right": 12,
-  "unscored": 2
+  "right": 12
  },
- "unscored_closed": [
-  "t-2026-09-22-003",
-  "t-2026-09-23-001"
- ],
+ "unscored_closed": [],
  "by_exit_reason": {
   "exit-condition-hit": {
    "n": 32,
@@ -824,24 +820,24 @@
  },
  "by_market_during_hold": {
   "spy_fell_0.5pct+": {
-   "n": 8,
-   "closed": 8,
-   "win_rate_pct": 25.0,
-   "total_pnl": -76.15,
+   "n": 6,
+   "closed": 6,
+   "win_rate_pct": 33.3,
+   "total_pnl": -26.5,
    "avg_win": 165.62,
-   "avg_loss": -67.9,
-   "expectancy_per_trade": -9.52,
+   "avg_loss": -89.44,
+   "expectancy_per_trade": -4.42,
    "largest_win": 298.38,
    "largest_loss": -209.13
   },
   "spy_flat": {
-   "n": 20,
-   "closed": 20,
-   "win_rate_pct": 20.0,
-   "total_pnl": -1442.92,
+   "n": 22,
+   "closed": 22,
+   "win_rate_pct": 18.2,
+   "total_pnl": -1492.57,
    "avg_win": 62.22,
-   "avg_loss": -105.74,
-   "expectancy_per_trade": -72.15,
+   "avg_loss": -96.75,
+   "expectancy_per_trade": -67.84,
    "largest_win": 153.72,
    "largest_loss": -247.54
   },
@@ -894,6 +890,14 @@
     "rest_win_pct": 45.8,
     "total_pnl": -1003.94,
     "p": 0.01351
+   },
+   {
+    "bucket": "by_market_during_hold.spy_flat",
+    "n": 22,
+    "win_pct": 18.2,
+    "rest_win_pct": 58.3,
+    "total_pnl": -1492.57,
+    "p": 0.02556
    },
    {
     "bucket": "by_rel_strength_20d.lagging_spy",
@@ -952,7 +956,7 @@
   },
   "mae_atr": {
    "winners": 0.18,
-   "losers": 0.61
+   "losers": 0.84
   },
   "target_progress": {
    "winners": 1.13,
@@ -1032,9 +1036,9 @@
   }
  },
  "verdict_audit": {
-  "losers_scored": 21,
+  "losers_scored": 23,
   "losers_called_unlucky": 9,
-  "losers_called_wrong": 10,
+  "losers_called_wrong": 12,
   "unlucky_but_never_worked": []
  }
 }
