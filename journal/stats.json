@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-25T08:55:34",
+ "computed_at": "2026-09-25T08:58:37",
  "overall": {
   "n": 33,
   "closed": 33,
@@ -11,7 +11,7 @@
   "largest_win": 306.7,
   "largest_loss": -247.54
  },
- "open_positions": 3,
+ "open_positions": 4,
  "by_grade": {
   "B": {
    "n": 18,
