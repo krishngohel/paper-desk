@@ -1,127 +1,109 @@
 # Watchlist - battle plan
 
 > **Maintenance rule:** this file is the CURRENT battle plan, not a log. Fold new
-> findings INTO the ranked entries above and delete what they supersede — never append
+> findings INTO the ranked entries above and delete what they supersede - never append
 > a dated addendum section. History belongs in `journal/YYYY-MM.md`.
 
 Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric trigger
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-23 ~17:05 CT (research session, market closed - Wednesday evening,
-after the 09-23 close). Full in-place rewrite: MDB moved from "staged" to "held"
-(entered 09-23 13:33Z); the FSLY/IONQ vettings below replace last night's
-VKTX/INOD/BB/SOFI names.
+Updated 2026-09-25 evening (research session, market closed, Friday after the close).
+Full in-place rewrite. Monday 09-28 is the LAST mandate day.
 
-**Regime (`ta.py --market`, fresh):** SPY 767.81, +0.36% vs EMA21, RSI14 53.0,
-structure **range/mixed** (down from 773.38 last night). QQQ 741.21, +2.8% vs EMA21,
-RSI14 62.8, **uptrend**. Benzinga 09-23: 10Y Treasury yield at a 19-year high on
-blowout PMI, Nasdaq 100 slipped, cybersecurity bucked the selloff. Rate shock is the
-live tail risk for the ARTY/MDB/TXG growth-tilted book - no reason to chase size.
+**Regime (`ta.py --market`, fresh):** SPY 771.35, +0.73% vs EMA21, RSI14 55.9,
+structure **range/mixed**. QQQ 744.50, +2.72% vs EMA21, RSI14 64.8, **uptrend**.
+Tech led Friday (MSFT +4%, QCOM +4.3%, BE +8.4%); 10Y-yield/rate-shock is still the live
+tail risk for the growth-tilted book. No reason to chase size.
 
 ## Mandate & quota status
 
-**Mandate `consent.expires_at` 2026-09-28T17:58:50Z - 5 days runway; a human renewal
-decision is needed by then.** Not halted (verified fresh via `status`).
+**Mandate `consent.expires_at` 2026-09-28T17:58:50Z - Monday is the last full day;
+re-check `consent` fresh Monday pre-market.** Not halted (`status` fresh 09-25 evening).
 
-**Standing-order quota: MET - 6 live resting buy-limits across 5 distinct symbols,
-0 armed triggers:** CRWD 204.30 (`a1d8b66a`, 14sh) and CRWD 232.00 remainder
-(`4bab1e47`, 3sh left of 6), TXG 58.70 (`7f98e743`), SMTC 146.91 (`41354f13`), ZS
-160.75 (`4b0ad29d`), RBRK 90.15 (`4e8ee047`). No triggers live (TWLO/FIVN both
-retired). No order touched this session.
+**Standing-order quota: MET - 6 live resting buy-limits across 5 symbols, 0 armed
+triggers:** CRWD 204.30 (`a1d8b66a`, 14sh) and CRWD 232.00 remainder (`4bab1e47`, 3sh
+left), TXG 58.70 (`7f98e743`), SMTC 146.91 (`41354f13`), ZS 160.75 (`4b0ad29d`), RBRK
+90.15 (`4e8ee047`). No order placed or touched this session. Most rungs sit 15-25%
+below market (far from any near-term fill) - Monday's planning leg should decide
+whether to re-price the ones whose thesis still holds.
 
-## Book (4 positions, target 3-6 - inside range)
+## Book (3 positions, target 3-6 - one below the low end)
 
-- **ARTY** 47 sh @ 79.67, now 78.67 (-$47.00 / -1.26%). s6a-governed, stop 77.05
-  (2.1% below), no target, time_stop 2026-10-22. **09-23 closed 78.67 vs 79.81 - the
-  FIRST lower close.** A second consecutive lower close (09-24 close below the 09-23
-  official close, 78.71 per the handoff; ta.py last print 78.67) = SELL per s6a; an
-  up-close resets the count. Spread 1.89% -
-  TRADABLE_TIGHT_SIZE, so exit via limit near bid in the final cycle, not a sweep.
-- **CRWD** 3 sh @ 231.22, now 261.66 (+$91.32 / +13.2%). Target 264.13 resting
-  (`9bfc5894`, 0.9% away), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
-- **MDB** 2 sh @ 431.49 (entered 09-23 13:33Z, s6a), now 428.40 (-$6.18 / -0.72%).
-  Stop 378.50 (11.7% below), no target, time_stop 2026-10-23. 09-23 close 428.36 vs
-  427.69 prior = UP close, no lower-close count. Spread 1.84% (TIGHT_SIZE).
-  `ta.py` structure tag reads "range/mixed" though EMA order passes (close 428.36 >
-  EMA9 402.05 > EMA21 397.18 > EMA50 380.90); volume 0.59x 20d avg = thin (W3
-  watch: thin-volume s6a entry). next_earnings 2026-12-01.
-- **TXG** 15 sh @ 75.64, now 75.69 (+$0.79 / +0.07%). s6a-governed, stop 64.73,
-  no target, time_stop 2026-10-15. Carries ONE lower close (per 09-23 handoff; a 2nd
-  at 09-24's close below the 09-23 close = SELL). next_earnings 2026-11-05.
+- **CRWD** 3 sh @ 231.22, now ~252.30 (+$63 / +9.1%). Target 264.13 resting
+  (`9bfc5894`, +4.7%), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
+- **PLTR** 10 sh @ 192.43, now ~189.62 (-$28 / -1.5%). s6a-governed, stop 182.94, no
+  target. Exit only on two consecutive lower closes. next_earnings 2026-11-02.
+- **TXG** 15 sh @ 75.64, now ~85.72 (+$151 / +13.3%). s6a-governed, stop 64.73, no
+  target. Exit only after two consecutive lower closes below 84.14 (09-25 close was
+  above it - no lower close counted). next_earnings 2026-11-05.
 
-## Staged / armed for next session - ranked
+## Ranked - Monday hunt
 
-1. **Manage the book first.** ARTY and TXG each sit one lower close from the s6a exit;
-   CRWD is 0.9% under its resting target; MDB is a fresh s6a hold. Nothing new is
-   worth chasing before those four are resolved at tomorrow's close.
-2. **RBRK** - resting GTC buy-limit 90.15 (`4e8ee047`), unfilled since 09-16. Deep
-   pullback into an old multi-touch cluster; no current holding. Kill: cybersecurity
-   rotation thesis fully unwinds. next_earnings 2026-12-03.
-3. **ZS** - resting GTC buy-limit 160.75 (`4b0ad29d`), unfilled since 09-16. Single-
-   touch level (L8 caution). next_earnings 2026-11-24.
-4. **SMTC** - resting GTC buy-limit 146.91 (`41354f13`), unfilled since 09-17, at the
-   09-16 morning-star base. next_earnings 2026-11-23.
-5. **Arm no above-market triggers overnight** (research stages below-market limits
-   only). Tomorrow's planning leg: arm fresh triggers only for names passing rule 3c AND
-   a `trade_context.py --check` that does NOT read `leader_10pp+` (L9). OKTA/PANW from
-   the 09-23 handoff remain candidates subject to that check.
+1. **Manage the book first** (stops vs 5m bars - watcher silent-miss issue; CRWD target
+   resting; TXG/PLTR close-pattern at 15:00 CT).
+2. **MSFT - best fit found tonight; WAIT, no order.** Close 516.17 > EMA9 501.64 >
+   EMA21 496.65 > EMA50 469.02 (passes 3c on the EMA order; ta.py tag reads
+   "range/mixed"). `trade_context --check 517.9`: rel_strength_20d **+0.17pp** (NOT
+   leader_10pp+ -> L9 clean), RSI14 54.4 (neutral_45-60 bucket: 10 of 20 wins = 50%,
+   suggestive), 2.06 ATR extension (moderate), gap +3.4% on Copilot relaunch + tech
+   leadership - no hard dated catalyst. Vol 1.78x, spread 0.03%, $19.6B traded.
+   Friday closed as a 5m shooting star + marubozu selling at resistance 517.78.
+   **Trigger:** do NOT chase the gap. Two ways in - (a) pullback that HOLDS the
+   gap-fill zone 498.9 (prior-day high) / EMA9 ~501 on stabilising 5m bars, buy the
+   reclaim (confirmation_trigger, re-anchor stop/target to the fill); (b) s6a: a
+   3rd/4th rising close with EMA stack intact, enter the next open. Planned: probe,
+   ~$100 risk, stop under 491.2 (prior-day low), target 517.8 then 530. Grade C/B.
+   Kill: close below EMA21 496.65 / gap fully filled below 491. next_earnings 2026-10-28.
+   Not staged as a resting limit tonight: anticipatory limits (-$99/trade, 1/5 wins,
+   s7a/W5) and C-grade probes (2/14, W6) are the desk's measured losers.
+3. **QCOM - L9 blocked.** Uptrend, close 201.97 > EMA21 183.44 > EMA50 176.06, RSI
+   68.1, +4.3% on Snapdragon 8 Elite rollout + extended Apple patent agreement
+   (Benzinga 09-25). `--check`: **leader_10pp+ (+18.5pp, SIGNIFICANT, 0/16)** and
+   RSI 60-70 (W4, 0/10). Any thesis must cite L9 with a reason; none exists yet.
+   Revisit only after a base that cuts RS below +10pp. next_earnings 2026-11-04.
+4. **BE - L9 blocked.** Close 288.70 > EMA21 258.90 > EMA50 240.97, +8.4% rebound
+   after Thursday's -6% Oracle force-majeure hit (Project Jupiter). `--check`:
+   **leader_10pp+ (+22.1pp)**, ATR 6.9% (huge stop distance), 7.3% run from the open,
+   no resistance overhead but Friday's close was a doji/marubozu at the highs.
+   next_earnings 2026-10-27. Watch only.
+5. **RBRK 90.15 / ZS 160.75 / SMTC 146.91** - resting GTC rungs (unfilled since
+   09-16/17), thesis-of-record unchanged. ZS single-touch level (L8 caution).
+   next_earnings RBRK 12-03, ZS 11-24, SMTC 11-23.
+6. **TWLO / OKTA / DDOG** - still the only momentum_scan hits (TWLO 5.19% risk, OKTA
+   5.15% risk). All L9 leaders (+31pp / +53.6pp / +12.7pp); DDOG fails 3c (EMA21 <
+   EMA50). Carry as watch; enter only with a written L9 exception.
 
-## Watch only (fails trend gate, L9, or lacks catalyst)
+## Watch only / rejects
 
-**Fresh names hunted tonight (duty 1b - screen.py relvol lens + social.py, full
-`ta.py` + news workups):**
-- **FSLY** (Fastly, +13.69% on $889M, rel vol 3.81x/5.16x 20d avg, spread 0.03%
-  TRADABLE) - structure uptrend, close 29.65 > EMA21 24.48 > EMA50 23.31, RSI14 65.9,
-  pos 100% of 20d range, next_earnings 2026-11-04 (safe). **REJECTED under L9:**
-  `trade_context.py --check` reads `rel_strength_20d.leader_10pp+` (+12.39pp) -
-  SIGNIFICANT, 0 wins in 16, -$1,688.53 - and its RSI 65.9 falls in the W4 60-70
-  losing bucket. Catalyst is weak on the page: the move follows an investor-day and an
-  X-post about Meta Muse agent traffic share (Fastly 29.3% vs Cloudflare 37.0%), while
-  the only two analyst notes (DA Davidson Neutral PT $23; BofA Underperform PT $22)
-  sit BELOW the 29.65 price. 5m tape ended in dojis/shooting stars under resistance
-  30.69. Revisit only after a reset to a base with RS under +10pp.
-- **IONQ** (momentum_scan hit, +3.83% on $3.1B, gap +7.64%, spread 0.12%) - momentum
-  scan passes 3-rising-closes + close 42.55 > EMA9 39.92 > EMA21 39.77, BUT the literal
-  EMA order fails rule 3c: **EMA50 40.17 > EMA21 39.77**, and `structure` reads
-  "range/mixed". Catalyst is real (first on-premise quantum deployment at NVIDIA
-  Research Center; real-time error-correction decoder, Benzinga 09-23) but the entry
-  would be a gap-day chase into resistance 42.94 (5m shooting star + doji there) with
-  risk 6.29% to the launch-low stop. Rejected on rule 3c. Revisit if close > EMA50 AND
-  EMA21 > EMA50 after a base.
-- **INOD** (momentum_scan hit, 3d +22.8%, risk 18.09% to launch-low stop 57.31) -
-  already rejected 09-22 on rule 3c (EMA21 < EMA50); the scan flag is a scan artifact,
-  not a fresh pass. Stop distance alone (18%) is disqualifying at probe scale.
-- Reddit/StockTwits rank-climbers (APP/U/HIMS/TTD/VKTX/MCD/NVO/NLST, mega-cap MU/META/
-  AMD/GOOGL/NVDA at top ranks) - crowd chatter, no fresh single-name structure vetted
-  tonight beyond FSLY/IONQ; playbook s11: crowd hype is never a thesis.
-- Relvol-lens extremes (HVII -50.9%, BLDX, GCTK, KIDZ, INNV -15.5%, NNBR +14.5% on
-  $37M) - HVII/INNV are large down-gaps (no long thesis), the rest are sub-$50M-dollar-
-  volume or ETF-flow relvol artifacts with no catalyst on screen; not worked up.
+**Fresh names vetted tonight (duty 1b; screen.py explore lens `smallcap`, social.py
+trending, scan `big_leaders`):** MSFT (ranked #2 above; social.py trending #3 by
+watchlist count, Reddit rank +13, StockTwits 9 bull / 3 bear), QCOM and BE (L9-blocked
+above), **SHMD** (+20.7% scan / +33% day on $54.8M, rel vol 24.6x, spread 0.62%
+TRADABLE): close 4.37 vs EMA9 3.70 / EMA21 3.68 / EMA50 4.06 - one-day spike from a
+3.62 close, EMA21 < EMA50, `structure` range/mixed -> rule 3c FAIL; three 5m shooting
+stars at 4.71-4.86. A gap-day spike, not a trend. Watch for a base above EMA50 4.06.
+**momentum_scan smallcaps** ZKIN 2.35 (risk 31.2% to stop 1.62), SRFM 1.11 (23.8%),
+IFBD 1.13 (27.5%): stop distance alone disqualifies at probe size. Dropped from the
+watchlist: FSLY/IONQ/INOD (stale 3 sessions, no fresh evidence; FSLY L9, IONQ 3c).
 
-**Repeat rejects, unchanged reasons:** VKTX (downtrend gap day), BB (earnings
-2026-09-24 event window), SOFI (range, TV strong_sell), RIOT/WDC/AAOI/CLSK/HOOD/MARA/
-BMNR/ALMR/BIAF/NCI/GEMI/SOLT/BSOL/HALO/BTDR, SNDK/MUU/AVGO/LRCX/STX/COHR/AMAT/MTSI/
-NVDA/INTC/CIFR, CYPH/HUT/PSIX/ADPT, DSP/ABTC/WOLF/GLOO/AKAN, MSTR/CRCL/XENE, IREN/FPS,
-TWLO - carry forward; none produced a fresh catalyst tonight.
+**Repeat rejects, unchanged reasons:** XOM (close < EMA21), UPST (bearish 3/13 sentiment
+sample, not worked up), VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA, SNDK/AVGO/LRCX/NVDA/
+INTC, IREN - carry forward; no fresh catalyst on screen. Reddit rank-climbers
+GLND (+45 ranks), TSLA (+10) noted; not vetted beyond scan lens (GLND on the `leaders`
+lens, rel vol 2.43x).
 
 ## Macro calendar
 
-- Earnings, book + staged (all clear of any 2-day window): ARTY none (ETF), CRWD
-  12-01, MDB 12-01, TXG 11-05, RBRK 12-03, ZS 11-24, SMTC 11-23. BB reports 09-24
-  (not held). FSLY 11-04, IONQ 11-04 (not held).
-- Macro: 10Y at a 19-year high on strong PMI - rate-shock risk to long-duration
-  growth names; no scheduled Fed/CPI date flagged inside 24h from what is on screen.
+- Earnings, book + candidates (all clear of any 2-day window): CRWD 12-01, PLTR 11-02,
+  TXG 11-05, RBRK 12-03, ZS 11-24, SMTC 11-23, MSFT 10-28, BE 10-27, QCOM 11-04.
+- Macro: 10Y near a multi-year high (09-23); no Fed/CPI date flagged inside 24h from
+  what is on screen. Policy headlines on AI (FTC, OpenAI incident reviews) are noise
+  for the stack unless price confirms.
 
-## Pruned this rewrite
+## Next session (Monday 2026-09-28, PLANNING leg pre-market)
 
-VKTX/INOD/BB/SOFI/COIN-type one-day-gap rejects folded into the reject list above;
-MDB promoted out of "staged" (now held); TWLO retired (trigger expired unfired 09-22).
-
-Next session (Thursday 2026-09-24, PLANNING leg pre-market): set the day's loss
-budget; **(1)** ARTY/TXG second-lower-close check at tomorrow's close (ARTY < 78.71,
-TXG < 75.58, the 09-23 closes per the handoff) - sell per s6a if both conditions hit; **(2)** CRWD
-target 264.13 resting (0.9% above), verify a watcher miss did not skip it; **(3)**
-manually cross-check every stop AND armed trigger vs 5m bars (watcher silent-miss issue);
-**(4)** OKTA/PANW open-hunt candidates subject to L9 `--check`; **(5)** mandate
-expires 2026-09-28T17:58Z.
+Set the day's loss budget; verify `consent.expires_at` fresh (last mandate day - if
+expired, journal MANDATE EXPIRED and stop); cross-check every stop AND the CRWD target vs
+5m bars (watcher silent-miss); review every resting rung against weekend news; work MSFT
+per its trigger; TXG/PLTR two-lower-closes check at the close.
