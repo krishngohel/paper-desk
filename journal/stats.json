@@ -1,26 +1,26 @@
 {
- "computed_at": "2026-09-25T14:21:53",
+ "computed_at": "2026-09-25T14:34:54",
  "overall": {
-  "n": 33,
-  "closed": 33,
-  "win_rate_pct": 33.3,
-  "total_pnl": -471.99,
+  "n": 34,
+  "closed": 34,
+  "win_rate_pct": 32.4,
+  "total_pnl": -511.77,
   "avg_win": 148.73,
-  "avg_loss": -95.82,
-  "expectancy_per_trade": -14.3,
+  "avg_loss": -93.38,
+  "expectancy_per_trade": -15.05,
   "largest_win": 306.7,
   "largest_loss": -247.54
  },
- "open_positions": 4,
+ "open_positions": 3,
  "by_grade": {
   "B": {
-   "n": 18,
-   "closed": 18,
-   "win_rate_pct": 44.4,
-   "total_pnl": 65.15,
+   "n": 19,
+   "closed": 19,
+   "win_rate_pct": 42.1,
+   "total_pnl": 25.37,
    "avg_win": 177.08,
-   "avg_loss": -135.15,
-   "expectancy_per_trade": 3.62,
+   "avg_loss": -126.48,
+   "expectancy_per_trade": 1.34,
    "largest_win": 306.7,
    "largest_loss": -247.54
   },
@@ -49,13 +49,13 @@
  },
  "by_probe": {
   "probe": {
-   "n": 30,
-   "closed": 30,
-   "win_rate_pct": 30.0,
-   "total_pnl": -690.65,
+   "n": 31,
+   "closed": 31,
+   "win_rate_pct": 29.0,
+   "total_pnl": -730.43,
    "avg_win": 146.82,
-   "avg_loss": -95.81,
-   "expectancy_per_trade": -23.02,
+   "avg_loss": -93.26,
+   "expectancy_per_trade": -23.56,
    "largest_win": 298.38,
    "largest_loss": -247.54
   },
@@ -281,6 +281,17 @@
    "largest_win": -209.13,
    "largest_loss": -209.13
   },
+  "MDB": {
+   "n": 1,
+   "closed": 1,
+   "win_rate_pct": 0.0,
+   "total_pnl": -39.78,
+   "avg_win": null,
+   "avg_loss": -39.78,
+   "expectancy_per_trade": -39.78,
+   "largest_win": -39.78,
+   "largest_loss": -39.78
+  },
   "META": {
    "n": 1,
    "closed": 1,
@@ -416,15 +427,15 @@
    "largest_loss": -96.0
   },
   "market": {
-   "n": 2,
-   "closed": 2,
-   "win_rate_pct": 50.0,
-   "total_pnl": -4.62,
+   "n": 3,
+   "closed": 3,
+   "win_rate_pct": 33.3,
+   "total_pnl": -44.4,
    "avg_win": 5.25,
-   "avg_loss": -9.87,
-   "expectancy_per_trade": -2.31,
+   "avg_loss": -24.82,
+   "expectancy_per_trade": -14.8,
    "largest_win": 5.25,
-   "largest_loss": -9.87
+   "largest_loss": -39.78
   }
  },
  "review_verdicts": {
@@ -432,20 +443,21 @@
   "wrong": 10,
   "unlucky": 9,
   "right": 12,
-  "unscored": 1
+  "unscored": 2
  },
  "unscored_closed": [
-  "t-2026-09-22-003"
+  "t-2026-09-22-003",
+  "t-2026-09-23-001"
  ],
  "by_exit_reason": {
   "exit-condition-hit": {
-   "n": 31,
-   "closed": 31,
-   "win_rate_pct": 35.5,
-   "total_pnl": -234.87,
+   "n": 32,
+   "closed": 32,
+   "win_rate_pct": 34.4,
+   "total_pnl": -274.65,
    "avg_win": 148.73,
-   "avg_loss": -93.54,
-   "expectancy_per_trade": -7.58,
+   "avg_loss": -90.98,
+   "expectancy_per_trade": -8.58,
    "largest_win": 306.7,
    "largest_loss": -247.54
   },
@@ -472,7 +484,7 @@
    "largest_loss": -209.13
   }
  },
- "trend_context_coverage": "33 of 33 closed trades measured (buckets under ~10 trades are anecdotes, not findings)",
+ "trend_context_coverage": "34 of 34 closed trades measured (buckets under ~10 trades are anecdotes, not findings)",
  "by_market_trend": {
   "mixed": {
    "n": 17,
@@ -486,13 +498,13 @@
    "largest_loss": -209.13
   },
   "up": {
-   "n": 16,
-   "closed": 16,
-   "win_rate_pct": 18.8,
-   "total_pnl": -760.35,
+   "n": 17,
+   "closed": 17,
+   "win_rate_pct": 17.6,
+   "total_pnl": -800.13,
    "avg_win": 204.35,
-   "avg_loss": -105.65,
-   "expectancy_per_trade": -47.52,
+   "avg_loss": -100.94,
+   "expectancy_per_trade": -47.07,
    "largest_win": 306.7,
    "largest_loss": -247.54
   }
@@ -521,13 +533,13 @@
    "largest_loss": -238.69
   },
   "up": {
-   "n": 23,
-   "closed": 23,
-   "win_rate_pct": 30.4,
-   "total_pnl": -510.35,
+   "n": 24,
+   "closed": 24,
+   "win_rate_pct": 29.2,
+   "total_pnl": -550.13,
    "avg_win": 142.3,
-   "avg_loss": -94.16,
-   "expectancy_per_trade": -22.19,
+   "avg_loss": -90.96,
+   "expectancy_per_trade": -22.92,
    "largest_win": 306.7,
    "largest_loss": -247.54
   }
@@ -567,13 +579,13 @@
    "largest_loss": -209.13
   },
   "stock_up+market_up": {
-   "n": 9,
-   "closed": 9,
-   "win_rate_pct": 22.2,
-   "total_pnl": -457.2,
+   "n": 10,
+   "closed": 10,
+   "win_rate_pct": 20.0,
+   "total_pnl": -496.98,
    "avg_win": 157.33,
-   "avg_loss": -110.27,
-   "expectancy_per_trade": -50.8,
+   "avg_loss": -101.45,
+   "expectancy_per_trade": -49.7,
    "largest_win": 306.7,
    "largest_loss": -247.54
   }
@@ -602,26 +614,26 @@
    "largest_loss": -247.54
   },
   "outperforming_0-10pp": {
-   "n": 8,
-   "closed": 8,
-   "win_rate_pct": 62.5,
-   "total_pnl": 797.33,
+   "n": 9,
+   "closed": 9,
+   "win_rate_pct": 55.6,
+   "total_pnl": 757.55,
    "avg_win": 215.03,
-   "avg_loss": -92.61,
-   "expectancy_per_trade": 99.67,
+   "avg_loss": -79.4,
+   "expectancy_per_trade": 84.17,
    "largest_win": 306.7,
    "largest_loss": -171.95
   }
  },
  "by_rsi14_at_entry": {
   "neutral_45-60": {
-   "n": 19,
-   "closed": 19,
-   "win_rate_pct": 52.6,
-   "total_pnl": 616.85,
+   "n": 20,
+   "closed": 20,
+   "win_rate_pct": 50.0,
+   "total_pnl": 577.07,
    "avg_win": 155.41,
-   "avg_loss": -104.14,
-   "expectancy_per_trade": 32.47,
+   "avg_loss": -97.7,
+   "expectancy_per_trade": 28.85,
    "largest_win": 306.7,
    "largest_loss": -238.69
   },
@@ -672,13 +684,13 @@
    "largest_loss": -238.69
   },
   "moderate_1-2.5atr": {
-   "n": 12,
-   "closed": 12,
-   "win_rate_pct": 50.0,
-   "total_pnl": -177.14,
+   "n": 13,
+   "closed": 13,
+   "win_rate_pct": 46.2,
+   "total_pnl": -216.92,
    "avg_win": 160.09,
-   "avg_loss": -189.62,
-   "expectancy_per_trade": -14.76,
+   "avg_loss": -168.21,
+   "expectancy_per_trade": -16.69,
    "largest_win": 306.7,
    "largest_loss": -247.54
   },
@@ -718,26 +730,26 @@
    "largest_loss": -238.69
   },
   "up_0-3pct": {
-   "n": 7,
-   "closed": 7,
-   "win_rate_pct": 28.6,
-   "total_pnl": 119.5,
+   "n": 8,
+   "closed": 8,
+   "win_rate_pct": 25.0,
+   "total_pnl": 79.72,
    "avg_win": 136.2,
-   "avg_loss": -30.58,
-   "expectancy_per_trade": 17.07,
+   "avg_loss": -32.11,
+   "expectancy_per_trade": 9.96,
    "largest_win": 267.15,
    "largest_loss": -75.13
   }
  },
  "by_gap": {
   "flat": {
-   "n": 16,
-   "closed": 16,
-   "win_rate_pct": 25.0,
-   "total_pnl": -871.5,
+   "n": 17,
+   "closed": 17,
+   "win_rate_pct": 23.5,
+   "total_pnl": -911.28,
    "avg_win": 63.06,
-   "avg_loss": -93.64,
-   "expectancy_per_trade": -54.47,
+   "avg_loss": -89.5,
+   "expectancy_per_trade": -53.6,
    "largest_win": 153.72,
    "largest_loss": -247.54
   },
@@ -766,13 +778,13 @@
  },
  "by_entry_time": {
   "first_hour": {
-   "n": 10,
-   "closed": 10,
-   "win_rate_pct": 30.0,
-   "total_pnl": -358.68,
+   "n": 11,
+   "closed": 11,
+   "win_rate_pct": 27.3,
+   "total_pnl": -398.46,
    "avg_win": 102.66,
-   "avg_loss": -95.24,
-   "expectancy_per_trade": -35.87,
+   "avg_loss": -88.31,
+   "expectancy_per_trade": -36.22,
    "largest_win": 267.15,
    "largest_loss": -209.13
   },
@@ -812,13 +824,13 @@
  },
  "by_market_during_hold": {
   "spy_fell_0.5pct+": {
-   "n": 7,
-   "closed": 7,
-   "win_rate_pct": 28.6,
-   "total_pnl": -36.37,
+   "n": 8,
+   "closed": 8,
+   "win_rate_pct": 25.0,
+   "total_pnl": -76.15,
    "avg_win": 165.62,
-   "avg_loss": -73.52,
-   "expectancy_per_trade": -5.2,
+   "avg_loss": -67.9,
+   "expectancy_per_trade": -9.52,
    "largest_win": 298.38,
    "largest_loss": -209.13
   },
@@ -853,78 +865,78 @@
     "bucket": "by_rel_strength_20d.leader_10pp+",
     "n": 16,
     "win_pct": 0.0,
-    "rest_win_pct": 64.7,
+    "rest_win_pct": 61.1,
     "total_pnl": -1688.53,
-    "p": 9e-05
+    "p": 0.00013
    }
   ],
   "suggestive_p_under_0.05": [
    {
-    "bucket": "by_rsi14_at_entry.neutral_45-60",
-    "n": 19,
-    "win_pct": 52.6,
-    "rest_win_pct": 7.1,
-    "total_pnl": 616.85,
-    "p": 0.00894
-   },
-   {
     "bucket": "by_market_during_hold.spy_rose_0.5pct+",
     "n": 6,
     "win_pct": 83.3,
-    "rest_win_pct": 22.2,
+    "rest_win_pct": 21.4,
     "total_pnl": 1007.3,
-    "p": 0.00959
+    "p": 0.00824
+   },
+   {
+    "bucket": "by_rsi14_at_entry.neutral_45-60",
+    "n": 20,
+    "win_pct": 50.0,
+    "rest_win_pct": 7.1,
+    "total_pnl": 577.07,
+    "p": 0.01103
    },
    {
     "bucket": "by_rsi14_at_entry.strong_60-70",
     "n": 10,
     "win_pct": 0.0,
-    "rest_win_pct": 47.8,
+    "rest_win_pct": 45.8,
     "total_pnl": -1003.94,
-    "p": 0.0129
+    "p": 0.01351
    },
    {
     "bucket": "by_rel_strength_20d.lagging_spy",
     "n": 9,
     "win_pct": 66.7,
-    "rest_win_pct": 20.8,
+    "rest_win_pct": 20.0,
     "total_pnl": 419.21,
-    "p": 0.03342
+    "p": 0.03284
    }
   ]
  },
  "winners_vs_losers_median": {
   "n": {
    "winners": 11,
-   "losers": 22
+   "losers": 23
   },
   "rel_strength_20d": {
    "winners": -0.17,
-   "losers": 12.66
+   "losers": 12.5
   },
   "rsi14": {
    "winners": 54.5,
-   "losers": 61.6
+   "losers": 61.0
   },
   "ext_ema20_atr": {
    "winners": 1.52,
-   "losers": 2.44
+   "losers": 2.35
   },
   "run_from_open_pct": {
    "winners": 2.18,
-   "losers": 1.33
+   "losers": 1.19
   },
   "gap_pct": {
    "winners": 1.92,
-   "losers": 0.08
+   "losers": 0.16
   },
   "below_20d_high_atr": {
    "winners": 0.56,
-   "losers": -0.04
+   "losers": 0.08
   },
   "atr_pct": {
    "winners": 5.96,
-   "losers": 5.46
+   "losers": 5.43
   },
   "spy_ret_5d": {
    "winners": -1.12,
@@ -932,15 +944,15 @@
   },
   "spy_intraday_at_entry_pct": {
    "winners": -0.12,
-   "losers": -0.25
+   "losers": -0.21
   },
   "mfe_atr": {
    "winners": 1.59,
-   "losers": 0.43
+   "losers": 0.38
   },
   "mae_atr": {
    "winners": 0.18,
-   "losers": 0.65
+   "losers": 0.61
   },
   "target_progress": {
    "winners": 1.13,
@@ -997,13 +1009,13 @@
    ]
   },
   "partial_0.3-1atr_favorable": {
-   "n": 8,
-   "closed": 8,
+   "n": 9,
+   "closed": 9,
    "win_rate_pct": 0.0,
-   "total_pnl": -860.05,
+   "total_pnl": -899.83,
    "avg_win": null,
-   "avg_loss": -107.51,
-   "expectancy_per_trade": -107.51,
+   "avg_loss": -99.98,
+   "expectancy_per_trade": -99.98,
    "largest_win": -22.05,
    "largest_loss": -247.54,
    "trade_ids": [
@@ -1014,7 +1026,8 @@
     "t-2026-09-03-003",
     "t-2026-09-03-005",
     "t-2026-09-04-003",
-    "t-2026-09-22-001"
+    "t-2026-09-22-001",
+    "t-2026-09-23-001"
    ]
   }
  },
