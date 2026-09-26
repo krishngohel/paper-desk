@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-25 evening (research session, market closed, Friday after the close).
-Full in-place rewrite. Monday 09-28 is the LAST mandate day.
+Updated 2026-09-26 (Saturday research session, market closed; folds STX in and JD/TOST
+out of Friday evening's rewrite). Monday 09-28 is the LAST mandate day.
 
 **Regime (`ta.py --market`, fresh):** SPY 771.35, +0.73% vs EMA21, RSI14 55.9,
 structure **range/mixed**. QQQ 744.50, +2.72% vs EMA21, RSI14 64.8, **uptrend**.
@@ -57,6 +57,17 @@ whether to re-price the ones whose thesis still holds.
    Kill: close below EMA21 496.65 / gap fully filled below 491. next_earnings 2026-10-28.
    Not staged as a resting limit tonight: anticipatory limits (-$99/trade, 1/5 wins,
    s7a/W5) and C-grade probes (2/14, W6) are the desk's measured losers.
+2b. **STX - new 09-26, WAIT, no order.** Close 916.83 > EMA9 882.64 > EMA21 862.29 >
+   EMA50 852.96 (passes 3c on the EMA order; ta.py tag "range/mixed"). RSI14 58.8,
+   `--check 922`: rel_strength_20d **+8.19pp** (outperforming_0-10pp, not L9), ext 1.19
+   ATR, RSI neutral_45-60. Three straight daily inside bars 09-23..09-25 (compression
+   under prior-day high 926.01), vol 0.72x, spread 0.30%, $2.56B traded, ATR14 49.3
+   (5.4% - wide stops mean small share count). 5m dojis at resistance 921.78 into the
+   close. **Trigger:** s6a-style upside break - a daily close above 926.01 with the EMA
+   stack intact, or reclaim of 921.78 with volume >1.2x (confirmation_trigger,
+   re-anchor stop/target to the fill). Planned: probe, stop under 898.8 (prior-day low),
+   target 936.49 then ~975. Kill: close below EMA21 862. next_earnings unavailable in
+   ta.py (null) - verify before any entry. Headlines not checked (news MCP timed out).
 3. **QCOM - L9 blocked.** Uptrend, close 201.97 > EMA21 183.44 > EMA50 176.06, RSI
    68.1, +4.3% on Snapdragon 8 Elite rollout + extended Apple patent agreement
    (Benzinga 09-25). `--check`: **leader_10pp+ (+18.5pp, SIGNIFICANT, 0/16)** and
@@ -83,7 +94,11 @@ above), **SHMD** (+20.7% scan / +33% day on $54.8M, rel vol 24.6x, spread 0.62%
 TRADABLE): close 4.37 vs EMA9 3.70 / EMA21 3.68 / EMA50 4.06 - one-day spike from a
 3.62 close, EMA21 < EMA50, `structure` range/mixed -> rule 3c FAIL; three 5m shooting
 stars at 4.71-4.86. A gap-day spike, not a trend. Watch for a base above EMA50 4.06.
-**momentum_scan smallcaps** ZKIN 2.35 (risk 31.2% to stop 1.62), SRFM 1.11 (23.8%),
+**09-26 vets:** JD (StockTwits trending) - close 26.51 < EMA9 27.00 < EMA21 27.54 <
+EMA50 28.73, RSI 34.3, structure downtrend, 3c FAIL. TOST - close 30.60 < EMA21 31.74 <
+EMA50 32.01, RSI 39.7, downtrend, spread 1.64% (TIGHT_SIZE), 3c FAIL. relvol-lens names
+FTXH/GTOS/AKAL are funds with flat prices (FTXH +0.25% on 90x rel vol, no trend to
+trade); IPST (+21.6% day but -45.1% 1m) not worked up. **momentum_scan smallcaps** ZKIN 2.35 (risk 31.2% to stop 1.62), SRFM 1.11 (23.8%),
 IFBD 1.13 (27.5%): stop distance alone disqualifies at probe size. Dropped from the
 watchlist: FSLY/IONQ/INOD (stale 3 sessions, no fresh evidence; FSLY L9, IONQ 3c).
 
