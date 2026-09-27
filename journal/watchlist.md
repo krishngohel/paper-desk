@@ -102,6 +102,10 @@ trade); IPST (+21.6% day but -45.1% 1m) not worked up. **momentum_scan smallcaps
 IFBD 1.13 (27.5%): stop distance alone disqualifies at probe size. Dropped from the
 watchlist: FSLY/IONQ/INOD (stale 3 sessions, no fresh evidence; FSLY L9, IONQ 3c).
 
+**09-26 evening vets (turnover lens):** AKAM (+3.2% on 7.67x rel vol, $3.8B, spread 0.08%): close 113.94 vs EMA9 112.11 / EMA21 110.93 / EMA50 113.96 - EMA21 < EMA50, range/mixed, doji at resistance 122.79 earlier in week -> 3c FAIL; watch a close > 118.0 (prior-day high) with EMA21 crossing EMA50. MCHP (+5.4%, spread 0.42%): close 78.69 > EMA9 74.88 > EMA21 74.47 but EMA50 77.02 > EMA21 -> 3c FAIL (EMA21 still under EMA50; RSI 59.4, at 20d high, 5.4% gap). ON (+5.5%, spread 0.59%): close 77.20 vs EMA21 73.52 < EMA50 78.71 -> 3c FAIL. Semis are rebounding as a group (MCHP/ON/NXPI/CRDO +3-8%); revisit MCHP/ON only after EMA21 crosses above EMA50. next_earnings null in ta.py for all three - verify before any entry.
+
+**09-26 late vets (gainers lens + StockTwits trending):** CELH - close 27.99 < EMA9 28.53 < EMA21 29.09 < EMA50 29.47, RSI 43.0, spread 0.04%, $182.6M, 3c FAIL (repeated rejection at 28.88-30.17). SEDG - close 32.68 < EMA21 34.46 < EMA50 38.29, RSI 43.7, spread 0.88%, vol 0.59x, 3c FAIL. F - downtrend, close 12.71 < EMA21 13.46 < EMA50 13.80, RSI 35.8, 3c FAIL. SUIL (+24% day, +108% 1m) - spread 22.5% UNTRADABLE ($8.3M traded, bid 13.37 / ask 16.76). None made the list; headlines not checked (MCPs unavailable).
+
 **Repeat rejects, unchanged reasons:** XOM (close < EMA21), UPST (bearish 3/13 sentiment
 sample, not worked up), VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA, SNDK/AVGO/LRCX/NVDA/
 INTC, IREN - carry forward; no fresh catalyst on screen. Reddit rank-climbers
