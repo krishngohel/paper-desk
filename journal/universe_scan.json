@@ -1,9 +1,9 @@
 {
- "ts": "2026-09-28T08:25:09",
+ "ts": "2026-09-28T08:29:35",
  "source": "tradingview_full_market",
- "universe_listings": 12226,
+ "universe_listings": 12225,
  "broker_tradable": 11056,
- "not_broker_tradable": 1170,
+ "not_broker_tradable": 1169,
  "filters": "none - every broker-tradable listing is ranked; lenses rank, never exclude",
  "full_universe_file": "ops\\cache\\universe_full.json",
  "shortlist": [
