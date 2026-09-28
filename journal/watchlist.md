@@ -8,9 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-27 (Sunday research session, market closed; folds tonight's AMBA/BYD/
-XPEV/NCPL vets into rejects, no changes to ranked leads). Monday 09-28 is the LAST
-mandate day.
+Updated 2026-09-27 evening (2nd Sunday leg; adds MU/VST/DASH vets, no changes to
+ranked leads). Monday 09-28 is the LAST mandate day.
 
 **Regime (`ta.py --market`, fresh):** SPY 771.35, +0.73% vs EMA21, RSI14 55.9,
 structure **range/mixed**. QQQ 744.50, +2.72% vs EMA21, RSI14 64.8, **uptrend**.
@@ -108,6 +107,26 @@ watchlist: FSLY/IONQ/INOD (stale 3 sessions, no fresh evidence; FSLY L9, IONQ 3c
 **09-26 late vets (gainers lens + StockTwits trending):** CELH - close 27.99 < EMA9 28.53 < EMA21 29.09 < EMA50 29.47, RSI 43.0, spread 0.04%, $182.6M, 3c FAIL (repeated rejection at 28.88-30.17). SEDG - close 32.68 < EMA21 34.46 < EMA50 38.29, RSI 43.7, spread 0.88%, vol 0.59x, 3c FAIL. F - downtrend, close 12.71 < EMA21 13.46 < EMA50 13.80, RSI 35.8, 3c FAIL. SUIL (+24% day, +108% 1m) - spread 22.5% UNTRADABLE ($8.3M traded, bid 13.37 / ask 16.76). None made the list; headlines not checked (MCPs unavailable).
 
 **09-27 vets (StockTwits trending + Reddit rank-climbers + momentum_scan):** AMBA - close 72.68, EMA9 68.47 < EMA21 68.58 (EMA9/21 essentially flat, structure tag "uptrend" but EMA21 68.58 < EMA50 71.33) -> 3c FAIL on the literal EMA-order text despite the tag; MORNING STAR at support 63.65 09-24, watch for EMA21 to reclaim EMA50. BYD (Reddit rank +70, Boyd Gaming) - spread 4.33% UNTRADABLE, also downtrend (RSI 22.5, EMA21 75.44 < EMA50 80.25) - double reject. XPEV (StockTwits trending) - downtrend, close 10.12 < EMA21 10.74 < EMA50 11.61, RSI 34.0, 3c FAIL. NCPL (momentum_scan hit, 3d +40.2%) - spread 2.90% UNTRADABLE (playbook s7b), same reject basis as prior microcap momentum hits; APUS/GLND (also momentum_scan hits, 3d +292%/+121%) unchanged rejects on stop distance alone (36.4%/42.4% risk to launch-low stop). None made the list; headlines not checked (MCPs unavailable this session).
+
+**09-27 evening vets (Reddit rank-climbers + StockTwits trending, 2nd leg):** MU - only
+name tonight to PASS rule 3c (close 1082.28 > EMA9 1042.0 > EMA21 1003.63 > EMA50
+959.32, explicit uptrend structure, RSI 63.3, TV strong_buy). `--check`: rel_strength_20d
++15.67pp -> **leader_10pp+ SIGNIFICANT (L9, 0/16)** + RSI strong_60-70 (W4, 0/10) -
+both blocking buckets stack. **HARD earnings block on top: next_earnings shows null in
+ta.py but Benzinga confirms Micron reports 2026-09-30 (Tue)** - inside the 2-day window
+from Monday's open (playbook s5). WATCH ONLY - revisit post-print (Oct 1+) once the gap
+risk clears and L9/RSI buckets can be re-checked against the new price. Reddit rank +63
+(mentions 9), #1 Reddit overall. VST (Vistra, Reddit rank +269) - close 138.46 < EMA9
+140.22 < EMA21 141.92 < EMA50 145.97, RSI 42.8, range/mixed -> 3c FAIL; hammer at support
+134.9 on 09-25 not yet confirmed/reclaimed. Watch for a reclaim of EMA9. DASH (StockTwits
+trending #2 by count) - close 193.36 < EMA9 194.23 < EMA21 201.2 ~= EMA50 201.19, RSI
+39.4, range/mixed, TV strong_sell -> 3c FAIL. News sweep on book/resting-rung symbols
+(CRWD/PLTR/TXG/RBRK/ZS/SMTC) since Friday close: CRWD - DOJ closed its CrowdStrike deals
+investigation (positive, overhang removed) but shares dipped Friday on Akamai's $11.6B
+Anthropic cloud deal (competitive-share-loss read for cybersecurity peers); PLTR - Thiel
+says US corporate AI sales "accelerated tremendously" (positive); ZS - two analyst PT
+raises (RBC to $236, Mizuho to $220) since Friday. Nothing invalidates any resting
+thesis or book position.
 
 **Repeat rejects, unchanged reasons:** XOM (close < EMA21), UPST (bearish 3/13 sentiment
 sample, not worked up), VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA, SNDK/AVGO/LRCX/NVDA/
