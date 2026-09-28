@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-27 evening (2nd Sunday leg; adds MU/VST/DASH vets, no changes to
-ranked leads). Monday 09-28 is the LAST mandate day.
+Updated 2026-09-27 late (3rd Sunday leg; adds CRDO/SMCI/HUM/OPEN/NBIS vets, no changes
+to ranked leads). Monday 09-28 is the LAST mandate day.
 
 **Regime (`ta.py --market`, fresh):** SPY 771.35, +0.73% vs EMA21, RSI14 55.9,
 structure **range/mixed**. QQQ 744.50, +2.72% vs EMA21, RSI14 64.8, **uptrend**.
@@ -30,13 +30,15 @@ whether to re-price the ones whose thesis still holds.
 
 ## Book (3 positions, target 3-6 - one below the low end)
 
-- **CRWD** 3 sh @ 231.22, now ~252.30 (+$63 / +9.1%). Target 264.13 resting
-  (`9bfc5894`, +4.7%), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
-- **PLTR** 10 sh @ 192.43, now ~189.62 (-$28 / -1.5%). s6a-governed, stop 182.94, no
-  target. Exit only on two consecutive lower closes. next_earnings 2026-11-02.
-- **TXG** 15 sh @ 75.64, now ~85.72 (+$151 / +13.3%). s6a-governed, stop 64.73, no
-  target. Exit only after two consecutive lower closes below 84.14 (09-25 close was
-  above it - no lower close counted). next_earnings 2026-11-05.
+- **CRWD** 3 sh @ 231.22, now 253.78 (+$68 / +9.8%). Target 264.13 resting
+  (`9bfc5894`, +4.1%), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
+- **PLTR** 10 sh @ 192.43, now 189.65 (-$28 / -1.4%). s6a-governed, stop 182.94, no
+  target. **ONE lower close already banked (Fri close 189.67 < Thu close 192.59) -
+  Monday's close is the decisive one: a second lower close fires the exit.**
+  next_earnings 2026-11-02.
+- **TXG** 15 sh @ 75.64, now 86.00 (+$155 / +13.7%). s6a-governed, stop 64.73, no
+  target. Fri close 85.71 > Thu close 84.11 - an UP day, zero-lower-close streak reset.
+  next_earnings 2026-11-05.
 
 ## Ranked - Monday hunt
 
@@ -128,6 +130,22 @@ says US corporate AI sales "accelerated tremendously" (positive); ZS - two analy
 raises (RBC to $236, Mizuho to $220) since Friday. Nothing invalidates any resting
 thesis or book position.
 
+**09-27 late vets (screen.py turnover-lens explore + Reddit rank-climbers, 3rd leg):**
+CRDO (+7.65% on turnover) - close 210.97 > EMA9 188.74 but EMA9 < EMA21 190.15 and
+EMA21 < EMA50 209.18 -> 3c FAIL on the literal EMA-order text despite an "uptrend"
+structure tag (same AMBA-type tag-vs-EMA conflict). SMCI (+4.22%, StockTwits trending
+#8 too) - close 43.26 > EMA9 40.77 > EMA21 39.09 > EMA50 34.99 (EMA order clean) but
+`structure` explicitly "range/mixed" -> 3c FAIL on the structure text (same conflict
+direction as QCOM's prior rejection); RSI 64.1 also sits in the W4 strong_60-70 losing
+bucket. HUM (+4.63%, rel vol 2.09x) - spread 4.26% UNTRADABLE, also daily downtrend -
+double reject. OPEN (Reddit rank +556, biggest climb tonight) - close 2.57 < EMA9 2.65
+< EMA21 2.87 < EMA50 3.42, RSI 32.3, range/mixed, TV strong_sell -> 3c FAIL; a pure
+hype/sentiment mismatch with the chart (playbook s11 - crowd rank is not a thesis).
+NBIS (Reddit rank +23) - close 237.33 > EMA9 230.35 > EMA21 225.22 > EMA50 216.38 (EMA
+order clean) but `structure` "range/mixed" -> 3c FAIL, same conflict type as SMCI.
+News check (get_news): no fresh PLTR headlines since Friday close - nothing invalidates
+the one-lower-close watch above. None of tonight's 5 made the list.
+
 **Repeat rejects, unchanged reasons:** XOM (close < EMA21), UPST (bearish 3/13 sentiment
 sample, not worked up), VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA, SNDK/AVGO/LRCX/NVDA/
 INTC, IREN - carry forward; no fresh catalyst on screen. Reddit rank-climbers
@@ -147,4 +165,6 @@ lens, rel vol 2.43x).
 Set the day's loss budget; verify `consent.expires_at` fresh (last mandate day - if
 expired, journal MANDATE EXPIRED and stop); cross-check every stop AND the CRWD target vs
 5m bars (watcher silent-miss); review every resting rung against weekend news; work MSFT
-per its trigger; TXG/PLTR two-lower-closes check at the close.
+per its trigger. **PLTR's s6a exit is live: if Monday's close < 189.67, that is the
+SECOND consecutive lower close - sell per the governing rule, do not wait for a third.**
+TXG's streak is reset (Friday was an up close) - just recheck at Monday's close.
