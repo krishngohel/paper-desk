@@ -8,68 +8,64 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-27 late (3rd Sunday leg; adds CRDO/SMCI/HUM/OPEN/NBIS vets, no changes
-to ranked leads). Monday 09-28 is the LAST mandate day.
+Updated 2026-09-28 evening (research leg after Monday's close). Mandate RENEWED
+(`consent.expires_at` 2026-10-12T21:40:10Z, read fresh 22:00Z).
 
-**Regime (`ta.py --market`, fresh):** SPY 771.35, +0.73% vs EMA21, RSI14 55.9,
-structure **range/mixed**. QQQ 744.50, +2.72% vs EMA21, RSI14 64.8, **uptrend**.
-Tech led Friday (MSFT +4%, QCOM +4.3%, BE +8.4%); 10Y-yield/rate-shock is still the live
-tail risk for the growth-tilted book. No reason to chase size.
+**Regime (`ta.py --market`, fresh 09-28 close):** SPY 765.61, -0.02% vs EMA21, RSI14
+50.3, structure **range/mixed**. QQQ 736.53, +1.47% vs EMA21, RSI14 58.3, **range/mixed**
+(was uptrend Friday). Monday was a risk-off tape for growth (MSFT -1.3%, APP/APLD weak);
+10Y-yield/rate-shock still the live tail risk. No reason to chase size.
 
 ## Mandate & quota status
 
-**Mandate `consent.expires_at` 2026-09-28T17:58:50Z - Monday is the last full day;
-re-check `consent` fresh Monday pre-market.** Not halted (`status` fresh 09-25 evening).
+Mandate live to 2026-10-12. Not halted.
 
 **Standing-order quota: MET - 6 live resting buy-limits across 5 symbols, 0 armed
-triggers:** CRWD 204.30 (`a1d8b66a`, 14sh) and CRWD 232.00 remainder (`4bab1e47`, 3sh
-left), TXG 58.70 (`7f98e743`), SMTC 146.91 (`41354f13`), ZS 160.75 (`4b0ad29d`), RBRK
-90.15 (`4e8ee047`). No order placed or touched this session. Most rungs sit 15-25%
-below market (far from any near-term fill) - Monday's planning leg should decide
-whether to re-price the ones whose thesis still holds.
+triggers (NVDA trg-20260928-001 expired unfired):** CRWD 204.30 (`a1d8b66a`, 14sh) and
+CRWD 232.00 remainder (`4bab1e47`, 3sh left), TXG 58.70 (`7f98e743`), SMTC 146.91
+(`41354f13`), ZS 160.75 (`4b0ad29d`), RBRK 90.15 (`4e8ee047`). Most rungs sit 15-25%
+below market (far from any near-term fill) - the planning leg should decide whether to
+re-price the ones whose thesis still holds. No new rungs added tonight.
 
 ## Book (3 positions, target 3-6 - one below the low end)
 
-- **CRWD** 3 sh @ 231.22, now 253.78 (+$68 / +9.8%). Target 264.13 resting
-  (`9bfc5894`, +4.1%), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
-- **PLTR** 10 sh @ 192.43, now 189.65 (-$28 / -1.4%). s6a-governed, stop 182.94, no
-  target. **ONE lower close already banked (Fri close 189.67 < Thu close 192.59) -
-  Monday's close is the decisive one: a second lower close fires the exit.**
-  next_earnings 2026-11-02.
-- **TXG** 15 sh @ 75.64, now 86.00 (+$155 / +13.7%). s6a-governed, stop 64.73, no
-  target. Fri close 85.71 > Thu close 84.11 - an UP day, zero-lower-close streak reset.
+- **PLTR - EXIT FIRED, sell-limit resting.** 10 sh @ 192.43, Mon close ~187.5 (-$49 /
+  -2.5%). Fri close 189.67 < Thu 192.59 and Mon ~187.5 < Fri = TWO consecutive lower
+  closes -> s6a exit. GTC sell-limit 10 @ 186.00 rests (`bcd33779`, placed 22:01Z) to fill
+  at Tuesday's open; if it has NOT filled by the Tuesday planning leg (gap below 186),
+  sell at market at the open per the governing rule (stop 182.94 still live).
+- **CRWD** 3 sh @ 231.22, Mon close ~259.4 (+$84 / +12.2%). Target 264.13 resting
+  (`9bfc5894`, +1.8% away), stop 219.15, time_stop 2026-10-03. next_earnings 2026-12-01.
+- **TXG** 15 sh @ 75.64, Mon close 88.52 (+$193 / +17.0%). s6a-governed, stop 64.73, no
+  target. Mon close 88.52 > Fri 85.71 - UP day, lower-close streak stays 0.
   next_earnings 2026-11-05.
 
 ## Ranked - Monday hunt
 
 1. **Manage the book first** (stops vs 5m bars - watcher silent-miss issue; CRWD target
    resting; TXG/PLTR close-pattern at 15:00 CT).
-2. **MSFT - best fit found tonight; WAIT, no order.** Close 516.17 > EMA9 501.64 >
-   EMA21 496.65 > EMA50 469.02 (passes 3c on the EMA order; ta.py tag reads
-   "range/mixed"). `trade_context --check 517.9`: rel_strength_20d **+0.17pp** (NOT
-   leader_10pp+ -> L9 clean), RSI14 54.4 (neutral_45-60 bucket: 10 of 20 wins = 50%,
-   suggestive), 2.06 ATR extension (moderate), gap +3.4% on Copilot relaunch + tech
-   leadership - no hard dated catalyst. Vol 1.78x, spread 0.03%, $19.6B traded.
-   Friday closed as a 5m shooting star + marubozu selling at resistance 517.78.
-   **Trigger:** do NOT chase the gap. Two ways in - (a) pullback that HOLDS the
-   gap-fill zone 498.9 (prior-day high) / EMA9 ~501 on stabilising 5m bars, buy the
-   reclaim (confirmation_trigger, re-anchor stop/target to the fill); (b) s6a: a
-   3rd/4th rising close with EMA stack intact, enter the next open. Planned: probe,
-   ~$100 risk, stop under 491.2 (prior-day low), target 517.8 then 530. Grade C/B.
-   Kill: close below EMA21 496.65 / gap fully filled below 491. next_earnings 2026-10-28.
-   Not staged as a resting limit tonight: anticipatory limits (-$99/trade, 1/5 wins,
-   s7a/W5) and C-grade probes (2/14, W6) are the desk's measured losers.
-2b. **STX - new 09-26, WAIT, no order.** Close 916.83 > EMA9 882.64 > EMA21 862.29 >
-   EMA50 852.96 (passes 3c on the EMA order; ta.py tag "range/mixed"). RSI14 58.8,
-   `--check 922`: rel_strength_20d **+8.19pp** (outperforming_0-10pp, not L9), ext 1.19
-   ATR, RSI neutral_45-60. Three straight daily inside bars 09-23..09-25 (compression
-   under prior-day high 926.01), vol 0.72x, spread 0.30%, $2.56B traded, ATR14 49.3
-   (5.4% - wide stops mean small share count). 5m dojis at resistance 921.78 into the
-   close. **Trigger:** s6a-style upside break - a daily close above 926.01 with the EMA
-   stack intact, or reclaim of 921.78 with volume >1.2x (confirmation_trigger,
-   re-anchor stop/target to the fill). Planned: probe, stop under 898.8 (prior-day low),
-   target 936.49 then ~975. Kill: close below EMA21 862. next_earnings unavailable in
-   ta.py (null) - verify before any entry. Headlines not checked (news MCP timed out).
+2. **MSFT - best fit; WAIT, no order.** Mon close 509.22 (gap +3.4% Friday faded, -1.3%
+   on the day; inside bar, 5m morning star + bearish engulfing at resistance 509.95) >
+   EMA9 503.16 > EMA21 497.70 > EMA50 470.77 (passes 3c on the EMA order; ta.py tag
+   "range/mixed"). RSI14 58.7, rs_vs_spy -0.62pp (L9 clean), vol 0.90x, spread 0.12%,
+   $10.0B traded, ATR14 11.91. Friday's `--check` bucket read: neutral_45-60 RSI (10 of
+   20 wins, suggestive). No hard dated catalyst. **Trigger:** do NOT chase. (a) a
+   pullback that HOLDS EMA9 ~503 / support 493.81 on stabilising 5m bars, buy the
+   reclaim (confirmation_trigger, re-anchor stop/target to the fill); (b) s6a: rising
+   closes with the EMA stack intact, enter the next open. Planned: probe, ~$100 risk,
+   stop under 491.2, target 519.4 (prior-day high) then 530. Grade C/B. Kill: close
+   below EMA21 497.7 / 491. next_earnings 2026-10-28. Not staged as a resting limit:
+   anticipatory limits (-$99/trade, 1/5 wins, s7a/W5) and C-grade probes (2/14, W6) are
+   the desk's measured losers.
+2b. **STX - WAIT, no order.** Close 921.51 > EMA9 890.41 > EMA21 867.71 > EMA50 856.57
+   (passes 3c on the EMA order; ta.py tag "range/mixed"). RSI14 59.2, 98.5% of 20d range,
+   rs_vs_spy +1.34pp (not L9), vol 0.91x, spread 0.05%, $3.09B traded, ATR14 50.25
+   (5.5% - wide stops = small share count). Monday: gap -3.5%, hammer defended 870.38,
+   ran to 932.87, closed under resistance 921.78 in a string of 5m dojis. **Trigger:**
+   a daily close above 925.44/926 with the EMA stack intact, or 5m reclaim of 932.87
+   with volume >1.2x (confirmation_trigger, re-anchor stop/target). Planned: probe, stop
+   under 903.5 (prior-day low), target 936.49 then ~975. Kill: close below EMA21 868.
+   next_earnings 2026-10-27 (ta.py now shows it).
 3. **QCOM - L9 blocked.** Uptrend, close 201.97 > EMA21 183.44 > EMA50 176.06, RSI
    68.1, +4.3% on Snapdragon 8 Elite rollout + extended Apple patent agreement
    (Benzinga 09-25). `--check`: **leader_10pp+ (+18.5pp, SIGNIFICANT, 0/16)** and
@@ -88,6 +84,24 @@ whether to re-price the ones whose thesis still holds.
    EMA50). Carry as watch; enter only with a written L9 exception.
 
 ## Watch only / rejects
+
+**09-28 evening vets (screen.py smallcap explore, StockTwits trending, momentum_scan;
+not on prior lists):** **P** (only clean momentum_scan large hit; $591M traded, spread
+0.50%, 5m shooting star + dojis at resistance 131.41): passes 3c (close 129.4 > EMA9
+115.51 > EMA21 107.83 > EMA50 97.48, uptrend) but `--check 129.4` = **leader_10pp+
+(rs +26.9pp, SIGNIFICANT 0/16)**, RSI 71 (overbought_70+), 3.33 ATR extension
+(extended_2.5atr+: 2/13 wins) - three losing buckets stacked, ATR 5.6%; WATCH for a base
+that cuts RS below +10pp. **APLD** (StockTwits): close 24.53 < EMA9 26.38 < EMA21 26.64 <
+EMA50 27.66, -5.6% day, structure range/mixed, 3c FAIL (5m morning star at support 24.03
+not a trend). **NVTS**: close 11.73 vs EMA21 11.79 < EMA50 12.14, +9.5% day off -4.1% gap,
+range/mixed, 3c FAIL. **APP**: close 308.24 < EMA21 320.71 < EMA50 355.56, RSI 40.2, 3c
+FAIL. **SMMT**: downtrend (lower highs/lows), EMA9 16.42 > EMA21 16.25 > EMA50 15.25 but
+structure explicit downtrend, +17.6% intraday spike faded from 19.48 to 15.48, 3c FAIL.
+**KOD** (+178% day, $3.46B, rel vol 35x): binary biotech gap event, not worked up beyond
+the scan row; no base to define a stop. momentum_scan smallcaps GLND/YDES/ABLV/ZSQR/CD:
+stop distance 24-43% disqualifies at probe size; WCT (3.38% risk, $1.1M traded) too thin
+to size. Explore-lens SMJF/SLBT/BNKK/TANH/CANG/FLX all under $17M traded, none given a
+thesis. None made the list.
 
 **Fresh names vetted tonight (duty 1b; screen.py explore lens `smallcap`, social.py
 trending, scan `big_leaders`):** MSFT (ranked #2 above; social.py trending #3 by
@@ -160,11 +174,11 @@ lens, rel vol 2.43x).
   what is on screen. Policy headlines on AI (FTC, OpenAI incident reviews) are noise
   for the stack unless price confirms.
 
-## Next session (Monday 2026-09-28, PLANNING leg pre-market)
+## Next session (Tuesday 2026-09-29, PLANNING leg pre-market)
 
-Set the day's loss budget; verify `consent.expires_at` fresh (last mandate day - if
-expired, journal MANDATE EXPIRED and stop); cross-check every stop AND the CRWD target vs
-5m bars (watcher silent-miss); review every resting rung against weekend news; work MSFT
-per its trigger. **PLTR's s6a exit is live: if Monday's close < 189.67, that is the
-SECOND consecutive lower close - sell per the governing rule, do not wait for a third.**
-TXG's streak is reset (Friday was an up close) - just recheck at Monday's close.
+Set the day's loss budget; re-check `consent.expires_at` fresh (2026-10-12 as of 09-28);
+cross-check every stop AND the CRWD target vs 5m bars (watcher silent-miss); review every
+resting rung against overnight news; confirm PLTR sell-limit `bcd33779` filled at the open
+(else market-sell at the open per s6a) and stamp the ledger; work MSFT/STX per their
+triggers. MU reports 09-30 (Tue AH) - no entry before the print. Scoring debt
+(`unscored_closed`) carries to the next weekly-review session.
