@@ -59,7 +59,7 @@ Run `status`, `account`, `positions`, `orders`.
 
 - Halted (`halted: true`): append a one-line journal entry `HALTED - no action`, commit, stop. Do NOT resume; only a human resumes.
 - Market closed (holiday/half-day; quotes stale from a prior day or the account clock says closed): append `MARKET CLOSED - no action`, commit, stop.
-- Mandate expired (any order attempt would be denied naming the mandate/expiry — visible from a status/deny envelope or `consent.expires_at` in a prior journal entry): append a read-only snapshot entry noting `MANDATE EXPIRED - renewal needed: run ops/commit_paper_mandate.py`, run phase 4's dashboard rebuild so the nag shows, commit, stop.
+- Mandate expired (any order attempt would be denied naming the mandate/expiry — visible from a status/deny envelope or `consent.expires_at` in a prior journal entry): append a read-only snapshot entry noting `MANDATE EXPIRED - renewal needed: run ops/commit_paper_mandate.py`, run phase 4's dashboard rebuild so the nag shows, commit, stop. **Exception - a `weekly-review` session still runs phase 1 and phase 5 (scoring, lessons, watch patterns, scoreboards) before stopping** (operator rule 2026-09-29): the review places no orders, so the mandate does not govern it, and on 2026-09-28 an expired mandate turned the day's review into a no-op that the launcher still stamped as done. Skip only the order actions (no exits, no rungs, no triggers) and say in the entry that exits were not enforced.
 - A previous session's timeout warning in `orders`/`audit` (an order that may or may not have been placed): reconcile against `orders` and the ledger before anything else; fix `journal/trades.jsonl` to match reality and note the reconciliation.
 
 ## Phase 1 — Recall
