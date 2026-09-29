@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-29T14:59:00",
+ "computed_at": "2026-09-29T15:21:57",
  "overall": {
   "n": 35,
   "closed": 35,
@@ -451,14 +451,11 @@
  },
  "review_verdicts": {
   "lucky": 1,
-  "wrong": 12,
+  "wrong": 13,
   "unlucky": 9,
-  "right": 12,
-  "unscored": 1
+  "right": 12
  },
- "unscored_closed": [
-  "t-2026-09-25-001"
- ],
+ "unscored_closed": [],
  "by_exit_reason": {
   "exit-condition-hit": {
    "n": 33,
@@ -834,24 +831,24 @@
  },
  "by_market_during_hold": {
   "spy_fell_0.5pct+": {
-   "n": 6,
-   "closed": 6,
-   "win_rate_pct": 33.3,
-   "total_pnl": -26.5,
+   "n": 7,
+   "closed": 7,
+   "win_rate_pct": 28.6,
+   "total_pnl": -84.52,
    "avg_win": 165.62,
-   "avg_loss": -89.44,
-   "expectancy_per_trade": -4.42,
+   "avg_loss": -83.15,
+   "expectancy_per_trade": -12.07,
    "largest_win": 298.38,
    "largest_loss": -209.13
   },
   "spy_flat": {
-   "n": 23,
-   "closed": 23,
-   "win_rate_pct": 17.4,
-   "total_pnl": -1550.59,
+   "n": 22,
+   "closed": 22,
+   "win_rate_pct": 18.2,
+   "total_pnl": -1492.57,
    "avg_win": 62.22,
-   "avg_loss": -94.71,
-   "expectancy_per_trade": -67.42,
+   "avg_loss": -96.75,
+   "expectancy_per_trade": -67.84,
    "largest_win": 153.72,
    "largest_loss": -247.54
   },
@@ -912,14 +909,6 @@
     "rest_win_pct": 19.2,
     "total_pnl": 419.21,
     "p": 0.01459
-   },
-   {
-    "bucket": "by_market_during_hold.spy_flat",
-    "n": 23,
-    "win_pct": 17.4,
-    "rest_win_pct": 58.3,
-    "total_pnl": -1550.59,
-    "p": 0.02229
    }
   ]
  },
@@ -970,7 +959,7 @@
   },
   "mae_atr": {
    "winners": 0.18,
-   "losers": 0.72
+   "losers": 0.85
   },
   "target_progress": {
    "winners": 1.13,
@@ -978,7 +967,7 @@
   },
   "spy_ret_hold_pct": {
    "winners": 0.17,
-   "losers": -0.04
+   "losers": -0.1
   },
   "hold_days": {
    "winners": 4.9,
@@ -1051,9 +1040,9 @@
   }
  },
  "verdict_audit": {
-  "losers_scored": 23,
+  "losers_scored": 24,
   "losers_called_unlucky": 9,
-  "losers_called_wrong": 12,
+  "losers_called_wrong": 13,
   "unlucky_but_never_worked": []
  }
 }

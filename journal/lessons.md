@@ -92,6 +92,11 @@ below until a review promotes or discards them.
   in 16 (-$1,688.53), Fisher p 0.00013 vs Sidak 0.0019; the two trades
   closed since 09-23 (ARTY rs +4.91pp, MDB rs +4.91pp) were both outside
   the bucket. Still binding; not retired.
+  Re-checked 2026-09-29 daily review (35 closed): bucket unchanged at 0 wins
+  in 16 (-$1,688.53), p 0.00019 vs Sidak 0.0019 (27 tests). The one trade
+  closed since (PLTR t-2026-09-25-001, rs +8.36pp) was outside the bucket
+  and also lost. No entry to the bucket since 09-15; the sample is not
+  growing, so this is a stale-but-standing result. Still binding.
 
 ## Watch patterns (candidate lessons, not yet binding)
 
@@ -139,6 +144,13 @@ new instances for 15 trading days is discarded as noise.
   orderly two-lower-closes rule, not a gap-through-stop. No new instance.
   Still n=1 support / 1 counter (SMTC). ~8 of 15 trading days elapsed.
 
+  Checked again 2026-09-29 daily review against PLTR (t-2026-09-25-001):
+  not a match (the 0.1x volume at entry was an 08:58 CT early-morning
+  artifact the thesis itself disclaimed; it exited by the orderly
+  two-lower-closes rule with the 182.94 stop never near). No new instance.
+  ~10 of 15 trading days elapsed; discard on ~2026-10-07 absent a
+  thin-volume gap reversal.
+
 - **W4 - RSI14 at entry: 60-70 has lost every time; 45-60 has carried the
   book.** `by_rsi14_at_entry.strong_60-70`: 0 wins in 9 closed trades,
   -$994.07 (win rate vs rest of book 0% vs 47.8%, Fisher p 0.013);
@@ -157,6 +169,16 @@ new instances for 15 trading days is discarded as noise.
   (+$1,372.64), RSI 60-70 = 0 of 2 (ASND -$171.95, ARTY -$9.87). Direction
   agrees, but n=2 outside the leader bucket is far too small to call the
   effect independent of L9. Seen 2x outside L9 names; still not promoted.
+  Updated 2026-09-29 daily review (35 closed): `strong_60-70` is now 0 of
+  11, -$1,061.96, p 0.0068 (Sidak 0.0019, so still suggestive); PLTR
+  (t-2026-09-25-001, RSI 67.4, rs +8.36pp, mfe_atr 0.01, -$58.02) is the
+  newest loss and the THIRD outside the leader bucket (ASND, ARTY, PLTR:
+  0 of 3), against RSI 45-60 non-leaders at 10 of 14. Direction keeps
+  agreeing but n=3 outside L9 is still too small to call it independent.
+  Seen 3x outside L9. Practical note for sessions: PLTR's own thesis
+  named this bucket and entered anyway, so the disclosure worked but did
+  not change the decision; a strong_60-70 entry should size below a
+  neutral_45-60 one until this resolves. Not promoted.
 
 - **W5 - resting limit buys that fill AT the open have lost every time.**
   `by_entry_time.open_resting_fill`: 0 wins in 5 closed trades, -$715.10
@@ -179,6 +201,26 @@ new instances for 15 trading days is discarded as noise.
   rung has no measured edge on this desk, so its size should reflect that.
   Promote if p crosses 0.05 with n>=20 C trades; discard if C's win rate
   converges to B's or after 15 trading days with no new C closes.
+  Checked 2026-09-29: no C-grade trade has closed since 09-25 (C still 14
+  closed, 2 wins, -$545.10), and the quota that produced the C rungs was
+  retired today, so new C closes will be rare. W5 likewise: no new
+  open-resting-fill (still 0 of 5, -$715.10). Both unchanged; the
+  15-trading-day clock keeps running (~2026-10-16 for W6).
+
+- **W7 - entries taken while SPY's own trend read "up" have done worse than
+  entries in "mixed" markets.** `by_market_trend`: up = 18 closed, 3 wins
+  (16.7%), -$858.15, expectancy -$47.67; mixed = 17 closed, 8 wins (47.1%),
+  +$288.36, +$16.96. `stock_up+market_up` is 2 of 11 (18.2%, -$555.00).
+  Rough Fisher on 3/18 vs 8/17 is about p 0.07, not near the 0.0019 Sidak
+  line, and it is not in `trend_signals`. It is heavily entangled with L9
+  (the 16 leader_10pp+ losses were bought in the late-August/early-
+  September up tape) and with W4, so it is probably the same effect seen
+  through the market lens, not independent evidence. Counter-intuitive
+  enough (a tailwind should help) that it is worth tracking rather than
+  believing. Seen 1x (first recorded 2026-09-29 daily review). Promote only
+  if it still separates after excluding `leader_10pp+` and RSI 60-70
+  entries; discard if p drifts above 0.2 or after 15 trading days
+  (~2026-10-20) with no supporting close.
 
 ## Archive
 
