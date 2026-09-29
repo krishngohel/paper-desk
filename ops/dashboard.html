@@ -75,7 +75,13 @@ ul { margin:6px 0; padding-left:22px; } li { margin:3px 0; }
 <table><thead><tr><th>Symbol</th><th class='num'>Shares</th><th class='num'>Avg cost</th><th class='num'>Now</th><th class='num'>P&amp;L</th><th class='num'>ROI</th><th class='num'>Stop / Target</th><th>Trade</th></tr></thead><tbody><tr><td>CRWD</td><td class='num'>3</td><td class='num'>$231.22</td><td class='num'>$259.59</td><td class='num up'>$85.11</td><td class='num up'>+12.27%</td><td class='num'>219.15 / 264.13</td><td class='mut'>t-2026-09-14-002</td></tr><tr><td>TXG</td><td class='num'>15</td><td class='num'>$75.64</td><td class='num'>$88.65</td><td class='num up'>$195.15</td><td class='num up'>+17.20%</td><td class='num'>64.73 / -</td><td class='mut'>t-2026-09-15-001</td></tr></tbody></table>
 <h2>Closed trades</h2><table><thead><tr><th>Symbol</th><th class='num'>P&amp;L</th><th>Exit reason</th><th>Verdict</th></tr></thead><tbody><tr><td>PLTR</td><td class='num down'>$-58.02</td><td>exit-condition-hit</td><td>unscored</td></tr><tr><td>MDB</td><td class='num down'>$-39.78</td><td>exit-condition-hit</td><td>wrong</td></tr><tr><td>ARTY</td><td class='num down'>$-9.87</td><td>exit-condition-hit</td><td>wrong</td></tr><tr><td>FIVN</td><td class='num up'>$0.00</td><td></td><td>unscored</td></tr><tr><td>FIVN</td><td class='num down'>$-28.70</td><td>exit-condition-hit</td><td>wrong</td></tr><tr><td>SMTC</td><td class='num up'>$153.72</td><td>exit-condition-hit</td><td>right</td></tr><tr><td>ECO</td><td class='num up'>$0.00</td><td></td><td>unscored</td></tr><tr><td>SMTC</td><td class='num up'>$57.68</td><td>exit-condition-hit</td><td>right</td></tr></tbody></table>
 <h2>Recent decisions</h2>
-<details><summary>2026-09-29 11:26 CT - continuous (leg 13)</summary><pre>- cushion: equity $99,837.34 - 0.10*HWM $100,000 = $89,837.34 above the death floor. Not wounded. Not halted. Mandate: status ok, no deny seen; last fresh read valid to 2026-10-12T21:40Z (leg 7).
+<details><summary>2026-09-29 11:45 CT - continuous (leg 14)</summary><pre>- cushion: equity $99,842.71 - 0.10*HWM $100,000 = $89,842.71 above the death floor. Not wounded. Not halted. Mandate: status ok, no deny seen; last fresh read valid to 2026-10-12T21:40Z (leg 7). Abbreviated leg: Recall files not re-read, state unchanged from leg 13.
+- equity: $99,842.71 | cash: $97,735.00 | positions_value: $2,106.99
+- day loss budget: ~$300 (3R); used -$58.02 realized (PLTR). Budget NOT hit.
+- regime: SPY 763.41 range/mixed (-0.27% vs EMA21, RSI 48.5); QQQ 736.95 range/mixed (+1.40%, RSI 58.8). Neutral posture, s6a only.
+- book: CRWD 3 sh @ 231.22 | now 259.38 | +$84.48 / +12.2% ROI | stop 219.15 (-15.5%) | target 264.13 resting (9bfc5894, +1.8%)
+  TXG 15 sh @ 75.64 | now 88.59 | +$194.25 / +17.1% ROI | stop 64.73 (-26.9%) | s6a two-lower-closes exit, streak 0 | no target
+- exits checked: no stop/target/exit condition hit.</pre></details><details><summary>2026-09-29 11:26 CT - continuous (leg 13)</summary><pre>- cushion: equity $99,837.34 - 0.10*HWM $100,000 = $89,837.34 above the death floor. Not wounded. Not halted. Mandate: status ok, no deny seen; last fresh read valid to 2026-10-12T21:40Z (leg 7).
 - equity: $99,837.34 | cash: $97,735.00 | positions_value: $2,102.30
 - day loss budget: ~$300 (3R); used -$58.02 realized (PLTR). Budget NOT hit.
 - regime: SPY 763.14 range/mixed (-0.31% vs EMA21, RSI 48.2); QQQ 736.87 range/mixed (+1.39%, RSI 58.7). Neutral posture, s6a only.
@@ -129,13 +135,7 @@ ul { margin:6px 0; padding-left:22px; } li { margin:3px 0; }
 - regime: SPY 765.03 range/mixed (-0.08% vs EMA21, RSI 49.9); QQQ 739.17 range/mixed (+1.67%, RSI 59.9). Neutral posture, s6a only.
 - book: CRWD 3 sh @ 231.22 | now 260.89 | +$89.00 / +12.83% ROI | stop 219.15 (-16.0%) | target 264.13 resting (9bfc5894, +1.2%)
   TXG 15 sh @ 75.64 | now 88.90 | +$198.90 / +17.53% ROI | stop 64.73 (-27.2%) | s6a two-lower-closes exit, streak 0 | no target
-- exits checked: no stop/target/exit condition hit. TXG 5m (13:30-14:20 UTC) faded from 91.80 to 88.4 and is stable near 89.3, well above stop.</pre></details><details><summary>2026-09-29 09:15 CT - continuous (leg 4)</summary><pre>- cushion: equity $99,835.53 - 0.10*HWM $100,000 = $89,835.53 above the death floor. Not wounded. Not halted. Mandate: no deny seen; last fresh read valid to 2026-10-12T21:40Z (not re-read this leg).
-- equity: $99,835.53 | cash: $97,735.00 | positions_value: $2,100.4
-- day loss budget: ~$300 (3R); used -$58.02 realized (PLTR). Budget NOT hit.
-- regime: SPY 765.03 range/mixed (-0.08% vs EMA21, RSI 49.9); QQQ 737.81 range/mixed (+1.5%, RSI 59.2). Neutral posture, s6a only.
-- book: CRWD 3 sh @ 231.22 | now 257.19 | +$77.91 / +11.2% ROI | stop 219.15 (-14.8%) | target 264.13 resting (9bfc5894, +2.7%)
-  TXG 15 sh @ 75.64 | now 88.59 | +$194.25 / +17.1% ROI | stop 64.73 (-26.9%) | s6a two-lower-closes exit, streak 0 | no target
-- exits checked: no stop/target/exit condition hit; stops far from price.</pre></details>
+- exits checked: no stop/target/exit condition hit. TXG 5m (13:30-14:20 UTC) faded from 91.80 to 88.4 and is stable near 89.3, well above stop.</pre></details>
 <h2>Lessons (binding rules)</h2>
 <ul><li>L1 — Size deliberately, and say why.</li><li>L2 — The gate is right.</li><li>L3 — No thesis, no trade.</li><li>L6 — Same-day time_stops need enough clock left to work.</li><li>L8 — A probe&#x27;s fill level needs an actual multi-touch defense, not just a reversal candle or &quot;buyers stepping in&quot; narrative.</li><li>L7 — A trade is not bad until it is closed.</li><li>W5 - resting limit buys that fill AT the open have lost every time.</li><li>W6 - C-grade probes are the losing half of the book.</li></ul>
 <h2>Session activity - last 10 market days</h2>
