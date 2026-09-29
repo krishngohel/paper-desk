@@ -1,5 +1,5 @@
 {
- "ts": "2026-09-29T09:25:56",
+ "ts": "2026-09-29T09:40:44",
  "screened": 81,
  "candidates": [
   {
@@ -285,18 +285,18 @@
    "risk_pct": 35.92
   },
   {
-   "symbol": "NCI",
-   "close": 2.38,
-   "ema9": 11.73,
-   "ema21": 12.53,
+   "symbol": "JLHL",
+   "close": 3.72,
+   "ema9": 5.34,
+   "ema21": 5.74,
    "three_rising_closes": false,
    "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 11.9,
-   "pct_up_3d": -83.7,
-   "suggested_stop": 1.64,
-   "risk_per_share": 0.74,
-   "risk_pct": 31.09
+   "dollar_volume_m": 2.3,
+   "pct_up_3d": -35.82,
+   "suggested_stop": 3.71,
+   "risk_per_share": 0.01,
+   "risk_pct": 0.21
   },
   {
    "symbol": "EVGN",
@@ -481,20 +481,6 @@
    "risk_pct": 0.25
   },
   {
-   "symbol": "QQQ",
-   "close": 736.53,
-   "ema9": 734.07,
-   "ema21": 725.77,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 30868.3,
-   "pct_up_3d": -0.63,
-   "suggested_stop": 731.63,
-   "risk_per_share": 4.9,
-   "risk_pct": 0.67
-  },
-  {
    "symbol": "AMD",
    "close": 607.87,
    "ema9": 593.38,
@@ -507,6 +493,20 @@
    "suggested_stop": 596.07,
    "risk_per_share": 11.8,
    "risk_pct": 1.94
+  },
+  {
+   "symbol": "QQQ",
+   "close": 736.53,
+   "ema9": 734.07,
+   "ema21": 725.77,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 30868.3,
+   "pct_up_3d": -0.63,
+   "suggested_stop": 731.63,
+   "risk_per_share": 4.9,
+   "risk_pct": 0.67
   },
   {
    "symbol": "SOXL",
@@ -635,18 +635,18 @@
    "risk_pct": 0.64
   },
   {
-   "symbol": "VOO",
-   "close": 703.72,
-   "ema9": 705.59,
-   "ema21": 704.49,
+   "symbol": "SPCX",
+   "close": 145.47,
+   "ema9": 148.9,
+   "ema21": 147.17,
    "three_rising_closes": false,
    "stacked_emas": false,
    "qualifies": false,
-   "dollar_volume_m": 1390.0,
-   "pct_up_3d": -0.46,
-   "suggested_stop": 701.97,
-   "risk_per_share": 1.75,
-   "risk_pct": 0.25
+   "dollar_volume_m": 12152.8,
+   "pct_up_3d": -1.95,
+   "suggested_stop": 145.36,
+   "risk_per_share": 0.11,
+   "risk_pct": 0.08
   },
   {
    "symbol": "SVRN",
@@ -747,6 +747,20 @@
    "risk_pct": 5.79
   },
   {
+   "symbol": "INDP",
+   "close": 3.29,
+   "ema9": 3.49,
+   "ema21": 2.91,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 1.9,
+   "pct_up_3d": -12.73,
+   "suggested_stop": 3.12,
+   "risk_per_share": 0.17,
+   "risk_pct": 5.02
+  },
+  {
    "symbol": "AEHL",
    "close": 8.23,
    "ema9": 8.37,
@@ -773,20 +787,6 @@
    "suggested_stop": 4.45,
    "risk_per_share": 0.13,
    "risk_pct": 2.84
-  },
-  {
-   "symbol": "INDP",
-   "close": 3.29,
-   "ema9": 3.49,
-   "ema21": 2.91,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 1.9,
-   "pct_up_3d": -12.73,
-   "suggested_stop": 3.12,
-   "risk_per_share": 0.17,
-   "risk_pct": 5.02
   },
   {
    "symbol": "SECZ",
@@ -929,20 +929,6 @@
    "risk_pct": 7.52
   },
   {
-   "symbol": "DELL",
-   "close": 549.72,
-   "ema9": 549.93,
-   "ema21": 533.01,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 399.9,
-   "pct_up_3d": 2.55,
-   "suggested_stop": 535.5,
-   "risk_per_share": 14.22,
-   "risk_pct": 2.59
-  },
-  {
    "symbol": "OKTA",
    "close": 202.18,
    "ema9": 195.04,
@@ -955,6 +941,20 @@
    "suggested_stop": 190.5,
    "risk_per_share": 11.68,
    "risk_pct": 5.78
+  },
+  {
+   "symbol": "DELL",
+   "close": 549.72,
+   "ema9": 549.93,
+   "ema21": 533.01,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 399.9,
+   "pct_up_3d": 2.55,
+   "suggested_stop": 535.5,
+   "risk_per_share": 14.22,
+   "risk_pct": 2.59
   },
   {
    "symbol": "MRVL",
