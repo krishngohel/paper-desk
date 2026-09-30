@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-09-29T15:20:47",
+ "computed_at": "2026-09-30T15:20:53",
  "trades": {
   "t-2026-08-26-001": {
    "v": 2,
@@ -768,8 +768,12 @@
    "mfe_atr": 2.84,
    "mae_atr": 0.03,
    "target_progress": 1.11,
-   "spy_ret_hold_pct": -0.19,
-   "closed": false
+   "spy_ret_hold_pct": 0.06,
+   "ret_pct": 14.29,
+   "excess_vs_spy_pct": 14.23,
+   "hold_days": 9.0,
+   "exit_ts_approx": false,
+   "closed": true
   },
   "t-2026-09-14-003": {
    "v": 2,
@@ -852,11 +856,11 @@
    "gap_pct": 0.03,
    "run_from_open_pct": 7.86,
    "spy_intraday_at_entry_pct": -0.38,
-   "mfe_pct": 21.62,
+   "mfe_pct": 25.81,
    "mae_pct": -5.55,
-   "mfe_atr": 4.31,
+   "mfe_atr": 5.15,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 0.76,
+   "spy_ret_hold_pct": 0.53,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
@@ -1130,6 +1134,37 @@
    "ret_pct": -3.01,
    "excess_vs_spy_pct": -2.43,
    "hold_days": 4.0,
+   "exit_ts_approx": false,
+   "closed": true
+  },
+  "t-2026-09-30-001": {
+   "v": 2,
+   "symbol": "MSFT",
+   "entry_utc": "2026-09-30T14:11:46+00:00",
+   "entry_ts_approx": false,
+   "entry_bucket": "first_hour",
+   "spy_trend": "mixed",
+   "spy_ret_5d": -1.19,
+   "spy_ret_20d": -0.37,
+   "sym_trend": "up",
+   "sym_ret_20d": 0.33,
+   "rel_strength_20d": 0.7,
+   "rsi14": 58.4,
+   "atr_pct": 2.34,
+   "ext_ema20_atr": 1.55,
+   "below_20d_high_atr": 0.13,
+   "gap_pct": 0.52,
+   "run_from_open_pct": 1.22,
+   "spy_intraday_at_entry_pct": 0.52,
+   "mfe_pct": 0.31,
+   "mae_pct": -1.23,
+   "mfe_atr": 0.14,
+   "mae_atr": 0.54,
+   "target_progress": 0.14,
+   "spy_ret_hold_pct": -0.56,
+   "ret_pct": -1.01,
+   "excess_vs_spy_pct": -0.45,
+   "hold_days": 0.2,
    "exit_ts_approx": false,
    "closed": true
   }

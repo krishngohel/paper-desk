@@ -97,6 +97,16 @@ below until a review promotes or discards them.
   closed since (PLTR t-2026-09-25-001, rs +8.36pp) was outside the bucket
   and also lost. No entry to the bucket since 09-15; the sample is not
   growing, so this is a stale-but-standing result. Still binding.
+  Re-checked 2026-09-30 daily review (37 closed): CRWD t-2026-09-14-002
+  (rs +24.98pp, entered 09-21, scored today) is in the bucket and WON
+  +$99.12 (mfe_atr 2.84), the bucket's first win: now 1 of 17, -$1,589.41,
+  Fisher p 0.00175 vs Sidak 0.00183 (28 tests) - still on the significant
+  side of the line, but by a hair, and the first counter-instance is in.
+  Read plainly: that win was an anticipatory_limit pullback fill (232.00
+  limit near EMA9/VWAP, dated sector-rotation catalyst, filled 3 of 6 sh),
+  not a chase of the extension - consistent with the lesson's own
+  "concrete reason" clause. n=1 win does not retire the rule; if the
+  bucket's p crosses above 0.05 on further wins, retire it. Still binding.
 
 ## Watch patterns (candidate lessons, not yet binding)
 
@@ -151,6 +161,13 @@ new instances for 15 trading days is discarded as noise.
   ~10 of 15 trading days elapsed; discard on ~2026-10-07 absent a
   thin-volume gap reversal.
 
+  Checked again 2026-09-30 daily review against MSFT (t-2026-09-30-001)
+  and CRWD (t-2026-09-14-002): neither is an s6a entry (MSFT was a
+  secondary-archetype resistance break, 0.12x volume an early-morning
+  artifact; CRWD a pullback limit at 1.87x) and MSFT's exit was an
+  ordinary stop inside a day, not a gap-through-stop. No new instance.
+  ~11 of 15 trading days elapsed; discard on ~2026-10-07 as planned.
+
 - **W4 - RSI14 at entry: 60-70 has lost every time; 45-60 has carried the
   book.** `by_rsi14_at_entry.strong_60-70`: 0 wins in 9 closed trades,
   -$994.07 (win rate vs rest of book 0% vs 47.8%, Fisher p 0.013);
@@ -179,6 +196,14 @@ new instances for 15 trading days is discarded as noise.
   named this bucket and entered anyway, so the disclosure worked but did
   not change the decision; a strong_60-70 entry should size below a
   neutral_45-60 one until this resolves. Not promoted.
+  Updated 2026-09-30 daily review (37 closed): `strong_60-70` is now
+  1 of 12, -$962.84 - CRWD (t-2026-09-14-002, RSI 60.4, rs +24.98pp,
+  +$99.12) is the bucket's first win, a counter-instance, though it is a
+  leader_10pp+ name and so does not bear on the outside-L9 count (still
+  0 of 3). MSFT (RSI 58.4) fell in neutral_45-60 and lost, so that bucket
+  is 10 of 21 (47.6%, +$504.13, p 0.035, suggestive). Direction still
+  agrees, the separation is weaker, n outside L9 unchanged at 3. Not
+  promoted.
 
 - **W5 - resting limit buys that fill AT the open have lost every time.**
   `by_entry_time.open_resting_fill`: 0 wins in 5 closed trades, -$715.10
@@ -190,6 +215,18 @@ new instances for 15 trading days is discarded as noise.
   Seen 5x (first recorded 2026-09-25 daily review). Promote if it crosses
   p 0.05 with n>=8, or fold into s7a's mechanism finding; discard after 15
   trading days with no new instance or if a resting fill at the open wins.
+  Checked 2026-09-30 daily review: CRWD t-2026-09-14-002 was a resting
+  buy-limit that filled at the open (3 of 6 sh at 231.22, 08:30:13 CT) and
+  WON +$99.12 - but `compute_stats` bucketed it as `first_hour`, not
+  `open_resting_fill` (still 0 of 5, -$715.10), so the stats do not show
+  the counter-instance. By the watch pattern's own discard clause ("if a
+  resting fill at the open wins") this is a counter-instance: the pattern
+  is now 0 of 5 bucketed plus 1 win by hand-classification. It is
+  weakened, not discarded - the CRWD limit sat 9 days at a live EMA9 level
+  on a leader in an intact uptrend, structurally different from the
+  pre-09-15 gap-down open fills. Flag for the operator: the bucket rule
+  in trade_context/compute_stats misses fills that arrive in the first
+  minute via a partial fill on a multi-day-old order.
 
 - **W6 - C-grade probes are the losing half of the book.** `by_grade`: C =
   14 closed, 2 wins (14.3%), -$545.10, expectancy -$38.94; B = 19 closed,
@@ -206,6 +243,8 @@ new instances for 15 trading days is discarded as noise.
   retired today, so new C closes will be rare. W5 likewise: no new
   open-resting-fill (still 0 of 5, -$715.10). Both unchanged; the
   15-trading-day clock keeps running (~2026-10-16 for W6).
+  Checked 2026-09-30: no C-grade trade closed (CRWD and MSFT were both
+  B); C still 14 closed, 2 wins, -$545.10. Unchanged.
 
 - **W7 - entries taken while SPY's own trend read "up" have done worse than
   entries in "mixed" markets.** `by_market_trend`: up = 18 closed, 3 wins
@@ -217,7 +256,10 @@ new instances for 15 trading days is discarded as noise.
   September up tape) and with W4, so it is probably the same effect seen
   through the market lens, not independent evidence. Counter-intuitive
   enough (a tailwind should help) that it is worth tracking rather than
-  believing. Seen 1x (first recorded 2026-09-29 daily review). Promote only
+  believing. Checked 2026-09-30: CRWD and MSFT both entered in "mixed" SPY
+  trend (won/lost), so `up` is unchanged at 3 of 18 (16.7%, -$858.15) and
+  `mixed` is 9 of 19 (47.4%, +$314.54); no new `up` instance.
+  Seen 1x (first recorded 2026-09-29 daily review). Promote only
   if it still separates after excluding `leader_10pp+` and RSI 60-70
   entries; discard if p drifts above 0.2 or after 15 trading days
   (~2026-10-20) with no supporting close.
