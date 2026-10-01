@@ -1169,3 +1169,4 @@
 {"ts": "2026-10-01T13:12:45", "session": "snapshot", "equity": 99771.38, "cash": 98454.6, "positions_value": 1316.78, "voo_price": 701.3}
 {"ts": "2026-10-01T13:26:08", "session": "continuous", "equity": 99794.55, "cash": 98454.6, "positions_value": 1339.95, "voo_price": 702.25}
 {"ts": "2026-10-01T13:27:54", "session": "snapshot", "equity": 99795.6, "cash": 98454.6, "positions_value": 1341.0, "voo_price": 702.12}
+{"ts": "2026-10-01T13:41:01", "session": "continuous", "equity": 99793.35, "cash": 98454.6, "positions_value": 1338.75, "voo_price": 702.59}
