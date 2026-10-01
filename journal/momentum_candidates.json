@@ -1,5 +1,5 @@
 {
- "ts": "2026-10-01T09:11:01",
+ "ts": "2026-10-01T09:25:50",
  "screened": 84,
  "candidates": [
   {
@@ -285,20 +285,6 @@
    "risk_pct": 23.44
   },
   {
-   "symbol": "DKI",
-   "close": 1.24,
-   "ema9": 2.2,
-   "ema21": 2.61,
-   "three_rising_closes": false,
-   "stacked_emas": false,
-   "qualifies": false,
-   "dollar_volume_m": 0.4,
-   "pct_up_3d": -52.31,
-   "suggested_stop": 1.1,
-   "risk_per_share": 0.14,
-   "risk_pct": 11.29
-  },
-  {
    "symbol": "WZRD",
    "close": 8.08,
    "ema9": 6.59,
@@ -311,6 +297,20 @@
    "suggested_stop": 6.32,
    "risk_per_share": 1.76,
    "risk_pct": 21.74
+  },
+  {
+   "symbol": "DKI",
+   "close": 1.24,
+   "ema9": 2.2,
+   "ema21": 2.61,
+   "three_rising_closes": false,
+   "stacked_emas": false,
+   "qualifies": false,
+   "dollar_volume_m": 0.4,
+   "pct_up_3d": -52.31,
+   "suggested_stop": 1.1,
+   "risk_per_share": 0.14,
+   "risk_pct": 11.29
   },
   {
    "symbol": "SCKT",
@@ -579,20 +579,6 @@
    "risk_pct": 1.78
   },
   {
-   "symbol": "MSFT",
-   "close": 518.72,
-   "ema9": 508.58,
-   "ema21": 501.86,
-   "three_rising_closes": false,
-   "stacked_emas": true,
-   "qualifies": false,
-   "dollar_volume_m": 2026.6,
-   "pct_up_3d": 1.87,
-   "suggested_stop": 510.31,
-   "risk_per_share": 8.41,
-   "risk_pct": 1.62
-  },
-  {
    "symbol": "AMD",
    "close": 609.62,
    "ema9": 601.38,
@@ -605,6 +591,20 @@
    "suggested_stop": 600.1,
    "risk_per_share": 9.52,
    "risk_pct": 1.56
+  },
+  {
+   "symbol": "MSFT",
+   "close": 518.72,
+   "ema9": 508.58,
+   "ema21": 501.86,
+   "three_rising_closes": false,
+   "stacked_emas": true,
+   "qualifies": false,
+   "dollar_volume_m": 2026.6,
+   "pct_up_3d": 1.87,
+   "suggested_stop": 510.31,
+   "risk_per_share": 8.41,
+   "risk_pct": 1.62
   },
   {
    "symbol": "ACN",
