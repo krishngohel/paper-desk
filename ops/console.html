@@ -651,7 +651,7 @@ async function refresh() {
   const nTrig = (s.triggers || []).filter(t => !t.consumed && !t.cancelled).length;
   const closed = s.stats && s.stats.closed || 0;
 
-  // standing-order quota: conditional ENTRIES waiting to fire without a session
+  // standing orders: conditional ENTRIES waiting to fire without a session
   // (resting buy-limits + armed triggers). Informational only; no quota.
   const buyOrders = (s.broker.orders || []).filter(o => String(o.side).toLowerCase() === "buy");
   const armed = (s.triggers || []).filter(t => !t.consumed && !t.cancelled);
