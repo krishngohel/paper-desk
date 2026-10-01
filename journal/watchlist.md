@@ -8,78 +8,85 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-09-30 evening (research leg after Wednesday's close). Mandate valid
-(expires 2026-10-12 per prior entries; re-read fresh). Not halted.
+Updated 2026-10-01 evening (research leg after Thursday's close). Mandate valid
+(exp 2026-10-12; re-read fresh). Not halted.
 
-**Regime (`ta.py --market`, 09-30 close):** SPY 762.63, -0.35% vs EMA21, RSI 47.8,
-range/mixed. QQQ 739.77, +1.61% vs EMA21, RSI 60.2, range/mixed. 10Y 5.29% rate shock is
-the tail risk. Neutral posture, s6a only.
+**Regime (`ta.py --market`, 10-01 close):** SPY 763.99, -0.15% vs EMA21, RSI 48.9,
+range/mixed. QQQ 742.03, +1.75% vs EMA21, RSI 61.1, range/mixed. 10Y 5.29% rate shock is
+the tail risk. Neutral posture, s6a first, confirmation triggers only.
 
 ## Standing orders
 
-0 live orders, 0 armed triggers. Nothing staged: no name reached a numeric trigger worth
-arming above market, and no rung beats the `anticipatory_limit` record.
+0 live orders, 0 armed triggers. Nothing staged: Friday is a gap-risk open and no name has a
+numeric above-market trigger worth arming overnight; no rung beats the `anticipatory_limit`
+record (6 closed, 33% wins, -$66/trade).
 
 ## Book (1 position, target 3-6)
 
-- **TXG** 15 sh @ 75.64, 09-30 close 90.345 (up vs 90.04, streak 0), +$230 / +20%.
-  s6a-governed (exit on TWO consecutive lower closes), stop 64.73, no target. RSI 77.
-  next_earnings 2026-11-05.
-- Closed 09-30: CRWD +$99.12 (right), MSFT -$72.94 stopped out (wrong). Both scored.
+- **TXG** 15 sh @ 75.64, 10-01 close 88.74 (< prior 90.36 = lower close 1 of 2), +$171 / +15%.
+  s6a-governed: **Friday 10-02 close below 88.74 = second lower close = SELL.** Stop 64.73, no
+  target. RSI 73.3, EMA9 84.95 > EMA21 77.71 > EMA50 65.40. next_earnings 2026-11-05.
 
-## Ranked - Thursday 10-01 hunt
+## Ranked - Friday 10-02 hunt
 
-1. **Manage TXG first** (close vs 90.345; lower = streak 1).
-2. **MU - post-print, re-run `trade_context.py --check` at the open.** Reported 09-30 after
-   close: Benzinga "Q4 double beat, sees even stronger year ahead", supply "much tighter in
-   2027-28". Pre-print close 1065.11 > EMA9 1051.85 > EMA21 1018 > EMA50 969 (passes 3c),
-   RSI 59.8, rs -0.63pp, spread 0.04%, resistance 1108.72, support 1032. Gap reaction unseen.
-   **Trigger:** confirmation only, after the gap settles (hold above the opening-range high,
-   volume >1.2x); do not chase a gap through 1108.72. Stop under 1032, re-anchor to the fill.
-   Probe. Kill: gap-and-fade below 1032. next_earnings passed.
-3. **INTC - passes 3c, blocked by L9.** Close 120.23 > EMA9 117.27 > EMA21 110.71 > EMA50
-   104.41, RSI 61.8, 20d rs +29.89pp = `leader_10pp+` (SIGNIFICANT, 1 of 17), ATR 6.13 (5%),
-   daily morning star, spread 0.12%, $11.2B. next_earnings 10-22. Watch only; an entry needs
-   a written L9 exception (none today: +256% in 12 months, no base reset).
-4. **STX - WAIT.** Close 913.45 > EMA9 895 > EMA21 872 > EMA50 860, RSI 57.9, vol 0.68x.
-   **Trigger:** daily close > 925.44, or 5m break of 923.10 with volume >1.2x. Stop under
-   870.38, target 936.49 then ~975. Kill: close below EMA21 872. next_earnings 10-27.
-   **MSFT:** stopped out 09-30, thesis dead; needs a fresh thesis (close above 513.73).
-5. **GOOGL - fails 3c today.** Close 344.08 < EMA50 345.76, EMA9 343.63 ~ EMA21 343.64, RSI
-   49.8, rs +2.64pp, vol 1.41x, 5m hammers/doji AT RESISTANCE 349.14. Qualifies only after
-   a close above 345.76 with EMA21 > EMA50. next_earnings 10-28.
-6. **QCOM / BE / P / TWLO / OKTA / MRNA / ALAB / ARM - L9 blocked (big_leaders lens).**
-   Watch only. AMAT / KLAC fail 3c (EMA21 < EMA50).
+1. **Manage TXG first** (close vs 88.74).
+2. **MPC - best 3c pass with sane L9 profile.** Close 420.15 > EMA9 400.08 > EMA21 393.25 >
+   EMA50 362.16, RSI 68.2 (ta; trade_context RSI 57.1 neutral bucket), rs +3.13pp =
+   `outperforming_0-10pp` (11 closed, 45.5%, +$626.59), +6.4% today on 0.7x volume (thin),
+   spread 0.20%, $877M. NOT an s6a entry (3 rising closes fails: 09-30 shooting star), so
+   secondary archetype, B/C probe. **Trigger:** 5m break and hold above 431.08 (resistance)
+   with volume >1.2x, or a pullback hold of 411.41 (opening-range high). Stop under 402.38
+   or 388.16 support, re-anchor to the fill. Kill: close below EMA21 393.25.
+   next_earnings 11-03. Run `trade_context.py --check` fresh at the time.
+3. **MU - post-print follow-through.** Close 1097.39 > EMA9 1060.96 > EMA21 1025.18 > EMA50
+   973.51, RSI 63.4, +3.0% on 1.8x volume after the double beat, bullish engulfing at support
+   1032, ~11 points under resistance 1108.72, spread 0.05%. **Trigger:** confirmation only -
+   hold above 1108.72 with volume >1.2x; do not chase a gap above it. Stop under 1060 (EMA9),
+   probe. Kill: close below 1032. next_earnings 12-23.
+4. **STX - broke my 925.44 trigger on the close (945.57), but L9.** Close > EMA9 909.5 > EMA21
+   882.7 > EMA50 866.6, RSI 61.8, vol 0.66x (thin), morning star. 20d rs +12.83pp =
+   `leader_10pp+` (SIGNIFICANT, 1 of 17): an entry needs a written L9 exception (none today).
+   Stop would sit under 870.38. next_earnings 10-27.
+5. **INTC - passes 3c, blocked by L9.** Close 120.0, 20d rs +29.89pp. Watch only.
+6. **NTRA (new 10-01) - passes 3c, fails on extension/RSI.** Close 408.47 > EMA9 399.64 >
+   EMA21 375.01 > EMA50 334.91, RSI 77.2, +27% 1m, shooting stars 09-30 and 10-01 at 427.47 /
+   423.43, ATR 13.24 (3.2%), spread 0.49%. Watch only until RSI resets or a base forms; stop
+   would be under 375 = 8% risk.
+7. **QCOM / BE / P / TWLO / OKTA / MRNA / ALAB / ARM / SNDK / SOXL - big_leaders / s6a
+   scan names, L9 blocked.** Momentum scan 10-01 sane-risk lists: SOXL 3.13%, SPCX 2.60%,
+   OKTA 2.61%, TWLO 2.38%, SNDK 1.78%, P 1.66%. SPCX: RSI 51, close 148.07 > EMA9 149.09
+   fails (below EMA9 today), range, no thesis. GOOGL fails 3c (EMA21 < EMA50).
 
 ## Watch only / rejects
 
-**09-30 evening vets:** **NU** (StockTwits trending): close 12.66 < EMA9 13.19 < EMA21 13.76
-< EMA50 14.03, RSI 35.3, 12.5% of 20d range, +8.4% bounce day - 3c FAIL. **GOOGL, INTC**
-above. CBRS/APP/SOFI trending, not re-vetted (APP/SOFI carried 3c fails). Explore smallcap
-names FNGR 0.18, RETO 0.11, ZBAO 0.10, LIQT 0.53 (sub-$1 shells) and LGHL ($111M on 73x
-volume, -44% 1m) given no thesis: no workup done, no trend read.
+**10-01 new-name vets (research duty 1b):**
+- **CTVA** (-83.8%, $1.1B traded, 0.08% spread): NOT a signal. Corteva completed its spin-off
+  of Vylor (VYLR) 10-01 (Benzinga); the price drop is mechanical and ta.py's EMAs (65.85 /
+  74.59 / 79.16, RSI 5.8) are unadjusted for it. Needs a few clean post-spin closes before any
+  trend read. **VYLR** (the spun entity, Nasdaq) is a new listing with no history: no
+  structure to read, watch for a base.
+- **NXL** (+76%, $486M on 3,649x volume): Benzinga: 10-year South American distribution deal,
+  circuit-breaker halt up, market cap about $3.5M. Close 7.55 off a day high of 8.38 with
+  shooting star + bearish engulfing in the last hour; EMA9 5.12 < EMA21 5.56 < EMA50 8.13 =
+  3c FAIL; halt risk; no stop is placeable at a fillable price. Rejected on structure.
+- **SDEV / VEEA / QSI / SES / BIRD / XRPN** (momentum scan risk 25-30%): stop distances are
+  unusable for a numeric stop; NAMM/LONA/OM/CMCT spikes have no catalyst checked and no trend
+  read; none worked up. Remain no-thesis.
 
-**09-29 vets, unchanged:**
-- **FICO** (-27.2%): close 617.87 < EMA9 < EMA21 < EMA50, RSI 16.3, downtrend. 3c FAIL;
-  revisit only after a multi-day base above 595.19.
-- **XRPN**: spread 3.77% UNTRADABLE (09-29), RSI 98.5. **NAUT**: range/mixed, 3c FAIL,
-  30% stop distance. **TTD**: downtrend, RSI 29.2, 3c FAIL.
-- Earlier rejects carried: APLD, NVTS, APP, SMMT, KOD, SHMD, JD, TOST, CELH, SEDG, F, SUIL,
-  AKAM, MCHP, ON, AMBA, BYD, XPEV, NCPL, VST, DASH, CRDO, SMCI, HUM, OPEN, NBIS (3c FAIL or
-  UNTRADABLE per prior vets), XOM, UPST, VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA,
-  SNDK/AVGO/LRCX/NVDA, IREN, RBRK/ZS/SMTC (no live thesis).
-- **Momentum scan 09-30:** SDEV/SVRN/PACB risk 55/30/30% (unusable stops), PMVP risk 17.6%
-  on $2.4M volume, P risk 4.19% (W4/L9), RBRK risk 3.42% (L9).
+**Older rejects, unchanged:** NU (3c FAIL, RSI 35), FICO (downtrend), NAUT, TTD, APLD, NVTS,
+APP, SMMT, KOD, SHMD, JD, TOST, CELH, SEDG, F, SUIL, AKAM, MCHP, ON, AMBA, BYD, XPEV, NCPL,
+VST, DASH, CRDO, SMCI, HUM, OPEN, NBIS, XOM, UPST, VKTX, SOFI, MSTR/CRCL, RIOT/CLSK/HOOD/MARA,
+LRCX/NVDA/AVGO, IREN, RBRK/ZS/SMTC (no live thesis), MSFT (stopped 09-30, thesis dead).
 
 ## Macro calendar
 
-- Earnings: MU reported 09-30 (beat), INTC 10-22, STX 10-27, BE 10-27, MSFT/GOOGL 10-28,
-  QCOM 11-04, FICO 11-04, TXG 11-05, PLTR 11-02, CRWD 12-01.
-- Macro: 10Y 5.29%, 30Y at a 2002 high; no Fed/CPI date flagged from what is on screen.
+- Earnings: INTC 10-22, STX 10-27, BE 10-27, MSFT/GOOGL 10-28, MPC/SPCX 11-03, CTVA 11-03,
+  QCOM 11-04, FICO 11-04, NTRA/TXG 11-05, PLTR 11-02, MU 12-23, CRWD 12-01.
+- Macro: 10Y 5.29%, 30Y at a 2002 high; ISM manufacturing slipped in September (Benzinga
+  10-01); no Fed/CPI date confirmed from what is on screen.
 
-## Next session (Thursday 2026-10-01, PLANNING leg pre-market)
+## Next session (Friday 2026-10-02, PLANNING leg pre-market)
 
-Set the day's loss budget; confirm consent.expires_at fresh; TXG close-pattern check; read
-MU's after-hours reaction and run `trade_context.py --check MU`; work MU/STX on
-confirmation triggers only; refill the book (1 of 3-6) - s6a candidates are thin (only
-P/RBRK at sane risk, both L9-blocked).
+Set the day's loss budget; confirm consent.expires_at fresh; TXG close vs 88.74 decides the
+exit; read gap scan for MPC/MU/STX; work MPC/MU on confirmation triggers only
+(`trade_context.py --check` first); refill the book (1 of 3-6) only with 3c-passing names.
