@@ -652,17 +652,16 @@ async function refresh() {
   const closed = s.stats && s.stats.closed || 0;
 
   // standing-order quota: conditional ENTRIES waiting to fire without a session
-  // (resting buy-limits + armed triggers). SOP requires >=6 across >=3 symbols.
+  // (resting buy-limits + armed triggers). Informational only; no quota.
   const buyOrders = (s.broker.orders || []).filter(o => String(o.side).toLowerCase() === "buy");
   const armed = (s.triggers || []).filter(t => !t.consumed && !t.cancelled);
   const standing = buyOrders.length + armed.length;
   const symsStanding = new Set([...buyOrders, ...armed].map(x => x.symbol)).size;
-  const meets = standing >= 6 && symsStanding >= 3;
   const sq = $("standing");
-  sq.textContent = standing + " / 6" + (standing ? ` · ${symsStanding} sym` : "");
-  sq.className = meets ? "up" : "";
-  sq.style.color = meets ? "" : "var(--clay)";
-  sq.title = meets ? "quota met" : "below quota - a leg ending here is a failed leg";
+  sq.textContent = standing + (standing ? ` · ${symsStanding} sym` : "");
+  sq.className = "";
+  sq.style.color = "";
+  sq.title = "live conditional entries (no quota, no cap since 2026-09-29)";
 
   $("agentstate").textContent = halted ? "stopped by kill switch" :
     thinking ? "a session is thinking right now" :
