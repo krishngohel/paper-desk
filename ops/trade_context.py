@@ -13,6 +13,8 @@ losers can be compared on equal terms:
   timing  : entry time-of-day bucket (ET)
   path    : max favorable / adverse excursion while held (in % and in ATRs),
             share of the target distance reached, SPY's move over the hold
+  replay  : what each closed trade would have returned under alternative exit
+            rules (breakeven / trailing stops, half off at +1 ATR) on the same path
 
 Daily indicators use only bars that CLOSED before the entry day - no lookahead.
 Path metrics use 1-min SIP bars from the entry minute to the exit.
@@ -43,7 +45,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LEDGER = ROOT / "journal" / "trades.jsonl"
 OUT = ROOT / "journal" / "trade_context.json"
 BARS = bt_data.CACHE / "trade_context"
-VERSION = 2
+VERSION = 3  # 3: exit_replay
 CT = timezone(timedelta(hours=-5))  # the desk writes naive stamps in CDT
 ET = timezone(timedelta(hours=-4))
 
@@ -186,6 +188,36 @@ def _r(v, d=2):
     return None if v is None else round(v, d)
 
 
+# ---------------------------------------------------------------- exit replay
+
+def exit_replay(path: list[dict], entry: float, atr: float, actual_ret: float) -> dict:
+    """Return (%) the trade would have made under alternative exit rules, replayed
+    on the same 1-min path. Each rule only ADDS an earlier exit: if it never fires,
+    the trade keeps its actual exit. A rule arms on the bar whose high reaches the
+    threshold and is checked from the NEXT bar (no same-bar guessing); a bar that
+    opens below the stop fills at its open, as a real stop would."""
+    out = {"actual": _r(actual_ret)}
+
+    def stop_rule(arm_atr: float, trail_atr: float | None) -> float:
+        armed, peak = False, entry
+        for b in path:
+            if armed:
+                stop = entry if trail_atr is None else max(entry, peak - trail_atr * atr)
+                if b["l"] <= stop:
+                    return 100 * (min(stop, b["o"]) / entry - 1)
+            peak = max(peak, b["h"])
+            if peak >= entry + arm_atr * atr:
+                armed = True
+        return actual_ret
+
+    out["breakeven_after_0.5atr"] = _r(stop_rule(0.5, None))
+    out["breakeven_after_1atr"] = _r(stop_rule(1.0, None))
+    out["trail_1atr_after_1atr"] = _r(stop_rule(1.0, 1.0))
+    hit = any(b["h"] >= entry + atr for b in path)
+    out["half_off_at_1atr"] = _r(0.5 * 100 * atr / entry + 0.5 * actual_ret if hit else actual_ret)
+    return out
+
+
 # ---------------------------------------------------------------- per trade
 
 def context_for(t: dict) -> dict:
@@ -252,6 +284,7 @@ def context_for(t: dict) -> dict:
     lag = datetime.now(timezone.utc) - timedelta(minutes=bt_data.SIP_LAG_MIN)
     end = min(t_out or lag, lag)
     t0 = t_in.replace(second=0, microsecond=0)
+    path: list[dict] = []
     if end > t_in:
         path = [b for b in _fetch(sym, "1Min", t0, end + timedelta(minutes=1))
                 if t0 <= _t(b) <= end]
@@ -277,6 +310,8 @@ def context_for(t: dict) -> dict:
     if exit_px is not None and t.get("closed_ts"):
         ret = 100 * (float(exit_px) / entry - 1)
         ctx["ret_pct"] = _r(ret)
+        if path and atr:
+            ctx["exit_replay"] = exit_replay(path, entry, atr, ret)
         if "spy_ret_hold_pct" in ctx:
             ctx["excess_vs_spy_pct"] = _r(ret - ctx["spy_ret_hold_pct"])
         ctx["hold_days"] = _r((t_out - t_in).total_seconds() / 86400, 1) if t_out else None

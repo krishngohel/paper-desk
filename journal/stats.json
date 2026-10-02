@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-10-02T15:35:20",
+ "computed_at": "2026-10-02T16:02:42",
  "overall": {
   "n": 37,
   "closed": 37,
@@ -458,6 +458,52 @@
    "expectancy_per_trade": -25.61,
    "largest_win": 5.25,
    "largest_loss": -58.02
+  }
+ },
+ "by_archetype": {
+  "momentum_s6a (inferred)": {
+   "n": 7,
+   "closed": 7,
+   "win_rate_pct": 14.3,
+   "total_pnl": -312.16,
+   "avg_win": 5.25,
+   "avg_loss": -52.9,
+   "expectancy_per_trade": -44.59,
+   "largest_win": 5.25,
+   "largest_loss": -88.2
+  },
+  "orb_s9 (inferred)": {
+   "n": 3,
+   "closed": 3,
+   "win_rate_pct": 0.0,
+   "total_pnl": -629.49,
+   "avg_win": null,
+   "avg_loss": -209.83,
+   "expectancy_per_trade": -209.83,
+   "largest_win": -171.95,
+   "largest_loss": -247.54
+  },
+  "other (inferred)": {
+   "n": 9,
+   "closed": 9,
+   "win_rate_pct": 55.6,
+   "total_pnl": 249.0,
+   "avg_win": 170.64,
+   "avg_loss": -151.05,
+   "expectancy_per_trade": 27.67,
+   "largest_win": 267.15,
+   "largest_loss": -209.13
+  },
+  "support_bounce_s2a (inferred)": {
+   "n": 18,
+   "closed": 18,
+   "win_rate_pct": 33.3,
+   "total_pnl": 149.04,
+   "avg_win": 146.11,
+   "avg_loss": -60.64,
+   "expectancy_per_trade": 8.28,
+   "largest_win": 306.7,
+   "largest_loss": -238.69
   }
  },
  "review_verdicts": {
@@ -1041,6 +1087,44 @@
     "t-2026-09-22-001",
     "t-2026-09-23-001"
    ]
+  }
+ },
+ "exit_replay": {
+  "n": 37,
+  "actual_total_pnl": -543.61,
+  "rules": {
+   "breakeven_after_0.5atr": {
+    "total_pnl": -255.96,
+    "delta_vs_actual": 287.65,
+    "trades_changed": 15,
+    "losers_saved": 10,
+    "winners_hurt": 5,
+    "paired_t": 0.48
+   },
+   "breakeven_after_1atr": {
+    "total_pnl": -544.48,
+    "delta_vs_actual": -0.87,
+    "trades_changed": 6,
+    "losers_saved": 5,
+    "winners_hurt": 1,
+    "paired_t": -0.0
+   },
+   "trail_1atr_after_1atr": {
+    "total_pnl": -84.62,
+    "delta_vs_actual": 458.99,
+    "trades_changed": 8,
+    "losers_saved": 5,
+    "winners_hurt": 2,
+    "paired_t": 1.33
+   },
+   "half_off_at_1atr": {
+    "total_pnl": -312.92,
+    "delta_vs_actual": 230.69,
+    "trades_changed": 15,
+    "losers_saved": 5,
+    "winners_hurt": 9,
+    "paired_t": 0.89
+   }
   }
  },
  "verdict_audit": {

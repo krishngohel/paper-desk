@@ -8,6 +8,7 @@ Run: <venv python> ops\compute_stats.py [--show]
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime
@@ -181,6 +182,40 @@ def trend_stats(closed: list[dict]) -> dict:
     out["loss_anatomy"] = {k: {**bucket_stats(v), "trade_ids": [t["trade_id"] for t in v]}
                            for k, v in sorted(anatomy.items())}
 
+    # Exit replay: the same entries under alternative exit rules (trade_context.py
+    # replays each on its own 1-min path). Converted to dollars on the trade's
+    # entry notional, so it is comparable with realized P&L. A rule that cuts
+    # losers also cuts winners - `winners_hurt` keeps that cost visible.
+    replay_rows = [(t, c["exit_replay"]) for t, c in rows if c.get("exit_replay")]
+    if replay_rows:
+        rules = [k for k in replay_rows[0][1] if k != "actual"]
+        actual_total = sum(_f(t["realized_pnl"]) for t, _ in replay_rows)
+        table = {}
+        for rule in rules:
+            deltas, hurt, saved = [], 0, 0
+            for t, r in replay_rows:
+                notional = _f(t.get("entry_notional")) or (
+                    (_f(t.get("entry_price")) or 0) * (_f(t.get("entry_qty")) or 0))
+                d = (r[rule] - r["actual"]) / 100 * notional
+                deltas.append(d)
+                if d < -0.005 and _f(t["realized_pnl"]) > 0:
+                    hurt += 1
+                if d > 0.005 and _f(t["realized_pnl"]) <= 0:
+                    saved += 1
+            n = len(deltas)
+            mean = sum(deltas) / n
+            sd = (sum((x - mean) ** 2 for x in deltas) / (n - 1)) ** 0.5 if n > 1 else 0
+            table[rule] = {
+                "total_pnl": round(actual_total + sum(deltas), 2),
+                "delta_vs_actual": round(sum(deltas), 2),
+                "trades_changed": sum(1 for x in deltas if abs(x) > 0.005),
+                "losers_saved": saved, "winners_hurt": hurt,
+                # Paired t on the per-trade dollar difference; |t| under ~2 is noise.
+                "paired_t": round(mean / (sd / n ** 0.5), 2) if sd else None,
+            }
+        out["exit_replay"] = {"n": len(replay_rows), "actual_total_pnl": round(actual_total, 2),
+                              "rules": table}
+
     # Verdict audit: "unlucky" claims a sound thesis. A loss whose price never
     # moved 0.3 ATR in its favor is evidence the entry itself was wrong.
     flags = []
@@ -234,6 +269,27 @@ def main() -> int:
     for t in closed:
         by_mechanism[mechanism(t)].append(t)
 
+    # Archetype: is the live record of each setup what its backtest promised?
+    # s6a momentum is the desk's only measured edge (+1.96%/trade backtested) and
+    # also selects the recent leaders L9 flags - this is where that tension gets
+    # settled. Records before 2026-10-02 predate the field; infer from the thesis.
+    def archetype(t: dict) -> str:
+        a = t.get("archetype")
+        if a:
+            return str(a)
+        th = str(t.get("thesis") or "")
+        if re.search(r"s6a|§6a|momentum.continuation", th, re.I):
+            return "momentum_s6a (inferred)"
+        if re.search(r"\bORB\b|opening.range", th, re.I):
+            return "orb_s9 (inferred)"
+        if re.search(r"s2a|§2a|support|bounce|pullback|reclaim", th, re.I):
+            return "support_bounce_s2a (inferred)"
+        return "other (inferred)"
+
+    by_archetype = defaultdict(list)
+    for t in closed:
+        by_archetype[archetype(t)].append(t)
+
     verdicts = defaultdict(int)
     for t in closed:
         verdicts[str(t.get("review_verdict") or "unscored")] += 1
@@ -247,6 +303,7 @@ def main() -> int:
                      "full_size": bucket_stats([t for t in closed if not t.get("probe")])},
         "by_symbol": {s: bucket_stats(ts) for s, ts in sorted(by_symbol.items())},
         "by_entry_mechanism": {m: bucket_stats(ts) for m, ts in sorted(by_mechanism.items())},
+        "by_archetype": {a: bucket_stats(ts) for a, ts in sorted(by_archetype.items())},
         "review_verdicts": dict(verdicts),
         # Review debt: every closed trade waiting for a verdict. The review
         # scores ALL of these, however old - a skipped review must not leave

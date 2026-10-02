@@ -392,8 +392,14 @@ can absorb your intended size without you becoming the move.
 - **Gap-and-Go**: `gap_pct` >= 2 with a real catalyst (check news - WHY did it gap) and
   rel_volume >= 2-3: trade the first pullback that holds above VWAP/ORL, stop under it.
   Gaps without catalysts fade more often than they go.
-- **Relative strength is the tiebreaker**: between two setups, take the one whose
-  `rs_vs_spy_pp` is higher - a stock shrugging off a weak tape has real buyers.
+- **Relative strength is a tiebreaker only up to a point** (corrected 2026-10-02 from
+  the desk's own record): intraday, a stock holding up while SPY sags still shows real
+  buyers. But on the 20-day measure, names already 10+ points ahead of SPY won 1 of
+  17 closed trades (-$1,589, the only bucket past the Sidak line - lesson L9), while
+  names 0-10pp ahead or lagging SPY carried the book. Between two setups, prefer
+  modest-to-in-line 20d relative strength over the biggest runner; a leader needs
+  L9's written exception. The old wording ("take the higher rs") pointed straight at
+  the desk's worst bucket.
 - **Scale out in R-multiples**: at +2R take 30-50% off and move the stop to breakeven;
   trail the rest (EMA9 or higher-lows). All-or-nothing exits leave money on both sides;
   ladder your target rungs to implement this mechanically.

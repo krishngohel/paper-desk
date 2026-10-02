@@ -1,8 +1,8 @@
 {
- "computed_at": "2026-10-02T15:15:41",
+ "computed_at": "2026-10-02T16:02:42",
  "trades": {
   "t-2026-08-26-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "AAPL",
    "entry_utc": "2026-08-27T13:30:00+00:00",
    "entry_ts_approx": false,
@@ -27,13 +27,20 @@
    "target_progress": 1.5,
    "spy_ret_hold_pct": -0.0,
    "ret_pct": 2.85,
+   "exit_replay": {
+    "actual": 2.85,
+    "breakeven_after_0.5atr": 2.85,
+    "breakeven_after_1atr": 2.85,
+    "trail_1atr_after_1atr": 2.85,
+    "half_off_at_1atr": 2.58
+   },
    "excess_vs_spy_pct": 2.85,
    "hold_days": 1.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-08-28-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "ESTC",
    "entry_utc": "2026-08-28T19:20:00+00:00",
    "entry_ts_approx": false,
@@ -58,13 +65,20 @@
    "target_progress": 0.28,
    "spy_ret_hold_pct": 0.03,
    "ret_pct": -0.26,
+   "exit_replay": {
+    "actual": -0.26,
+    "breakeven_after_0.5atr": -0.26,
+    "breakeven_after_1atr": -0.26,
+    "trail_1atr_after_1atr": -0.26,
+    "half_off_at_1atr": -0.26
+   },
    "excess_vs_spy_pct": -0.29,
    "hold_days": 0.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-08-28-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "MRVL",
    "entry_utc": "2026-08-31T13:30:00+00:00",
    "entry_ts_approx": true,
@@ -89,13 +103,20 @@
    "target_progress": 0.6,
    "spy_ret_hold_pct": -0.31,
    "ret_pct": -2.72,
+   "exit_replay": {
+    "actual": -2.72,
+    "breakeven_after_0.5atr": -2.72,
+    "breakeven_after_1atr": -2.72,
+    "trail_1atr_after_1atr": -2.72,
+    "half_off_at_1atr": -2.72
+   },
    "excess_vs_spy_pct": -2.41,
    "hold_days": 2.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-08-31-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "ASND",
    "entry_utc": "2026-09-01T13:30:00+00:00",
    "entry_ts_approx": true,
@@ -120,13 +141,20 @@
    "target_progress": 0.73,
    "spy_ret_hold_pct": -0.04,
    "ret_pct": -1.65,
+   "exit_replay": {
+    "actual": -1.65,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": -1.65,
+    "trail_1atr_after_1atr": -1.65,
+    "half_off_at_1atr": -1.65
+   },
    "excess_vs_spy_pct": -1.61,
    "hold_days": 0.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-08-31-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRWD",
    "entry_utc": "2026-09-01T13:30:00+00:00",
    "entry_ts_approx": true,
@@ -151,13 +179,20 @@
    "target_progress": 0.48,
    "spy_ret_hold_pct": -0.01,
    "ret_pct": -4.78,
+   "exit_replay": {
+    "actual": -4.78,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": -4.78,
+    "trail_1atr_after_1atr": -4.78,
+    "half_off_at_1atr": -4.78
+   },
    "excess_vs_spy_pct": -4.77,
    "hold_days": 0.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-08-31-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRCL",
    "entry_utc": "2026-09-01T13:30:00+00:00",
    "entry_ts_approx": true,
@@ -182,13 +217,20 @@
    "target_progress": 0.52,
    "spy_ret_hold_pct": -0.3,
    "ret_pct": -3.33,
+   "exit_replay": {
+    "actual": -3.33,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": -3.33,
+    "trail_1atr_after_1atr": -3.33,
+    "half_off_at_1atr": -3.33
+   },
    "excess_vs_spy_pct": -3.03,
    "hold_days": 0.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-01-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRK",
    "entry_utc": "2026-09-01T16:44:41+00:00",
    "entry_ts_approx": true,
@@ -213,13 +255,20 @@
    "target_progress": 0.55,
    "spy_ret_hold_pct": 0.39,
    "ret_pct": -2.04,
+   "exit_replay": {
+    "actual": -2.04,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 0.0,
+    "trail_1atr_after_1atr": 0.77,
+    "half_off_at_1atr": 0.88
+   },
    "excess_vs_spy_pct": -2.43,
    "hold_days": 1.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-01-004": {
-   "v": 2,
+   "v": 3,
    "symbol": "DUOL",
    "entry_utc": "2026-09-01T17:15:46+00:00",
    "entry_ts_approx": false,
@@ -244,13 +293,20 @@
    "target_progress": 1.22,
    "spy_ret_hold_pct": 0.92,
    "ret_pct": 5.6,
+   "exit_replay": {
+    "actual": 5.6,
+    "breakeven_after_0.5atr": 5.6,
+    "breakeven_after_1atr": 5.6,
+    "trail_1atr_after_1atr": 5.6,
+    "half_off_at_1atr": 5.17
+   },
    "excess_vs_spy_pct": 4.68,
    "hold_days": 1.8,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-01-008": {
-   "v": 2,
+   "v": 3,
    "symbol": "STDN",
    "entry_utc": "2026-09-02T13:35:34+00:00",
    "entry_ts_approx": false,
@@ -275,13 +331,20 @@
    "target_progress": 0.02,
    "spy_ret_hold_pct": 0.44,
    "ret_pct": -8.5,
+   "exit_replay": {
+    "actual": -8.5,
+    "breakeven_after_0.5atr": -8.5,
+    "breakeven_after_1atr": -8.5,
+    "trail_1atr_after_1atr": -8.5,
+    "half_off_at_1atr": -8.5
+   },
    "excess_vs_spy_pct": -8.94,
    "hold_days": 0.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-02-trg-01-006": {
-   "v": 2,
+   "v": 3,
    "symbol": "MRNA",
    "entry_utc": "2026-09-02T13:30:08+00:00",
    "entry_ts_approx": false,
@@ -306,13 +369,20 @@
    "target_progress": 0.17,
    "spy_ret_hold_pct": 0.44,
    "ret_pct": -4.83,
+   "exit_replay": {
+    "actual": -4.83,
+    "breakeven_after_0.5atr": -4.83,
+    "breakeven_after_1atr": -4.83,
+    "trail_1atr_after_1atr": -4.83,
+    "half_off_at_1atr": -4.83
+   },
    "excess_vs_spy_pct": -5.27,
    "hold_days": 0.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-02-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "DELL",
    "entry_utc": "2026-09-02T16:30:38+00:00",
    "entry_ts_approx": false,
@@ -337,13 +407,20 @@
    "target_progress": 1.1,
    "spy_ret_hold_pct": 0.05,
    "ret_pct": 3.57,
+   "exit_replay": {
+    "actual": 3.57,
+    "breakeven_after_0.5atr": 3.57,
+    "breakeven_after_1atr": 3.57,
+    "trail_1atr_after_1atr": 3.57,
+    "half_off_at_1atr": 3.57
+   },
    "excess_vs_spy_pct": 3.52,
    "hold_days": 0.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRWD",
    "entry_utc": "2026-09-03T14:29:57+00:00",
    "entry_ts_approx": false,
@@ -368,13 +445,20 @@
    "target_progress": 0.39,
    "spy_ret_hold_pct": 0.03,
    "ret_pct": -0.75,
+   "exit_replay": {
+    "actual": -0.75,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": -0.75,
+    "trail_1atr_after_1atr": -0.75,
+    "half_off_at_1atr": -0.75
+   },
    "excess_vs_spy_pct": -0.78,
    "hold_days": 5.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-004": {
-   "v": 2,
+   "v": 3,
    "symbol": "CHPT",
    "entry_utc": "2026-09-03T14:29:52+00:00",
    "entry_ts_approx": false,
@@ -399,13 +483,20 @@
    "target_progress": 0.81,
    "spy_ret_hold_pct": 0.33,
    "ret_pct": -2.98,
+   "exit_replay": {
+    "actual": -2.98,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 0.0,
+    "trail_1atr_after_1atr": 3.36,
+    "half_off_at_1atr": 0.43
+   },
    "excess_vs_spy_pct": -3.31,
    "hold_days": 0.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-005": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRWD",
    "entry_utc": "2026-09-03T14:59:27+00:00",
    "entry_ts_approx": false,
@@ -430,13 +521,20 @@
    "target_progress": 0.33,
    "spy_ret_hold_pct": -0.63,
    "ret_pct": -0.69,
+   "exit_replay": {
+    "actual": -0.69,
+    "breakeven_after_0.5atr": -0.69,
+    "breakeven_after_1atr": -0.69,
+    "trail_1atr_after_1atr": -0.69,
+    "half_off_at_1atr": -0.69
+   },
    "excess_vs_spy_pct": -0.06,
    "hold_days": 6.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-006": {
-   "v": 2,
+   "v": 3,
    "symbol": "TSLA",
    "entry_utc": "2026-09-03T16:15:14+00:00",
    "entry_ts_approx": false,
@@ -461,13 +559,20 @@
    "target_progress": 0.0,
    "spy_ret_hold_pct": -0.37,
    "ret_pct": -7.79,
+   "exit_replay": {
+    "actual": -7.79,
+    "breakeven_after_0.5atr": -7.79,
+    "breakeven_after_1atr": -7.79,
+    "trail_1atr_after_1atr": -7.79,
+    "half_off_at_1atr": -7.79
+   },
    "excess_vs_spy_pct": -7.42,
    "hold_days": 1.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-007": {
-   "v": 2,
+   "v": 3,
    "symbol": "SMMT",
    "entry_utc": "2026-09-03T17:00:38+00:00",
    "entry_ts_approx": false,
@@ -492,13 +597,20 @@
    "target_progress": 1.21,
    "spy_ret_hold_pct": -1.86,
    "ret_pct": 8.89,
+   "exit_replay": {
+    "actual": 8.89,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 0.0,
+    "trail_1atr_after_1atr": 4.47,
+    "half_off_at_1atr": 7.04
+   },
    "excess_vs_spy_pct": 10.75,
    "hold_days": 10.9,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-03-008": {
-   "v": 2,
+   "v": 3,
    "symbol": "TSLA",
    "entry_utc": "2026-09-03T19:00:33+00:00",
    "entry_ts_approx": false,
@@ -523,13 +635,20 @@
    "target_progress": 0.03,
    "spy_ret_hold_pct": -0.49,
    "ret_pct": -7.16,
+   "exit_replay": {
+    "actual": -7.16,
+    "breakeven_after_0.5atr": -7.16,
+    "breakeven_after_1atr": -7.16,
+    "trail_1atr_after_1atr": -7.16,
+    "half_off_at_1atr": -7.16
+   },
    "excess_vs_spy_pct": -6.67,
    "hold_days": 1.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-04-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "COIN",
    "entry_utc": "2026-09-09T13:30:00+00:00",
    "entry_ts_approx": true,
@@ -554,13 +673,20 @@
    "target_progress": 0.39,
    "spy_ret_hold_pct": -0.76,
    "ret_pct": -0.77,
+   "exit_replay": {
+    "actual": -0.77,
+    "breakeven_after_0.5atr": -0.01,
+    "breakeven_after_1atr": -0.01,
+    "trail_1atr_after_1atr": 0.21,
+    "half_off_at_1atr": 2.82
+   },
    "excess_vs_spy_pct": -0.01,
    "hold_days": 1.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-04-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "IOT",
    "entry_utc": "2026-09-09T13:31:15+00:00",
    "entry_ts_approx": true,
@@ -585,13 +711,20 @@
    "target_progress": 0.78,
    "spy_ret_hold_pct": -0.57,
    "ret_pct": 1.15,
+   "exit_replay": {
+    "actual": 1.15,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 1.15,
+    "trail_1atr_after_1atr": 7.48,
+    "half_off_at_1atr": 3.7
+   },
    "excess_vs_spy_pct": 1.72,
    "hold_days": 9.1,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-04-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "HOOD",
    "entry_utc": "2026-09-15T13:34:00+00:00",
    "entry_ts_approx": true,
@@ -616,13 +749,20 @@
    "target_progress": 0.24,
    "spy_ret_hold_pct": -0.93,
    "ret_pct": -6.04,
+   "exit_replay": {
+    "actual": -6.04,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": -6.04,
+    "trail_1atr_after_1atr": -6.04,
+    "half_off_at_1atr": -6.04
+   },
    "excess_vs_spy_pct": -5.11,
    "hold_days": 1.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-09-trg-08-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "LITE",
    "entry_utc": "2026-09-09T13:31:49+00:00",
    "entry_ts_approx": false,
@@ -647,13 +787,20 @@
    "target_progress": 0.43,
    "spy_ret_hold_pct": -0.72,
    "ret_pct": -5.17,
+   "exit_replay": {
+    "actual": -5.17,
+    "breakeven_after_0.5atr": -5.17,
+    "breakeven_after_1atr": -5.17,
+    "trail_1atr_after_1atr": -5.17,
+    "half_off_at_1atr": -5.17
+   },
    "excess_vs_spy_pct": -4.45,
    "hold_days": 1.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-10-trg-10-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "META",
    "entry_utc": "2026-09-10T14:35:37+00:00",
    "entry_ts_approx": false,
@@ -678,13 +825,20 @@
    "target_progress": 0.09,
    "spy_ret_hold_pct": -0.16,
    "ret_pct": -1.69,
+   "exit_replay": {
+    "actual": -1.69,
+    "breakeven_after_0.5atr": -1.69,
+    "breakeven_after_1atr": -1.69,
+    "trail_1atr_after_1atr": -1.69,
+    "half_off_at_1atr": -1.69
+   },
    "excess_vs_spy_pct": -1.53,
    "hold_days": 0.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-10-trg-10-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "ANGX",
    "entry_utc": "2026-09-10T19:29:17+00:00",
    "entry_ts_approx": false,
@@ -709,13 +863,20 @@
    "target_progress": 0.64,
    "spy_ret_hold_pct": 0.42,
    "ret_pct": -7.98,
+   "exit_replay": {
+    "actual": -7.98,
+    "breakeven_after_0.5atr": -0.19,
+    "breakeven_after_1atr": 0.0,
+    "trail_1atr_after_1atr": 0.6,
+    "half_off_at_1atr": -1.32
+   },
    "excess_vs_spy_pct": -8.4,
    "hold_days": 6.8,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-14-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "BWIN",
    "entry_utc": "2026-09-14T18:20:01+00:00",
    "entry_ts_approx": false,
@@ -739,13 +900,20 @@
    "mae_atr": 0.02,
    "spy_ret_hold_pct": -0.08,
    "ret_pct": 0.22,
+   "exit_replay": {
+    "actual": 0.22,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 0.22,
+    "trail_1atr_after_1atr": 0.22,
+    "half_off_at_1atr": 0.22
+   },
    "excess_vs_spy_pct": 0.3,
    "hold_days": 3.8,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-14-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "CRWD",
    "entry_utc": "2026-09-21T13:30:13+00:00",
    "entry_ts_approx": false,
@@ -770,13 +938,20 @@
    "target_progress": 1.11,
    "spy_ret_hold_pct": 0.06,
    "ret_pct": 14.29,
+   "exit_replay": {
+    "actual": 14.29,
+    "breakeven_after_0.5atr": 14.29,
+    "breakeven_after_1atr": 14.29,
+    "trail_1atr_after_1atr": 8.56,
+    "half_off_at_1atr": 9.93
+   },
    "excess_vs_spy_pct": 14.23,
    "hold_days": 9.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-14-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "ZS",
    "entry_utc": "2026-09-14T19:36:13+00:00",
    "entry_ts_approx": false,
@@ -801,13 +976,20 @@
    "target_progress": 1.16,
    "spy_ret_hold_pct": 1.58,
    "ret_pct": 7.75,
+   "exit_replay": {
+    "actual": 7.75,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 7.75,
+    "trail_1atr_after_1atr": 7.75,
+    "half_off_at_1atr": 6.11
+   },
    "excess_vs_spy_pct": 6.17,
    "hold_days": 7.9,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-15-trg-14-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "RBRK",
    "entry_utc": "2026-09-15T13:38:59+00:00",
    "entry_ts_approx": false,
@@ -832,13 +1014,20 @@
    "target_progress": 1.08,
    "spy_ret_hold_pct": 0.93,
    "ret_pct": 9.2,
+   "exit_replay": {
+    "actual": 9.2,
+    "breakeven_after_0.5atr": 9.2,
+    "breakeven_after_1atr": 9.2,
+    "trail_1atr_after_1atr": 9.2,
+    "half_off_at_1atr": 7.63
+   },
    "excess_vs_spy_pct": 8.27,
    "hold_days": 6.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-15-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "TXG",
    "entry_utc": "2026-09-15T14:03:56+00:00",
    "entry_ts_approx": false,
@@ -860,11 +1049,11 @@
    "mae_pct": -5.55,
    "mfe_atr": 5.15,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 1.36,
+   "spy_ret_hold_pct": 1.39,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "RBRK",
    "entry_utc": "2026-09-15T17:04:49+00:00",
    "entry_ts_approx": false,
@@ -889,13 +1078,20 @@
    "target_progress": 1.08,
    "spy_ret_hold_pct": 1.22,
    "ret_pct": 8.81,
+   "exit_replay": {
+    "actual": 8.81,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 8.81,
+    "trail_1atr_after_1atr": 8.81,
+    "half_off_at_1atr": 7.38
+   },
    "excess_vs_spy_pct": 7.59,
    "hold_days": 5.9,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-15-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "APA",
    "entry_utc": "2026-09-15T19:14:43+00:00",
    "entry_ts_approx": false,
@@ -919,13 +1115,20 @@
    "mae_atr": 1.72,
    "spy_ret_hold_pct": 0.3,
    "ret_pct": -5.33,
+   "exit_replay": {
+    "actual": -5.33,
+    "breakeven_after_0.5atr": -5.33,
+    "breakeven_after_1atr": -5.33,
+    "trail_1atr_after_1atr": -5.33,
+    "half_off_at_1atr": -5.33
+   },
    "excess_vs_spy_pct": -5.63,
    "hold_days": 0.8,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-15-004": {
-   "v": 2,
+   "v": 3,
    "symbol": "ECO",
    "entry_utc": "2026-09-15T19:44:05+00:00",
    "entry_ts_approx": false,
@@ -949,13 +1152,20 @@
    "mae_atr": 2.19,
    "spy_ret_hold_pct": 2.39,
    "ret_pct": -5.86,
+   "exit_replay": {
+    "actual": -5.86,
+    "breakeven_after_0.5atr": 0.0,
+    "breakeven_after_1atr": 0.0,
+    "trail_1atr_after_1atr": 1.76,
+    "half_off_at_1atr": -1.3
+   },
    "excess_vs_spy_pct": -8.25,
    "hold_days": 6.7,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-16-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "SMTC",
    "entry_utc": "2026-09-16T15:14:37+00:00",
    "entry_ts_approx": false,
@@ -980,13 +1190,20 @@
    "target_progress": 1.45,
    "spy_ret_hold_pct": 0.76,
    "ret_pct": 11.43,
+   "exit_replay": {
+    "actual": 11.43,
+    "breakeven_after_0.5atr": 11.43,
+    "breakeven_after_1atr": 11.43,
+    "trail_1atr_after_1atr": 11.43,
+    "half_off_at_1atr": 9.05
+   },
    "excess_vs_spy_pct": 10.67,
    "hold_days": 4.9,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-18-002": {
-   "v": 2,
+   "v": 3,
    "symbol": "SMTC",
    "entry_utc": "2026-09-16T15:14:37+00:00",
    "entry_ts_approx": false,
@@ -1011,13 +1228,20 @@
    "target_progress": 1.01,
    "spy_ret_hold_pct": 0.17,
    "ret_pct": 10.15,
+   "exit_replay": {
+    "actual": 10.15,
+    "breakeven_after_0.5atr": 10.15,
+    "breakeven_after_1atr": 10.15,
+    "trail_1atr_after_1atr": 10.15,
+    "half_off_at_1atr": 8.41
+   },
    "excess_vs_spy_pct": 9.98,
    "hold_days": 2.2,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-22-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "FIVN",
    "entry_utc": "2026-09-22T13:48:17+00:00",
    "entry_ts_approx": false,
@@ -1042,13 +1266,20 @@
    "target_progress": 0.2,
    "spy_ret_hold_pct": -0.03,
    "ret_pct": -2.11,
+   "exit_replay": {
+    "actual": -2.11,
+    "breakeven_after_0.5atr": -2.11,
+    "breakeven_after_1atr": -2.11,
+    "trail_1atr_after_1atr": -2.11,
+    "half_off_at_1atr": -2.11
+   },
    "excess_vs_spy_pct": -2.08,
    "hold_days": 0.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-22-003": {
-   "v": 2,
+   "v": 3,
    "symbol": "ARTY",
    "entry_utc": "2026-09-22T14:31:51+00:00",
    "entry_ts_approx": false,
@@ -1072,13 +1303,20 @@
    "mae_atr": 1.2,
    "spy_ret_hold_pct": -0.45,
    "ret_pct": -0.26,
+   "exit_replay": {
+    "actual": -0.26,
+    "breakeven_after_0.5atr": -0.26,
+    "breakeven_after_1atr": -0.26,
+    "trail_1atr_after_1atr": -0.26,
+    "half_off_at_1atr": -0.26
+   },
    "excess_vs_spy_pct": 0.19,
    "hold_days": 3.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-23-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "MDB",
    "entry_utc": "2026-09-23T13:33:00+00:00",
    "entry_ts_approx": false,
@@ -1102,13 +1340,20 @@
    "mae_atr": 0.88,
    "spy_ret_hold_pct": -0.31,
    "ret_pct": -4.61,
+   "exit_replay": {
+    "actual": -4.61,
+    "breakeven_after_0.5atr": -4.61,
+    "breakeven_after_1atr": -4.61,
+    "trail_1atr_after_1atr": -4.61,
+    "half_off_at_1atr": -4.61
+   },
    "excess_vs_spy_pct": -4.3,
    "hold_days": 2.3,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-25-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "PLTR",
    "entry_utc": "2026-09-25T13:58:03+00:00",
    "entry_ts_approx": false,
@@ -1132,13 +1377,20 @@
    "mae_atr": 0.97,
    "spy_ret_hold_pct": -0.58,
    "ret_pct": -3.01,
+   "exit_replay": {
+    "actual": -3.01,
+    "breakeven_after_0.5atr": -3.01,
+    "breakeven_after_1atr": -3.01,
+    "trail_1atr_after_1atr": -3.01,
+    "half_off_at_1atr": -3.01
+   },
    "excess_vs_spy_pct": -2.43,
    "hold_days": 4.0,
    "exit_ts_approx": false,
    "closed": true
   },
   "t-2026-09-30-001": {
-   "v": 2,
+   "v": 3,
    "symbol": "MSFT",
    "entry_utc": "2026-09-30T14:11:46+00:00",
    "entry_ts_approx": false,
@@ -1163,6 +1415,13 @@
    "target_progress": 0.14,
    "spy_ret_hold_pct": -0.56,
    "ret_pct": -1.01,
+   "exit_replay": {
+    "actual": -1.01,
+    "breakeven_after_0.5atr": -1.01,
+    "breakeven_after_1atr": -1.01,
+    "trail_1atr_after_1atr": -1.01,
+    "half_off_at_1atr": -1.01
+   },
    "excess_vs_spy_pct": -0.45,
    "hold_days": 0.2,
    "exit_ts_approx": false,
