@@ -120,6 +120,18 @@ def local_indicators(symbol: str) -> dict:
         out["last_close"] = round(last, 2)
         rsi = _rsi(closes)
         out["rsi14"] = round(rsi, 1) if rsi else None
+        # During the session the last daily bar is TODAY's unfinished one, so
+        # rsi14 moves with the tape. The review's buckets (W4, trade_context
+        # --check) measure RSI on bars closed BEFORE the entry day; on a +5% day
+        # the two differ by ~8-15 points. Lessons built on those buckets are
+        # applied to rsi14_prior_close, never to rsi14.
+        from datetime import datetime, timedelta, timezone
+        today_et = datetime.now(timezone(timedelta(hours=-4))).strftime("%Y-%m-%d")
+        prior = [float(b["close"]) for b in daily
+                 if str(b.get("time", ""))[:10] < today_et and b.get("close") is not None]
+        rsi_p = _rsi(prior) if len(prior) < len(closes) else rsi
+        out["rsi14_prior_close"] = round(rsi_p, 1) if rsi_p else None
+        out["rsi14_includes_today"] = len(prior) < len(closes)
         for n in (9, 21, 50):
             e = _ema(closes, n)
             out[f"ema{n}"] = round(e, 2) if e else None

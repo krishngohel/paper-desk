@@ -272,19 +272,17 @@ def main() -> int:
     # Archetype: is the live record of each setup what its backtest promised?
     # s6a momentum is the desk's only measured edge (+1.96%/trade backtested) and
     # also selects the recent leaders L9 flags - this is where that tension gets
-    # settled. Records before 2026-10-02 predate the field; infer from the thesis.
+    # settled. Records before 2026-10-02 predate the field. Only an EXPLICIT
+    # label is trusted: a keyword guess ("support", "opening range") matched
+    # nearly every thesis and mislabelled news-spike chases as ORB trades.
     def archetype(t: dict) -> str:
         a = t.get("archetype")
         if a:
             return str(a)
         th = str(t.get("thesis") or "")
-        if re.search(r"s6a|§6a|momentum.continuation", th, re.I):
-            return "momentum_s6a (inferred)"
-        if re.search(r"\bORB\b|opening.range", th, re.I):
-            return "orb_s9 (inferred)"
-        if re.search(r"s2a|§2a|support|bounce|pullback|reclaim", th, re.I):
-            return "support_bounce_s2a (inferred)"
-        return "other (inferred)"
+        if re.search(r"PRIMARY SETUP|archetype: momentum", th) and not re.search(r"NOT s6a", th):
+            return "momentum_s6a (labelled in thesis)"
+        return "untagged (pre-2026-10-02)"
 
     by_archetype = defaultdict(list)
     for t in closed:
