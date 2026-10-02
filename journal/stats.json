@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-10-02T16:08:43",
+ "computed_at": "2026-10-02T16:29:38",
  "overall": {
   "n": 37,
   "closed": 37,
@@ -820,13 +820,13 @@
  },
  "by_entry_time": {
   "first_hour": {
-   "n": 14,
-   "closed": 14,
-   "win_rate_pct": 28.6,
-   "total_pnl": -430.3,
-   "avg_win": 101.77,
+   "n": 12,
+   "closed": 12,
+   "win_rate_pct": 16.7,
+   "total_pnl": -537.38,
+   "avg_win": 150.01,
    "avg_loss": -83.74,
-   "expectancy_per_trade": -30.74,
+   "expectancy_per_trade": -44.78,
    "largest_win": 267.15,
    "largest_loss": -209.13
   },
@@ -853,14 +853,14 @@
    "largest_loss": -238.69
   },
   "open_resting_fill": {
-   "n": 5,
-   "closed": 5,
-   "win_rate_pct": 0.0,
-   "total_pnl": -715.1,
-   "avg_win": null,
+   "n": 7,
+   "closed": 7,
+   "win_rate_pct": 28.6,
+   "total_pnl": -608.02,
+   "avg_win": 53.54,
    "avg_loss": -143.02,
-   "expectancy_per_trade": -143.02,
-   "largest_win": -27.99,
+   "expectancy_per_trade": -86.86,
+   "largest_win": 99.12,
    "largest_loss": -247.54
   }
  },

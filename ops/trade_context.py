@@ -45,7 +45,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LEDGER = ROOT / "journal" / "trades.jsonl"
 OUT = ROOT / "journal" / "trade_context.json"
 BARS = bt_data.CACHE / "trade_context"
-VERSION = 3  # 3: exit_replay
+VERSION = 4  # 3: exit_replay; 4: open_resting_fill catches exact-stamped opening fills
 CT = timezone(timedelta(hours=-5))  # the desk writes naive stamps in CDT
 ET = timezone(timedelta(hours=-4))
 
@@ -248,7 +248,12 @@ def context_for(t: dict) -> dict:
 
     et_in = t_in.astimezone(ET)
     mins = et_in.hour * 60 + et_in.minute
-    if in_approx and et_in.strftime("%H:%M") == "09:30":
+    # A resting limit (anticipatory - records before 2026-09-02 lack the field
+    # and all were) that fills in the opening minute is an open fill even with an
+    # exact timestamp: CRWD t-2026-09-14-002 filled 09:30:13 ET on a 9-day-old
+    # order and was mis-bucketed as first_hour (W5, review of 2026-09-30).
+    resting = (t.get("entry_mechanism") or "anticipatory_limit") == "anticipatory_limit"
+    if et_in.strftime("%H:%M") == "09:30" and (in_approx or resting):
         bucket = "open_resting_fill"
     elif mins < 9 * 60 + 30:
         bucket = "premarket"
