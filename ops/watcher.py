@@ -149,6 +149,10 @@ HWM_SEED = 100_000.0       # starting paper capital; HWM never sits below this
 DEATH_CHECK_SECONDS = 15
 TRIGGERS = ROOT / "journal" / "triggers.jsonl"
 CLOSE_HHMM = 1505          # stop looping at 15:05 CT
+# A stop resting AT THE BROKER (stop or OCO) fills on its own, laptop or not.
+# On a breach the watcher gives it this long before stepping in, so the two never
+# race for the same shares; after it, the old cancel-and-market-sell fallback runs.
+BROKER_STOP_GRACE = 30.0
 SPAWN_COOLDOWN = 600       # one triggered session per 10 min
 FRESHNESS_EVERY = 900      # performance point + deploy every 15 min
 ANOMALY_MOVE = 0.02        # 2% move on a holding since last check
@@ -475,6 +479,19 @@ def exit_blocked(rec: dict, state: dict, out: dict) -> None:
                   f"investigate and resolve (position still held)", state)
 
 
+def broker_stop_resting(symbol: str) -> bool:
+    """True when a sell stop or OCO for this symbol is resting at the broker."""
+    try:
+        payload = service.get_open_orders(profile_id=PROFILE) or {}
+        orders = payload.get("orders") or payload.get("open_orders") or []
+    except Exception:  # noqa: BLE001 - unreadable = assume none, fall back as before
+        return False
+    return any(str(o.get("symbol", "")).upper() == symbol.upper()
+               and str(o.get("side", "")).lower() == "sell"
+               and str(o.get("order_type", "")).lower() in ("stop", "oco")
+               for o in orders)
+
+
 def _backed_off(rec: dict, state: dict) -> bool:
     until = state.get("exit_backoff", {}).get(rec.get("trade_id", ""), 0)
     return time.time() < until
@@ -645,10 +662,17 @@ def tick(state: dict) -> None:
 
         stop = _num(rec.get("stop"))
         target = _num(rec.get("target"))
+        if stop is not None and bid > stop:
+            # Back above the stop: a later breach gets a fresh grace window.
+            state.get("broker_stop_breach", {}).pop(rec["trade_id"], None)
 
         if stop is None:
             spawn_session(f"open trade {rec.get('trade_id')} ({symbol}) has no numeric stop in the ledger - set one", state)
         elif bid <= stop and not _backed_off(rec, state):
+            first = state.setdefault("broker_stop_breach", {}).setdefault(rec["trade_id"], time.time())
+            if time.time() - first < BROKER_STOP_GRACE and broker_stop_resting(symbol):
+                continue  # the broker's own stop is working this exit
+            state["broker_stop_breach"].pop(rec["trade_id"], None)
             cancel_symbol_orders(symbol)
             out = market_sell(symbol, qty, f"stop {stop} breached at bid {bid}")
             if sell_succeeded(out):

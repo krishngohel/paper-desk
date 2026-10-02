@@ -22,6 +22,10 @@ Usage (from any directory - the script moves itself into the VT root):
     python ..\\ops\\trade_cli.py quote SYM
     python ..\\ops\\trade_cli.py bars SYM [period] [limit]   (periods: 1m 5m 15m 1h 1d)
     python ..\\ops\\trade_cli.py buy SYM QTY  |  sell SYM QTY
+    python ..\\ops\\trade_cli.py sell SYM QTY --stop STOP [--limit TARGET] --gtc
+        protective exit that RESTS AT THE BROKER: --stop alone = stop-market;
+        --stop with --limit = OCO pair (target + stop on the same shares, the
+        first to fill cancels the other). Whole shares only.
     python ..\\ops\\trade_cli.py cancel ORDER_ID [SYM]
     python ..\\ops\\trade_cli.py halt [REASON...]  |  resume
     python ..\\ops\\trade_cli.py audit [N]
@@ -98,6 +102,26 @@ def _preflight(service, symbol: str, side: str, qty: float, rest: list[str]):
             return _blocked("PRICE_BAND", detail=f"{side} limit {limit_px} is {through:.1f}% through "
                                                  f"quote ref {ref} (band {PRICE_BAND_PCT}%) - fat-finger guard")
 
+    # STOP_SIDE: a protective sell stop at or above the bid triggers the instant
+    # it rests - that is a market sell typed wrong, not a stop.
+    if "--stop" in rest:
+        try:
+            stop_px = float(rest[rest.index("--stop") + 1])
+        except (IndexError, ValueError):
+            return _blocked("BAD_REQUEST", detail="--stop needs a numeric price")
+        if side != "sell":
+            return _blocked("BAD_REQUEST", detail="--stop is a protective exit: sell only")
+        if qty != int(qty):
+            return _blocked("FRACTIONAL_STOP", detail="Alpaca cannot rest a GTC stop or OCO on "
+                                                      "fractional shares - the watcher protects this one")
+        q = (service.get_quote(symbol, profile_id=PROFILE) or {}).get("quote") or {}
+        bid = _num(q.get("bid")) or _num(q.get("last"))
+        if bid and stop_px >= bid:
+            return _blocked("STOP_SIDE", detail=f"sell stop {stop_px} is at/above the bid {bid} - "
+                                                f"it would fire immediately; sell outright instead")
+        if limit_px is not None and stop_px >= limit_px:
+            return _blocked("BAD_REQUEST", detail=f"stop {stop_px} must sit below target {limit_px}")
+
     # OVERSELL_GUARD: available = held - leaves of resting sells (never double-sell
     # shares already promised to a resting target).
     if side == "sell":
@@ -172,6 +196,9 @@ def run(cmd: str, args: list[str]):
         if "--limit" in rest:
             kwargs["order_type"] = "limit"
             kwargs["limit_price"] = float(rest[rest.index("--limit") + 1])
+        if "--stop" in rest:
+            kwargs["stop_price"] = float(rest[rest.index("--stop") + 1])
+            kwargs["order_type"] = "oco" if "limit_price" in kwargs else "stop"
         if "--gtc" in rest:
             # Alpaca rejects GTC on fractional quantities (fractional = day only).
             # A rejected submission also wedges the gate's pending-action recovery,
