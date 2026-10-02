@@ -18,10 +18,14 @@ if errorlevel 1 exit /b 0
 :locked
 C:\Users\awsom\Documents\Projects\trading-agent\.venv\Scripts\python.exe ops\session_lock.py acquire >> ops\logs\sessions.log 2>&1
 if errorlevel 1 exit /b 0
-rem Every session type runs on Sonnet (user decision 2026-08-31). Never leave
-rem this blank: an empty flag inherits the operator's interactive default
-rem (Opus/Fable), which burns the subscription budget many times faster.
+rem Trading sessions run on Sonnet (user decision 2026-08-31); the post-close
+rem review runs on Opus (user decision 2026-10-02) - it is the one session a
+rem day where the desk learns, and a different, stronger model also stops the
+rem trader from grading its own homework. Never leave this blank: an empty
+rem flag inherits the operator's interactive default, which burns the
+rem subscription budget many times faster.
 set MODELFLAG=--model sonnet
+if "%TYPE%"=="weekly-review" set MODELFLAG=--model opus
 echo ==== %DATE% %TIME% %TYPE% ==== >> ops\logs\sessions.log
 call claude -p "Read C:\Users\awsom\Documents\Projects\trading-agent\ops\SESSION_PROMPT.md and follow it exactly. Session type: %TYPE%." %MODELFLAG% --max-turns 160 >> ops\logs\sessions.log 2>&1
 set RC=%ERRORLEVEL%
