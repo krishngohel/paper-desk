@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-10-01T15:21:31",
+ "computed_at": "2026-10-02T15:15:41",
  "trades": {
   "t-2026-08-26-001": {
    "v": 2,
@@ -860,7 +860,7 @@
    "mae_pct": -5.55,
    "mfe_atr": 5.15,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 0.72,
+   "spy_ret_hold_pct": 1.36,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
