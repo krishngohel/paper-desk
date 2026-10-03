@@ -8,8 +8,9 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-02 evening (research leg after Friday's close). Mandate valid per 10-01
-journal (exp 2026-10-12; re-read fresh Monday). Not halted.
+Updated 2026-10-03 (Saturday research leg; ranking unchanged from Friday evening, new vets
+folded into Watch only). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
+Monday). Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
 range/mixed. QQQ 749.58, +2.53% vs EMA21, RSI 64.9, range/mixed, record highs on a weak
@@ -75,6 +76,13 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
   prior), BE, ARM, TWLO, ILMN, MSTR, MRVL, AMD, NVDA - all `big_leaders` with 1m +29-38%.
 - **NOW (new 10-02 vet, social trending):** close 134.38 vs EMA21 134.99 = below EMA21,
   3c FAIL, RSI 50.2, rs -3.1pp. Pass.
+- **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
+  109.09 but EMA21 < EMA50 111.56, EMA9 108.71, RSI 56.6, +3.2% on 0.96x volume, 20d range
+  100%, resistance 112.22/112.95, spread 0.09%. Becomes a candidate only once EMA21 > EMA50
+  (a few more closes above ~112). next_earnings 11-12.
+- **ORCL / AVGO / GE (new 10-03 vets) - 3c FAIL.** ORCL 142.30 < EMA21 143.03 (RSI 48.2,
+  doji at 143.67); AVGO 355.14 < EMA21 356.20 < EMA50 371.12 (RSI 47.3); GE 309.56 in a
+  downtrend (RSI 34.6, below all EMAs, 20d range 8%). Earnings ORCL 12-10, AVGO 12-09, GE 10-20.
 - **Small-cap explore lens (smallcap):** GOW (+29.9%, 1m -59.5%), NIVF (0.13), ICU, NNBR,
   SSM, CABO, SNES, AUID, NEOV: all 1m-downtrend or sub-$5 spikes with no checked catalyst
   or placeable stop. AMOD +198% (rel vol 108x, cap $10M), SDEV +104% (1m +780%), XRPN +68%
