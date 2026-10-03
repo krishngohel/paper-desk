@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-03 (Saturday research leg; ranking unchanged from Friday evening, new vets
-folded into Watch only). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
+Updated 2026-10-03 (second Saturday research leg, 17:00 CT; AAPL added at rank 3, META/PS
+vetted into Watch). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
 Monday). Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
@@ -36,7 +36,16 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
 2. **Re-run `momentum_scan.py` at the Monday close for Tuesday entries** (never intraday).
    Friday-final-close list: HPE 9.08% risk, P 6.16%, AMD 5.77%, MRVL 6.86%, NVDA 3.81%,
    SOXL 13.63% - all leader-bucket / W4 RSI 60-70 names; none has a probe stop under ~3%.
-3. **HPE (new 10-02 vet) - passes literal 3c, L9-blocked today.** Close 69.33 > EMA9 63.79 >
+3. **AAPL (new 10-03 vet, liquid lens) - passes 3c, in the good buckets.** Close 333.69 >
+   EMA21 331.16 > EMA50 325.19 (below EMA9 333.76 by 0.07), RSI 54.8 (`neutral_45-60`),
+   rel strength +2.13pp (`outperforming_0-10pp`, not L9), spread 0.10%, $11.4B traded, vol
+   0.79x, ATR 7.04 (2.1%). Resistance 334.99 (morning star + dojis there last hour), then
+   336.22 (09-30 shooting star), 342.99; support 319.35. **Trigger (confirmation):** Monday
+   5m hold above 335.2 with volume >1.2x and above VWAP; `--check AAPL 335.2` printed no
+   significant loss bucket (market-up bucket 3 of 18 is context). Probe B/C: stop 328.2
+   (1 ATR; 325.81 prior-day low is the structural line), target 352.8 (2.5 ATR), risk $100 /
+   (7.0 x 1.7) = ~8 sh. Kill: close below EMA21 331.16. next_earnings 10-29.
+4. **HPE (new 10-02 vet) - passes literal 3c, L9-blocked today.** Close 69.33 > EMA9 63.79 >
    EMA21 60.78 > EMA50 56.12, RSI 69.3 (prior-close 62.7 = W4 strong_60-70), +7.8% on 1.13x
    volume, gap +6.9%, spread 0.16%, $2.0B traded. Catalysts: Daiwa upgrade to Outperform PT
    75 (10-02), Citi PT 92 (10-01). 1m +33% = `leader_10pp+`. Structure tag range/mixed. Last
@@ -76,6 +85,13 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
   prior), BE, ARM, TWLO, ILMN, MSTR, MRVL, AMD, NVDA - all `big_leaders` with 1m +29-38%.
 - **NOW (new 10-02 vet, social trending):** close 134.38 vs EMA21 134.99 = below EMA21,
   3c FAIL, RSI 50.2, rs -3.1pp. Pass.
+- **META (new 10-03 vet) - passes 3c, L9-blocked.** Close 728.08 > EMA9 725.05 > EMA21 695.07
+  > EMA50 650.31, RSI 61.1 (W4 strong_60-70), rel strength +19.7pp = `leader_10pp+`
+  SIGNIFICANT bucket, 4 inside bars then hammer 727.5, vol 0.54x, spread 0.03%, resistance
+  779.82. Watch only; needs a dated catalyst or a pullback to EMA9/713.19 with a multi-touch
+  hold. next_earnings 10-28.
+- **PS (new 10-03 vet) - UNTRADABLE.** Spread 5.93% (bid 50.88 / ask 53.99), $10.8M traded,
+  vol 0.27x. Pass.
 - **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
   109.09 but EMA21 < EMA50 111.56, EMA9 108.71, RSI 56.6, +3.2% on 0.96x volume, 20d range
   100%, resistance 112.22/112.95, spread 0.09%. Becomes a candidate only once EMA21 > EMA50
