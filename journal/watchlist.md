@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-03 (second Saturday research leg, 17:00 CT; AAPL added at rank 3, META/PS
-vetted into Watch). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
+Updated 2026-10-03 (third Saturday research leg, ~18:00 CT; DELL added at rank 3b, LITE
+vetted into Watch; AAPL rank 3, META/PS in Watch). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
 Monday). Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
@@ -45,6 +45,15 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
    significant loss bucket (market-up bucket 3 of 18 is context). Probe B/C: stop 328.2
    (1 ATR; 325.81 prior-day low is the structural line), target 352.8 (2.5 ATR), risk $100 /
    (7.0 x 1.7) = ~8 sh. Kill: close below EMA21 331.16. next_earnings 10-29.
+3b. **DELL (new 10-03 vet, turnover lens) - passes literal 3c, good buckets.** Close 562.52 >
+   EMA9 548.56 > EMA21 535.98 > EMA50 491.31, RSI 58.0 (`neutral_45-60`), rel strength +9.39pp
+   (`outperforming_0-10pp`, 0.6pp under the L9 line - recheck Monday), ext 1.26 ATR, spread
+   0.09%, $3.1B traded, vol 0.59x (thin; continuation thesis, so C/B probe only), ATR 29.01
+   (5.2%). Structure tag range/mixed; inside bar 09-29, doji at support 530.45 10-01.
+   **Trigger (confirmation):** Monday 5m hold above 574 (resistance 573.8) on volume >1.2x and
+   above VWAP; `--check DELL 574` printed no significant bucket (suggestive: RSI 45-60 good;
+   market-up context bad). Stop 545 (1 ATR), target 646 (2.5 ATR), risk $100 / (29 x 1.7) = ~2
+   sh; tiny, say so. Kill: close below EMA21 535.98. next_earnings 11-27.
 4. **HPE (new 10-02 vet) - passes literal 3c, L9-blocked today.** Close 69.33 > EMA9 63.79 >
    EMA21 60.78 > EMA50 56.12, RSI 69.3 (prior-close 62.7 = W4 strong_60-70), +7.8% on 1.13x
    volume, gap +6.9%, spread 0.16%, $2.0B traded. Catalysts: Daiwa upgrade to Outperform PT
@@ -90,6 +99,10 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
   SIGNIFICANT bucket, 4 inside bars then hammer 727.5, vol 0.54x, spread 0.03%, resistance
   779.82. Watch only; needs a dated catalyst or a pullback to EMA9/713.19 with a multi-touch
   hold. next_earnings 10-28.
+- **LITE (new 10-03 vet) - passes literal 3c, blocked.** Close 1085.42 > EMA9 987.98 > EMA21
+  947.35 > EMA50 885.71, RSI 66.5 (W4 strong_60-70), 1m +25.1% (L9 leader), 20d range 100%
+  with no resistance overhead, ATR 66.26 (6.1%), spread 0.12%, vol 0.98x. Extended; needs a
+  pullback to EMA9 ~988 with a multi-touch hold. next_earnings 11-05.
 - **PS (new 10-03 vet) - UNTRADABLE.** Spread 5.93% (bid 50.88 / ask 53.99), $10.8M traded,
   vol 0.27x. Pass.
 - **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
