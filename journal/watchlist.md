@@ -8,9 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-03 (third Saturday research leg, ~18:00 CT; DELL added at rank 3b, LITE
-vetted into Watch; AAPL rank 3, META/PS in Watch). Mandate valid per 10-01 journal (exp 2026-10-12; re-read fresh
-Monday). Not halted.
+Updated 2026-10-04 (Sunday research leg; TXN rejected, ADI to Watch; ranks unchanged).
+Mandate verified from mandate.json 10-04: expires_at 2026-10-12T21:40Z. Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
 range/mixed. QQQ 749.58, +2.53% vs EMA21, RSI 64.9, range/mixed, record highs on a weak
@@ -103,6 +102,13 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
   947.35 > EMA50 885.71, RSI 66.5 (W4 strong_60-70), 1m +25.1% (L9 leader), 20d range 100%
   with no resistance overhead, ATR 66.26 (6.1%), spread 0.12%, vol 0.98x. Extended; needs a
   pullback to EMA9 ~988 with a multi-touch hold. next_earnings 11-05.
+- **TXN (new 10-04 vet) - 3c FAIL.** Close 293.80 > EMA9 279.64 > EMA21 273.50 but EMA21 < EMA50
+  275.44, RSI 69.8 (W4), spread 1.42% TRADABLE_TIGHT_SIZE, resistance 297.58, next_earnings
+  10-21. Pass until EMA21 > EMA50.
+- **ADI (new 10-04 vet) - passes 3c, extended.** Close 417.15 > EMA9 396.81 > EMA21 385.65 >
+  EMA50 380.77, RSI 72.0 (W4), shooting star at 421.7 on 10-02, 20d range 100%, vol 0.80x,
+  spread 0.98%, ATR 11.26. Watch only: needs a pullback hold at EMA9 ~397 / support 377.40.
+  next_earnings 11-24.
 - **PS (new 10-03 vet) - UNTRADABLE.** Spread 5.93% (bid 50.88 / ask 53.99), $10.8M traded,
   vol 0.27x. Pass.
 - **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
