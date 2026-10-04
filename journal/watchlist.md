@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-04 (Sunday research leg; TXN rejected, ADI to Watch; ranks unchanged).
+Updated 2026-10-04 (Sunday second research leg; EWY added rank 3c, KLAC/RKLB rejected on 3c).
 Mandate verified from mandate.json 10-04: expires_at 2026-10-12T21:40Z. Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
@@ -53,6 +53,15 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
    above VWAP; `--check DELL 574` printed no significant bucket (suggestive: RSI 45-60 good;
    market-up context bad). Stop 545 (1 ATR), target 646 (2.5 ATR), risk $100 / (29 x 1.7) = ~2
    sh; tiny, say so. Kill: close below EMA21 535.98. next_earnings 11-27.
+3c. **EWY (new 10-04 vet, South Korea ETF, turnover lens) - passes 3c, good buckets.** Close
+   191.88 > EMA9 186.35 > EMA21 184.15 > EMA50 177.83, RSI 57.2 (`neutral_45-60`), rel strength
+   +6.73pp (`outperforming_0-10pp`, not L9), spread 0.39%, $3.1B traded, vol 1.23x, ATR 6.15
+   (3.2%), ext 1.56 ATR, 95.7% of 20d range. Structure tag range/mixed; hammers 09-28 (180.38)
+   and 09-29 (184.82). Resistance 193.0 / 193.93. **Trigger (confirmation):** Monday 5m hold
+   above 194.0 on volume >1.2x and above VWAP; `--check EWY 194.0` printed no significant
+   bucket (market-up and 1-2.5 ATR extension are context only). Probe B/C: stop 187.8 (1 ATR),
+   target 209.4 (2.5 ATR), risk $100 / (6.15 x 1.7) = ~9 sh. Kill: close below EMA21 184.15.
+   No earnings (ETF); a gap-risk basket (Korea close/FX), no news feed this leg.
 4. **HPE (new 10-02 vet) - passes literal 3c, L9-blocked today.** Close 69.33 > EMA9 63.79 >
    EMA21 60.78 > EMA50 56.12, RSI 69.3 (prior-close 62.7 = W4 strong_60-70), +7.8% on 1.13x
    volume, gap +6.9%, spread 0.16%, $2.0B traded. Catalysts: Daiwa upgrade to Outperform PT
@@ -109,6 +118,12 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
   EMA50 380.77, RSI 72.0 (W4), shooting star at 421.7 on 10-02, 20d range 100%, vol 0.80x,
   spread 0.98%, ATR 11.26. Watch only: needs a pullback hold at EMA9 ~397 / support 377.40.
   next_earnings 11-24.
+- **KLAC (new 10-04 vet) - 3c FAIL.** Close 206.89 > EMA9 193.96 > EMA21 188.39, but EMA21 188.39
+  < EMA50 192.84. RSI 67.1 (W4), 1m +20.5% (L9 leader), 20d range 100%, spread 0.34%.
+  Pass until EMA21 > EMA50. next_earnings 10-28.
+- **RKLB (new 10-04 vet) - 3c FAIL.** Close 73.92 > EMA9 70.91 > EMA21 69.47 but EMA21 < EMA50
+  70.45, RSI 58.4, shooting star 74.58 at resistance 75.46, spread 0.12%, ATR 4.02. Closest to
+  flipping; becomes a candidate once EMA21 > EMA50. next_earnings 11-09.
 - **PS (new 10-03 vet) - UNTRADABLE.** Spread 5.93% (bid 50.88 / ask 53.99), $10.8M traded,
   vol 0.27x. Pass.
 - **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
