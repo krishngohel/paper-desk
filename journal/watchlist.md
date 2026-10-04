@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-04 (Sunday second research leg; EWY added rank 3c, KLAC/RKLB rejected on 3c).
-Mandate verified from mandate.json 10-04: expires_at 2026-10-12T21:40Z. Not halted.
+Updated 2026-10-04 (Sunday third research leg; SCKT/REBN rejected; EWY rank 3c from leg two).
+Mandate verified from live/alpaca/mandate.json 10-04: expires_at 2026-10-12T21:40Z. Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
 range/mixed. QQQ 749.58, +2.53% vs EMA21, RSI 64.9, range/mixed, record highs on a weak
@@ -124,6 +124,11 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
 - **RKLB (new 10-04 vet) - 3c FAIL.** Close 73.92 > EMA9 70.91 > EMA21 69.47 but EMA21 < EMA50
   70.45, RSI 58.4, shooting star 74.58 at resistance 75.46, spread 0.12%, ATR 4.02. Closest to
   flipping; becomes a candidate once EMA21 > EMA50. next_earnings 11-09.
+- **SCKT (new 10-04 vet, smallcap lens) - 3c FAIL.** Close 0.71 > EMA21 0.55 but EMA21 < EMA50
+  0.61, +31% on 16.2x volume, structure range/mixed, resistance 0.78 then 2.79, ATR 0.09 (13%),
+  next_earnings 10-21. Spread 0.01% TRADABLE, but a one-day spike with no base. Pass.
+- **REBN (new 10-04 vet) - UNTRADABLE.** Spread 2.80% (bid 2.11 / ask 2.17), $0.7M traded, RSI
+  81.0, 1m +73%. Pass.
 - **PS (new 10-03 vet) - UNTRADABLE.** Spread 5.93% (bid 50.88 / ask 53.99), $10.8M traded,
   vol 0.27x. Pass.
 - **CSCO (new 10-03 vet, turnover lens) - 3c FAIL, closest to flipping.** Close 112.20 > EMA21
