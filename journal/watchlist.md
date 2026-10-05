@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-04 (Sunday third research leg; SCKT/REBN rejected; EWY rank 3c from leg two).
+Updated 2026-10-04 (Sunday fourth research leg; ABBV added rank 3d; GOOG/AMZN/LLY rejected).
 Mandate verified from live/alpaca/mandate.json 10-04: expires_at 2026-10-12T21:40Z. Not halted.
 
 **Regime (`ta.py --market`, 10-02 close):** SPY 769.64, +0.54% vs EMA21, RSI 54.2,
@@ -62,6 +62,17 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
    bucket (market-up and 1-2.5 ATR extension are context only). Probe B/C: stop 187.8 (1 ATR),
    target 209.4 (2.5 ATR), risk $100 / (6.15 x 1.7) = ~9 sh. Kill: close below EMA21 184.15.
    No earnings (ETF); a gap-risk basket (Korea close/FX), no news feed this leg.
+3d. **ABBV (new 10-04 vet, megacap lens) - passes 3c, good buckets, dated catalysts.** Close 262.82 >
+   EMA9 262.76 > EMA21 261.72 > EMA50 258.09, RSI 53.8 (`neutral_45-60`), rel strength +1.46pp
+   (`outperforming_0-10pp`, not L9), ext 0.62 ATR (`near_ema20_<1atr`), spread 0.38% TRADABLE, $1.6B
+   traded, vol 1.42x, ATR 5.14 (2.0%), 80% of 20d range. Structure tag range/mixed; bullish
+   engulfing 10-02 after an inside bar. Catalysts (Benzinga): Phase 2/3 eczema, weight-loss and
+   RINVOQ vitiligo data 09-30/10-01, 340B rebate pilot participation 10-02. Resistance 264.25 /
+   264.81 / 266.9; support 252.3. **Trigger (confirmation):** Monday 5m hold above 265.0 on volume
+   >1.2x and above VWAP; `--check ABBV 265.0` printed no significant bucket (market-up and
+   late_day are context). Probe B/C: stop 259.9 (1 ATR; 259.93 is the 10-01 close), target 277.9
+   (2.5 ATR), risk $100 / (5.14 x 1.7) = ~11 sh. Kill: close below EMA21 261.72.
+   next_earnings 10-30 (outside the 2-day window).
 4. **HPE (new 10-02 vet) - passes literal 3c, L9-blocked today.** Close 69.33 > EMA9 63.79 >
    EMA21 60.78 > EMA50 56.12, RSI 69.3 (prior-close 62.7 = W4 strong_60-70), +7.8% on 1.13x
    volume, gap +6.9%, spread 0.16%, $2.0B traded. Catalysts: Daiwa upgrade to Outperform PT
@@ -124,6 +135,10 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
 - **RKLB (new 10-04 vet) - 3c FAIL.** Close 73.92 > EMA9 70.91 > EMA21 69.47 but EMA21 < EMA50
   70.45, RSI 58.4, shooting star 74.58 at resistance 75.46, spread 0.12%, ATR 4.02. Closest to
   flipping; becomes a candidate once EMA21 > EMA50. next_earnings 11-09.
+- **GOOG / AMZN / LLY (new 10-04 vets, megacap lens) - 3c FAIL.** GOOG 340.35 > EMA21 339.85 but
+  EMA21 < EMA50 342.42 (RSI 49.8, bearish engulfing at 346.45 on 10-01, inside bar 10-02,
+  earnings 10-28). AMZN 251.52 < EMA21 251.81 < EMA50 253.95 (RSI 48.4, dojis, earnings 10-29).
+  LLY 1142.85 below EMA9/21/50, RSI 42.8, TV strong_sell MAs (earnings 10-29). Pass all three.
 - **SCKT (new 10-04 vet, smallcap lens) - 3c FAIL.** Close 0.71 > EMA21 0.55 but EMA21 < EMA50
   0.61, +31% on 16.2x volume, structure range/mixed, resistance 0.78 then 2.79, ATR 0.09 (13%),
   next_earnings 10-21. Spread 0.01% TRADABLE, but a one-day spike with no base. Pass.
@@ -159,6 +174,6 @@ name has a numeric above-market trigger worth arming over the weekend; no rung b
 ## Next session (Monday 2026-10-05, PLANNING leg pre-market)
 
 Set the day's loss budget; confirm consent.expires_at fresh; read the gap scan; re-check
-TXG vs its 93.42 close and the resting stop 975776c7; work MPC/MU on confirmation
-triggers only (`trade_context.py --check` first); refill the book (1 of 3-6) only with
+TXG vs its 93.42 close and the resting stop 975776c7; work AAPL/DELL/EWY/ABBV/MPC/MU on
+confirmation triggers only (`trade_context.py --check` first); refill the book (1 of 3-6) only with
 3c-passing names and a written L9 exception where the bucket is `leader_10pp+`.
