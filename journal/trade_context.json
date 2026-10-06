@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-10-02T16:29:38",
+ "computed_at": "2026-10-05T15:21:04",
  "trades": {
   "t-2026-08-26-001": {
    "v": 4,
@@ -1045,11 +1045,11 @@
    "gap_pct": 0.03,
    "run_from_open_pct": 7.86,
    "spy_intraday_at_entry_pct": -0.38,
-   "mfe_pct": 25.81,
+   "mfe_pct": 29.98,
    "mae_pct": -5.55,
-   "mfe_atr": 5.15,
+   "mfe_atr": 5.99,
    "mae_atr": 1.11,
-   "spy_ret_hold_pct": 1.38,
+   "spy_ret_hold_pct": 2.07,
    "closed": false
   },
   "t-2026-09-15-trg-14-002": {
