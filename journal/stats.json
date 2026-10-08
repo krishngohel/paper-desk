@@ -1,5 +1,5 @@
 {
- "computed_at": "2026-10-08T15:01:03",
+ "computed_at": "2026-10-08T15:26:07",
  "overall": {
   "n": 38,
   "closed": 38,
@@ -498,13 +498,10 @@
  "review_verdicts": {
   "lucky": 1,
   "wrong": 14,
-  "unlucky": 9,
-  "right": 13,
-  "unscored": 1
+  "unlucky": 10,
+  "right": 13
  },
- "unscored_closed": [
-  "t-2026-09-15-001"
- ],
+ "unscored_closed": [],
  "by_exit_reason": {
   "exit-condition-hit": {
    "n": 36,
@@ -1083,46 +1080,46 @@
   }
  },
  "exit_replay": {
-  "n": 37,
-  "actual_total_pnl": -543.61,
+  "n": 38,
+  "actual_total_pnl": -579.31,
   "rules": {
    "breakeven_after_0.5atr": {
-    "total_pnl": -255.96,
-    "delta_vs_actual": 287.65,
-    "trades_changed": 15,
-    "losers_saved": 10,
+    "total_pnl": -255.92,
+    "delta_vs_actual": 323.39,
+    "trades_changed": 16,
+    "losers_saved": 11,
     "winners_hurt": 5,
-    "paired_t": 0.48
+    "paired_t": 0.54
    },
    "breakeven_after_1atr": {
-    "total_pnl": -544.48,
-    "delta_vs_actual": -0.87,
-    "trades_changed": 6,
-    "losers_saved": 5,
+    "total_pnl": -544.44,
+    "delta_vs_actual": 34.87,
+    "trades_changed": 7,
+    "losers_saved": 6,
     "winners_hurt": 1,
-    "paired_t": -0.0
+    "paired_t": 0.1
    },
    "trail_1atr_after_1atr": {
-    "total_pnl": -84.62,
-    "delta_vs_actual": 458.99,
-    "trades_changed": 8,
-    "losers_saved": 5,
+    "total_pnl": -78.11,
+    "delta_vs_actual": 501.2,
+    "trades_changed": 9,
+    "losers_saved": 6,
     "winners_hurt": 2,
-    "paired_t": 1.33
+    "paired_t": 1.45
    },
    "half_off_at_1atr": {
-    "total_pnl": -312.92,
-    "delta_vs_actual": 230.69,
-    "trades_changed": 15,
-    "losers_saved": 5,
+    "total_pnl": -302.33,
+    "delta_vs_actual": 276.98,
+    "trades_changed": 16,
+    "losers_saved": 6,
     "winners_hurt": 9,
-    "paired_t": 0.89
+    "paired_t": 1.05
    }
   }
  },
  "verdict_audit": {
-  "losers_scored": 25,
-  "losers_called_unlucky": 9,
+  "losers_scored": 26,
+  "losers_called_unlucky": 10,
   "losers_called_wrong": 14,
   "unlucky_but_never_worked": []
  }
