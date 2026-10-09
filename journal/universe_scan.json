@@ -1,5 +1,5 @@
 {
- "ts": "2026-10-09T08:40:07",
+ "ts": "2026-10-09T08:41:27",
  "source": "tradingview_full_market",
  "universe_listings": 32,
  "broker_tradable": 32,
@@ -52,7 +52,7 @@
    "change_pct": -1.51,
    "perf_1m_pct": -1.2,
    "dollar_volume_m": 0.0,
-   "rel_volume": 0.0,
+   "rel_volume": 0.01,
    "market_cap_b": null,
    "exchange": "NASDAQ",
    "type": "fund",
@@ -220,7 +220,7 @@
    "close": 274.6,
    "change_pct": -0.02,
    "perf_1m_pct": 21.0,
-   "dollar_volume_m": 147.3,
+   "dollar_volume_m": 148.1,
    "rel_volume": 0.03,
    "market_cap_b": 240.8,
    "exchange": "NASDAQ",
@@ -278,7 +278,7 @@
    "exchange": "NASDAQ",
    "type": "stock",
    "tradable": true,
-   "lens": "unusual"
+   "lens": "liquid"
   },
   {
    "symbol": "SAIC",
@@ -407,7 +407,7 @@
     "close": 274.6,
     "change_pct": -0.02,
     "perf_1m_pct": 21.0,
-    "dollar_volume_m": 147.3,
+    "dollar_volume_m": 148.1,
     "rel_volume": 0.03,
     "market_cap_b": 240.8,
     "exchange": "NASDAQ",
@@ -672,7 +672,7 @@
     "change_pct": -1.51,
     "perf_1m_pct": -1.2,
     "dollar_volume_m": 0.0,
-    "rel_volume": 0.0,
+    "rel_volume": 0.01,
     "market_cap_b": null,
     "exchange": "NASDAQ",
     "type": "fund",
