@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-10 Sat (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT vetted and rejected, see Watch only).
+Updated 2026-10-10 Sat PM (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO vetted and rejected or parked, see Watch only).
 Mandate (verified in the 10-09 review): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
@@ -66,6 +66,13 @@ which only a market-hours leg can do (no market orders in research), and no rest
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **KLRA / CUE / GEV / KO (10-10 PM vets).** KLRA UNTRADABLE (spread 3.25%), 11.61 < EMA21 12.07 < EMA50
+  14.57. CUE 27.66 > EMA21 27.11 but < EMA50 27.91 (3c fail), +23.9% gap, ATR 13%, spread 1.15%. GEV 1004.73
+  > EMA21 972.96 but EMA21 < EMA50 977.92 (3c fail by 5 pts; flips on a close ~+1%), vol 0.49x, earnings 10-28.
+  KO 88.05 > EMA21 87.27 > EMA50 87.21 passes 3c by 0.07 (bunched), RSI 54.8, ATR 1.5%, vol 0.65x (quiet),
+  rs -0.22pp, earnings 10-27: a low-vol drifter with no catalyst, no trigger; revisit only on a volume
+  reclaim of 89.36.
 
 - **FTXR / ENOR / CAR / DJT (10-10 vets) - all REJECTED, 3c fail.** FTXR (relvol lens, a fund) 41.53 < EMA21
   41.95 < EMA50 43.15, RSI 42.5. ENOR 35.36 < EMA21 35.69 > EMA50 35.58 mixed, RSI 43.2; Saturday quote

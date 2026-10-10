@@ -1,66 +1,36 @@
 {
- "ts": "2026-10-10T11:01:59",
+ "ts": "2026-10-10T17:01:51",
  "doctrine": "idea source only - names here get ta.py + news vetting like any other candidate; crowd hype is never a thesis (PLAYBOOK s11)",
  "stocktwits_trending": [
   {
-   "symbol": "STRK.X",
-   "title": "Starknet",
-   "watchlist_count": 1231
+   "symbol": "KO",
+   "title": "Coca-Cola Co",
+   "watchlist_count": 53607
   },
   {
-   "symbol": "AERO.X",
-   "title": "Aerodrome Finance",
-   "watchlist_count": 4671
+   "symbol": "AI",
+   "title": "C3.ai Inc",
+   "watchlist_count": 49715
   },
   {
-   "symbol": "ARKK",
-   "title": "ARK Innovation ETF",
-   "watchlist_count": 49688
+   "symbol": "VSTM",
+   "title": "Verastem Inc",
+   "watchlist_count": 24250
   },
   {
-   "symbol": "DJT",
-   "title": "Trump Media & Technology Group Corp.",
-   "watchlist_count": 115614
+   "symbol": "KTA.X",
+   "title": "Keeta",
+   "watchlist_count": 2599
   },
   {
    "symbol": "XCN.X",
    "title": "Onyxcoin",
-   "watchlist_count": 8297
+   "watchlist_count": 8298
   },
   {
-   "symbol": "XAGUSD",
-   "title": "Silver US Dollar",
-   "watchlist_count": 3650
-  },
-  {
-   "symbol": "DDOG",
-   "title": "Datadog Inc",
-   "watchlist_count": 25872
-  },
-  {
-   "symbol": "NEAR.X",
-   "title": "Near",
-   "watchlist_count": 5676
-  },
-  {
-   "symbol": "WIF.X",
-   "title": "dogwifhat",
-   "watchlist_count": 4033
-  },
-  {
-   "symbol": "CAR",
-   "title": "Avis Budget Group Inc",
-   "watchlist_count": 11273
-  },
-  {
-   "symbol": "WLD.X",
-   "title": "Worldcoin",
-   "watchlist_count": 3003
-  },
-  {
-   "symbol": "CASHCAT.X",
-   "title": "Cash Cat",
-   "watchlist_count": 615
+   "symbol": "PCG",
+   "title": "PG&E Corp.",
+   "watchlist_count": 18943
   },
   {
    "symbol": "BONK.X",
@@ -68,49 +38,72 @@
    "watchlist_count": 15354
   },
   {
-   "symbol": "XLF",
-   "title": "Financial Select Sector SPDR Fund",
-   "watchlist_count": 18519
+   "symbol": "KYTX",
+   "title": "Kyverna Therapeutics Inc.",
+   "watchlist_count": 1560
   },
   {
-   "symbol": "EBS",
-   "title": "Emergent Biosolutions Inc",
-   "watchlist_count": 8433
+   "symbol": "XAGUSD",
+   "title": "Silver US Dollar",
+   "watchlist_count": 3650
   },
   {
-   "symbol": "CLF",
-   "title": "Cleveland-Cliffs Inc",
-   "watchlist_count": 32804
+   "symbol": "BW",
+   "title": "Babcock & Wilcox Enterprises Inc",
+   "watchlist_count": 7007
   },
   {
-   "symbol": "EWZ",
-   "title": "iShares MSCI Brazil ETF",
-   "watchlist_count": 5258
+   "symbol": "RVMD",
+   "title": "Revolution Medicines Inc",
+   "watchlist_count": 3347
   },
   {
-   "symbol": "DASH",
-   "title": "DoorDash Inc - Ordinary Shares - Class A",
-   "watchlist_count": 18621
+   "symbol": "JD",
+   "title": "JD.com Inc - ADR",
+   "watchlist_count": 65995
   },
   {
-   "symbol": "SQD.X",
-   "title": "SQD",
-   "watchlist_count": 535
+   "symbol": "KOLD",
+   "title": "ProShares UltraShort Bloomberg Natural Gas",
+   "watchlist_count": 10353
   },
   {
-   "symbol": "ETH",
-   "title": "Grayscale Ethereum Mini Trust",
-   "watchlist_count": 2961
+   "symbol": "DRAM",
+   "title": "Roundhill ETF Trust - Roundhill Memory ETF",
+   "watchlist_count": 14886
+  },
+  {
+   "symbol": "KLAR",
+   "title": "Klarna Group plc",
+   "watchlist_count": 7921
+  },
+  {
+   "symbol": "XAUUSD",
+   "title": "Gold U.S. Dollar",
+   "watchlist_count": 17948
+  },
+  {
+   "symbol": "CRO.X",
+   "title": "Crypto.com Coin",
+   "watchlist_count": 37140
+  },
+  {
+   "symbol": "TGTX",
+   "title": "TG Therapeutics Inc",
+   "watchlist_count": 21671
+  },
+  {
+   "symbol": "GEV",
+   "title": "GE Vernova Inc.",
+   "watchlist_count": 10814
+  },
+  {
+   "symbol": "PUMP.X",
+   "title": "Pump.fun",
+   "watchlist_count": 1955
   }
  ],
  "stocktwits_sentiment": [
-  {
-   "symbol": "V",
-   "messages_sampled": 30,
-   "bullish": 7,
-   "bearish": 2,
-   "unlabeled": 21
-  },
   {
    "symbol": "MA",
    "messages_sampled": 30,
@@ -119,10 +112,17 @@
    "unlabeled": 15
   },
   {
+   "symbol": "V",
+   "messages_sampled": 30,
+   "bullish": 7,
+   "bearish": 2,
+   "unlabeled": 21
+  },
+  {
    "symbol": "MRNA",
    "messages_sampled": 30,
-   "bullish": 6,
-   "bearish": 7,
+   "bullish": 5,
+   "bearish": 8,
    "unlabeled": 17
   },
   {
@@ -147,77 +147,77 @@
    "unlabeled": 16
   },
   {
-   "symbol": "MU",
+   "symbol": "KLRA",
    "messages_sampled": 30,
-   "bullish": 14,
+   "bullish": 15,
    "bearish": 0,
-   "unlabeled": 16
+   "unlabeled": 15
   },
   {
-   "symbol": "DELL",
+   "symbol": "CUE",
    "messages_sampled": 30,
-   "bullish": 4,
-   "bearish": 8,
-   "unlabeled": 18
-  },
-  {
-   "symbol": "EWY",
-   "messages_sampled": 30,
-   "bullish": 17,
-   "bearish": 3,
-   "unlabeled": 10
-  },
-  {
-   "symbol": "STRK.X",
-   "messages_sampled": 30,
-   "bullish": 20,
+   "bullish": 9,
    "bearish": 0,
-   "unlabeled": 10
+   "unlabeled": 21
   },
   {
-   "symbol": "AERO.X",
+   "symbol": "KO",
    "messages_sampled": 30,
-   "bullish": 12,
-   "bearish": 0,
-   "unlabeled": 18
-  },
-  {
-   "symbol": "ARKK",
-   "messages_sampled": 30,
-   "bullish": 6,
+   "bullish": 10,
    "bearish": 1,
-   "unlabeled": 23
+   "unlabeled": 19
   },
   {
-   "symbol": "DJT",
+   "symbol": "AI",
    "messages_sampled": 30,
-   "bullish": 4,
-   "bearish": 8,
-   "unlabeled": 18
+   "bullish": 9,
+   "bearish": 2,
+   "unlabeled": 19
+  },
+  {
+   "symbol": "VSTM",
+   "messages_sampled": 30,
+   "bullish": 11,
+   "bearish": 2,
+   "unlabeled": 17
+  },
+  {
+   "symbol": "KTA.X",
+   "messages_sampled": 30,
+   "bullish": 8,
+   "bearish": 5,
+   "unlabeled": 17
   },
   {
    "symbol": "XCN.X",
    "messages_sampled": 30,
-   "bullish": 28,
+   "bullish": 25,
+   "bearish": 0,
+   "unlabeled": 5
+  },
+  {
+   "symbol": "PCG",
+   "messages_sampled": 30,
+   "bullish": 9,
    "bearish": 1,
-   "unlabeled": 1
+   "unlabeled": 20
   }
  ],
  "reddit_mentions": [
   {
-   "symbol": "SPY",
-   "name": "SPDR S&P 500 ETF Trust",
-   "mentions_24h": 127,
-   "upvotes": 422,
+   "symbol": "ASTS",
+   "name": "AST SpaceMobile",
+   "mentions_24h": 46,
+   "upvotes": 195,
    "rank": 1,
    "rank_24h_ago": 1,
    "rank_change": 0
   },
   {
-   "symbol": "ASTS",
-   "name": "AST SpaceMobile",
-   "mentions_24h": 114,
-   "upvotes": 199,
+   "symbol": "SPY",
+   "name": "SPDR S&P 500 ETF Trust",
+   "mentions_24h": 42,
+   "upvotes": 105,
    "rank": 2,
    "rank_24h_ago": 3,
    "rank_change": 1
@@ -225,346 +225,346 @@
   {
    "symbol": "MU",
    "name": "Micron Technology",
-   "mentions_24h": 71,
-   "upvotes": 156,
+   "mentions_24h": 36,
+   "upvotes": 260,
    "rank": 3,
    "rank_24h_ago": 2,
    "rank_change": -1
   },
   {
-   "symbol": "PLTR",
-   "name": "Palantir",
-   "mentions_24h": 62,
-   "upvotes": 93,
-   "rank": 4,
-   "rank_24h_ago": 12,
-   "rank_change": 8
-  },
-  {
    "symbol": "DTE",
    "name": "DTE Energy",
-   "mentions_24h": 50,
-   "upvotes": 231,
-   "rank": 5,
+   "mentions_24h": 30,
+   "upvotes": 103,
+   "rank": 4,
    "rank_24h_ago": 7,
-   "rank_change": 2
+   "rank_change": 3
+  },
+  {
+   "symbol": "VOO",
+   "name": "Vanguard S&P 500 ETF",
+   "mentions_24h": 21,
+   "upvotes": 50,
+   "rank": 5,
+   "rank_24h_ago": 74,
+   "rank_change": 69
   },
   {
    "symbol": "SPCX",
    "name": "SpaceX",
-   "mentions_24h": 39,
-   "upvotes": 145,
+   "mentions_24h": 19,
+   "upvotes": 144,
    "rank": 6,
-   "rank_24h_ago": 5,
-   "rank_change": -1
+   "rank_24h_ago": 4,
+   "rank_change": -2
   },
   {
    "symbol": "QQQ",
    "name": "Invesco QQQ ETF",
-   "mentions_24h": 38,
-   "upvotes": 87,
+   "mentions_24h": 14,
+   "upvotes": 32,
    "rank": 7,
-   "rank_24h_ago": 4,
-   "rank_change": -3
+   "rank_24h_ago": 5,
+   "rank_change": -2
+  },
+  {
+   "symbol": "ARR",
+   "name": "ARMOUR Residential REIT",
+   "mentions_24h": 13,
+   "upvotes": 17,
+   "rank": 8,
+   "rank_24h_ago": 23,
+   "rank_change": 15
   },
   {
    "symbol": "NVDA",
    "name": "NVIDIA",
-   "mentions_24h": 37,
-   "upvotes": 76,
-   "rank": 8,
-   "rank_24h_ago": 6,
-   "rank_change": -2
-  },
-  {
-   "symbol": "MSFT",
-   "name": "Microsoft",
-   "mentions_24h": 32,
-   "upvotes": 50,
+   "mentions_24h": 12,
+   "upvotes": 82,
    "rank": 9,
-   "rank_24h_ago": 11,
-   "rank_change": 2
+   "rank_24h_ago": 6,
+   "rank_change": -3
   },
   {
-   "symbol": "MRNA",
-   "name": "Moderna",
-   "mentions_24h": 24,
-   "upvotes": 674,
+   "symbol": "IT",
+   "name": "Gartner",
+   "mentions_24h": 12,
+   "upvotes": 18,
    "rank": 10,
-   "rank_24h_ago": 359,
-   "rank_change": 349
+   "rank_24h_ago": 17,
+   "rank_change": 7
   },
   {
    "symbol": "SOXL",
    "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
-   "mentions_24h": 24,
-   "upvotes": 41,
+   "mentions_24h": 12,
+   "upvotes": 16,
    "rank": 11,
-   "rank_24h_ago": 9,
-   "rank_change": -2
-  },
-  {
-   "symbol": "IT",
-   "name": "Gartner",
-   "mentions_24h": 20,
-   "upvotes": 57,
-   "rank": 12,
-   "rank_24h_ago": 18,
-   "rank_change": 6
-  },
-  {
-   "symbol": "SNDK",
-   "name": "Sandisk",
-   "mentions_24h": 20,
-   "upvotes": 46,
-   "rank": 13,
    "rank_24h_ago": 13,
-   "rank_change": 0
-  },
-  {
-   "symbol": "AMZN",
-   "name": "Amazon",
-   "mentions_24h": 18,
-   "upvotes": 30,
-   "rank": 14,
-   "rank_24h_ago": 55,
-   "rank_change": 41
-  },
-  {
-   "symbol": "VOO",
-   "name": "Vanguard S&P 500 ETF",
-   "mentions_24h": 17,
-   "upvotes": 35,
-   "rank": 15,
-   "rank_24h_ago": 60,
-   "rank_change": 45
-  },
-  {
-   "symbol": "VZ",
-   "name": "Verizon",
-   "mentions_24h": 16,
-   "upvotes": 164,
-   "rank": 16,
-   "rank_24h_ago": 19,
-   "rank_change": 3
+   "rank_change": 2
   },
   {
    "symbol": "EU",
    "name": "enCore Energy",
-   "mentions_24h": 16,
-   "upvotes": 92,
-   "rank": 17,
-   "rank_24h_ago": 62,
-   "rank_change": 45
+   "mentions_24h": 12,
+   "upvotes": 54,
+   "rank": 12,
+   "rank_24h_ago": 86,
+   "rank_change": 74
   },
   {
-   "symbol": "AMD",
-   "name": "AMD",
-   "mentions_24h": 15,
-   "upvotes": 17,
-   "rank": 18,
-   "rank_24h_ago": 14,
-   "rank_change": -4
-  },
-  {
-   "symbol": "NBIS",
-   "name": "Nebius Group",
-   "mentions_24h": 15,
-   "upvotes": 134,
-   "rank": 19,
-   "rank_24h_ago": 10,
-   "rank_change": -9
-  },
-  {
-   "symbol": "GME",
-   "name": "GameStop",
-   "mentions_24h": 14,
-   "upvotes": 56,
-   "rank": 20,
-   "rank_24h_ago": 26,
-   "rank_change": 6
-  },
-  {
-   "symbol": "YOU",
-   "name": "CLEAR Secure",
-   "mentions_24h": 14,
-   "upvotes": 23,
-   "rank": 21,
-   "rank_24h_ago": 27,
-   "rank_change": 6
-  },
-  {
-   "symbol": "APLD",
-   "name": "Applied Blockchain",
-   "mentions_24h": 14,
-   "upvotes": 23,
-   "rank": 22,
-   "rank_24h_ago": 8,
-   "rank_change": -14
-  },
-  {
-   "symbol": "RDDT",
-   "name": "Reddit",
-   "mentions_24h": 14,
-   "upvotes": 81,
-   "rank": 23,
-   "rank_24h_ago": 28,
-   "rank_change": 5
-  },
-  {
-   "symbol": "MAGA",
-   "name": "ETF Series Solutions Trust - Point Bridge GOP Stock Tracker ETF",
-   "mentions_24h": 13,
-   "upvotes": 36,
-   "rank": 24,
-   "rank_24h_ago": 39,
-   "rank_change": 15
+   "symbol": "MSFT",
+   "name": "Microsoft",
+   "mentions_24h": 11,
+   "upvotes": 10,
+   "rank": 13,
+   "rank_24h_ago": 11,
+   "rank_change": -2
   },
   {
    "symbol": "TSLA",
    "name": "Tesla",
-   "mentions_24h": 12,
-   "upvotes": 34,
-   "rank": 25,
-   "rank_24h_ago": 21,
+   "mentions_24h": 10,
+   "upvotes": 58,
+   "rank": 14,
+   "rank_24h_ago": 8,
+   "rank_change": -6
+  },
+  {
+   "symbol": "AMD",
+   "name": "AMD",
+   "mentions_24h": 10,
+   "upvotes": 66,
+   "rank": 15,
+   "rank_24h_ago": 10,
+   "rank_change": -5
+  },
+  {
+   "symbol": "VZ",
+   "name": "Verizon",
+   "mentions_24h": 10,
+   "upvotes": 11,
+   "rank": 16,
+   "rank_24h_ago": 12,
    "rank_change": -4
   },
   {
-   "symbol": "AM",
-   "name": "Antero Midstream",
-   "mentions_24h": 12,
-   "upvotes": 664,
-   "rank": 26,
-   "rank_24h_ago": 38,
-   "rank_change": 12
-  },
-  {
-   "symbol": "META",
-   "name": "Meta Platforms (Facebook)",
-   "mentions_24h": 12,
-   "upvotes": 25,
-   "rank": 27,
-   "rank_24h_ago": 24,
-   "rank_change": -3
-  },
-  {
-   "symbol": "AAPL",
-   "name": "Apple",
-   "mentions_24h": 11,
-   "upvotes": 22,
-   "rank": 28,
-   "rank_24h_ago": 17,
-   "rank_change": -11
-  },
-  {
-   "symbol": "OR",
-   "name": "Osisko Gold Royalties",
-   "mentions_24h": 11,
-   "upvotes": 27,
-   "rank": 29,
-   "rank_24h_ago": 151,
-   "rank_change": 122
-  },
-  {
-   "symbol": "VTI",
-   "name": "Vanguard Total Stock Market ETF",
-   "mentions_24h": 11,
-   "upvotes": 12,
-   "rank": 30,
-   "rank_24h_ago": 207,
-   "rank_change": 177
-  }
- ],
- "reddit_rank_climbers": [
-  {
-   "symbol": "MRNA",
-   "name": "Moderna",
-   "mentions_24h": 24,
-   "upvotes": 674,
-   "rank": 10,
-   "rank_24h_ago": 359,
-   "rank_change": 349
-  },
-  {
-   "symbol": "VTI",
-   "name": "Vanguard Total Stock Market ETF",
-   "mentions_24h": 11,
-   "upvotes": 12,
-   "rank": 30,
-   "rank_24h_ago": 207,
-   "rank_change": 177
-  },
-  {
-   "symbol": "OR",
-   "name": "Osisko Gold Royalties",
-   "mentions_24h": 11,
-   "upvotes": 27,
-   "rank": 29,
-   "rank_24h_ago": 151,
-   "rank_change": 122
-  },
-  {
-   "symbol": "VOO",
-   "name": "Vanguard S&P 500 ETF",
-   "mentions_24h": 17,
-   "upvotes": 35,
-   "rank": 15,
-   "rank_24h_ago": 60,
-   "rank_change": 45
-  },
-  {
-   "symbol": "EU",
-   "name": "enCore Energy",
-   "mentions_24h": 16,
-   "upvotes": 92,
+   "symbol": "RDDT",
+   "name": "Reddit",
+   "mentions_24h": 10,
+   "upvotes": 85,
    "rank": 17,
-   "rank_24h_ago": 62,
-   "rank_change": 45
+   "rank_24h_ago": 19,
+   "rank_change": 2
   },
   {
-   "symbol": "AMZN",
-   "name": "Amazon",
-   "mentions_24h": 18,
-   "upvotes": 30,
-   "rank": 14,
-   "rank_24h_ago": 55,
-   "rank_change": 41
+   "symbol": "NFLX",
+   "name": "Netflix",
+   "mentions_24h": 9,
+   "upvotes": 31,
+   "rank": 18,
+   "rank_24h_ago": 45,
+   "rank_change": 27
   },
   {
-   "symbol": "MAGA",
-   "name": "ETF Series Solutions Trust - Point Bridge GOP Stock Tracker ETF",
-   "mentions_24h": 13,
-   "upvotes": 36,
-   "rank": 24,
-   "rank_24h_ago": 39,
-   "rank_change": 15
+   "symbol": "ES",
+   "name": "Eversource Energy",
+   "mentions_24h": 9,
+   "upvotes": 24,
+   "rank": 19,
+   "rank_24h_ago": 61,
+   "rank_change": 42
   },
   {
    "symbol": "AM",
    "name": "Antero Midstream",
-   "mentions_24h": 12,
-   "upvotes": 664,
-   "rank": 26,
-   "rank_24h_ago": 38,
-   "rank_change": 12
+   "mentions_24h": 9,
+   "upvotes": 28,
+   "rank": 20,
+   "rank_24h_ago": 40,
+   "rank_change": 20
+  },
+  {
+   "symbol": "AGI",
+   "name": "Alamos Gold",
+   "mentions_24h": 9,
+   "upvotes": 19,
+   "rank": 21,
+   "rank_24h_ago": 48,
+   "rank_change": 27
   },
   {
    "symbol": "PLTR",
    "name": "Palantir",
-   "mentions_24h": 62,
-   "upvotes": 93,
-   "rank": 4,
-   "rank_24h_ago": 12,
-   "rank_change": 8
+   "mentions_24h": 9,
+   "upvotes": 9,
+   "rank": 22,
+   "rank_24h_ago": 14,
+   "rank_change": -8
   },
   {
-   "symbol": "IT",
-   "name": "Gartner",
-   "mentions_24h": 20,
-   "upvotes": 57,
-   "rank": 12,
+   "symbol": "MAGA",
+   "name": "ETF Series Solutions Trust - Point Bridge GOP Stock Tracker ETF",
+   "mentions_24h": 9,
+   "upvotes": 31,
+   "rank": 23,
+   "rank_24h_ago": 68,
+   "rank_change": 45
+  },
+  {
+   "symbol": "VT",
+   "name": "Vanguard Group, Inc. - Vanguard Total World Stock ETF",
+   "mentions_24h": 9,
+   "upvotes": 25,
+   "rank": 24,
+   "rank_24h_ago": 187,
+   "rank_change": 163
+  },
+  {
+   "symbol": "GME",
+   "name": "GameStop",
+   "mentions_24h": 9,
+   "upvotes": 1,
+   "rank": 25,
    "rank_24h_ago": 18,
-   "rank_change": 6
+   "rank_change": -7
+  },
+  {
+   "symbol": "YOU",
+   "name": "CLEAR Secure",
+   "mentions_24h": 8,
+   "upvotes": 11,
+   "rank": 26,
+   "rank_24h_ago": 33,
+   "rank_change": 7
+  },
+  {
+   "symbol": "RR",
+   "name": "Richtech Robotics",
+   "mentions_24h": 8,
+   "upvotes": 32,
+   "rank": 27,
+   "rank_24h_ago": 856,
+   "rank_change": 829
+  },
+  {
+   "symbol": "TP",
+   "name": "Ticketplus",
+   "mentions_24h": 8,
+   "upvotes": 10,
+   "rank": 28,
+   "rank_24h_ago": 59,
+   "rank_change": 31
+  },
+  {
+   "symbol": "UI",
+   "name": "Ubiquiti",
+   "mentions_24h": 7,
+   "upvotes": 14,
+   "rank": 29,
+   "rank_24h_ago": 73,
+   "rank_change": 44
+  },
+  {
+   "symbol": "SF",
+   "name": "Stifel",
+   "mentions_24h": 7,
+   "upvotes": 12,
+   "rank": 30,
+   "rank_24h_ago": 143,
+   "rank_change": 113
+  }
+ ],
+ "reddit_rank_climbers": [
+  {
+   "symbol": "RR",
+   "name": "Richtech Robotics",
+   "mentions_24h": 8,
+   "upvotes": 32,
+   "rank": 27,
+   "rank_24h_ago": 856,
+   "rank_change": 829
+  },
+  {
+   "symbol": "VT",
+   "name": "Vanguard Group, Inc. - Vanguard Total World Stock ETF",
+   "mentions_24h": 9,
+   "upvotes": 25,
+   "rank": 24,
+   "rank_24h_ago": 187,
+   "rank_change": 163
+  },
+  {
+   "symbol": "SF",
+   "name": "Stifel",
+   "mentions_24h": 7,
+   "upvotes": 12,
+   "rank": 30,
+   "rank_24h_ago": 143,
+   "rank_change": 113
+  },
+  {
+   "symbol": "EU",
+   "name": "enCore Energy",
+   "mentions_24h": 12,
+   "upvotes": 54,
+   "rank": 12,
+   "rank_24h_ago": 86,
+   "rank_change": 74
+  },
+  {
+   "symbol": "VOO",
+   "name": "Vanguard S&P 500 ETF",
+   "mentions_24h": 21,
+   "upvotes": 50,
+   "rank": 5,
+   "rank_24h_ago": 74,
+   "rank_change": 69
+  },
+  {
+   "symbol": "MAGA",
+   "name": "ETF Series Solutions Trust - Point Bridge GOP Stock Tracker ETF",
+   "mentions_24h": 9,
+   "upvotes": 31,
+   "rank": 23,
+   "rank_24h_ago": 68,
+   "rank_change": 45
+  },
+  {
+   "symbol": "UI",
+   "name": "Ubiquiti",
+   "mentions_24h": 7,
+   "upvotes": 14,
+   "rank": 29,
+   "rank_24h_ago": 73,
+   "rank_change": 44
+  },
+  {
+   "symbol": "ES",
+   "name": "Eversource Energy",
+   "mentions_24h": 9,
+   "upvotes": 24,
+   "rank": 19,
+   "rank_24h_ago": 61,
+   "rank_change": 42
+  },
+  {
+   "symbol": "TP",
+   "name": "Ticketplus",
+   "mentions_24h": 8,
+   "upvotes": 10,
+   "rank": 28,
+   "rank_24h_ago": 59,
+   "rank_change": 31
+  },
+  {
+   "symbol": "NFLX",
+   "name": "Netflix",
+   "mentions_24h": 9,
+   "upvotes": 31,
+   "rank": 18,
+   "rank_24h_ago": 45,
+   "rank_change": 27
   }
  ]
 }
