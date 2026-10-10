@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-09 evening (research session after the daily review; V/MA/WMT/MRNA/P/QSI vetted).
+Updated 2026-10-10 Sat (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT vetted and rejected, see Watch only).
 Mandate (verified in the 10-09 review): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
@@ -66,6 +66,11 @@ which only a market-hours leg can do (no market orders in research), and no rest
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **FTXR / ENOR / CAR / DJT (10-10 vets) - all REJECTED, 3c fail.** FTXR (relvol lens, a fund) 41.53 < EMA21
+  41.95 < EMA50 43.15, RSI 42.5. ENOR 35.36 < EMA21 35.69 > EMA50 35.58 mixed, RSI 43.2; Saturday quote
+  spread 37.6% is stale-book noise, re-check Monday. CAR 105.98 < EMA21 113.71 < EMA50 128.3, RSI 35.8,
+  bearish engulfing. DJT 8.11 < EMA21 8.76 < EMA50 9.01, RSI 34.7, 0.0% of 20d range. Falling knives.
 
 - **P (new 10-09 vet, big_leaders lens) - REJECTED.** Close 154.49, RSI 81.5 (prior 80.0), +52.6% 1m
   (L9 leader), ext far above EMA21 128.9, shooting star 10-08 at 157.05, vol 0.49x; no `--check` needed.
