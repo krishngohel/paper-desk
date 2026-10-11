@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-11 Sun (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, ATR $0.01, spreads 51.6% / 2.75% UNTRADABLE).
-Mandate (verified in the 10-09 review): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
+Updated 2026-10-11 Sun PM (research; MA/V ranking unchanged from 10-09; COHR added as #4 pullback/reclaim stalk; XBI/AAOI rejected; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, spreads 51.6% / 2.75% UNTRADABLE).
+Mandate (re-read from mandate.json 10-11 PM): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
 
@@ -61,11 +61,23 @@ which only a market-hours leg can do (no market orders in research), and no rest
 4. **ZS (~210.7 pullback) / CIEN (~410 pullback)** - the existing Friday stalks; L9 leaders. Trigger
    only a multi-touch hold at those levels with the written exception; spreads were wide intraday
    (ZS 2.6%, CIEN 6.8% at points), so re-check tradability first. ZS earnings 11-24.
+   **COHR (10-11 vet, turnover lens) - confirmation stalk, no Monday-open entry.** Close 312.62 > EMA21
+   308.44 > EMA50 302.84 (passes 3c), but below EMA9 316.02, structure range/mixed, RSI 51.9, rs 20d
+   +0.5pp (in line, NOT L9), ATR 22.0 (7.0%), spread 0.25%, $2.5B traded, vol 1.15x, hammer at 309.19 on
+   10-07, earnings 11-04. `--check COHR 316`: no SIGNIFICANT bucket; goods neutral_45-60 (suggestive),
+   outperforming_0-10pp. **Trigger: armed buy >= 316.0 (EMA9 / resistance 315.7 reclaim) only if the
+   5m tape shows vol >1.2x and price above VWAP.** Probe B/C: stop 294 (1 ATR), target ~371 (2.5 ATR),
+   risk $100 / (22 x 1.7) = 2.7 -> 2 sh. Kill: close below EMA21 308.44. Not armed (research, no
+   conditional beats the anticipatory record without the live tape).
 5. **DELL / EWY / MU / MPC / VLO.** DELL stale (earnings 11-27; 5m hold above 574 on volume >1.2x),
    EWY stale (hold above 194.0), MU only on a 1042.4 reclaim on volume >1.2x, MPC/VLO W4 RSI 60+.
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **XBI / AAOI (10-11 vets) - REJECTED, 3c fail.** XBI (biotech ETF, spread 0.15%) 153.77 < EMA21 155.33
+  < EMA50 156.43, RSI 46.0, bearish engulfing / shooting star at 157.47 / 152.4 earlier in the week.
+  AAOI 109.64 > EMA21 109.51 but < EMA50 111.67, ATR 8.6%, tape sold off from 119.9 to 105.9; TV "sell".
 
 - **SNOW / AMT / CCI (10-10 late PM vets, turnover lens).** SNOW passes 3c (368.89 > EMA9 343.82 > EMA21
   337.62 > EMA50 324.91; +7.4% on 2.0x vol, spread 0.27%, ATR 3.9%, earnings 12-02) but `--check SNOW 370`
