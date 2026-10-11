@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-10 Sat PM (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO vetted and rejected or parked, see Watch only).
+Updated 2026-10-10 Sat late PM (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW vetted and rejected or parked, see Watch only).
 Mandate (verified in the 10-09 review): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
@@ -66,6 +66,13 @@ which only a market-hours leg can do (no market orders in research), and no rest
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **SNOW / AMT / CCI (10-10 late PM vets, turnover lens).** SNOW passes 3c (368.89 > EMA9 343.82 > EMA21
+  337.62 > EMA50 324.91; +7.4% on 2.0x vol, spread 0.27%, ATR 3.9%, earnings 12-02) but `--check SNOW 370`
+  = `leader_10pp+` SIGNIFICANT (rs +10.26pp) + `strong_60-70` (RSI 68.8, W4) + ext 2.22 ATR: no
+  Monday entry. Only a multi-touch hold at EMA9 ~344 / support 332 with the L9 exception. AMT 182.24 > EMA21
+  169.74 but EMA21 < EMA50 170.99 (3c fail), +9.3% gap, spread 1.27% tight-size, earnings 10-27. CCI 79.64 > EMA21
+  70.79 but EMA21 < EMA50 72.98 (3c fail), RSI 71.6, +15.6% on 3.8x vol, earnings 10-21.
 
 - **KLRA / CUE / GEV / KO (10-10 PM vets).** KLRA UNTRADABLE (spread 3.25%), 11.61 < EMA21 12.07 < EMA50
   14.57. CUE 27.66 > EMA21 27.11 but < EMA50 27.91 (3c fail), +23.9% gap, ATR 13%, spread 1.15%. GEV 1004.73
