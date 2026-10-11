@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-10 Sat late PM (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW vetted and rejected or parked, see Watch only).
+Updated 2026-10-11 Sun (research; ranking unchanged from 10-09; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, ATR $0.01, spreads 51.6% / 2.75% UNTRADABLE).
 Mandate (verified in the 10-09 review): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
