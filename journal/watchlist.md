@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-11 Sun PM (research; MA/V ranking unchanged from 10-09; COHR added as #4 pullback/reclaim stalk; XBI/AAOI rejected; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, spreads 51.6% / 2.75% UNTRADABLE).
+Updated 2026-10-11 Sun late PM (research; MA/V ranking unchanged from 10-09; COHR added as #4 pullback/reclaim stalk; SMJF/SVC rejected; XBI/AAOI rejected; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, spreads 51.6% / 2.75% UNTRADABLE).
 Mandate (re-read from mandate.json 10-11 PM): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
@@ -74,6 +74,10 @@ which only a market-hours leg can do (no market orders in research), and no rest
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **SMJF / SVC (10-11 late PM vets, smallcap lens) - REJECTED.** SMJF 1.53 < EMA9 1.65 < EMA21 1.99 < EMA50
+  4.04, RSI 38.9, spread 14.19% UNTRADABLE (Sunday book, re-check live), shooting star at 1.75. SVC 7.15 > EMA21
+  6.69 but EMA21 < EMA50 7.31 (3c fail), downtrend structure, spread 3.41% UNTRADABLE, earnings 11-04.
 
 - **XBI / AAOI (10-11 vets) - REJECTED, 3c fail.** XBI (biotech ETF, spread 0.15%) 153.77 < EMA21 155.33
   < EMA50 156.43, RSI 46.0, bearish engulfing / shooting star at 157.47 / 152.4 earlier in the week.
