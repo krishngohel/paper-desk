@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-11 Sun late PM (research; MA/V ranking unchanged from 10-09; COHR added as #4 pullback/reclaim stalk; SMJF/SVC rejected; XBI/AAOI rejected; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, spreads 51.6% / 2.75% UNTRADABLE).
+Updated 2026-10-11 Sun evening (research; MA/V ranking unchanged from 10-09; COHR added as #4 pullback/reclaim stalk; CEG/BABA vetted and parked; SMJF/SVC rejected; XBI/AAOI rejected; FTXR/ENOR/CAR/DJT/KLRA/CUE/GEV/KO/AMT/CCI/SNOW/BIII/GIW vetted and rejected or parked, see Watch only; BIII/GIW are ~$10 cash shells, spreads 51.6% / 2.75% UNTRADABLE).
 Mandate (re-read from mandate.json 10-11 PM): expires_at 2026-10-12T21:40:10Z. **Monday 10-12 is the
 LAST valid session; human renewal needed.** An s6a hold (days) outlives the mandate, so any Monday
 entry must carry a resting broker stop (it keeps working after expiry) and the thesis must say so.
@@ -74,6 +74,13 @@ which only a market-hours leg can do (no market orders in research), and no rest
    DELL and EWY are untouched for 4+ sessions: they drop off at the 10-12 review unless a trigger fires.
 
 ## Watch only / rejects
+
+- **CEG / BABA (10-11 evening vets, turnover lens).** CEG 298.07 > EMA9 281.66 > EMA21 275.18 > EMA50 273.38
+  passes 3c, RSI 62.3 (`strong_60-70`, W4: 1 of 12), rs 20d +2.81pp (in line, not L9), ext 2.15 ATR, ATR 4.8%,
+  spread 0.08%, $1.25B, 95% of 20d range, resistance 305.8 / 309.8, earnings 11-09. `--check CEG 306`: no
+  SIGNIFICANT bucket, W4 context-only bad. Parked: only a >= 306.99 (prior-day high) reclaim on vol >1.2x with
+  W4 acknowledged, or a pullback to EMA9 ~282. BABA 111.37 > EMA21 110.05 but EMA21 < EMA50
+  114.63 = 3c FAIL, RSI 51.1, spread 0.29%; watch only for the EMA21/EMA50 flip. earnings 11-24.
 
 - **SMJF / SVC (10-11 late PM vets, smallcap lens) - REJECTED.** SMJF 1.53 < EMA9 1.65 < EMA21 1.99 < EMA50
   4.04, RSI 38.9, spread 14.19% UNTRADABLE (Sunday book, re-check live), shooting star at 1.75. SVC 7.15 > EMA21
