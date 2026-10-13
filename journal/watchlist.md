@@ -11,6 +11,7 @@ The next planning leg reads this FIRST.
 Updated 2026-10-13 Tue post-close (daily review): #1 rewritten. The MA/V Monday plan never ran (no relay
 legs on 10-12) and both closed off the s6a scan on 10-13. MSFT is the new #1 s6a candidate from the 10-13
 close scan. DELL/EWY dropped as stale. Everything below #1 is unchanged from the 10-11 research.
+10-13 evening research: ranking unchanged (SHOP/BMBL/JPM/AMAT vetted, all pass-on-entry; see rejects).
 Mandate: renewed by the human 10-13 midday; expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
 
 **Regime (`ta.py --market`, 10-13 close):** SPY 778.01, +0.89% vs EMA21, RSI 59.3, range/mixed.
@@ -77,6 +78,15 @@ which only a market-hours leg can do (no market orders in research), and no rest
    CIEN 405 reclaim on volume; MRNA ~205 hold/reclaim; ABBV hold ~267.5.
 
 ## Watch only / rejects
+
+- **SHOP / BMBL / JPM / AMAT (10-13 evening vets, big_leaders + social + movers).** SHOP 176.52 > EMA9 166.05 >
+  EMA21 155.76 > EMA50 147.2 passes 3c, uptrend, spread 0.59%, $1.24B, but RSI 72.9 (prior 76.7, W4
+  `overbought_70+`), ext ~3 ATR (ATR 6.67), 94.7% of 20d range, inside bar 10-13 after a 10-08 shooting
+  star, vol 0.72x, earnings 11-03: pullback to EMA9 ~166 with a multi-touch hold only. BMBL 5.95, +56.6% on
+  29x volume, RSI 90.8, structure range/mixed, 100% of range, catalyst unverified (news tools down):
+  chase, no stop level, REJECTED. JPM 331.43 < EMA21 337.76 < EMA50 346.19, RSI 37.3, earnings printed
+  10-13 (bearish engulfing at 343.31): 3c FAIL. AMAT 464.24, -6.3% gap-down below EMA21 494.7/EMA50 497.1,
+  downtrend, RSI 40.3: 3c FAIL, falling knife (support 436.3).
 
 - **CEG / BABA (10-11 evening vets, turnover lens).** CEG 298.07 > EMA9 281.66 > EMA21 275.18 > EMA50 273.38
   passes 3c, RSI 62.3 (`strong_60-70`, W4: 1 of 12), rs 20d +2.81pp (in line, not L9), ext 2.15 ATR, ATR 4.8%,
