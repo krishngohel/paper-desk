@@ -12,6 +12,12 @@ Updated 2026-10-13 Tue post-close (daily review): #1 rewritten. The MA/V Monday 
 legs on 10-12) and both closed off the s6a scan on 10-13. MSFT is the new #1 s6a candidate from the 10-13
 close scan. DELL/EWY dropped as stale. Everything below #1 is unchanged from the 10-11 research.
 10-13 evening research: ranking unchanged (SHOP/BMBL/JPM/AMAT vetted, all pass-on-entry; see rejects).
+**10-15 post-close review: EVERY level below is two sessions stale.** No session ran on 10-14 or 10-15
+(account usage limit; see journal). The MSFT 10-14-open plan in #1 is expired, not live. On 10-15 QQQ
+closed in downtrend structure (728.0, -1.41% vs EMA21) and SPY range/mixed (771.79, +0.09%). The 10-16
+planning leg must re-run `ta.py` on every name before using any trigger here. 10-15 close s6a scan:
+A 175.55 (stop 171.67, 2.21%, $298M; unvetted - needs `ta.py`, `--check`, earnings date) is the only new
+tight-stop name; MRNA 236.50 / MTD 1639.04 are L9 leaders; ABLV/BSP/MRNX carry 12-20% stop risk. MSFT dropped off.
 Mandate: renewed by the human 10-13 midday; expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
 
 **Regime (`ta.py --market`, 10-13 close):** SPY 778.01, +0.89% vs EMA21, RSI 59.3, range/mixed.
@@ -26,7 +32,8 @@ which only a market-hours leg can do (no market orders in research), and no rest
 
 ## Ranked - Wednesday 10-14 hunt
 
-1. **MSFT - s6a candidate from the 10-13 close scan (3 rising closes, 3d +3.99%).** Close 543.45 > EMA9
+1. **MSFT - s6a candidate from the 10-13 close scan (3 rising closes, 3d +3.99%). PLAN EXPIRED (10-14 open
+   never traded); re-qualify from a fresh close scan before reuse.** Close 543.45 > EMA9
    529.73 > EMA21 517.56 > EMA50 496.02 (passes 3c), structure uptrend (HH+HL), ATR 11.52 (2.13%), spread
    0.08%, $12.97B traded, vol 1.07x, rs 20d +4.81pp (`outperforming_0-10pp`, NOT L9), ext 2.38 ATR,
    100% of 20d range, no resistance above. **Cautions:** RSI 71.2 at the 10-13 close (prior 70.3), so
