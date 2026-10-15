@@ -19,6 +19,9 @@ planning leg must re-run `ta.py` on every name before using any trigger here. 10
 A 175.55 (stop 171.67, 2.21%, $298M; unvetted - needs `ta.py`, `--check`, earnings date) is the only new
 tight-stop name; MRNA 236.50 / MTD 1639.04 are L9 leaders; ABLV/BSP/MRNX carry 12-20% stop risk. MSFT dropped off.
 Mandate: renewed by the human 10-13 midday; expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
+**10-15 evening research:** A, VEEV, VSTM vetted (see rejects): A and VEEV are both `leader_10pp+` (rs 20d
++11.15 / +10.19pp) with RSI prior-close 66.4 / 67.6, so neither is a Friday-open entry without L9's written
+exception. QQQ downtrend: defensive posture, probes only, cash is acceptable. Ranking below unchanged.
 
 **Regime (`ta.py --market`, 10-13 close):** SPY 778.01, +0.89% vs EMA21, RSI 59.3, range/mixed.
 QQQ 743.57, +0.42%, RSI 54.5, range/mixed. Neutral posture, s6a first, confirmation entries only.
@@ -85,6 +88,18 @@ which only a market-hours leg can do (no market orders in research), and no rest
    CIEN 405 reclaim on volume; MRNA ~205 hold/reclaim; ABBV hold ~267.5.
 
 ## Watch only / rejects
+
+- **A / VEEV / VSTM (10-15 evening vets, scan s6a + big_leaders + movers).** A (Agilent) 175.55 > EMA9 171.73 >
+  EMA21 167.74 > EMA50 158.28 passes 3c, uptrend, 3d +2.46%, ATR 4.54 (2.7%), but `--check A 175.55` = `leader_10pp+`
+  SIGNIFICANT (rs 20d +11.15pp, 1 of 18) + RSI 66.4 prior-close (`strong_60-70`, 1 of 12), 100% of 20d range,
+  vol 0.67x (quiet continuation tape), dojis AT resistance 176.38 all last hour, spread read 1.94% after hours (stale
+  book, re-check live), earnings 11-25. s6a stop 171.67 is the sole tight stop but L9 needs a dated catalyst: none
+  found (news tools down). Pass for Friday's open unless a pullback to EMA9 ~171.7 holds on multi-touch. VEEV 313.03
+  +5.3% on 1.62x vol, RSI 74.4 live (67.6 prior), ext 3.32 ATR, rs +10.19pp = `leader_10pp+`, structure range/mixed,
+  shooting star 10-13, late-day 5m selling marubozus from the 315 high: chase, REJECTED; pullback to EMA9 ~295 only.
+  VSTM 9.23 +19.95% on 2.85x, spread 2.84% UNTRADABLE, range/mixed structure, morning star but ATR 7.9%: REJECTED.
+  Other explore[smallcap] names (BENF, HUMA, PTLE, MF, NRXS, NMRA...) are sub-$12 spikes with <$10M traded and
+  1m perf negative or one-day gaps, no checked base: no thesis.
 
 - **SHOP / BMBL / JPM / AMAT (10-13 evening vets, big_leaders + social + movers).** SHOP 176.52 > EMA9 166.05 >
   EMA21 155.76 > EMA50 147.2 passes 3c, uptrend, spread 0.59%, $1.24B, but RSI 72.9 (prior 76.7, W4
@@ -170,11 +185,11 @@ which only a market-hours leg can do (no market orders in research), and no rest
 - Macro: 10Y ~5.26%; no Fed/CPI date confirmed from on-screen data. Mandate expires 2026-10-27
   17:45Z. Renewal (ops/commit_paper_mandate.py) is a human action.
 
-## Next session (Wednesday 2026-10-14, PLANNING leg pre-market)
+## Next session (Friday 2026-10-16, PLANNING leg pre-market)
 
-Set the loss budget; re-verify `consent.expires_at`; read the gap scan; check MSFT's pre-market gap
-against #1 and enter only if the open qualifies, with the broker stop resting the same cycle; run
-`trade_context.py --check` on the actual open price first. Otherwise work the intraday stalks in #5 on
-confirmation triggers only. Run at least one fresh `ta.py` workup per leg. Book is 0 of 3-6.
+Set the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; treat every level above as
+stale and re-run `ta.py` before using one. QQQ is in downtrend, SPY range/mixed: probes only, confirmation
+triggers only, cash is acceptable. s6a candidates come from a fresh `momentum_candidates.json` (A is the only
+tight-stop name but is L9-blocked). Run `trade_context.py --check` on the actual price first. Book is 0 of 3-6.
 If the relay misses the planning leg again (as on 10-12 and the 10-13 morning), the first leg of the
 day does these duties whatever its slot name.
