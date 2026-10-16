@@ -8,24 +8,22 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-13 Tue post-close (daily review): #1 rewritten. The MA/V Monday plan never ran (no relay
-legs on 10-12) and both closed off the s6a scan on 10-13. MSFT is the new #1 s6a candidate from the 10-13
-close scan. DELL/EWY dropped as stale. Everything below #1 is unchanged from the 10-11 research.
-10-13 evening research: ranking unchanged (SHOP/BMBL/JPM/AMAT vetted, all pass-on-entry; see rejects).
-**10-15 post-close review: EVERY level below is two sessions stale.** No session ran on 10-14 or 10-15
-(account usage limit; see journal). The MSFT 10-14-open plan in #1 is expired, not live. On 10-15 QQQ
-closed in downtrend structure (728.0, -1.41% vs EMA21) and SPY range/mixed (771.79, +0.09%). The 10-16
-planning leg must re-run `ta.py` on every name before using any trigger here. 10-15 close s6a scan:
-A 175.55 (stop 171.67, 2.21%, $298M; unvetted - needs `ta.py`, `--check`, earnings date) is the only new
-tight-stop name; MRNA 236.50 / MTD 1639.04 are L9 leaders; ABLV/BSP/MRNX carry 12-20% stop risk. MSFT dropped off.
-Mandate: renewed by the human 10-13 midday; expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
-**10-15 evening research:** A, VEEV, VSTM vetted (see rejects): A and VEEV are both `leader_10pp+` (rs 20d
-+11.15 / +10.19pp) with RSI prior-close 66.4 / 67.6, so neither is a Friday-open entry without L9's written
-exception. QQQ downtrend: defensive posture, probes only, cash is acceptable. Ranking below unchanged.
+Updated 2026-10-16 Fri post-close (daily review). **Every level below #1 dates from 10-11/10-13 research
+and is stale:** no session ran a market open all week (relay/usage-limit outages, see journal). The Monday
+10-19 planning leg must re-run `ta.py` on any name before using a trigger here. The MSFT plan is expired.
+Mandate: expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
 
-**Regime (`ta.py --market`, 10-13 close):** SPY 778.01, +0.89% vs EMA21, RSI 59.3, range/mixed.
-QQQ 743.57, +0.42%, RSI 54.5, range/mixed. Neutral posture, s6a first, confirmation entries only.
-10Y ~5.26% is the tail risk. No Fed/CPI date confirmed from on-screen data.
+**10-16 close s6a scan (`momentum_candidates.json`), vetted in the review - no clean Monday-open entry:**
+- LMT 552.09: fails 3c (EMA21 522.06 < EMA50 543.25) and earnings 10-22 (inside the 2-day window). Pass.
+- CASY 689.22: fails 3c (EMA21 647.0 < EMA50 713.55). Pass.
+- TJX 147.33 / CBOE 314.98: `leader_10pp+` SIGNIFICANT (rs +13.04 / +14.32pp), TJX RSI 71.1 and 3.57 ATR
+  above EMA20, CBOE RSI 64.0 (`strong_60-70`). No dated catalyst on screen, so no L9 exception. Pass.
+- ACN 229.68, RSPS: not vetted. SOXS/SQQQ/QID/SNDQ are inverse/leveraged ETFs riding the QQQ downtrend
+  (stop risk 5-12%); NCPL/IREZ/MWYN carry 15-21% stop risk. Monday's leg vets ACN first if it wants an s6a name.
+
+**Regime (`ta.py --market`, 10-16 close):** SPY 763.25, -0.93% vs EMA21, RSI 44.3, downtrend. QQQ 709.8,
+-3.53%, RSI 35.5, downtrend. Defensive posture (playbook §1/§11): probes only in the most resilient names,
+or cash. No Fed/CPI date confirmed from on-screen data.
 
 ## Standing orders
 
