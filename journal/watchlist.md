@@ -8,186 +8,95 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-16 Fri post-close (daily review). **Every level below #1 dates from 10-11/10-13 research
-and is stale:** no session ran a market open all week (relay/usage-limit outages, see journal). The Monday
-10-19 planning leg must re-run `ta.py` on any name before using a trigger here. The MSFT plan is expired.
-Mandate: expires_at 2026-10-27T17:45:52Z (re-verify each planning leg).
-
-**10-16 close s6a scan (`momentum_candidates.json`), vetted in the review - no clean Monday-open entry:**
-- LMT 552.09: fails 3c (EMA21 522.06 < EMA50 543.25) and earnings 10-22 (inside the 2-day window). Pass.
-- CASY 689.22: fails 3c (EMA21 647.0 < EMA50 713.55). Pass.
-- TJX 147.33 / CBOE 314.98: `leader_10pp+` SIGNIFICANT (rs +13.04 / +14.32pp), TJX RSI 71.1 and 3.57 ATR
-  above EMA20, CBOE RSI 64.0 (`strong_60-70`). No dated catalyst on screen, so no L9 exception. Pass.
-- ACN 229.68, RSPS: not vetted. SOXS/SQQQ/QID/SNDQ are inverse/leveraged ETFs riding the QQQ downtrend
-  (stop risk 5-12%); NCPL/IREZ/MWYN carry 15-21% stop risk. Monday's leg vets ACN first if it wants an s6a name.
+Updated 2026-10-16 Fri evening (research). Levels below were re-run with `ta.py` on the 10-16 close; anything
+not marked "10-16" is older and stale (no session ran a market open all week, see journal). Mandate:
+expires_at 2026-10-27T17:45:52Z (re-verify each planning leg; renewal is a human action).
 
 **Regime (`ta.py --market`, 10-16 close):** SPY 763.25, -0.93% vs EMA21, RSI 44.3, downtrend. QQQ 709.8,
--3.53%, RSI 35.5, downtrend. Defensive posture (playbook §1/§11): probes only in the most resilient names,
-or cash. No Fed/CPI date confirmed from on-screen data.
+-3.53%, RSI 35.5, downtrend. Tape sold off hard Friday (MU -5.6%, AMD -6.0%, SOXL -12.7%, INTC -5.8%, SNDK -6.9%).
+Defensive posture (playbook §1/§11): probes only in the most resilient names, or cash. No Fed/CPI date confirmed.
+MCP servers: `alpaca-paper` connected, `vibe-research` timed out; no news cross-check this session.
 
 ## Standing orders
 
-0 live orders, 0 armed triggers. Book flat (0 of 3-6). Nothing staged: s6a enters at the NEXT OPEN,
-which only a market-hours leg can do (no market orders in research), and no resting rung beats the
-`anticipatory_limit` record (6 closed, 33% wins, -$66/trade).
+0 live orders, 0 armed triggers. Book flat (0 of 3-6). Nothing staged: no resting rung beats the
+`anticipatory_limit` record (6 closed, 33% wins, -$66/trade) in a downtrend tape, and s6a enters at the next
+open, which only a market-hours leg can do.
 
-## Ranked - Wednesday 10-14 hunt
+## Ranked - Monday 10-19 hunt (all stalks are PULLBACK holds; nothing qualifies at Friday's price)
 
-1. **MSFT - s6a candidate from the 10-13 close scan (3 rising closes, 3d +3.99%). PLAN EXPIRED (10-14 open
-   never traded); re-qualify from a fresh close scan before reuse.** Close 543.45 > EMA9
-   529.73 > EMA21 517.56 > EMA50 496.02 (passes 3c), structure uptrend (HH+HL), ATR 11.52 (2.13%), spread
-   0.08%, $12.97B traded, vol 1.07x, rs 20d +4.81pp (`outperforming_0-10pp`, NOT L9), ext 2.38 ATR,
-   100% of 20d range, no resistance above. **Cautions:** RSI 71.2 at the 10-13 close (prior 70.3), so
-   a 10-14 entry sits in `overbought_70+` (0 of 3) / W4 territory (RSI 60+ is 1 of 15, p 0.012, not
-   significant). The 10-13 daily candle was a shooting star rejecting 551.15, and the close was below
-   VWAP 546.15. `--check MSFT 543.45` (10-13 PM): no SIGNIFICANT bucket; good: outperforming_0-10pp; context-only
-   bads: market-up 3 of 18, strong_60-70, gap flat. Prior MSFT trade lost $72.94; look it up and name
-   what is different before entry (playbook §11). earnings 10-28.
-   - **Plan (planning leg/open slot):** an s6a market entry at the 10-14 open ONLY if the open is within
-     +-0.7% of 543.45 AND the first 5m bars hold above 542.5 (10-13 low 542.55). An open above 551.15
-     (the shooting-star high) = chasing, so pass. Re-run `--check` at the real open. Probe C (W4 +
-     shooting star): s6a launch-low stop 535.70 (the 10-12 low, ~0.67 ATR below, room is thin), risk
-     $100 / ((543.5-535.7) x 1.7 = 13.3) = 7.5, so 5 sh (~$2.7k, trimmed for the overbought bucket). No
-     numeric target; rest `sell 5 --stop 535.70 --gtc`. Archetype `momentum_s6a`, mechanism `market`.
-     Kill: two consecutive lower closes, or a close below EMA21 517.56. Exit/cut by 10-26 (earnings 10-28).
-   - **MA / V (the 10-09 plan):** dead. The 10-12 open was never traded (relay outage). On 10-13 they
-     sat ~2 ATR extended (MA 602, V 392 intraday), and neither is on the 10-13 close scan. Pullback-hold
-     stalks only: MA 588.1-580.9, V 378.5, with vol >1.2x.
-   - **MTD (10-13 scan):** close 1598.03, s6a stop 1549.78 (3.0%), but rs 20d +19.3pp is `leader_10pp+`
-     (SIGNIFICANT, 1 of 18), RSI 68.1 (W4), ext 2.55 ATR. Pass unless L9's written exception has a dated
-     catalyst. The rest of the 10-13 scan (TCRT/ELOG/JYD/PDSB/YHC with 13-75% stop risk, HLP/PUL under
-     $1M traded, P at RSI 80, CJUN a buffer ETF) is spike or illiquid. No thesis.
-2. **MRNA (new 10-09 vet, big_leaders lens) - catalyst-driven, BLOCKED by L9 + W4 + extension.**
-   +14.1% to 225.00 (52-wk high; marubozu) on the NIH personalised-cancer-vaccine initiative (Benzinga/NYT
-   10-09) plus Nasdaq-100 inclusion - a dated catalyst, but a one-day pop. close 225 > EMA9 198.9 >
-   EMA21 182.5 > EMA50 139.3, RSI 72.1 live (63.8 prior close = `strong_60-70`, 1 of 12), rs 20d
-   +42pp (`leader_10pp+` SIGNIFICANT, 1 of 18), ext 3.19 ATR, ATR 15.17 (6.7%), spread 0.05%, $6.2B
-   traded, vol 1.7x, 5m closed in shooting star/inside bars at 225.0, no overhead resistance. Not a
-   Monday-open candidate. L9 exception would need a pullback that resets the base: **trigger only a
-   multi-touch hold at the opening-range low ~206.7 / EMA9 ~199 on volume >1.2x.** Stop under 193, ~4 sh.
-   Kill: close below EMA21 182.5. next_earnings 11-05.
-3. **ABBV (10-04 vet, still valid).** Close 276.47 (10-09 scan) > EMA21; earlier legs waited on a
-   pullback to ~268. `--check ABBV` before arming; prior-close RSI sat in W4's 60-70 zone this week,
-   so only a pullback entry. Probe: stop ~259.9. Kill: close below EMA21. earnings 10-30.
-4. **ZS (~210.7 pullback) / CIEN (~410 pullback)** - the existing Friday stalks; L9 leaders. Trigger
-   only a multi-touch hold at those levels with the written exception; spreads were wide intraday
-   (ZS 2.6%, CIEN 6.8% at points), so re-check tradability first. ZS earnings 11-24.
-   **COHR (10-11 vet, turnover lens) - confirmation stalk, no Monday-open entry.** Close 312.62 > EMA21
-   308.44 > EMA50 302.84 (passes 3c), but below EMA9 316.02, structure range/mixed, RSI 51.9, rs 20d
-   +0.5pp (in line, NOT L9), ATR 22.0 (7.0%), spread 0.25%, $2.5B traded, vol 1.15x, hammer at 309.19 on
-   10-07, earnings 11-04. `--check COHR 316`: no SIGNIFICANT bucket; goods neutral_45-60 (suggestive),
-   outperforming_0-10pp. **Trigger: armed buy >= 316.0 (EMA9 / resistance 315.7 reclaim) only if the
-   5m tape shows vol >1.2x and price above VWAP.** Probe B/C: stop 294 (1 ATR), target ~371 (2.5 ATR),
-   risk $100 / (22 x 1.7) = 2.7 -> 2 sh. Kill: close below EMA21 308.44. Not armed (research, no
-   conditional beats the anticipatory record without the live tape).
-5. **MU / MPC / VLO.** MU only on a 1042.4 reclaim on volume >1.2x; MPC/VLO W4 RSI 60+. (DELL/EWY
-   dropped 10-13: no trigger in 4+ sessions, no fresh catalyst.)
-   Intraday stalks from 10-13 legs: SNOW VWAP ~360 reclaim then 370.55 on vol >1.0x; ZS hold ~218;
-   CIEN 405 reclaim on volume; MRNA ~205 hold/reclaim; ABBV hold ~267.5.
+1. **ABBV (10-16 re-vet).** Close 285.42 > EMA9 277.92 > EMA21 271.54 > EMA50 264.08 (passes 3c), uptrend
+   (HH+HL), rs 20d in line (+1.73pp today; `--check` not yet run, run it at the real price), ATR 6.43 (2.3%),
+   $1.65B traded, vol 1.16x, 100% of 20d range, no resistance above (high 291.4 on 10-13). Cautions: RSI 70.5
+   live (69.0 prior = `strong_60-70`, 1 of 12; W4), bearish engulfing 10-13 then an inside bar, spread read
+   1.69% after hours (stale book, re-check live), earnings 10-30 (time_stop must be <= 10-28). **Trigger: only
+   a multi-touch hold of EMA9 ~278 (5m bars stop making new lows, vol dries up on the dip) then a reclaim of
+   VWAP, OR a clean break of 291.4 on vol >1.2x with the 5m tape above VWAP.** Probe B/C, risk $100 /
+   ((entry - 1 ATR) x 1.7); at 278 entry, stop ~271.0 (EMA21), 100 / (7 x 1.7) = 8 sh. Target ~295. Kill:
+   close below EMA21 271.54. Mechanism `confirmation_trigger`.
+2. **ACN (10-16 vet, from the s6a scan).** Close 229.68 > EMA9 213.84 > EMA21 202.61 > EMA50 190.40 (passes
+   3c), uptrend, spread 0.37%, $1.7B traded, vol 0.93x, 100% of range, no resistance above, next_earnings
+   12-17. Blocked as an entry now: `--check ACN 229.68` = `leader_10pp+` SIGNIFICANT (rs 20d +16.99pp, 1 of
+   18), RSI 70.6 prior (`overbought_70+`, 0 of 3), ext 3.28 ATR (`extended_2.5atr+`, 14.3% wins), +18.2% in 20
+   days, no dated catalyst on screen (news tools down). The shooting-star-free hammer at 223.96 held on 10-16
+   (prior day high 227.86 / low 216.27). **Trigger: only a pullback that resets the base - multi-touch hold at
+   216.3 (10-15 low) with vol >1.2x, written L9 exception naming the catalyst.** Stop under 212 (EMA9), ~5
+   sh. Kill: close below EMA9 213.84.
+3. **CDNS (10-16 vet): FAILS 3c now** (319.51 < EMA9 333.93, EMA21 330.65 > EMA50 326.05 but close under both
+   short EMAs), downtrend (LH+LL), spread 1.63%, earnings 10-26 inside the window. Watch only: reclaim of
+   EMA21 ~330.7 on volume after earnings, not before.
+4. **MSFT (10-13 s6a plan, expired).** 529.05 now, -1.93% on the day, RSI cooled from 71. Re-qualify from a
+   fresh close scan; earnings 10-28. Prior MSFT trade lost $72.94 (look it up before reuse).
 
 ## Watch only / rejects
 
-- **A / VEEV / VSTM (10-15 evening vets, scan s6a + big_leaders + movers).** A (Agilent) 175.55 > EMA9 171.73 >
-  EMA21 167.74 > EMA50 158.28 passes 3c, uptrend, 3d +2.46%, ATR 4.54 (2.7%), but `--check A 175.55` = `leader_10pp+`
-  SIGNIFICANT (rs 20d +11.15pp, 1 of 18) + RSI 66.4 prior-close (`strong_60-70`, 1 of 12), 100% of 20d range,
-  vol 0.67x (quiet continuation tape), dojis AT resistance 176.38 all last hour, spread read 1.94% after hours (stale
-  book, re-check live), earnings 11-25. s6a stop 171.67 is the sole tight stop but L9 needs a dated catalyst: none
-  found (news tools down). Pass for Friday's open unless a pullback to EMA9 ~171.7 holds on multi-touch. VEEV 313.03
-  +5.3% on 1.62x vol, RSI 74.4 live (67.6 prior), ext 3.32 ATR, rs +10.19pp = `leader_10pp+`, structure range/mixed,
-  shooting star 10-13, late-day 5m selling marubozus from the 315 high: chase, REJECTED; pullback to EMA9 ~295 only.
-  VSTM 9.23 +19.95% on 2.85x, spread 2.84% UNTRADABLE, range/mixed structure, morning star but ATR 7.9%: REJECTED.
-  Other explore[smallcap] names (BENF, HUMA, PTLE, MF, NRXS, NMRA...) are sub-$12 spikes with <$10M traded and
-  1m perf negative or one-day gaps, no checked base: no thesis.
-
-- **SHOP / BMBL / JPM / AMAT (10-13 evening vets, big_leaders + social + movers).** SHOP 176.52 > EMA9 166.05 >
-  EMA21 155.76 > EMA50 147.2 passes 3c, uptrend, spread 0.59%, $1.24B, but RSI 72.9 (prior 76.7, W4
-  `overbought_70+`), ext ~3 ATR (ATR 6.67), 94.7% of 20d range, inside bar 10-13 after a 10-08 shooting
-  star, vol 0.72x, earnings 11-03: pullback to EMA9 ~166 with a multi-touch hold only. BMBL 5.95, +56.6% on
-  29x volume, RSI 90.8, structure range/mixed, 100% of range, catalyst unverified (news tools down):
-  chase, no stop level, REJECTED. JPM 331.43 < EMA21 337.76 < EMA50 346.19, RSI 37.3, earnings printed
-  10-13 (bearish engulfing at 343.31): 3c FAIL. AMAT 464.24, -6.3% gap-down below EMA21 494.7/EMA50 497.1,
-  downtrend, RSI 40.3: 3c FAIL, falling knife (support 436.3).
-
-- **CEG / BABA (10-11 evening vets, turnover lens).** CEG 298.07 > EMA9 281.66 > EMA21 275.18 > EMA50 273.38
-  passes 3c, RSI 62.3 (`strong_60-70`, W4: 1 of 12), rs 20d +2.81pp (in line, not L9), ext 2.15 ATR, ATR 4.8%,
-  spread 0.08%, $1.25B, 95% of 20d range, resistance 305.8 / 309.8, earnings 11-09. `--check CEG 306`: no
-  SIGNIFICANT bucket, W4 context-only bad. Parked: only a >= 306.99 (prior-day high) reclaim on vol >1.2x with
-  W4 acknowledged, or a pullback to EMA9 ~282. BABA 111.37 > EMA21 110.05 but EMA21 < EMA50
-  114.63 = 3c FAIL, RSI 51.1, spread 0.29%; watch only for the EMA21/EMA50 flip. earnings 11-24.
-
-- **SMJF / SVC (10-11 late PM vets, smallcap lens) - REJECTED.** SMJF 1.53 < EMA9 1.65 < EMA21 1.99 < EMA50
-  4.04, RSI 38.9, spread 14.19% UNTRADABLE (Sunday book, re-check live), shooting star at 1.75. SVC 7.15 > EMA21
-  6.69 but EMA21 < EMA50 7.31 (3c fail), downtrend structure, spread 3.41% UNTRADABLE, earnings 11-04.
-
-- **XBI / AAOI (10-11 vets) - REJECTED, 3c fail.** XBI (biotech ETF, spread 0.15%) 153.77 < EMA21 155.33
-  < EMA50 156.43, RSI 46.0, bearish engulfing / shooting star at 157.47 / 152.4 earlier in the week.
-  AAOI 109.64 > EMA21 109.51 but < EMA50 111.67, ATR 8.6%, tape sold off from 119.9 to 105.9; TV "sell".
-
-- **SNOW / AMT / CCI (10-10 late PM vets, turnover lens).** SNOW passes 3c (368.89 > EMA9 343.82 > EMA21
-  337.62 > EMA50 324.91; +7.4% on 2.0x vol, spread 0.27%, ATR 3.9%, earnings 12-02) but `--check SNOW 370`
-  = `leader_10pp+` SIGNIFICANT (rs +10.26pp) + `strong_60-70` (RSI 68.8, W4) + ext 2.22 ATR: no
-  Monday entry. Only a multi-touch hold at EMA9 ~344 / support 332 with the L9 exception. AMT 182.24 > EMA21
-  169.74 but EMA21 < EMA50 170.99 (3c fail), +9.3% gap, spread 1.27% tight-size, earnings 10-27. CCI 79.64 > EMA21
-  70.79 but EMA21 < EMA50 72.98 (3c fail), RSI 71.6, +15.6% on 3.8x vol, earnings 10-21.
-
-- **KLRA / CUE / GEV / KO (10-10 PM vets).** KLRA UNTRADABLE (spread 3.25%), 11.61 < EMA21 12.07 < EMA50
-  14.57. CUE 27.66 > EMA21 27.11 but < EMA50 27.91 (3c fail), +23.9% gap, ATR 13%, spread 1.15%. GEV 1004.73
-  > EMA21 972.96 but EMA21 < EMA50 977.92 (3c fail by 5 pts; flips on a close ~+1%), vol 0.49x, earnings 10-28.
-  KO 88.05 > EMA21 87.27 > EMA50 87.21 passes 3c by 0.07 (bunched), RSI 54.8, ATR 1.5%, vol 0.65x (quiet),
-  rs -0.22pp, earnings 10-27: a low-vol drifter with no catalyst, no trigger; revisit only on a volume
-  reclaim of 89.36.
-
-- **FTXR / ENOR / CAR / DJT (10-10 vets) - all REJECTED, 3c fail.** FTXR (relvol lens, a fund) 41.53 < EMA21
-  41.95 < EMA50 43.15, RSI 42.5. ENOR 35.36 < EMA21 35.69 > EMA50 35.58 mixed, RSI 43.2; Saturday quote
-  spread 37.6% is stale-book noise, re-check Monday. CAR 105.98 < EMA21 113.71 < EMA50 128.3, RSI 35.8,
-  bearish engulfing. DJT 8.11 < EMA21 8.76 < EMA50 9.01, RSI 34.7, 0.0% of 20d range. Falling knives.
-
-- **P (new 10-09 vet, big_leaders lens) - REJECTED.** Close 154.49, RSI 81.5 (prior 80.0), +52.6% 1m
-  (L9 leader), ext far above EMA21 128.9, shooting star 10-08 at 157.05, vol 0.49x; no `--check` needed.
-  Only a pullback toward EMA9 ~143 with a multi-touch hold. next_earnings 12-01.
-- **QSI (new 10-09 vet, explore lens) - REJECTED.** 1.53, +23.8% on rel vol ~5x, sub-$2 company-announced
-  19-of-20 amino-acid milestone (a development-stage claim), 1m +101%, RSI 70.6, repeated dojis and
-  selling marubozus AT 1.55 resistance, VWAP 1.58 above the close (closed below VWAP), spread 0.66%
-  TRADABLE. 3c technically passes (1.53 > 1.08 > 0.93) but a 24% gap-and-fade at resistance with a
-  $0.16 ATR has no placeable stop with room. Watch for a 1.09-1.25 hold. next_earnings 11-05.
-- **WMT (new 10-09 vet) - 3c FAIL:** close 111.35 > EMA21 107.63 but EMA21 < EMA50 108.66; vol 0.52x.
-  Watch for the EMA21/EMA50 flip. earnings 11-19.
-- **PTC (10-08 vet) - passes the literal s6a scan, REJECTED.** RSI 80.7, L9 leader, s6a launch-low stop
-  0.41% from entry sits inside the noise of a 3.6% ATR name. Pullback to EMA9 ~171.8 only.
-- **DDOG** - passes 3c but RSI 64.6 (W4), L9 leader, bearish engulfing / shooting star AT resistance 280.7.
-  Needs a clean close above 281.25 on volume >1.2x with the L9 exception, else a pullback to EMA9.
-- **SNPS** - passes 3c, extended (RSI 72.1, shooting star at 511.95). Pullback to EMA9 ~476 only.
-- **AAPL** - the 10-09 s6a plan died: gap and open broke the 338.5 hold condition, and the close was
-  -1.11% on the day. The 10-08 close is no longer the launch; no s6a until three fresh rising closes.
-  next_earnings 11-02.
-- **Scan names without a thesis (10-09):** WFF (+499%, rel vol 277x), VEEA (+47%), ZYBT, PDSB, MRNX,
-  KOD, NAUT, OFAL, SVC, DNA: spike lenses, no checked base. SXTC (-56.7%), DKI (-54%), MLEC: spike-and-
-  collapse. Biotech names moving with the MRNA/NIH news (BNTX, NVAX, PCVX) are sympathy plays, not vetted.
-- **STX / WDC:** below EMA21 after the 10-02 HDD scare - falling knife until a higher low forms.
-- **3c FAILS / EMA21 < EMA50 (pass until they flip):** TXN, KLAC, RKLB (closest), CSCO (closest),
-  GOOG, AMZN, LLY, NOW, ORCL, AVGO, GE, SCKT, WMT.
-- **L9-blocked leaders (need a pullback + written exception):** META (earnings 10-28), LITE, HPE, TER
-  (earnings 10-21), ENTG (spread 1.83%), ADI, INTC, NTRA, BE, ARM, TWLO, ILMN, MSTR, MRVL, AMD, NVDA,
-  CRWD, OKTA, RBRK, CRDO.
-- **UNTRADABLE:** REBN (spread 2.80%), PS (5.93%).
-- **Older rejects, unchanged:** NU, FICO, TTD, APLD, NVTS, APP, SMMT, SHMD, JD, TOST, CELH, SEDG, F,
-  SUIL, AKAM, MCHP, ON, AMBA, BYD, XPEV, NCPL, VST, DASH, SMCI, HUM, OPEN, NBIS, XOM, UPST, VKTX,
-  SOFI, CRCL, RIOT/CLSK/HOOD/MARA, LRCX, IREN, SMTC, MSFT, NTAP, SYNA, CTVA (spin-off distortion),
-  NXL (halt risk).
+- **IAM (10-16 vet, movers/explore) - REJECTED.** +25.9% to 23.81 (day high 25.0, low 21.6), only 2 daily bars
+  (new listing): no EMA21/EMA50, so 3c cannot be evaluated and `key_levels` is empty; spread 1.93%
+  (TRADABLE_TIGHT_SIZE), $67M traded, no earnings date, no catalyst checked. No stop level to place.
+- **COHR (dropped, was #4):** collapsed 312 -> 232.9 (-7.4% Friday, gap -6.1%), downtrend, RSI 33.8, under all EMAs,
+  strong_sell. Falling knife; support 220.68 only. The 316 reclaim plan is dead.
+- **CEG (dropped, was a parked reclaim):** 271.37 < EMA9 280.71 and EMA21 277.73, range/mixed, RSI 46.9; the
+  306 reclaim plan is dead. Support 269.53 was defended 5+ times intraday Friday (dojis AT SUPPORT) but
+  structure is not an uptrend: no entry.
+- **S (SentinelOne, social idea) - REJECTED.** 21.58 < EMA9 23.75 and EMA21 23.71 (> EMA50 22.47), -7.5% on 1.65x,
+  bearish engulfing AT resistance 23.95, RSI 40.6, 0.0% of 20d range. Falling knife.
+- **CBRS (social idea) - REJECTED.** 127.21, -10.9% on 1.28x, EMA9 151 < EMA21 168 < EMA50 186, RSI 27.0,
+  downtrend, no support below. Falling knife, earnings 11-10.
+- **ILMN - UNTRADABLE** (spread 4.70%), downtrend. **A / VEEV / VSTM (10-15 vets):** A and VEEV are
+  `leader_10pp+`; A only on a pullback to EMA9 ~171.7 with multi-touch (earnings 11-25); VEEV chase (RSI 74),
+  pullback to ~295 only; VSTM spread 2.84% UNTRADABLE.
+- **LMT / CASY (10-16 s6a scan):** EMA21 < EMA50, 3c fail. **TJX / CBOE:** `leader_10pp+` SIGNIFICANT, no
+  catalyst. The rest of the 10-16 s6a list: inverse/leveraged ETFs (SOXS, SQQQ, QID, SNDQ) and 15-21%
+  stop-risk spikes (NCPL, IREZ, MWYN).
+- **MRNA / SHOP / SNOW / MTD / P / PTC / DDOG / SNPS (L9 leaders, pullback only).** MRNA 218.01 (-7.8% Friday),
+  SHOP 169.52 (-4.8%), P 124.01 (-7.0%): all gave back part of their run; re-run `ta.py` and `--check` before
+  any use. A trigger needs a multi-touch hold at EMA9 plus the written L9 exception. Earnings: SHOP 11-03,
+  MRNA/DDOG 11-05, SNPS 12-09, PTC 11-11.
+- **Explore[smallcap] 10-16:** SEED, SGRX, XELB, RUBI, ACTU, POAS, UPLD, XHG, MRNO, FVN, ETS, RTSN are sub-$15
+  spikes with <$10M traded (SGRX/RUBI are sub-$1 with 20x+ relvol); TCRT 2.63 (+86% 1m, $84M) a spike. No base,
+  no stop with room. Not vetted further.
+- **3c FAILS / EMA21 < EMA50 (pass until they flip):** TXN, KLAC, RKLB, CSCO, GOOG, AMZN, LLY, NOW, ORCL, AVGO,
+  GE, SCKT, WMT, BABA, GEV, AMT, CCI, CUE, XBI, AAOI, JPM, AMAT.
+- **L9-blocked leaders (need a pullback + written exception):** META (earnings 10-28), LITE, HPE, TER (10-21),
+  ENTG, ADI, INTC, NTRA, BE, ARM, TWLO, MSTR, MRVL, AMD, NVDA, CRWD, OKTA, RBRK, CRDO, ZS, CIEN.
+- **UNTRADABLE:** REBN (2.80%), PS (5.93%), ILMN (4.70%), SMJF, KLRA, VSTM.
+- **Older rejects, unchanged:** NU, FICO, TTD, APLD, NVTS, APP, SMMT, SHMD, JD, TOST, CELH, SEDG, F, SUIL, AKAM,
+  MCHP, ON, AMBA, BYD, XPEV, NCPL, VST, DASH, SMCI, HUM, OPEN, NBIS, XOM, UPST, VKTX, SOFI, CRCL,
+  RIOT/CLSK/HOOD/MARA, LRCX, IREN, SMTC, NTAP, SYNA, CTVA, NXL, QSI, STX/WDC, AAPL, SVC, KO, DJT, CAR, ENOR, FTXR.
 
 ## Macro calendar
 
-- Earnings: TER 10-21, INTC/VLO 10-22, V 10-27, STX/BE 10-27, MSFT/GOOGL/NOW/META 10-28, MA/ENTG 10-29,
-  ABBV 10-30, AAPL 11-02, PLTR 11-02, MPC/SPCX/CTVA 11-03, QCOM/FICO 11-04, DDOG/NTRA/TXG/MRNA/QSI 11-05,
-  PTC 11-11, WMT 11-19, ZS 11-24, DELL 11-27, CRWD 12-01, P 12-01, HPE 12-03, SNPS 12-09, MU 12-23.
-- Macro: 10Y ~5.26%; no Fed/CPI date confirmed from on-screen data. Mandate expires 2026-10-27
-  17:45Z. Renewal (ops/commit_paper_mandate.py) is a human action.
+- Earnings: TER 10-21, INTC/VLO 10-22, LMT 10-22, CDNS 10-26, V 10-27, STX/BE 10-27, MSFT/GOOGL/NOW/META/ILMN
+  10-28/10-29, MA/ENTG 10-29, ABBV 10-30, AAPL/PLTR 11-02, SHOP/MPC/SPCX/CTVA 11-03, COHR/QCOM/FICO 11-04,
+  DDOG/NTRA/TXG/MRNA/QSI 11-05, CEG 11-09, CBRS 11-10, PTC 11-11, WMT 11-19, ZS/A 11-24/11-25, DELL 11-27,
+  CRWD/P 12-01, S/HPE 12-03, SNPS 12-09, ACN 12-17, MU 12-23.
+- Macro: no Fed/CPI date confirmed from on-screen data. Mandate expires 2026-10-27 17:45Z; renewal
+  (`ops/commit_paper_mandate.py`) is a human action.
 
-## Next session (Friday 2026-10-16, PLANNING leg pre-market)
+## Next session (Monday 2026-10-19, PLANNING leg pre-market)
 
-Set the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; treat every level above as
-stale and re-run `ta.py` before using one. QQQ is in downtrend, SPY range/mixed: probes only, confirmation
-triggers only, cash is acceptable. s6a candidates come from a fresh `momentum_candidates.json` (A is the only
-tight-stop name but is L9-blocked). Run `trade_context.py --check` on the actual price first. Book is 0 of 3-6.
-If the relay misses the planning leg again (as on 10-12 and the 10-13 morning), the first leg of the
-day does these duties whatever its slot name.
+Write the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; re-run `ta.py` on ABBV/ACN before
+using any level here. Both indexes are in downtrend: probes or cash, confirmation triggers only, cash is
+acceptable. Run `ops\momentum_scan.py` at the open slot only (s6a never intraday); no clean s6a name qualified
+at the 10-16 close. If the relay misses the planning leg, the first leg of the day does these duties whatever its
+slot name. W7 discard is due at Tuesday's review.
