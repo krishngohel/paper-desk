@@ -65,6 +65,10 @@ open, which only a market-hours leg can do.
   support 83.72 held, earnings 2027-01-14: revisit if EMA21 crosses above EMA50. NEM 118.6: passes 3c on EMAs
   (EMA21 117.55 > EMA50 117.17) but structure range/mixed, five dojis at resistance 119.05, earnings 10-22
   inside the window: no entry.
+- **SITC / TCRT (10-17 evening vets, explore[smallcap]) - REJECTED, fail 3c.** SITC 3.43 (+14.95% gap on 5.96x):
+  EMA21 3.14 < EMA50 3.18, structure downtrend (LH+LL), spread 2.03% TIGHT_SIZE, earnings 11-05. TCRT 2.63
+  (+15.1%, $85M traded, spread 0.40%): EMA21 1.51 < EMA50 1.60, range/mixed, sellers rejected 2.58 in the last hour,
+  resistance 4.4. Both are one-day spikes off a base below their EMAs.
 - **Explore[relvol] 10-17:** SUPP, NSEP, RSPS, RSPF, SSS are thin ETFs (rel_volume artifacts, flat price);
   SGRX 0.87 sub-$1 spike. Nothing to vet.
 - **IAM (10-16 vet, movers/explore) - REJECTED.** +25.9% to 23.81 (day high 25.0, low 21.6), only 2 daily bars
