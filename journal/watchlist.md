@@ -8,9 +8,9 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-16 Fri evening (research). Levels below were re-run with `ta.py` on the 10-16 close; anything
-not marked "10-16" is older and stale (no session ran a market open all week, see journal). Mandate:
-expires_at 2026-10-27T17:45:52Z (re-verify each planning leg; renewal is a human action).
+Updated 2026-10-17 Sat (research). Levels below were re-run with `ta.py` on the 10-16 close (markets closed
+since); anything not marked "10-16" is older and stale. Mandate: expires_at 2026-10-27T17:45:52Z
+(re-verify each planning leg; renewal is a human action).
 
 **Regime (`ta.py --market`, 10-16 close):** SPY 763.25, -0.93% vs EMA21, RSI 44.3, downtrend. QQQ 709.8,
 -3.53%, RSI 35.5, downtrend. Tape sold off hard Friday (MU -5.6%, AMD -6.0%, SOXL -12.7%, INTC -5.8%, SNDK -6.9%).
@@ -25,6 +25,16 @@ open, which only a market-hours leg can do.
 
 ## Ranked - Monday 10-19 hunt (all stalks are PULLBACK holds; nothing qualifies at Friday's price)
 
+0. **XLE (10-17 vet, social idea; new).** Close 68.24 > EMA9 66.14 > EMA21 64.82 > EMA50 63.34 (passes 3c),
+   uptrend (HH+HL), +2.54% Friday with SPY -1.1% (rs_vs_spy 3.9pp; 20d rs +5.91pp = `outperforming_0-10pp`,
+   5 of 11, +$626), spread 0.07%, $2.5B traded, vol 1.16x, 100% of 20d range, no resistance above, ATR 1.32
+   (1.9%). Marubozu close after a 10-15 bearish engulfing. Cautions: `--check XLE 68.24` prior RSI 68.7
+   (`strong_60-70` 1 of 12, W4), ext 2.54 ATR (`extended_2.5atr+` 14.3% wins, n=14), no dated catalyst on screen
+   (news tools down); no earnings (ETF). Not a chase at 68.24. **Trigger: pullback that holds EMA9 ~66.1 (multi-
+   touch on 5m, vol dries up on the dip) then reclaims VWAP; OR a break above Friday's high 68.33 that holds
+   with the 5m tape above VWAP and day vol >1.2x AND the first hour does not fade the gap.** Probe B/C,
+   `confirmation_trigger`. At a 66.3 entry: stop ~64.8 (EMA21 / 1 ATR), risk $100 / (1.5 x 1.7) = ~39 sh; target
+   ~70.3 (2.5 ATR). Kill: close below EMA21 64.82.
 1. **ABBV (10-16 re-vet).** Close 285.42 > EMA9 277.92 > EMA21 271.54 > EMA50 264.08 (passes 3c), uptrend
    (HH+HL), rs 20d in line (+1.73pp today; `--check` not yet run, run it at the real price), ATR 6.43 (2.3%),
    $1.65B traded, vol 1.16x, 100% of 20d range, no resistance above (high 291.4 on 10-13). Cautions: RSI 70.5
@@ -50,6 +60,13 @@ open, which only a market-hours leg can do.
 
 ## Watch only / rejects
 
+- **KHC / WFC / NEM (10-17 vets from social trending).** KHC 23.68: EMA21 23.14 < EMA50 24.19, fails 3c
+  (shooting star 23.64, earnings 11-04). WFC 83.87: EMA21 82.84 < EMA50 84.83, range/mixed, fails 3c; doji at
+  support 83.72 held, earnings 2027-01-14: revisit if EMA21 crosses above EMA50. NEM 118.6: passes 3c on EMAs
+  (EMA21 117.55 > EMA50 117.17) but structure range/mixed, five dojis at resistance 119.05, earnings 10-22
+  inside the window: no entry.
+- **Explore[relvol] 10-17:** SUPP, NSEP, RSPS, RSPF, SSS are thin ETFs (rel_volume artifacts, flat price);
+  SGRX 0.87 sub-$1 spike. Nothing to vet.
 - **IAM (10-16 vet, movers/explore) - REJECTED.** +25.9% to 23.81 (day high 25.0, low 21.6), only 2 daily bars
   (new listing): no EMA21/EMA50, so 3c cannot be evaluated and `key_levels` is empty; spread 1.93%
   (TRADABLE_TIGHT_SIZE), $67M traded, no earnings date, no catalyst checked. No stop level to place.
@@ -95,7 +112,7 @@ open, which only a market-hours leg can do.
 
 ## Next session (Monday 2026-10-19, PLANNING leg pre-market)
 
-Write the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; re-run `ta.py` on ABBV/ACN before
+Write the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; re-run `ta.py` on XLE/ABBV/ACN before
 using any level here. Both indexes are in downtrend: probes or cash, confirmation triggers only, cash is
 acceptable. Run `ops\momentum_scan.py` at the open slot only (s6a never intraday); no clean s6a name qualified
 at the 10-16 close. If the relay misses the planning leg, the first leg of the day does these duties whatever its
