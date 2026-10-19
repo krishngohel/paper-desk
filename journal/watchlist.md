@@ -96,6 +96,11 @@ open, which only a market-hours leg can do.
 - **LMT / CASY (10-16 s6a scan):** EMA21 < EMA50, 3c fail. **TJX / CBOE:** `leader_10pp+` SIGNIFICANT, no
   catalyst. The rest of the 10-16 s6a list: inverse/leveraged ETFs (SOXS, SQQQ, QID, SNDQ) and 15-21%
   stop-risk spikes (NCPL, IREZ, MWYN).
+- **10-19 close s6a scan (86 of 88 screened, 7 names):** MAR 390.70 qualifies mechanically (> EMA9 376.33 >
+  EMA21 365.55 > EMA50 358.75, uptrend, stop 386 = 1.2%) but `--check` = `leader_10pp+` SIGNIFICANT (rs +14.3pp),
+  prior RSI 74.9 (`overbought_70+` 0 of 3), ext 3.58 ATR, after-hours spread 1.27%; no dated catalyst, so no L9
+  exception. Pass. MCK 1010.43: UNTRADABLE (4.81% delayed spread), RSI 75.5. ACN 236.93 / TJX 147.36: L9 as
+  before. CBRZ/MWYN/OLB: 10-23% stop risk spikes.
 - **MRNA / SHOP / SNOW / MTD / P / PTC / DDOG / SNPS (L9 leaders, pullback only).** MRNA 218.01 (-7.8% Friday),
   SHOP 169.52 (-4.8%), P 124.01 (-7.0%): all gave back part of their run; re-run `ta.py` and `--check` before
   any use. A trigger needs a multi-touch hold at EMA9 plus the written L9 exception. Earnings: SHOP 11-03,
@@ -121,10 +126,10 @@ open, which only a market-hours leg can do.
 - Macro: no Fed/CPI date confirmed from on-screen data. Mandate expires 2026-10-27 17:45Z; renewal
   (`ops/commit_paper_mandate.py`) is a human action.
 
-## Next session (Monday 2026-10-19, PLANNING leg pre-market)
+## Next session (Tuesday 2026-10-20, PLANNING leg pre-market)
 
 Write the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; re-run `ta.py` on XLE/ABBV/ACN before
-using any level here. Both indexes are in downtrend: probes or cash, confirmation triggers only, cash is
-acceptable. Run `ops\momentum_scan.py` at the open slot only (s6a never intraday); no clean s6a name qualified
-at the 10-16 close. If the relay misses the planning leg, the first leg of the day does these duties whatever its
-slot name. W7 discard is due at Tuesday's review.
+using any level here. Both indexes are still in downtrend (10-19 close: SPY 766.48, -0.47% vs EMA21; QQQ 718.36,
+-2.16%): probes or cash, confirmation triggers only, cash is acceptable. No clean s6a name qualified at the 10-19
+close (MAR is L9 with no catalyst). If the relay misses the planning leg, the first leg of the day does these
+duties whatever its slot name. RTX reports 10-20, TER 10-21. W7 discard is due at Tuesday's review.
