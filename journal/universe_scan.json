@@ -1,5 +1,5 @@
 {
- "ts": "2026-10-17T17:15:48",
+ "ts": "2026-10-18T20:05:34",
  "source": "tradingview_full_market",
  "universe_listings": 12341,
  "broker_tradable": 11109,
@@ -365,7 +365,7 @@
    "perf_1m_pct": 0.3,
    "dollar_volume_m": 1.8,
    "rel_volume": 78.88,
-   "market_cap_b": 0.32,
+   "market_cap_b": 0.26,
    "exchange": "NYSE",
    "type": "stock",
    "tradable": true,
@@ -971,8 +971,8 @@
   }
  ],
  "explore": {
-  "mode": "smallcap",
-  "desc": "biggest % movers under $2B market cap",
+  "mode": "gainers",
+  "desc": "biggest % gainers today",
   "new_names_not_on_shortlist": [
    {
     "symbol": "SEED",
@@ -1011,6 +1011,30 @@
     "tradable": true
    },
    {
+    "symbol": "NBIZ",
+    "close": 37.05,
+    "change_pct": 24.83,
+    "perf_1m_pct": 40.3,
+    "dollar_volume_m": 72.8,
+    "rel_volume": 0.88,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
+    "symbol": "CORD",
+    "close": 5.05,
+    "change_pct": 23.93,
+    "perf_1m_pct": 55.4,
+    "dollar_volume_m": 115.7,
+    "rel_volume": 1.38,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "XELB",
     "close": 0.43,
     "change_pct": 23.24,
@@ -1023,6 +1047,18 @@
     "tradable": true
    },
    {
+    "symbol": "APLZ",
+    "close": 39.34,
+    "change_pct": 22.82,
+    "perf_1m_pct": 52.4,
+    "dollar_volume_m": 3.5,
+    "rel_volume": 1.05,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "POAS",
     "close": 2.65,
     "change_pct": 22.69,
@@ -1032,6 +1068,18 @@
     "market_cap_b": 0.01,
     "exchange": "AMEX",
     "type": "stock",
+    "tradable": true
+   },
+   {
+    "symbol": "AXTQ",
+    "close": 46.4,
+    "change_pct": 22.2,
+    "perf_1m_pct": -1.7,
+    "dollar_volume_m": 11.1,
+    "rel_volume": 0.61,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
     "tradable": true
    },
    {
@@ -1071,6 +1119,18 @@
     "tradable": true
    },
    {
+    "symbol": "CBRZ",
+    "close": 18.32,
+    "change_pct": 20.69,
+    "perf_1m_pct": 81.9,
+    "dollar_volume_m": 2.6,
+    "rel_volume": 0.4,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "TCRT",
     "close": 2.63,
     "change_pct": 20.64,
@@ -1095,75 +1155,15 @@
     "tradable": true
    },
    {
-    "symbol": "XHG",
-    "close": 2.0,
-    "change_pct": 18.34,
-    "perf_1m_pct": -21.9,
-    "dollar_volume_m": 0.8,
-    "rel_volume": 0.07,
-    "market_cap_b": 0.1,
+    "symbol": "SMCZ",
+    "close": 7.09,
+    "change_pct": 19.56,
+    "perf_1m_pct": 10.6,
+    "dollar_volume_m": 7.2,
+    "rel_volume": 0.41,
+    "market_cap_b": null,
     "exchange": "NASDAQ",
-    "type": "dr",
-    "tradable": true
-   },
-   {
-    "symbol": "MRNO",
-    "close": 0.29,
-    "change_pct": 17.33,
-    "perf_1m_pct": 42.6,
-    "dollar_volume_m": 0.8,
-    "rel_volume": 0.19,
-    "market_cap_b": 0.02,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "FVN",
-    "close": 11.05,
-    "change_pct": 16.32,
-    "perf_1m_pct": 12.2,
-    "dollar_volume_m": 0.1,
-    "rel_volume": 0.73,
-    "market_cap_b": 0.08,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "ETS",
-    "close": 2.17,
-    "change_pct": 16.04,
-    "perf_1m_pct": 10.2,
-    "dollar_volume_m": 0.1,
-    "rel_volume": 1.11,
-    "market_cap_b": 0.1,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "RTSN",
-    "close": 14.07,
-    "change_pct": 15.23,
-    "perf_1m_pct": 40.7,
-    "dollar_volume_m": 2.9,
-    "rel_volume": 0.0,
-    "market_cap_b": 0.12,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "SITC",
-    "close": 3.43,
-    "change_pct": 13.95,
-    "perf_1m_pct": 19.5,
-    "dollar_volume_m": 34.7,
-    "rel_volume": 6.64,
-    "market_cap_b": 0.18,
-    "exchange": "NYSE",
-    "type": "stock",
+    "type": "fund",
     "tradable": true
    }
   ],
@@ -1277,6 +1277,30 @@
     "tradable": true
    },
    {
+    "symbol": "NBIZ",
+    "close": 37.05,
+    "change_pct": 24.83,
+    "perf_1m_pct": 40.3,
+    "dollar_volume_m": 72.8,
+    "rel_volume": 0.88,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
+    "symbol": "CORD",
+    "close": 5.05,
+    "change_pct": 23.93,
+    "perf_1m_pct": 55.4,
+    "dollar_volume_m": 115.7,
+    "rel_volume": 1.38,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "MMA",
     "close": 0.34,
     "change_pct": 23.91,
@@ -1301,6 +1325,18 @@
     "tradable": true
    },
    {
+    "symbol": "APLZ",
+    "close": 39.34,
+    "change_pct": 22.82,
+    "perf_1m_pct": 52.4,
+    "dollar_volume_m": 3.5,
+    "rel_volume": 1.05,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "POAS",
     "close": 2.65,
     "change_pct": 22.69,
@@ -1310,6 +1346,30 @@
     "market_cap_b": 0.01,
     "exchange": "AMEX",
     "type": "stock",
+    "tradable": true
+   },
+   {
+    "symbol": "IREZ",
+    "close": 20.13,
+    "change_pct": 22.37,
+    "perf_1m_pct": 113.0,
+    "dollar_volume_m": 48.6,
+    "rel_volume": 1.08,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
+    "symbol": "AXTQ",
+    "close": 46.4,
+    "change_pct": 22.2,
+    "perf_1m_pct": -1.7,
+    "dollar_volume_m": 11.1,
+    "rel_volume": 0.61,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
     "tradable": true
    },
    {
@@ -1361,6 +1421,18 @@
     "tradable": true
    },
    {
+    "symbol": "CBRZ",
+    "close": 18.32,
+    "change_pct": 20.69,
+    "perf_1m_pct": 81.9,
+    "dollar_volume_m": 2.6,
+    "rel_volume": 0.4,
+    "market_cap_b": null,
+    "exchange": "CBOE",
+    "type": "fund",
+    "tradable": true
+   },
+   {
     "symbol": "TCRT",
     "close": 2.63,
     "change_pct": 20.64,
@@ -1385,87 +1457,15 @@
     "tradable": true
    },
    {
-    "symbol": "XHG",
-    "close": 2.0,
-    "change_pct": 18.34,
-    "perf_1m_pct": -21.9,
-    "dollar_volume_m": 0.8,
-    "rel_volume": 0.07,
-    "market_cap_b": 0.1,
+    "symbol": "SMCZ",
+    "close": 7.09,
+    "change_pct": 19.56,
+    "perf_1m_pct": 10.6,
+    "dollar_volume_m": 7.2,
+    "rel_volume": 0.41,
+    "market_cap_b": null,
     "exchange": "NASDAQ",
-    "type": "dr",
-    "tradable": true
-   },
-   {
-    "symbol": "MRNO",
-    "close": 0.29,
-    "change_pct": 17.33,
-    "perf_1m_pct": 42.6,
-    "dollar_volume_m": 0.8,
-    "rel_volume": 0.19,
-    "market_cap_b": 0.02,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "FVN",
-    "close": 11.05,
-    "change_pct": 16.32,
-    "perf_1m_pct": 12.2,
-    "dollar_volume_m": 0.1,
-    "rel_volume": 0.73,
-    "market_cap_b": 0.08,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "ETS",
-    "close": 2.17,
-    "change_pct": 16.04,
-    "perf_1m_pct": 10.2,
-    "dollar_volume_m": 0.1,
-    "rel_volume": 1.11,
-    "market_cap_b": 0.1,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "RTSN",
-    "close": 14.07,
-    "change_pct": 15.23,
-    "perf_1m_pct": 40.7,
-    "dollar_volume_m": 2.9,
-    "rel_volume": 0.0,
-    "market_cap_b": 0.12,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "MWYN",
-    "close": 2.21,
-    "change_pct": 14.25,
-    "perf_1m_pct": 125.4,
-    "dollar_volume_m": 1.2,
-    "rel_volume": 1.63,
-    "market_cap_b": 0.04,
-    "exchange": "NASDAQ",
-    "type": "stock",
-    "tradable": true
-   },
-   {
-    "symbol": "SITC",
-    "close": 3.43,
-    "change_pct": 13.95,
-    "perf_1m_pct": 19.5,
-    "dollar_volume_m": 34.7,
-    "rel_volume": 6.64,
-    "market_cap_b": 0.18,
-    "exchange": "NYSE",
-    "type": "stock",
+    "type": "fund",
     "tradable": true
    }
   ]

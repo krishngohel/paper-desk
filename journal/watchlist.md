@@ -8,7 +8,7 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-17 Sat (research). Levels below were re-run with `ta.py` on the 10-16 close (markets closed
+Updated 2026-10-18 Sun (research; COP/RTX folded into watch-only, ranking unchanged), prior pass 2026-10-17 Sat. Levels below were re-run with `ta.py` on the 10-16 close (markets closed
 since); anything not marked "10-16" is older and stale. Mandate: expires_at 2026-10-27T17:45:52Z
 (re-verify each planning leg; renewal is a human action).
 
@@ -59,6 +59,13 @@ open, which only a market-hours leg can do.
    fresh close scan; earnings 10-28. Prior MSFT trade lost $72.94 (look it up before reuse).
 
 ## Watch only / rejects
+
+- **COP / RTX (10-18 vets, explore[turnover]; new).** COP 146.51: passes 3c (EMA9 138.64 > EMA21 134.60 > EMA50
+  131.02), uptrend, spread 0.24%, $1.1B traded, vol 1.18x, 100% of range, no resistance; but RSI 74.4
+  (`overbought_70+`, 0 of 3), +3.4% Friday marubozu after a 10-15 bearish engulfing, ext ~2.4 ATR above EMA9; earnings
+  11-05. `--check COP 146.51`: `leader_10pp+` SIGNIFICANT (rs 20d +10.94pp, 1 of 18), ext 3.61 ATR, RSI 74.7: L9
+  exception needed, none exists. Same energy theme as XLE (#0): no chase; stalk only a hold of EMA9 ~138.6 (stop under 134.6 EMA21). RTX 193.92:
+  EMA21 189.00 < EMA50 199.70, range/mixed, fails 3c; earnings 10-20 inside the window. Missed.
 
 - **KHC / WFC / NEM (10-17 vets from social trending).** KHC 23.68: EMA21 23.14 < EMA50 24.19, fails 3c
   (shooting star 23.64, earnings 11-04). WFC 83.87: EMA21 82.84 < EMA50 84.83, range/mixed, fails 3c; doji at
