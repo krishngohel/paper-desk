@@ -60,6 +60,12 @@ open, which only a market-hours leg can do.
 
 ## Watch only / rejects
 
+- **XLAB / AMRO (10-19 evening vets, explore[smallcap]) - REJECTED.** XLAB 3.06 (+25% on 7.5x vol, $206M traded,
+  spread 0.34%): EMA9 1.76 < EMA21 1.98 < EMA50 3.28, downtrend (LH+LL), one-day spike off a 0.94 base, shooting
+  star at 3.84 on 10-16; fails 3c. AMRO 5.61: new listing, 3 daily bars, no EMAs/key levels, day range 4.91-8.64
+  (shooting star at 8.64), no stop level to place. XLE 10-19 close refresh: 67.80, shooting star 68.51 on the
+  day, prior RSI 69.0; #0 trigger unchanged.
+
 - **COP / RTX (10-18 vets, explore[turnover]; new).** COP 146.51: passes 3c (EMA9 138.64 > EMA21 134.60 > EMA50
   131.02), uptrend, spread 0.24%, $1.1B traded, vol 1.18x, 100% of range, no resistance; but RSI 74.4
   (`overbought_70+`, 0 of 3), +3.4% Friday marubozu after a 10-15 bearish engulfing, ext ~2.4 ATR above EMA9; earnings
