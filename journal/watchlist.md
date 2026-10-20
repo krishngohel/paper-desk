@@ -8,8 +8,8 @@ Maintained by `research` sessions. Each name: draft thesis, the EXACT numeric tr
 that turns it into a trade, planned size/stop/target/grade, and the kill condition.
 The next planning leg reads this FIRST.
 
-Updated 2026-10-18 Sun (research; COP/RTX folded into watch-only, ranking unchanged), prior pass 2026-10-17 Sat. Levels below were re-run with `ta.py` on the 10-16 close (markets closed
-since); anything not marked "10-16" is older and stale. Mandate: expires_at 2026-10-27T17:45:52Z
+Updated 2026-10-20 Tue evening (research; XLE refreshed, BRZE/HLT/ISRG/TW vetted and rejected), prior pass 2026-10-19. Levels below were re-run with `ta.py` on the 10-16 close;
+anything not marked "10-16"/"10-20" is older and stale. Mandate: expires_at 2026-10-27T17:45:52Z
 (re-verify each planning leg; renewal is a human action).
 
 **Regime (`ta.py --market`, 10-16 close):** SPY 763.25, -0.93% vs EMA21, RSI 44.3, downtrend. QQQ 709.8,
@@ -59,6 +59,12 @@ open, which only a market-hours leg can do.
    fresh close scan; earnings 10-28. Prior MSFT trade lost $72.94 (look it up before reuse).
 
 ## Watch only / rejects
+
+- **10-20 evening vets (new).** BRZE 45.57 (+51%): Salesforce $5.66B buyout, deal-pinned (day range 45.26-45.61), no
+  edge. HLT 359.29: passes 3c, uptrend, but spread 1.66% TIGHT_SIZE, prior RSI 73.4, ext 4.98 ATR, `--check` =
+  `leader_10pp+` SIGNIFICANT (rs +13.6pp), earnings 10-27: L9 with no catalyst, pass. ISRG: reported 10-20, gapped down
+  (bid 405 vs 438 close, day range 378-450): post-earnings, wait for a base. TW 119.37: spread 18.9% UNTRADABLE.
+  XLE 10-20: 67.97, hammer at 66.83, prior RSI 66.3, EMA9 66.77; #0 trigger unchanged (EMA9 hold ~66.8-66.2).
 
 - **XLAB / AMRO (10-19 evening vets, explore[smallcap]) - REJECTED.** XLAB 3.06 (+25% on 7.5x vol, $206M traded,
   spread 0.34%): EMA9 1.76 < EMA21 1.98 < EMA50 3.28, downtrend (LH+LL), one-day spike off a 0.94 base, shooting
@@ -132,7 +138,7 @@ open, which only a market-hours leg can do.
 - Macro: no Fed/CPI date confirmed from on-screen data. Mandate expires 2026-10-27 17:45Z; renewal
   (`ops/commit_paper_mandate.py`) is a human action.
 
-## Next session (Tuesday 2026-10-20, PLANNING leg pre-market)
+## Next session (Wednesday 2026-10-21, PLANNING leg pre-market; 10-20 SPY 769.05 -0.12% vs EMA21, QQQ 717.63 -2.07%, both downtrend)
 
 Write the loss budget; re-verify `consent.expires_at` (10-27); read the gap scan; re-run `ta.py` on XLE/ABBV/ACN before
 using any level here. Both indexes are still in downtrend (10-19 close: SPY 766.48, -0.47% vs EMA21; QQQ 718.36,
